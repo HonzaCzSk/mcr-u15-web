@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="cs">
+  <meta name="author" content="Pořadatel MČR U15">
+  <meta name="robots" content="index, follow">
+
+  <title>MČR U15 – dívky | Hradec Králové</title>
+  <meta name="description" content="Oficiální web Mistrovství České republiky U15 dívek v basketbalu. 24.–26. dubna, Hradec Králové. Rozpis, výsledky, týmy, aktuality a fotogalerie.">
+
+  <link rel="canonical" href="https://www.mcr-u15.cz/">
+
+  <!-- Open Graph (Instagram, WhatsApp, Messenger, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="cs_CZ">
+  <meta property="og:title" content="MČR U15 – dívky | Hradec Králové">
+  <meta property="og:description" content="Mistrovství České republiky U15 dívek v basketbalu. 24.–26. dubna, Hradec Králové.">
+  <meta property="og:url" content="https://www.mcr-u15.cz/">
+  <meta property="og:site_name" content="MČR U15 – dívky">
+  <meta property="og:image" content="https://www.mcr-u15.cz/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="MČR U15 – dívky v basketbalu">
+
+  <!-- Favicons (připraveno, doplníte později) -->
+  <link rel="icon" href="/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="wrap topbar__inner">
+    <div class="brand">
+      <span class="brand__dot"></span>
+      <a class="brand__name" href="index.html">MČR U15</a>
+    </div>
+
+    <div class="topright">
+      <div class="toplinks">
+        <a href="https://www.cbf.cz/" target="_blank" rel="noopener">ČBF</a>
+        <a href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener">Hradecké lvice</a>
+      </div>
+
+      <button class="themebtn" id="themeToggle" type="button" aria-label="Přepnout motiv">
+        DARK
+      </button>
+
+      <!-- Mobilní menu tlačítko -->
+      <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">
+        ☰
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="menu" id="mobileMenu" aria-hidden="true">
+  <div class="menu__backdrop" data-close></div>
+
+  <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="menu__head">
+      <div class="menu__title">Menu</div>
+      <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
+    </div>
+
+    <div class="menu__links">
+      <a class="menu__link" href="index.html">Úvod</a>
+      <a class="menu__link" href="rozpis.html">Rozpis</a>
+      <a class="menu__link" href="vysledky.html">Výsledky</a>
+      <a class="menu__link" href="tymy.html">Týmy</a>
+      <a class="menu__link" href="info.html">Info</a>
+      <a class="menu__link" href="fotky.html">Fotky</a>
+    </div>
+  </div>
+</div>
+
+  <!-- Main nav -->
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__item is-active" href="index.html">Úvod</a>
+      <a class="nav__item" href="rozpis.html">Rozpis</a>
+      <a class="nav__item" href="vysledky.html">Výsledky</a>
+      <a class="nav__item" href="tymy.html">Týmy</a>
+      <a class="nav__item" href="info.html">Info</a>
+      <a class="nav__item" href="fotky.html">Fotky</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero__text">
+        <h1 class="h1">Mistrovství ČR U15 – dívky</h1>
+        <p class="lead">24.–26. dubna • Hradec Králové • Eliščino nábřeží 777 • Vstup zdarma</p>
+
+        <div class="cta">
+          <a class="btn btn--primary" href="rozpis.html">Rozpis zápasů</a>
+          <a class="btn btn--ghost" href="https://www.tvcom.cz/Zapasy/Sport-Basketbal/" target="_blank" rel="noopener">Sledovat stream (TVcom)</a>
+        </div>
+
+        <div class="hero__note">
+          Turnaj se odehraje ve dvou halách v rámci jedné budovy. Přesuny mezi halami jsou možné vnitřními prostory.
+        </div>
+      </div>
+
+      <div class="hero__panel">
+        <div class="panel">
+          <div class="panel__title">Základní info</div>
+          <div class="kv">
+            <div class="kv__row"><span>Počet týmů</span><strong>8</strong></div>
+            <div class="kv__row"><span>Systém</span><strong>2×4 + play-off</strong></div>
+            <div class="kv__row"><span>Místo</span><strong>HK, Eliščino n. 777</strong></div>
+            <div class="kv__row"><span>Vstupné</span><strong>Zdarma</strong></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grid cards -->
+    <section class="grid">
+      <article class="card">
+        <h2 class="h2">Co na webu najdete</h2>
+        <ul class="list">
+          <li>rozlosování skupin a rozpis zápasů</li>
+          <li>průběžně aktualizované výsledky</li>
+          <li>informace o místě konání, dopravě a parkování</li>
+          <li>soupisky týmů včetně týmových fotografií</li>
+          <li>aktuality a shrnutí jednotlivých dnů</li>
+          <li>odkazy na fotografické galerie z turnaje</li>
+        </ul>
+      </article>
+
+      <article class="card card--accent">
+        <h2 class="h2">Důležité</h2>
+        <p class="muted">
+          Organizační pokyny a detailní informace doplníme přibližně dva týdny před začátkem akce.
+        </p>
+        <div class="mini">
+          Až bude logo, doladíme barvy, OG obrázek i favicony podle něj.
+        </div>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="partners">
+        <div class="partners__title">Partneři turnaje</div>
+
+        <div class="partners__row">
+    <!-- dočasné placeholdery -->
+      <div class="partner partner--placeholder">Hlavní partner</div>
+      <div class="partner partner--placeholder">Partner</div>
+      <div class="partner partner--placeholder">Partner</div>
+  </div>
+
+  <div class="partners__note">
+    Partneři turnaje budou zveřejněni přibližně dva týdny před zahájením akce.
+  </div>
+</div>
+
+      <div class="footer__left">© MČR U15 – Hradec Králové</div>
+
+      <!-- Klikatelné ikonky -->
+      <div class="socialbar" aria-label="Odkazy">
+        <a class="socialbtn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="icons/instagram.svg" alt="Instagram">
+        </a>
+        <a class="socialbtn" href="https://www.tvcom.cz/" target="_blank" rel="noopener" aria-label="TVcom">
+          <img src="icons/tvcom.svg" alt="TVcom">
+        </a>
+        <a class="socialbtn" href="https://www.cbf.cz/" target="_blank" rel="noopener" aria-label="ČBF">
+          <img src="icons/cbf.svg" alt="ČBF">
+        </a>
+        <a class="socialbtn" href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener" aria-label="Hradecké lvice">
+          <img src="icons/lvice.svg" alt="Hradecké lvice">
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="theme.js"></script>
+  <script src="menu.js"></script>
+  
+</body>
+
+</html>

@@ -1,0 +1,877 @@
+:root{
+  --bg: #f6f6f7;
+  --ink: #0b0b0e;
+  --muted: rgba(11,11,14,.70);
+  --line: rgba(11,11,14,.12);
+  --card: #ffffff;
+
+  /* víc “federace” barev */
+  --accent: #ff3b30;      /* červená */
+  --accentB: #ffb000;     /* žluto-oranžová (jen na highlight) */
+  --accent2: #111827;     /* tmavá (topbar) */
+  --blue: #2b7fff;        /* modrá na linky/hover */
+}
+
+*{ box-sizing: border-box; }
+html,body{ margin:0; padding:0; }
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.55;
+}
+
+.wrap{
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 16px;
+  position: relative;
+}
+
+/* jemný gradient pouze za obsahem, ne po celé stránce */
+.wrap::before{ display:none; }
+
+/* ====== TOPBAR ====== */
+.topbar{
+  background: var(--accent2);
+  color: #fff;
+}
+.topbar__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 10px 0;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+.brand__dot{
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 2px;
+  display:inline-block;
+}
+.brand__name{
+  color:#fff;
+  text-decoration:none;
+  font-weight: 900;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.toplinks{
+  display:flex; gap: 12px; flex-wrap:wrap;
+}
+.toplinks a{
+  color: rgba(255,255,255,.85);
+  text-decoration:none;
+  font-weight: 800;
+  font-size: 13px;
+}
+.toplinks a:hover{ color:#fff; }
+
+.topright{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+}
+
+.themebtn{
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-weight: 900;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform .12s ease, background .12s ease;
+}
+.themebtn:hover{
+  background: rgba(255,255,255,.12);
+  transform: translateY(-1px);
+}
+
+/* ====== NAV ====== */
+
+.nav{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+
+.nav__inner{
+  display:flex;
+  justify-content: space-between; /* roztažení na celou šířku */
+  gap: 0;
+  padding: 0;
+}
+
+.nav__item{
+  flex: 1;
+  text-align: center;
+  text-decoration:none;
+  color: var(--ink);
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .6px;
+  font-size: 14px;
+  padding: 14px 8px;
+  border-radius: 0;
+  border: none;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease, box-shadow .12s ease;
+}
+
+.nav__item:hover{
+  border-color: var(--line);
+  background: rgba(0,0,0,.04);
+}
+
+.nav__item.is-active{
+  background: rgba(255,59,48,.12);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+/* ====== HERO ====== */
+.hero{
+  position: relative;
+  overflow: hidden; /* <-- KLÍČ: ořeže background pás */
+  display:grid;
+  grid-template-columns: 1.35fr .65fr;
+  gap: 14px;
+  padding: 18px 0 14px;
+  margin-top: 12px;
+}
+
+.hero::before{ display:none; }
+
+.h1{
+  margin: 0 0 8px;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
+}
+.lead{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.cta{
+  display:flex;
+  gap: 10px;
+  flex-wrap:wrap;
+  margin-bottom: 12px;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 2px solid var(--ink);
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .4px;
+  font-size: 13px;
+  text-decoration:none;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+}
+
+/* barevnější primární */
+.btn--primary{
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0b0b0e;
+  box-shadow: 0 14px 28px rgba(255,59,48,.18);
+}
+
+.btn--primary:hover{
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(255,59,48,.24);
+}
+
+
+/* “ghost” v federace stylu */
+.btn--ghost{
+  background: #fff;
+  color: var(--ink);
+}
+.btn--ghost:hover{
+  background: rgba(43,127,255,.08);
+  border-color: rgba(43,127,255,.35);
+  transform: translateY(-1px);
+}
+
+.hero__note{
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.panel{
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px;
+}
+.panel__title{
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+.kv{
+  display:grid;
+  gap: 10px;
+}
+.kv__row{
+  display:flex;
+  justify-content:space-between;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+}
+.kv__row span{ color: var(--muted); font-weight: 700; }
+.kv__row strong{ font-weight: 950; }
+
+/* ====== GRID CARDS ====== */
+.grid{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 8px 0 18px;
+}
+
+.card{
+  position: relative;
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+}
+
+/* barevná horní linka (sport vibe) */
+.card::before{ display:none; }
+
+.card--accent{
+  border-color: rgba(255,59,48,.28);
+  box-shadow: 0 12px 30px rgba(255,59,48,.08);
+}
+
+.h2{
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+  font-size: 16px;
+  font-weight: 950;
+}
+.list{ margin:0; padding-left: 18px; }
+.list li{ margin: 7px 0; }
+
+.muted{ color: var(--muted); margin: 0; }
+.mini{
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+/* ====== FOOTER + SOCIAL ====== */
+.footer{
+  border-top: 1px solid var(--line);
+  background: #fff;
+}
+.footer__inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+  padding: 14px 0;
+  flex-wrap: wrap;
+}
+.footer__left{
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.socialbar{
+  display:flex;
+  gap: 10px;
+  align-items:center;
+  justify-content:flex-end;
+}
+.socialbtn{
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  border: 2px solid var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: #fff;
+  transition: transform .12s ease, background .12s ease, border-color .12s ease;
+}
+.socialbtn img{
+  width: 22px;
+  height: 22px;
+  display:block;
+}
+.socialbtn:hover{
+  transform: translateY(-1px);
+  background: rgba(0,0,0,.03);
+}
+
+/* ====== MOBIL ====== */
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+  .grid{ grid-template-columns: 1fr; }
+  .h1{ font-size: 28px; }
+  .nav__item{
+    font-size: 13px;
+    padding: 12px 6px;
+  }
+}
+
+@media (max-width: 600px){
+  .topbar__inner{ padding: 10px 0; }
+  .nav__inner{ gap: 6px; }
+  .nav__item{ padding: 9px 9px; font-size: 12px; }
+  .h1{ font-size: 24px; }
+  .btn{ width: 100%; }
+  .footer__inner{ justify-content:center; }
+  .schedule th,
+  .schedule td{
+    padding: 14px 10px;
+    font-size: 14px;
+  }
+}
+
+.menubtn{
+  display:none;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.06);
+  color: #fff;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.menubtn:hover{
+  background: rgba(255,255,255,.12);
+}
+
+@media (max-width: 700px){
+  .nav{ display:none; }
+  .toplinks{ display:none; }
+  .menubtn{ display:inline-flex; }
+}
+
+/* ====== DARK MODE (ručně přes data-theme) ====== */
+:root[data-theme="dark"]{
+  --bg: #0b0b0e;
+  --ink: #eef2ff;
+  --muted: rgba(238,242,255,.72);
+  --line: rgba(238,242,255,.12);
+  --card: rgba(255,255,255,.06);
+}
+
+/* background stránky */
+:root[data-theme="dark"] body{
+  background: var(--bg);
+  color: var(--ink);
+}
+
+/* jemný gradient pouze za obsahem, ne po celé stránce */
+:root[data-theme="dark"] .wrap::before{
+  opacity: .14;
+  background:
+    radial-gradient(520px 200px at 20% 20%, rgba(255,59,48,.9), transparent 62%),
+    radial-gradient(520px 200px at 70% 15%, rgba(43,127,255,.75), transparent 62%);
+}
+
+
+/* HERO band v dark modu (lehce výraznější) */
+:root[data-theme="dark"] .hero::before{ display:none; }
+
+/* NAV */
+:root[data-theme="dark"] .nav{
+  background: rgba(11,11,14,.86);
+  border-bottom: 1px solid var(--line);
+}
+:root[data-theme="dark"] .nav__item{ color: var(--ink); }
+:root[data-theme="dark"] .nav__item:hover{
+  background: rgba(255,255,255,.06);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .nav__item.is-active{
+  border-color: rgba(255,59,48,.45);
+  background: rgba(255,59,48,.14);
+  box-shadow: 0 10px 24px rgba(255,59,48,.10);
+}
+
+/* HERO NOTE */
+:root[data-theme="dark"] .hero__note{
+  background: rgba(255,255,255,.06);
+  border-color: var(--line);
+  color: var(--muted);
+}
+
+/* PANELY / KARTY */
+:root[data-theme="dark"] .panel{
+  background: var(--card);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .kv__row{
+  background: rgba(0,0,0,.16);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .card{
+  background: var(--card);
+  border-color: var(--line);
+}
+
+/* TLAČÍTKA */
+:root[data-theme="dark"] .btn--primary{
+  background: linear-gradient(90deg, var(--accent), #ff5a52);
+  border-color: transparent;
+  color: #0b0b0e;
+}
+:root[data-theme="dark"] .btn--ghost{
+  background: rgba(255,255,255,.05);
+  color: var(--ink);
+  border-color: rgba(238,242,255,.35);
+}
+:root[data-theme="dark"] .btn--ghost:hover{
+  background: rgba(255,255,255,.08);
+}
+
+/* FOOTER */
+:root[data-theme="dark"] .footer{
+  background: rgba(255,255,255,.02);
+  border-top: 1px solid var(--line);
+}
+
+/* SOCIÁLNÍ IKONY */
+:root[data-theme="dark"] .socialbtn{
+  background: rgba(255,255,255,.02);
+  border-color: rgba(238,242,255,.45);
+}
+:root[data-theme="dark"] .socialbtn img{
+  filter: brightness(0) invert(1);
+}
+
+.pagehead{
+  margin-top: 12px;
+}
+
+.tablewrap{
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+}
+
+/* tabulka rozpisu */
+.schedule{
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+}
+
+.schedule th, .schedule td{
+  padding: 12px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.schedule th{
+  font-size: 12px;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  font-weight: 950;
+  color: var(--muted);
+  background: rgba(0,0,0,.02);
+}
+
+.schedule tr:last-child td{
+  border-bottom: none;
+}
+
+/* štítky hal */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  gap: 8px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-weight: 950;
+  letter-spacing: .2px;
+  font-size: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+}
+
+.pill--h1{
+  border-color: rgba(255,59,48,.35);
+  background: rgba(255,59,48,.10);
+}
+
+.pill--h2{
+  border-color: rgba(43,127,255,.35);
+  background: rgba(43,127,255,.10);
+}
+
+/* dark mode tabulka */
+:root[data-theme="dark"] .tablewrap{
+  border-color: var(--line);
+  background: rgba(255,255,255,.02);
+}
+
+:root[data-theme="dark"] .schedule{
+  background: rgba(255,255,255,.02);
+}
+
+:root[data-theme="dark"] .schedule th{
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] .pill{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
+}
+
+/* ====== ROZPIS – větší mezery ====== */
+.schedule th,
+.schedule td{
+  padding: 16px 14px;   /* víc vzduchu */
+  line-height: 1.6;
+  vertical-align: middle;
+}
+
+/* oddělení jednotlivých zápasů */
+.schedule tbody tr{
+  border-bottom: 1px solid var(--line);
+}
+
+.schedule tbody tr:last-child{
+  border-bottom: none;
+}
+
+.pagehead{
+  margin: 18px 0 20px;
+}
+
+.pagehead .lead{
+  max-width: 700px;
+}
+
+.grid{
+  margin-bottom: 20px;
+}
+
+.partners{
+  width:100%;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: 10px;
+}
+
+.partners__title{
+  font-size: 12px;
+  font-weight: 950;
+  letter-spacing: .4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.partners__row{
+  display:flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.partner{
+  min-width: 120px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px dashed var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--muted);
+  background: rgba(0,0,0,.02);
+}
+
+.partner--placeholder{
+  opacity: .7;
+}
+
+/* ====== TEAMS / RESULTS / PHOTOS helpers ====== */
+
+.stack{ display:grid; gap: 14px; margin: 14px 0 24px; }
+
+.teamlist{ display:grid; gap: 10px; }
+.teamitem{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+  text-decoration:none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,.02);
+  color: var(--ink);
+}
+.teamitem:hover{ background: rgba(0,0,0,.03); }
+
+.teamlogo{
+  width: 38px; height: 38px;
+  border-radius: 12px;
+  display:flex; align-items:center; justify-content:center;
+  font-weight: 950;
+  border: 1px solid var(--line);
+  background: #fff;
+}
+.teamlogo--ph{ color: var(--muted); }
+
+.teamname{ font-weight: 900; }
+
+.teamhead{
+  display:flex;
+  align-items:center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.teammeta{
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+}
+.kvline{
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: rgba(0,0,0,.02);
+  display:flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.kvline span{ color: var(--muted); font-weight: 700; }
+.kvline strong{ font-weight: 950; }
+
+@media (max-width: 900px){
+  .teammeta{ grid-template-columns: 1fr; }
+}
+
+/* Results */
+.results .score{ font-weight: 950; }
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  font-weight: 950;
+  font-size: 12px;
+  letter-spacing: .3px;
+}
+.badge--fin{
+  border-color: rgba(0,0,0,.18);
+  background: rgba(0,0,0,.06);
+}
+.badge--live{
+  border-color: rgba(255,59,48,.35);
+  background: rgba(255,59,48,.12);
+}
+
+/* Photos */
+.linklist{ display:grid; gap: 10px; margin-top: 10px; }
+.linkitem{
+  display:block;
+  text-decoration:none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 12px;
+  background: rgba(0,0,0,.02);
+  color: var(--ink);
+  font-weight: 900;
+}
+.linkitem:hover{ background: rgba(0,0,0,.03); }
+
+.gallery{
+  margin-top: 12px;
+  display:grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.thumb{
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  height: 130px;
+  background: rgba(0,0,0,.02);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color: var(--muted);
+  font-weight: 900;
+}
+@media (max-width: 900px){
+  .gallery{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 600px){
+  .gallery{ grid-template-columns: 1fr; }
+}
+
+/* Dark tweaks */
+:root[data-theme="dark"] .teamitem,
+:root[data-theme="dark"] .kvline,
+:root[data-theme="dark"] .linkitem,
+:root[data-theme="dark"] .thumb{
+  background: rgba(255,255,255,.03);
+}
+:root[data-theme="dark"] .teamlogo{
+  background: rgba(255,255,255,.03);
+}
+:root[data-theme="dark"] .badge{
+  background: rgba(255,255,255,.03);
+}
+
+/* ====== MOBILE MENU OVERLAY ====== */
+.menu{
+  position: fixed;
+  inset: 0;
+  display: none;
+  z-index: 1000;
+}
+
+.menu.is-open{ display: block; }
+
+.menu__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.45);
+}
+
+.menu__panel{
+  position:absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(360px, 88vw);
+  background: #fff;
+  border-left: 1px solid var(--line);
+  box-shadow: -20px 0 60px rgba(0,0,0,.20);
+  padding: 14px;
+  display:flex;
+  flex-direction: column;
+  transform: translateX(12px);
+  opacity: 0;
+  transition: transform .14s ease, opacity .14s ease;
+}
+
+.menu.is-open .menu__panel{
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.menu__head{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.menu__title{
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.menu__close{
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor:pointer;
+  font-weight: 950;
+}
+
+.menu__links{
+  padding-top: 12px;
+  display:grid;
+  gap: 10px;
+}
+
+.menu__link{
+  text-decoration:none;
+  color: var(--ink);
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 12px;
+  background: rgba(0,0,0,.02);
+}
+
+.menu__link:hover{
+  background: rgba(0,0,0,.03);
+}
+
+/* dark */
+:root[data-theme="dark"] .menu__panel{
+  background: #0b0b0e;
+  border-left-color: var(--line);
+}
+:root[data-theme="dark"] .menu__close,
+:root[data-theme="dark"] .menu__link{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* kdy se to používá */
+@media (min-width: 701px){
+  .menu{ display:none !important; }
+}

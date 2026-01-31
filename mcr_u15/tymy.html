@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Týmy | MČR U15 – dívky</title>
+  <meta name="description" content="Týmy a soupisky MČR U15 dívek v basketbalu.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="brand">
+        <span class="brand__dot"></span>
+        <a class="brand__name" href="index.html">MČR U15</a>
+      </div>
+
+      <div class="topright">
+        <div class="toplinks">
+          <a href="https://www.cbf.cz/" target="_blank" rel="noopener">ČBF</a>
+          <a href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener">Hradecké lvice</a>
+        </div>
+
+        <button class="themebtn" id="themeToggle" type="button" aria-label="Přepnout motiv">DARK</button>
+
+        <!-- pokud už máš menubtn, nech; jinak můžeš smazat -->
+        <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__item" href="index.html">Úvod</a>
+      <a class="nav__item" href="rozpis.html">Rozpis</a>
+      <a class="nav__item" href="vysledky.html">Výsledky</a>
+      <a class="nav__item is-active" href="tymy.html">Týmy</a>
+      <a class="nav__item" href="info.html">Info</a>
+      <a class="nav__item" href="fotky.html">Fotky</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+
+    <section class="pagehead">
+      <h1 class="h1">Týmy</h1>
+      <p class="lead">Soupisky a týmové fotky budou doplněny před turnajem.</p>
+      <p class="mini">Tip: U každého týmu můžeš mít logo, týmovou fotku, soupisku, trenéry a odkazy.</p>
+    </section>
+
+    <!-- Rychlé členění -->
+    <section class="grid">
+      <div class="card">
+        <h2 class="h2">Skupina A</h2>
+
+        <div class="teamlist">
+          <a class="teamitem" href="#tym-a1">
+            <span class="teamlogo teamlogo--ph">A1</span>
+            <span class="teamname">Tým A1</span>
+          </a>
+          <a class="teamitem" href="#tym-a2">
+            <span class="teamlogo teamlogo--ph">A2</span>
+            <span class="teamname">Tým A2</span>
+          </a>
+          <a class="teamitem" href="#tym-a3">
+            <span class="teamlogo teamlogo--ph">A3</span>
+            <span class="teamname">Tým A3</span>
+          </a>
+          <a class="teamitem" href="#tym-a4">
+            <span class="teamlogo teamlogo--ph">A4</span>
+            <span class="teamname">Tým A4</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 class="h2">Skupina B</h2>
+
+        <div class="teamlist">
+          <a class="teamitem" href="#tym-b1">
+            <span class="teamlogo teamlogo--ph">B1</span>
+            <span class="teamname">Tým B1</span>
+          </a>
+          <a class="teamitem" href="#tym-b2">
+            <span class="teamlogo teamlogo--ph">B2</span>
+            <span class="teamname">Tým B2</span>
+          </a>
+          <a class="teamitem" href="#tym-b3">
+            <span class="teamlogo teamlogo--ph">B3</span>
+            <span class="teamname">Tým B3</span>
+          </a>
+          <a class="teamitem" href="#tym-b4">
+            <span class="teamlogo teamlogo--ph">B4</span>
+            <span class="teamname">Tým B4</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- DETAILY TÝMŮ (šablona) -->
+    <section class="stack">
+
+      <article class="card" id="tym-a1">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">A1</div>
+          <div>
+            <h2 class="h2">Tým A1</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+
+        <div class="teammeta">
+          <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+          <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+          <div class="kvline"><span>Kontakt</span><strong>—</strong></div>
+        </div>
+
+        <div class="tablewrap" style="margin-top:12px;">
+          <table class="schedule roster">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Jméno</th>
+                <th>Pozice</th>
+                <th>Ročník</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>4</td><td>Hráčka 1</td><td>G</td><td>2010</td></tr>
+              <tr><td>7</td><td>Hráčka 2</td><td>F</td><td>2010</td></tr>
+              <tr><td>12</td><td>Hráčka 3</td><td>C</td><td>2011</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="mini">Týmová fotka: později můžeš přidat `<img class="teamphoto" src="...">`.</p>
+      </article>
+
+      <!-- Zkopíruj tuhle kartu pro A2…B4 a změň id -->
+      <article class="card" id="tym-a2">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">A2</div>
+          <div>
+            <h2 class="h2">Tým A2</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+      <article class="card" id="tym-a3">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">A3</div>
+          <div>
+            <h2 class="h2">Tým A3</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+      <article class="card" id="tym-a4">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">A4</div>
+          <div>
+            <h2 class="h2">Tým A4</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+      <article class="card" id="tym-b1">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">B1</div>
+          <div>
+            <h2 class="h2">Tým B1</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+      <article class="card" id="tym-b2">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">B2</div>
+          <div>
+            <h2 class="h2">Tým B2</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+      <article class="card" id="tym-b3">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">B3</div>
+          <div>
+            <h2 class="h2">Tým B3</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+      <article class="card" id="tym-b4">
+        <div class="teamhead">
+          <div class="teamlogo teamlogo--ph">B4</div>
+          <div>
+            <h2 class="h2">Tým B4</h2>
+            <div class="muted">Město • Klub • Odkazy</div>
+          </div>
+        </div>
+        <p class="mini">Doplň soupisku a informace.</p>
+      </article>
+
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__left">© MČR U15 – Hradec Králové</div>
+    </div>
+  </footer>
+
+<script src="theme.js"></script>
+<script src="menu.js"></script>
+
+</body>
+</html>

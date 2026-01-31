@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Výsledky | MČR U15 – dívky</title>
+  <meta name="description" content="Výsledky a průběh MČR U15 dívek v basketbalu.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <div class="wrap topbar__inner">
+      <div class="brand">
+        <span class="brand__dot"></span>
+        <a class="brand__name" href="index.html">MČR U15</a>
+      </div>
+
+      <div class="topright">
+        <div class="toplinks">
+          <a href="https://www.cbf.cz/" target="_blank" rel="noopener">ČBF</a>
+          <a href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener">Hradecké lvice</a>
+        </div>
+
+        <button class="themebtn" id="themeToggle" type="button" aria-label="Přepnout motiv">DARK</button>
+        <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="wrap nav__inner">
+      <a class="nav__item" href="index.html">Úvod</a>
+      <a class="nav__item" href="rozpis.html">Rozpis</a>
+      <a class="nav__item is-active" href="vysledky.html">Výsledky</a>
+      <a class="nav__item" href="tymy.html">Týmy</a>
+      <a class="nav__item" href="info.html">Info</a>
+      <a class="nav__item" href="fotky.html">Fotky</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section class="pagehead">
+      <h1 class="h1">Výsledky</h1>
+      <p class="lead">Průběžně aktualizované výsledky během turnaje.</p>
+      <p class="mini">Stav zápasu: <span class="badge badge--fin">FIN</span> dohráno, <span class="badge badge--live">LIVE</span> probíhá, <span class="badge">SCHEDULED</span> plán.</p>
+    </section>
+
+    <!-- Pátek -->
+    <section class="card">
+      <h2 class="h2">Pátek 24. dubna</h2>
+
+      <div class="tablewrap">
+        <table class="schedule results">
+          <thead>
+            <tr>
+              <th>Čas</th>
+              <th>Hala</th>
+              <th>Zápas</th>
+              <th>Skóre</th>
+              <th>Stav</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>09:00</td>
+              <td><span class="pill pill--h1">Hala 1</span></td>
+              <td>Tým A1 – Tým A2</td>
+              <td class="score">68 : 55</td>
+              <td><span class="badge badge--fin">FIN</span></td>
+            </tr>
+            <tr>
+              <td>10:30</td>
+              <td><span class="pill pill--h2">Hala 2</span></td>
+              <td>Tým B1 – Tým B2</td>
+              <td class="score">—</td>
+              <td><span class="badge">SCHEDULED</span></td>
+            </tr>
+            <tr>
+              <td>12:00</td>
+              <td><span class="pill pill--h1">Hala 1</span></td>
+              <td>Tým A3 – Tým A4</td>
+              <td class="score">21 : 18</td>
+              <td><span class="badge badge--live">LIVE</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Play-off -->
+    <section class="card">
+      <h2 class="h2">Play-off</h2>
+      <p class="mini">Sem pak dáš SF, zápas o 3. místo a finále. Klidně ve stejné tabulce.</p>
+
+      <div class="tablewrap" style="margin-top:12px;">
+        <table class="schedule results">
+          <thead>
+            <tr>
+              <th>Čas</th>
+              <th>Hala</th>
+              <th>Fáze</th>
+              <th>Zápas</th>
+              <th>Skóre</th>
+              <th>Stav</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>15:00</td>
+              <td><span class="pill pill--h1">Hala 1</span></td>
+              <td>Finále</td>
+              <td>Vítěz SF1 – Vítěz SF2</td>
+              <td class="score">—</td>
+              <td><span class="badge">SCHEDULED</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer__inner">
+      <div class="footer__left">© MČR U15 – Hradec Králové</div>
+    </div>
+  </footer>
+
+<script src="theme.js"></script>
+<script src="menu.js"></script>
+
+</body>
+</html>
