@@ -41,9 +41,12 @@ function setUpdatedNow() {
     // 1) pokus: načíst z webu
     const url = `../data/rozpis.json?v=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
+    const lastMod = res.headers.get("last-modified"); // např. "Sun, 02 Feb 2026 22:25:00 GMT"
     if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
 
-    const data = await res.json();
+    const raw = await res.text();
+    const data = JSON.parse(raw);
+    const contentHash = simpleHash(raw);
     if (!isValidRozpis(data)) throw new Error("Invalid rozpis.json structure");
 
     // uložit jako poslední dobrou verzi
@@ -52,7 +55,16 @@ function setUpdatedNow() {
     originalData = data;
 
     const upd = document.getElementById("updated");
-    if (upd) upd.textContent = data.updated ?? "—";
+    if (upd) {
+      if (data.updated) {
+        // když si chceš někdy ručně přepsat, pořád to jde
+        upd.textContent = formatUpdatedHuman(data.updated);
+      } else if (lastMod) {
+        upd.textContent = formatUpdatedHuman(lastMod);
+      } else {
+        upd.textContent = "—";
+      }
+    }
 
     initTeamFilter(originalData);
     return;
@@ -63,7 +75,20 @@ function setUpdatedNow() {
     // 2) fallback: poslední uložená verze z localStorage
     try {
       const cached = JSON.parse(localStorage.getItem(LS_KEY) || "null");
-      const data = cached?.data;
+      const prevHash = cached?.hash || null;
+
+      let effectiveUpdated = cached?.effectiveUpdated || null;
+      if (prevHash !== contentHash) {
+        effectiveUpdated = new Date().toLocaleString("cs-CZ"); // změna detekovaná teď
+      }
+
+      // uložit cache i s hashem a “effectiveUpdated”
+      localStorage.setItem(LS_KEY, JSON.stringify({
+        savedAt: Date.now(),
+        hash: contentHash,
+        effectiveUpdated,
+        data
+      }));
 
     if (isValidRozpis(data)) {
       const when = cached?.savedAt ? new Date(cached.savedAt).toLocaleString("cs-CZ") : "dříve";
@@ -72,7 +97,11 @@ function setUpdatedNow() {
       originalData = data;
 
       const upd = document.getElementById("updated");
-      if (upd) upd.textContent = data.updated ?? "—";
+      if (upd) {
+    upd.textContent = formatUpdatedHuman(
+      data.updated || effectiveUpdated
+    );
+  }
 
       initTeamFilter(originalData);
       return;
@@ -337,4 +366,51 @@ function addSampleTeamsIfDebug(teams) {
   const samples = ["Tým A1", "Tým A2", "Tým B1", "Tým B2", "Tým C1"];
   const set = new Set([...(teams || []), ...samples]);
   return Array.from(set);
+}
+
+function simpleHash(str) {
+  // rychlý non-crypto hash na detekci změny
+  let h = 0;
+  for (let i = 0; i < str.length; i++) {
+    h = (h * 31 + str.charCodeAt(i)) >>> 0;
+  }
+  return String(h);
+}
+
+function formatUpdatedHuman(dateInput) {
+  if (!dateInput) return "—";
+
+  const d = new Date(dateInput);
+  if (isNaN(d)) return "—";
+
+  const now = new Date();
+
+  const isSameDay = (a, b) =>
+    a.getFullYear() === b.getFullYear() &&
+    a.getMonth() === b.getMonth() &&
+    a.getDate() === b.getDate();
+
+  const yesterday = new Date(now);
+  yesterday.setDate(now.getDate() - 1);
+
+  const time = d.toLocaleTimeString("cs-CZ", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  if (isSameDay(d, now)) {
+    return `dnes ${time}`;
+  }
+
+  if (isSameDay(d, yesterday)) {
+    return `včera ${time}`;
+  }
+
+  return d.toLocaleString("cs-CZ", {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
 }
