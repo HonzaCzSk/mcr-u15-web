@@ -2,6 +2,7 @@ console.log("rozpis.js loaded");
 const LS_KEY = "mcr_u15_rozpis_cache_v1";
 let originalData = null;
 let currentFilter = ""; // "" = Všechny týmy
+const TEAM_FILTER_KEY = "mcr_u15_team_filter_v1";
   const TEAM_IGNORE_PREFIXES = [
   "Vítěz",
   "Poražený",
@@ -272,6 +273,8 @@ function applyTeamFilter(selectedTeam) {
   // URL parametr pro sdílení
   setQueryParam("team", currentFilter);
 }
+localStorage.setItem(TEAM_FILTER_KEY, currentFilter);
+const saved = localStorage.getItem(TEAM_FILTER_KEY) || "";
 
 function initTeamFilter(data) {
   const select = document.getElementById("teamFilter");
@@ -302,7 +305,7 @@ function initTeamFilter(data) {
     const ci = teams.find((t) => t.toLowerCase() === fromUrl.toLowerCase());
     currentFilter = exact || ci || "";
   } else {
-    currentFilter = "";
+    currentFilter = saved;
   }
 
     if (fromUrl && !currentFilter) {
