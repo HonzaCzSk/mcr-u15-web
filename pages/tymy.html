@@ -129,119 +129,320 @@
     <!-- DETAILY TÝMŮ (šablona) -->
     <section class="stack">
 
-      <article class="card" id="tym-a1">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">A1</div>
-          <div>
-            <h2 class="h2">Tým A1</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
+<article class="card team" id="tym-a1">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">A1</div>
+      <div>
+        <h2 class="h2">Tým A1</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
 
-        <div class="teammeta">
-          <div class="kvline"><span>Trenér</span><strong>—</strong></div>
-          <div class="kvline"><span>Asistent</span><strong>—</strong></div>
-          <div class="kvline"><span>Kontakt</span><strong>—</strong></div>
-        </div>
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
 
-        <div class="tablewrap" style="margin-top:12px;">
-          <table class="schedule roster">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Jméno</th>
-                <th>Pozice</th>
-                <th>Ročník</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>4</td><td>Hráčka 1</td><td>G</td><td>2010</td></tr>
-              <tr><td>7</td><td>Hráčka 2</td><td>F</td><td>2010</td></tr>
-              <tr><td>12</td><td>Hráčka 3</td><td>C</td><td>2011</td></tr>
-            </tbody>
-          </table>
-        </div>
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
 
-        <p class="mini">Týmová fotka: později můžeš přidat `<img class="teamphoto" src="...">`.</p>
-      </article>
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>4</td><td>Hráčka 1</td><td>G</td><td>2010</td></tr>
+          <tr><td>7</td><td>Hráčka 2</td><td>F</td><td>2010</td></tr>
+          <tr><td>12</td><td>Hráčka 3</td><td>C</td><td>2011</td></tr>
+        </tbody>
+      </table>
+    </div>
 
-      <!-- Zkopíruj tuhle kartu pro A2…B4 a změň id -->
-      <article class="card" id="tym-a2">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">A2</div>
-          <div>
-            <h2 class="h2">Tým A2</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
 
-      <article class="card" id="tym-a3">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">A3</div>
-          <div>
-            <h2 class="h2">Tým A3</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+<article class="card team" id="tym-a2">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">A2</div>
+      <div>
+        <h2 class="h2">Tým A2</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
 
-      <article class="card" id="tym-a4">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">A4</div>
-          <div>
-            <h2 class="h2">Tým A4</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
 
-      <article class="card" id="tym-b1">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">B1</div>
-          <div>
-            <h2 class="h2">Tým B1</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
 
-      <article class="card" id="tym-b2">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">B2</div>
-          <div>
-            <h2 class="h2">Tým B2</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
 
-      <article class="card" id="tym-b3">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">B3</div>
-          <div>
-            <h2 class="h2">Tým B3</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
 
-      <article class="card" id="tym-b4">
-        <div class="teamhead">
-          <div class="teamlogo teamlogo--ph">B4</div>
-          <div>
-            <h2 class="h2">Tým B4</h2>
-            <div class="muted">Město • Klub • Odkazy</div>
-          </div>
-        </div>
-        <p class="mini">Doplň soupisku a informace.</p>
-      </article>
+<article class="card team" id="tym-a3">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">A3</div>
+      <div>
+        <h2 class="h2">Tým A3</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
+
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Kontakt</span><strong>—</strong></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
+
+<article class="card team" id="tym-a4">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">A4</div>
+      <div>
+        <h2 class="h2">Tým A4</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
+
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
+
+<article class="card team" id="tym-b1">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">B1</div>
+      <div>
+        <h2 class="h2">Tým B1</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
+
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
+
+<article class="card team" id="tym-b2">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">B2</div>
+      <div>
+        <h2 class="h2">Tým B2</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
+
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
+
+<article class="card team" id="tym-b3">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">B3</div>
+      <div>
+        <h2 class="h2">Tým B3</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
+
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
+
+<article class="card team" id="tym-b4">
+  <button class="team__toggle" type="button" aria-expanded="false">
+    <div class="teamhead">
+      <div class="teamlogo teamlogo--ph">B4</div>
+      <div>
+        <h2 class="h2">Tým B4</h2>
+        <div class="muted">Město • Klub • Odkazy</div>
+      </div>
+    </div>
+
+    <span class="team__chev" aria-hidden="true">▾</span>
+  </button>
+
+  <div class="team__body" hidden>
+    <div class="teammeta">
+      <div class="kvline"><span>Trenér</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent</span><strong>—</strong></div>
+      <div class="kvline"><span>Asistent 2</span><strong>—</strong></div>
+    </div>
+
+    <div class="tablewrap" style="margin-top:12px;">
+      <table class="schedule roster">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Jméno</th>
+            <th>Pozice</th>
+            <th>Ročník</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mini">Týmová fotka: později můžeš přidat <code>&lt;img class="teamphoto" src="..."&gt;</code>.</p>
+  </div>
+</article>
 
     </section>
 
@@ -305,7 +506,7 @@
   </div>
 </footer>
 
-
+  <script src="../assets/js/tymy.js"></script>
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/menu.js"></script>
 
