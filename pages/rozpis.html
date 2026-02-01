@@ -106,6 +106,17 @@
       </div>
 
       <p class="mini">Poslední aktualizace: <strong id="updated">—</strong></p>
+          <div class="filters" id="scheduleFilters">
+      <label class="filters__label" for="teamFilter">Tým</label>
+
+      <select id="teamFilter" class="filters__select">
+        <option value="">Všechny týmy</option>
+      </select>
+
+      <button type="button" id="teamFilterReset" class="filters__reset">Reset</button>
+
+      <div class="filters__info" id="teamFilterInfo" aria-live="polite"></div>
+    </div>
       <p class="mini">Tip: Časy a týmy se doplní, jakmile bude finální rozlosování.</p>
     </section>
 

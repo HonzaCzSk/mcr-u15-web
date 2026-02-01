@@ -1129,3 +1129,72 @@ table.schedule.results td.score{
   background: rgba(255,255,255,.04);
   border-color: var(--line);
 }
+
+/* ----- Rozpis: filtr týmů ----- */
+.filters{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top: 10px;
+}
+
+.filters__label{
+  font-size: 13px;
+  color: var(--muted);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+}
+
+.filters__select{
+  flex: 1 1 240px;
+  min-width: 180px;
+  max-width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #fff;
+  font-weight: 800;
+}
+
+.filters__reset{
+  flex: 0 0 auto;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  cursor: pointer;
+}
+
+.filters__reset:hover{
+  background: rgba(0,0,0,.04);
+}
+
+.filters__info{
+  flex: 1 1 100%;
+  font-size: 13px;
+  color: var(--muted);
+  padding-top: 2px;
+}
+
+/* Dark mode */
+:root[data-theme="dark"] .filters__select{
+  background: rgba(255,255,255,.03);
+  color: var(--ink);
+  border-color: var(--line);
+}
+:root[data-theme="dark"] .filters__reset{
+  background: rgba(255,255,255,.03);
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+/* Tabulka: prázdný stav */
+.schedule .emptyrow td{
+  color: var(--muted);
+  font-style: italic;
+}
