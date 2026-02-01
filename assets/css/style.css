@@ -1029,3 +1029,83 @@ body{
     justify-content: center;
   }
 }
+
+/* LIVE řádek (jemné blikání jako REC) */
+tr.is-live td.score {
+  position: relative;
+  font-weight: 800;
+}
+
+/* červená tečka */
+tr.is-live td.score::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: liveDot 1s infinite;
+  vertical-align: middle;
+}
+
+/* pulzování (červená -> bílá/transparent) */
+@keyframes liveDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+/* lehké podbarvení celého řádku */
+tr.is-live {
+  animation: liveRow 1.2s infinite;
+}
+
+@keyframes liveRow {
+  0%, 100% { background-color: rgba(255, 0, 0, 0.06); }
+  50% { background-color: rgba(255, 0, 0, 0.00); }
+}
+
+/* Respektuj uživatele s omezením animací */
+@media (prefers-reduced-motion: reduce) {
+  tr.is-live,
+  tr.is-live td.score::before {
+    animation: none !important;
+  }
+}
+
+/* LIVE řádek (REC pulz) */
+tr.is-live {
+  animation: liveRow 1.2s infinite;
+}
+
+@keyframes liveRow {
+  0%, 100% { background-color: rgba(255, 0, 0, 0.06); }
+  50% { background-color: rgba(255, 0, 0, 0.00); }
+}
+
+/* červená "REC" tečka u skóre */
+tr.is-live td.score::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background: red;
+  animation: liveDot 1s infinite;
+  vertical-align: middle;
+}
+
+@keyframes liveDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.15; }
+}
+
+/* respektuj users s reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  tr.is-live,
+  tr.is-live td.score::before,
+  .badge--live {
+    animation: none !important;
+  }
+}

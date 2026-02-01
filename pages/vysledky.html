@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Výsledky | MČR U15 – dívky</title>
   <meta name="description" content="Výsledky a průběh MČR U15 dívek v basketbalu.">
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 
@@ -14,7 +18,7 @@
     <div class="wrap topbar__inner">
       <div class="brand">
         <span class="brand__dot"></span>
-        <a class="brand__name" href="index.html">MČR U15</a>
+        <a class="brand__name" href="../index.html">MČR U15</a>
       </div>
 
       <div class="topright">
@@ -45,6 +49,7 @@
     <section class="pagehead">
       <h1 class="h1">Výsledky</h1>
       <p class="lead">Průběžně aktualizované výsledky během turnaje.</p>
+      <p class="mini">Poslední aktualizace: <strong id="updated">—</strong></p>
       <p class="mini">Stav zápasu: <span class="badge badge--fin">FIN</span> dohráno, <span class="badge badge--live">LIVE</span> probíhá, <span class="badge">SCHEDULED</span> plán.</p>
     </section>
 
@@ -53,7 +58,7 @@
       <h2 class="h2">Pátek 24. dubna</h2>
 
       <div class="tablewrap">
-        <table class="schedule results">
+        <table class="schedule results" id="tbl-patek">
           <thead>
             <tr>
               <th>Čas</th>
@@ -96,7 +101,7 @@
       <p class="mini">Sem pak dáš SF, zápas o 3. místo a finále. Klidně ve stejné tabulce.</p>
 
       <div class="tablewrap" style="margin-top:12px;">
-        <table class="schedule results">
+        <table class="schedule results" id="tbl-playoff">
           <thead>
             <tr>
               <th>Čas</th>
@@ -183,6 +188,7 @@
 
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/menu.js"></script>
+  <script src="../assets/js/vysledky.js"></script>
 
 </body>
 </html>

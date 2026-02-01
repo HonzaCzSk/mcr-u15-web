@@ -1,0 +1,36 @@
+{
+  "updated": "2026-04-24 12:34",
+  "patek": [
+    {
+      "cas": "09:00",
+      "hala": 1,
+      "zapas": "Tým A1 – Tým A2",
+      "skore": "68 : 55",
+      "stav": "FIN"
+    },
+    {
+      "cas": "10:30",
+      "hala": 2,
+      "zapas": "Tým B1 – Tým B2",
+      "skore": "—",
+      "stav": "SCHEDULED"
+    },
+    {
+      "cas": "12:00",
+      "hala": 1,
+      "zapas": "Tým A3 – Tým A4",
+      "skore": "21 : 18",
+      "stav": "LIVE"
+    }
+  ],
+  "playoff": [
+    {
+      "cas": "15:00",
+      "hala": 1,
+      "faze": "Finále",
+      "zapas": "Vítěz SF1 – Vítěz SF2",
+      "skore": "—",
+      "stav": "SCHEDULED"
+    }
+  ]
+}
