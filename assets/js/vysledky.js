@@ -62,15 +62,25 @@ console.log("vysledky.js loaded");
       <td>${badgeHtml(r.stav)}</td>
     `);
 
-    // Play-off
-    fillTable('tbl-playoff', data.playoff, (r) => `
-      <td>${r.cas ?? '—'}</td>
-      <td>${pillHtml(r.hala)}</td>
-      <td>${r.faze ?? '—'}</td>
-      <td>${r.zapas ?? '—'}</td>
-      <td class="score">${r.skore ?? '—'}</td>
-      <td>${badgeHtml(r.stav)}</td>
+    // Sobota
+    fillTable('tbl-sobota', data.sobota, (r) => `
+        <td>${r.cas ?? '—'}</td>
+        <td>${pillHtml(r.hala)}</td>
+        <td>${r.zapas ?? '—'}</td>
+        <td class="score">${r.skore ?? '—'}</td>
+        <td>${badgeHtml(r.stav)}</td>
     `);
+
+    // Play-Off
+    fillTable('tbl-playoff', data.playoff, (r) => `
+        <td>${r.cas ?? '—'}</td>
+        <td>${pillHtml(r.hala)}</td>
+        <td>${r.faze ?? '—'}</td>
+        <td>${r.zapas ?? '—'}</td>
+        <td class="score">${r.skore ?? '—'}</td>
+        <td>${badgeHtml(r.stav)}</td>
+    `);
+
 
     // Auto-refresh: až po úspěšném načtení dat
     setTimeout(() => location.reload(), 60000);

@@ -872,16 +872,6 @@ body{
   .menu{ display:none !important; }
 }
 
-:root[data-theme="dark"] .socialbtn--tvcom{
-  background: rgba(255,255,255,.08);
-  border-color: rgba(238,242,255,.25);
-}
-
-:root[data-theme="dark"] .socialbtn--tvcom img{
-  filter: none;               /* vypnout invert */
-  opacity: .95;
-}
-
 /* ====== FOOTER ====== */
 
 .footer{
@@ -1017,6 +1007,16 @@ body{
   filter: brightness(0) invert(1) drop-shadow(0 1px 0 rgba(0,0,0,.55));
 }
 
+:root[data-theme="dark"] .socialbtn--tvcom{
+  background: rgba(255,255,255,.02);
+  border-color: rgba(238,242,255,.45);
+}
+
+:root[data-theme="dark"] .socialbtn--tvcom img{
+  filter: none;               /* vypnout invert */
+  opacity: .95;
+}
+
 /* MOBIL */
 @media (max-width: 900px){
   .partners__row{
@@ -1108,4 +1108,27 @@ tr.is-live td.score::before {
   .badge--live {
     animation: none !important;
   }
+}
+
+table.schedule.results {
+  width: 100%;
+  table-layout: fixed;
+}
+
+table.schedule.results th,
+table.schedule.results td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ZÁPAS je delší → povol zalomení (u 5sloupcových tabulek je to 3. sloupec) */
+#tbl-patek td:nth-child(3),
+#tbl-sobota td:nth-child(3) {
+  white-space: normal;
+}
+
+/* PLAY-OFF: ZÁPAS je 4. sloupec */
+#tbl-nedele td:nth-child(4) {
+  white-space: normal;
 }
