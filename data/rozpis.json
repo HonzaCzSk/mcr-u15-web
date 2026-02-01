@@ -1,0 +1,57 @@
+{
+  "updated": "1.2.2026 11:25",
+  "patek": [
+    {
+      "cas": "09:00",
+      "hala": 1,
+      "zapas": "Tým A1 – Tým A2",
+      "skupina": "A"
+    },
+    {
+      "cas": "10:30",
+      "hala": 2,
+      "zapas": "Tým B1 – Tým B2",
+      "skupina": "B"
+    }
+  ],
+  "sobota": [
+    {
+      "cas": "09:00",
+      "hala": 1,
+      "zapas": "Tým A1 – Tým A3",
+      "skupina": "A"
+    },
+    {
+      "cas": "10:30",
+      "hala": 2,
+      "zapas": "Tým B1 – Tým B3",
+      "skupina": "B"
+    }
+  ],
+  "nedele": [
+    {
+      "cas": "09:00",
+      "hala": 1,
+      "faze": "SF",
+      "zapas": "A1 – B2"
+    },
+    {
+      "cas": "10:45",
+      "hala": 2,
+      "faze": "SF",
+      "zapas": "B1 – A2"
+    },
+    {
+      "cas": "13:00",
+      "hala": 1,
+      "faze": "3. místo",
+      "zapas": "Poražený SF1 – Poražený SF2"
+    },
+    {
+      "cas": "15:00",
+      "hala": 1,
+      "faze": "Finále",
+      "zapas": "Vítěz SF1 – Vítěz SF2"
+    }
+  ]
+}

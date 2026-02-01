@@ -10,18 +10,18 @@
   <title>Rozpis | MČR U15 – dívky</title>
   <meta name="description" content="Rozpis zápasů MČR U15 dívek v basketbalu (24.–26. dubna, Hradec Králové).">
 
-  <link rel="canonical" href="https://www.mcr-u15.cz/rozpis.html">
+  <link rel="canonical" href="https://www.mcr-u15.cz/pages/rozpis.html">
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="cs_CZ">
   <meta property="og:title" content="Rozpis | MČR U15 – dívky">
   <meta property="og:description" content="Rozpis zápasů MČR U15 dívek v basketbalu (24.–26. dubna, Hradec Králové).">
-  <meta property="og:url" content="https://www.mcr-u15.cz/rozpis.html">
+  <meta property="og:url" content="https://www.mcr-u15.cz/pages/rozpis.html">
   <meta property="og:site_name" content="MČR U15 – dívky">
   <meta property="og:image" content="https://www.mcr-u15.cz/og-image.jpg">
 
-  <!-- Favicons (připraveno) -->
+  <!-- Favicons -->
   <link rel="icon" href="../assets/img/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
@@ -31,13 +31,13 @@
 </head>
 
 <body>
-  
+
   <!-- Top bar -->
   <div class="topbar">
     <div class="wrap topbar__inner">
       <div class="brand">
         <span class="brand__dot"></span>
-        <a class="brand__name" href="index.html">MČR U15</a>
+        <a class="brand__name" href="../index.html">MČR U15</a>
       </div>
 
       <div class="topright">
@@ -49,9 +49,32 @@
         <button class="themebtn" id="themeToggle" type="button" aria-label="Přepnout motiv">
           DARK
         </button>
+        <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
       </div>
     </div>
   </div>
+
+  <!-- MOBILE MENU OVERLAY -->
+<div class="menu" id="mobileMenu" aria-hidden="true">
+  <div class="menu__backdrop" data-close></div>
+
+  <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="menu__head">
+      <div class="menu__title">Menu</div>
+      <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
+      <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
+    </div>
+
+    <div class="menu__links">
+      <a class="menu__link" href="../index.html">Úvod</a>
+      <a class="menu__link" href="rozpis.html">Rozpis</a>
+      <a class="menu__link" href="vysledky.html">Výsledky</a>
+      <a class="menu__link" href="tymy.html">Týmy</a>
+      <a class="menu__link" href="info.html">Info</a>
+      <a class="menu__link" href="fotky.html">Fotky</a>
+    </div>
+  </div>
+</div>
 
   <!-- Nav -->
   <nav class="nav">
@@ -73,12 +96,11 @@
 
       <div class="cta">
         <a class="btn btn--primary" href="https://www.tvcom.cz/" target="_blank" rel="noopener">Sledovat stream (TVcom)</a>
-        <a class="btn btn--ghost" href="index.html">Zpět na úvod</a>
+        <a class="btn btn--ghost" href="../index.html">Zpět na úvod</a>
       </div>
 
-      <p class="mini">
-        Tip: Časy a týmy se doplní, jakmile bude finální rozlosování. Teď je to šablona.
-      </p>
+      <p class="mini">Poslední aktualizace: <strong id="updated">—</strong></p>
+      <p class="mini">Tip: Časy a týmy se doplní, jakmile bude finální rozlosování.</p>
     </section>
 
     <!-- Pátek -->
@@ -86,41 +108,22 @@
       <h2 class="h2">Pátek 24. dubna – skupiny</h2>
 
       <div class="tablewrap">
-        <table class="schedule">
+        <table class="schedule" id="tbl-rozpis-patek">
+          <colgroup>
+            <col style="width: 90px;">
+            <col style="width: 140px;">
+            <col>
+            <col style="width: 140px;">
+          </colgroup>
           <thead>
             <tr>
               <th>Čas</th>
               <th>Hala</th>
-              <th>Skupina</th>
               <th>Zápas</th>
+              <th>Skupina</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>09:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>A</td>
-              <td>Tým A1 – Tým A2</td>
-            </tr>
-            <tr>
-              <td>10:30</td>
-              <td><span class="pill pill--h2">Hala 2</span></td>
-              <td>B</td>
-              <td>Tým B1 – Tým B2</td>
-            </tr>
-            <tr>
-              <td>12:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>A</td>
-              <td>Tým A3 – Tým A4</td>
-            </tr>
-            <tr>
-              <td>13:30</td>
-              <td><span class="pill pill--h2">Hala 2</span></td>
-              <td>B</td>
-              <td>Tým B3 – Tým B4</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
@@ -130,41 +133,22 @@
       <h2 class="h2">Sobota 25. dubna – skupiny</h2>
 
       <div class="tablewrap">
-        <table class="schedule">
+        <table class="schedule" id="tbl-rozpis-sobota">
+          <colgroup>
+            <col style="width: 90px;">
+            <col style="width: 140px;">
+            <col>
+            <col style="width: 140px;">
+          </colgroup>
           <thead>
             <tr>
               <th>Čas</th>
               <th>Hala</th>
-              <th>Skupina</th>
               <th>Zápas</th>
+              <th>Skupina</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>09:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>A</td>
-              <td>Tým A1 – Tým A3</td>
-            </tr>
-            <tr>
-              <td>10:30</td>
-              <td><span class="pill pill--h2">Hala 2</span></td>
-              <td>B</td>
-              <td>Tým B1 – Tým B3</td>
-            </tr>
-            <tr>
-              <td>12:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>A</td>
-              <td>Tým A2 – Tým A4</td>
-            </tr>
-            <tr>
-              <td>13:30</td>
-              <td><span class="pill pill--h2">Hala 2</span></td>
-              <td>B</td>
-              <td>Tým B2 – Tým B4</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
@@ -178,7 +162,13 @@
       </p>
 
       <div class="tablewrap" style="margin-top:12px;">
-        <table class="schedule">
+        <table class="schedule" id="tbl-rozpis-nedele">
+          <colgroup>
+            <col style="width: 90px;">
+            <col style="width: 140px;">
+            <col style="width: 180px;">
+            <col>
+          </colgroup>
           <thead>
             <tr>
               <th>Čas</th>
@@ -187,98 +177,63 @@
               <th>Zápas</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td>09:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>SF</td>
-              <td>A1 – B2</td>
-            </tr>
-            <tr>
-              <td>10:45</td>
-              <td><span class="pill pill--h2">Hala 2</span></td>
-              <td>SF</td>
-              <td>B1 – A2</td>
-            </tr>
-            <tr>
-              <td>13:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>3. místo</td>
-              <td>Poražený SF1 – Poražený SF2</td>
-            </tr>
-            <tr>
-              <td>15:00</td>
-              <td><span class="pill pill--h1">Hala 1</span></td>
-              <td>Finále</td>
-              <td>Vítěz SF1 – Vítěz SF2</td>
-            </tr>
-          </tbody>
+          <tbody></tbody>
         </table>
       </div>
     </section>
 
   </main>
 
-<footer class="footer">
-  <div class="wrap footer__wrap">
+  <footer class="footer">
+    <div class="wrap footer__wrap">
 
-    <!-- PARTNEŘI -->
-    <section class="partners">
-      <h2 class="partners__title">Partneři turnaje</h2>
+      <section class="partners">
+        <h2 class="partners__title">Partneři turnaje</h2>
 
-      <div class="partners__row">
-        <a class="partner partner--main" href="#" aria-label="Hlavní partner">
-          <img src="../assets/img/partners/partner-main.svg" alt="Hlavní partner" loading="lazy">
-        </a>
+        <div class="partners__row">
+          <a class="partner partner--main" href="#" aria-label="Hlavní partner">
+            <img src="../assets/img/partners/partner-main.svg" alt="Hlavní partner" loading="lazy">
+          </a>
+          <a class="partner" href="#" aria-label="Partner">
+            <img src="../assets/img/partners/partner-1.svg" alt="Partner" loading="lazy">
+          </a>
+          <a class="partner" href="#" aria-label="Partner">
+            <img src="../assets/img/partners/partner-2.svg" alt="Partner" loading="lazy">
+          </a>
+          <a class="partner" href="#" aria-label="Partner">
+            <img src="../assets/img/partners/partner-3.svg" alt="Partner" loading="lazy">
+          </a>
+        </div>
 
-        <a class="partner" href="#" aria-label="Partner">
-          <img src="../assets/img/partners/partner-1.svg" alt="Partner" loading="lazy">
-        </a>
+        <p class="partners__note">
+          Partneři turnaje budou zveřejněni přibližně dva týdny před zahájením akce.
+        </p>
+      </section>
 
-        <a class="partner" href="#" aria-label="Partner">
-          <img src="../assets/img/partners/partner-2.svg" alt="Partner" loading="lazy">
-        </a>
+      <div class="footer__bar">
+        <div class="footer__left">© MČR U15 – Hradec Králové</div>
 
-        <a class="partner" href="#" aria-label="Partner">
-          <img src="../assets/img/partners/partner-3.svg" alt="Partner" loading="lazy">
-        </a>
+        <nav class="socialbar" aria-label="Odkazy">
+          <a class="socialbtn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="../assets/img/social/instagram.svg" alt="">
+          </a>
+          <a class="socialbtn socialbtn--tvcom" href="https://www.tvcom.cz/" target="_blank" rel="noopener" aria-label="TVcom">
+            <img src="../assets/img/social/tvcom.svg" alt="">
+          </a>
+          <a class="socialbtn" href="https://www.cbf.cz/" target="_blank" rel="noopener" aria-label="ČBF">
+            <img src="../assets/img/social/cbf.svg" alt="">
+          </a>
+          <a class="socialbtn" href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener" aria-label="Hradecké lvice">
+            <img src="../assets/img/social/lvice.svg" alt="">
+          </a>
+        </nav>
       </div>
 
-      <p class="partners__note">
-        Partneři turnaje budou zveřejněni přibližně dva týdny před zahájením akce.
-      </p>
-    </section>
-
-    <!-- SPODNÍ ŘÁDEK FOOTERU -->
-    <div class="footer__bar">
-      <div class="footer__left">
-        © MČR U15 – Hradec Králové
-      </div>
-
-      <nav class="socialbar" aria-label="Odkazy">
-        <a class="socialbtn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="../assets/img/social/instagram.svg" alt="">
-        </a>
-
-        <a class="socialbtn socialbtn--tvcom" href="https://www.tvcom.cz/" target="_blank" rel="noopener" aria-label="TVcom">
-          <img src="../assets/img/social/tvcom.svg" alt="">
-        </a>
-
-        <a class="socialbtn" href="https://www.cbf.cz/" target="_blank" rel="noopener" aria-label="ČBF">
-          <img src="../assets/img/social/cbf.svg" alt="">
-        </a>
-
-        <a class="socialbtn" href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener" aria-label="Hradecké lvice">
-          <img src="../assets/img/social/lvice.svg" alt="">
-        </a>
-      </nav>
     </div>
-
-  </div>
-</footer>
+  </footer>
 
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/menu.js"></script>
-
+  <script src="../assets/js/rozpis.js"></script>
 </body>
 </html>

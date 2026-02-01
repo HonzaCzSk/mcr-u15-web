@@ -1,3 +1,8 @@
+/* =========================
+   MČR U15 – style.css (clean)
+   ========================= */
+
+/* ----- Tokens ----- */
 :root{
   --bg: #f6f6f7;
   --ink: #0b0b0e;
@@ -5,14 +10,13 @@
   --line: rgba(11,11,14,.12);
   --card: #ffffff;
 
-  /* víc “federace” barev */
   --accent: #ff3b30;      /* červená */
-  --accentB: #ffb000;     /* žluto-oranžová (jen na highlight) */
-  --accent2: #111827;     /* tmavá (topbar) */
-  --blue: #2b7fff;        /* modrá na linky/hover */
+  --accentB: #ffb000;     /* highlight */
+  --accent2: #111827;     /* topbar */
+  --blue: #2b7fff;        /* hover/link */
 }
 
-*{ box-sizing: border-box; }
+*{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 
 body{
@@ -22,6 +26,7 @@ body{
   line-height: 1.55;
 }
 
+/* ----- Layout ----- */
 .wrap{
   max-width: 1050px;
   margin: 0 auto;
@@ -29,30 +34,55 @@ body{
   position: relative;
 }
 
-/* jemný gradient pouze za obsahem, ne po celé stránce */
-.wrap::before{ display:none; }
+.pagehead{ margin: 18px 0 20px; }
+.pagehead .lead{ max-width: 700px; }
 
-/* ====== TOPBAR ====== */
-.topbar{
-  background: var(--accent2);
-  color: #fff;
+/* ----- Typography ----- */
+.h1{
+  margin: 0 0 8px;
+  font-size: 34px;
+  line-height: 1.05;
+  letter-spacing: -0.4px;
+  text-transform: uppercase;
 }
+.h2{
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: .35px;
+  font-size: 16px;
+  font-weight: 950;
+}
+.lead{
+  margin: 0 0 14px;
+  color: var(--muted);
+  font-weight: 700;
+}
+.muted{ color: var(--muted); margin: 0; }
+.mini{
+  margin-top: 10px;
+  font-size: 13px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+}
+
+/* ----- Topbar ----- */
+.topbar{ background: var(--accent2); color:#fff; }
 .topbar__inner{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap: 12px;
+  gap:12px;
   padding: 10px 0;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap: 10px;
+  gap:10px;
 }
 .brand__dot{
-  width: 10px;
-  height: 10px;
+  width:10px; height:10px;
   background: var(--accent);
   border-radius: 2px;
   display:inline-block;
@@ -66,46 +96,39 @@ body{
   font-size: 14px;
 }
 
-.toplinks{
-  display:flex; gap: 26px; flex-wrap:wrap;
+.topright{
+  display:flex;
+  align-items:center;
+  gap:26px;
 }
-
+.toplinks{ display:flex; gap:26px; flex-wrap:wrap; }
 .toplinks a{
   color: rgba(255,255,255,.85);
   text-decoration:none;
   font-weight: 800;
   font-size: 13px;
 }
-
 .toplinks a:hover{ color:#fff; }
-
-.topright{
-  display:flex;
-  align-items:center;
-  gap: 26px;
-}
 
 .themebtn{
   border: 1px solid rgba(255,255,255,.25);
   background: rgba(255,255,255,.06);
-  color: #fff;
+  color:#fff;
   font-weight: 900;
-  letter-spacing: .5px;
+  letter-spacing:.5px;
   text-transform: uppercase;
   font-size: 12px;
   padding: 8px 10px;
   border-radius: 10px;
-  cursor: pointer;
+  cursor:pointer;
   transition: transform .12s ease, background .12s ease;
 }
-
 .themebtn:hover{
   background: rgba(255,255,255,.12);
   transform: translateY(-1px);
 }
 
-/* ====== NAV ====== */
-
+/* ----- Nav ----- */
 .nav{
   position: sticky;
   top: 0;
@@ -114,17 +137,15 @@ body{
   border-bottom: 1px solid var(--line);
   margin-bottom: 24px;
 }
-
 .nav__inner{
   display:flex;
-  justify-content: space-between; /* roztažení na celou šířku */
+  justify-content: space-between;
   gap: 0;
   padding: 0;
 }
-
 .nav__item{
   flex: 1;
-  text-align: center;
+  text-align:center;
   text-decoration:none;
   color: var(--ink);
   font-weight: 950;
@@ -134,52 +155,39 @@ body{
   padding: 14px 8px;
   border-radius: 0;
   border: none;
-  transition: background .12s ease, border-color .12s ease, transform .12s ease, box-shadow .12s ease;
+  transition: background .12s ease, transform .12s ease;
 }
-
-.nav__item:hover{
-  border-color: var(--line);
-  background: rgba(0,0,0,.04);
-}
-
+.nav__item:hover{ background: rgba(0,0,0,.04); }
 .nav__item.is-active{
   background: rgba(255,59,48,.12);
   box-shadow: inset 0 -3px 0 var(--accent);
 }
 
-/* ====== HERO ====== */
+/* ----- Hero / homepage ----- */
 .hero{
-  position: relative;
-  overflow: hidden; /* <-- KLÍČ: ořeže background pás */
+  overflow: hidden;
   display:grid;
   grid-template-columns: 1.35fr .65fr;
   gap: 14px;
   padding: 18px 0 14px;
   margin-top: 12px;
 }
-
-.hero::before{ display:none; }
-
-.h1{
-  margin: 0 0 8px;
-  font-size: 34px;
-  line-height: 1.05;
-  letter-spacing: -0.4px;
-  text-transform: uppercase;
-}
-.lead{
-  margin: 0 0 14px;
+.hero__note{
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--line);
   color: var(--muted);
-  font-weight: 700;
 }
 
+/* ----- Buttons ----- */
 .cta{
   display:flex;
-  gap: 10px;
+  gap:10px;
   flex-wrap:wrap;
   margin-bottom: 12px;
 }
-
 .btn{
   display:inline-flex;
   align-items:center;
@@ -192,24 +200,18 @@ body{
   letter-spacing: .4px;
   font-size: 13px;
   text-decoration:none;
-  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease, opacity .12s ease;
+  transition: transform .12s ease, box-shadow .12s ease, background .12s ease, border-color .12s ease;
 }
-
-/* barevnější primární */
 .btn--primary{
   background: var(--accent);
   border-color: var(--accent);
   color: #0b0b0e;
   box-shadow: 0 14px 28px rgba(255,59,48,.18);
 }
-
 .btn--primary:hover{
   transform: translateY(-1px);
   box-shadow: 0 18px 34px rgba(255,59,48,.24);
 }
-
-
-/* “ghost” v federace stylu */
 .btn--ghost{
   background: #fff;
   color: var(--ink);
@@ -220,15 +222,7 @@ body{
   transform: translateY(-1px);
 }
 
-.hero__note{
-  border-left: 4px solid var(--accent);
-  padding: 10px 12px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid var(--line);
-  color: var(--muted);
-}
-
+/* ----- Panels / cards ----- */
 .panel{
   background: var(--card);
   border: 1px solid var(--line);
@@ -242,262 +236,42 @@ body{
   font-size: 13px;
   margin-bottom: 10px;
 }
-.kv{
-  display:grid;
-  gap: 10px;
-}
+.kv{ display:grid; gap:10px; }
 .kv__row{
   display:flex;
   justify-content:space-between;
-  gap: 10px;
+  gap:10px;
   padding: 10px 10px;
   border-radius: 12px;
   border: 1px solid var(--line);
   background: rgba(0,0,0,.02);
 }
-.kv__row span{ color: var(--muted); font-weight: 700; }
-.kv__row strong{ font-weight: 950; }
+.kv__row span{ color: var(--muted); font-weight:700; }
+.kv__row strong{ font-weight:950; }
 
-/* ====== GRID CARDS ====== */
 .grid{
   display:grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
   padding: 8px 0 18px;
+  margin-bottom: 20px;
 }
-
 .card{
-  position: relative;
-  overflow: hidden;
+  overflow:hidden;
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: 16px;
   padding: 16px;
 }
-
-/* barevná horní linka (sport vibe) */
-.card::before{ display:none; }
-
 .card--accent{
   border-color: rgba(255,59,48,.28);
   box-shadow: 0 12px 30px rgba(255,59,48,.08);
 }
 
-.h2{
-  margin: 0 0 10px;
-  text-transform: uppercase;
-  letter-spacing: .35px;
-  font-size: 16px;
-  font-weight: 950;
-}
 .list{ margin:0; padding-left: 18px; }
 .list li{ margin: 7px 0; }
 
-.muted{ color: var(--muted); margin: 0; }
-.mini{
-  margin-top: 10px;
-  font-size: 13px;
-  color: var(--muted);
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
-}
-
-/* ====== FOOTER + SOCIAL ====== */
-.footer{
-  border-top: 1px solid var(--line);
-  background: #fff;
-}
-.footer__inner{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap: 12px;
-  padding: 14px 0;
-  flex-wrap: wrap;
-}
-.footer__left{
-  color: var(--muted);
-  font-size: 13px;
-  font-weight: 700;
-}
-
-.socialbar{
-  display:flex;
-  gap: 10px;
-  align-items:center;
-  justify-content:flex-end;
-}
-.socialbtn{
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
-  border: 2px solid var(--ink);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  background: #fff;
-  transition: transform .12s ease, background .12s ease, border-color .12s ease;
-}
-
-.socialbtn img{ width:22px; height:22px; object-fit:contain; }
-
-.icon--tight{
-  width: 20px;
-  height: 20px;
-}
-
-.socialbtn:hover{
-  transform: translateY(-1px);
-  background: rgba(0,0,0,.03);
-}
-
-/* ====== MOBIL ====== */
-@media (max-width: 900px){
-  .hero{ grid-template-columns: 1fr; }
-  .grid{ grid-template-columns: 1fr; }
-  .h1{ font-size: 28px; }
-  .nav__item{
-    font-size: 13px;
-    padding: 12px 6px;
-  }
-}
-
-@media (max-width: 600px){
-  .topbar__inner{ padding: 10px 0; }
-  .nav__inner{ gap: 6px; }
-  .nav__item{ padding: 9px 9px; font-size: 12px; }
-  .h1{ font-size: 24px; }
-  .btn{ width: 100%; }
-  .footer__inner{ justify-content:center; }
-  .schedule th,
-  .schedule td{
-    padding: 14px 10px;
-    font-size: 14px;
-  }
-}
-
-.menubtn{
-  display:none;
-  border: 1px solid rgba(255,255,255,.25);
-  background: rgba(255,255,255,.06);
-  color: #fff;
-  font-weight: 900;
-  font-size: 18px;
-  padding: 7px 10px;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.menubtn:hover{
-  background: rgba(255,255,255,.12);
-}
-
-@media (max-width: 700px){
-  .nav{ display:none; }
-  .toplinks{ display:none; }
-  .menubtn{ display:inline-flex; }
-}
-
-/* ====== DARK MODE (ručně přes data-theme) ====== */
-:root[data-theme="dark"]{
-  --bg: #0b0b0e;
-  --ink: #eef2ff;
-  --muted: rgba(238,242,255,.72);
-  --line: rgba(238,242,255,.12);
-  --card: rgba(255,255,255,.06);
-}
-
-/* background stránky */
-:root[data-theme="dark"] body{
-  background: var(--bg);
-  color: var(--ink);
-}
-
-/* jemný gradient pouze za obsahem, ne po celé stránce */
-:root[data-theme="dark"] .wrap::before{
-  opacity: .14;
-  background:
-    radial-gradient(520px 200px at 20% 20%, rgba(255,59,48,.9), transparent 62%),
-    radial-gradient(520px 200px at 70% 15%, rgba(43,127,255,.75), transparent 62%);
-}
-
-
-/* HERO band v dark modu (lehce výraznější) */
-:root[data-theme="dark"] .hero::before{ display:none; }
-
-/* NAV */
-:root[data-theme="dark"] .nav{
-  background: rgba(11,11,14,.86);
-  border-bottom: 1px solid var(--line);
-}
-:root[data-theme="dark"] .nav__item{ color: var(--ink); }
-:root[data-theme="dark"] .nav__item:hover{
-  background: rgba(255,255,255,.06);
-  border-color: var(--line);
-}
-
-:root[data-theme="dark"] .nav__item.is-active{
-  border-color: rgba(255,59,48,.45);
-  background: rgba(255,59,48,.14);
-  box-shadow: 0 10px 24px rgba(255,59,48,.10);
-}
-
-/* HERO NOTE */
-:root[data-theme="dark"] .hero__note{
-  background: rgba(255,255,255,.06);
-  border-color: var(--line);
-  color: var(--muted);
-}
-
-/* PANELY / KARTY */
-:root[data-theme="dark"] .panel{
-  background: var(--card);
-  border-color: var(--line);
-}
-:root[data-theme="dark"] .kv__row{
-  background: rgba(0,0,0,.16);
-  border-color: var(--line);
-}
-:root[data-theme="dark"] .card{
-  background: var(--card);
-  border-color: var(--line);
-}
-
-/* TLAČÍTKA */
-:root[data-theme="dark"] .btn--primary{
-  background: linear-gradient(90deg, var(--accent), #ff5a52);
-  border-color: transparent;
-  color: #0b0b0e;
-}
-:root[data-theme="dark"] .btn--ghost{
-  background: rgba(255,255,255,.05);
-  color: var(--ink);
-  border-color: rgba(238,242,255,.35);
-}
-:root[data-theme="dark"] .btn--ghost:hover{
-  background: rgba(255,255,255,.08);
-}
-
-/* FOOTER */
-:root[data-theme="dark"] .footer{
-  background: rgba(255,255,255,.02);
-  border-top: 1px solid var(--line);
-}
-
-/* SOCIÁLNÍ IKONY */
-:root[data-theme="dark"] .socialbtn{
-  background: rgba(255,255,255,.02);
-  border-color: rgba(238,242,255,.45);
-}
-
-:root[data-theme="dark"] .socialbtn img{
-  filter: brightness(0) invert(1);
-}
-
-.pagehead{
-  margin-top: 12px;
-}
-
+/* ----- Tables wrapper ----- */
 .tablewrap{
   width: 100%;
   overflow-x: auto;
@@ -506,18 +280,24 @@ body{
   border: 1px solid var(--line);
 }
 
-/* tabulka rozpisu */
+/* ----- Schedule tables (rozpis + results) ----- */
 .schedule{
   width: 100%;
   border-collapse: collapse;
   background: var(--card);
+  table-layout: fixed; /* KEY: aligned columns */
 }
 
-.schedule th, .schedule td{
-  padding: 12px 12px;
+.schedule th,
+.schedule td{
+  padding: 16px 14px;
   border-bottom: 1px solid var(--line);
   text-align: left;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.6;
+  vertical-align: middle;
 }
 
 .schedule th{
@@ -529,11 +309,15 @@ body{
   background: rgba(0,0,0,.02);
 }
 
-.schedule tr:last-child td{
-  border-bottom: none;
-}
+.schedule tr:last-child td{ border-bottom: none; }
 
-/* štítky hal */
+/* Allow wrapping for "Zápas" column (default 3rd col) */
+.schedule td:nth-child(3){ white-space: normal; }
+
+/* Results helper */
+.results .score{ font-weight: 950; }
+
+/* Pills (Hala) */
 .pill{
   display:inline-flex;
   align-items:center;
@@ -546,97 +330,77 @@ body{
   border: 1px solid var(--line);
   background: rgba(0,0,0,.02);
 }
-
 .pill--h1{
   border-color: rgba(255,59,48,.35);
   background: rgba(255,59,48,.10);
 }
-
 .pill--h2{
   border-color: rgba(43,127,255,.35);
   background: rgba(43,127,255,.10);
 }
 
-/* dark mode tabulka */
-:root[data-theme="dark"] .tablewrap{
-  border-color: var(--line);
-  background: rgba(255,255,255,.02);
-}
-
-:root[data-theme="dark"] .schedule{
-  background: rgba(255,255,255,.02);
-}
-
-:root[data-theme="dark"] .schedule th{
-  background: rgba(255,255,255,.03);
-  color: var(--muted);
-}
-
-:root[data-theme="dark"] .pill{
-  background: rgba(255,255,255,.03);
-  border-color: var(--line);
-}
-
-/* ====== ROZPIS – větší mezery ====== */
-.schedule th,
-.schedule td{
-  padding: 16px 14px;   /* víc vzduchu */
-  line-height: 1.6;
-  vertical-align: middle;
-}
-
-/* oddělení jednotlivých zápasů */
-.schedule tbody tr{
-  border-bottom: 1px solid var(--line);
-}
-
-.schedule tbody tr:last-child{
-  border-bottom: none;
-}
-
-.pagehead{
-  margin: 18px 0 20px;
-}
-
-.pagehead .lead{
-  max-width: 700px;
-}
-
-.grid{
-  margin-bottom: 20px;
-}
-
-.partners { display:flex; flex-direction:column; gap:10px; }
-.partners__title{ font-weight:950; text-transform:uppercase; letter-spacing:.4px; font-size:13px; margin-top: 10px; }
-.partners__row{
-  display:grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 12px;
-}
-.partner{
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(0,0,0,.02);
-  padding: 10px;
-  display:flex;
+/* Badges (FIN/LIVE/SCHEDULED) */
+.badge{
+  display:inline-flex;
   align-items:center;
   justify-content:center;
-  text-decoration:none;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  font-weight: 950;
+  font-size: 12px;
+  letter-spacing: .3px;
 }
-.partner img{
-  width:100%;
-  height:70px;
-  object-fit:contain;
-  opacity:.85;
+.badge--fin{
+  border-color: rgba(0,0,0,.18);
+  background: rgba(0,0,0,.06);
 }
-.partner:hover img{ opacity: 1; }
-
-@media (max-width: 800px){
-  .partners__row{ grid-template-columns: 1fr 1fr; }
+.badge--live{
+  border-color: rgba(255,59,48,.35);
+  background: rgba(255,59,48,.12);
 }
 
-/* ====== TEAMS / RESULTS / PHOTOS helpers ====== */
+/* Special wrapping for play-off tables where "Zápas" is 4th column */
+#tbl-playoff td:nth-child(4),
+#tbl-rozpis-nedele td:nth-child(4){
+  white-space: normal;
+}
 
+/* ----- LIVE row pulse (REC vibe) ----- */
+tr.is-live{
+  animation: liveRow 1.2s infinite;
+}
+tr.is-live td.score{
+  font-weight: 800;
+}
+tr.is-live td.score::before{
+  content:"";
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:10px;
+  border-radius:50%;
+  background: red;
+  animation: liveDot 1s infinite;
+  vertical-align: middle;
+}
+@keyframes liveDot{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.15; }
+}
+@keyframes liveRow{
+  0%,100%{ background-color: rgba(255,0,0,.06); }
+  50%{ background-color: rgba(255,0,0,0); }
+}
+@media (prefers-reduced-motion: reduce){
+  tr.is-live,
+  tr.is-live td.score::before{
+    animation: none !important;
+  }
+}
+
+/* ----- Teams / lists / photos helpers ----- */
 .stack{ display:grid; gap: 14px; margin: 14px 0 24px; }
 
 .teamlist{ display:grid; gap: 10px; }
@@ -690,35 +454,6 @@ body{
 .kvline span{ color: var(--muted); font-weight: 700; }
 .kvline strong{ font-weight: 950; }
 
-@media (max-width: 900px){
-  .teammeta{ grid-template-columns: 1fr; }
-}
-
-/* Results */
-.results .score{ font-weight: 950; }
-
-.badge{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(0,0,0,.02);
-  font-weight: 950;
-  font-size: 12px;
-  letter-spacing: .3px;
-}
-.badge--fin{
-  border-color: rgba(0,0,0,.18);
-  background: rgba(0,0,0,.06);
-}
-.badge--live{
-  border-color: rgba(255,59,48,.35);
-  background: rgba(255,59,48,.12);
-}
-
-/* Photos */
 .linklist{ display:grid; gap: 10px; margin-top: 10px; }
 .linkitem{
   display:block;
@@ -750,36 +485,28 @@ body{
   color: var(--muted);
   font-weight: 900;
 }
-@media (max-width: 900px){
-  .gallery{ grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 600px){
-  .gallery{ grid-template-columns: 1fr; }
-}
 
-/* Dark tweaks */
-:root[data-theme="dark"] .teamitem,
-:root[data-theme="dark"] .kvline,
-:root[data-theme="dark"] .linkitem,
-:root[data-theme="dark"] .thumb{
-  background: rgba(255,255,255,.03);
+/* ----- Mobile menu overlay ----- */
+.menubtn{
+  display:none;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.06);
+  color:#fff;
+  font-weight: 900;
+  font-size: 18px;
+  padding: 7px 10px;
+  border-radius: 10px;
+  cursor:pointer;
 }
-:root[data-theme="dark"] .teamlogo{
-  background: rgba(255,255,255,.03);
-}
-:root[data-theme="dark"] .badge{
-  background: rgba(255,255,255,.03);
-}
+.menubtn:hover{ background: rgba(255,255,255,.12); }
 
-/* ====== MOBILE MENU OVERLAY ====== */
 .menu{
   position: fixed;
   inset: 0;
   display: none;
   z-index: 1000;
 }
-
-.menu.is-open{ display: block; }
+.menu.is-open{ display:block; }
 
 .menu__backdrop{
   position:absolute;
@@ -789,11 +516,10 @@ body{
 
 .menu__panel{
   position:absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
+  top:0; right:0;
+  height:100%;
   width: min(360px, 88vw);
-  background: #fff;
+  background:#fff;
   border-left: 1px solid var(--line);
   box-shadow: -20px 0 60px rgba(0,0,0,.20);
   padding: 14px;
@@ -803,7 +529,6 @@ body{
   opacity: 0;
   transition: transform .14s ease, opacity .14s ease;
 }
-
 .menu.is-open .menu__panel{
   transform: translateX(0);
   opacity: 1;
@@ -850,63 +575,53 @@ body{
   padding: 12px 12px;
   background: rgba(0,0,0,.02);
 }
+.menu__link:hover{ background: rgba(0,0,0,.03); }
 
-.menu__link:hover{
-  background: rgba(0,0,0,.03);
-}
-
-/* dark */
-:root[data-theme="dark"] .menu__panel{
-  background: #0b0b0e;
-  border-left-color: var(--line);
-}
-:root[data-theme="dark"] .menu__close,
-:root[data-theme="dark"] .menu__link{
-  background: rgba(255,255,255,.03);
-  border-color: var(--line);
-  color: var(--ink);
-}
-
-/* kdy se to používá */
 @media (min-width: 701px){
   .menu{ display:none !important; }
 }
 
-/* ====== FOOTER ====== */
-
+/* ----- Footer ----- */
 .footer{
   margin-top: 32px;
   padding: 24px 0 18px;
   border-top: 1px solid var(--line);
   background: #fff;
 }
-
 .footer__wrap{
   display:flex;
   flex-direction: column;
   gap: 18px;
 }
+.footer__bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: nowrap;
+}
+.footer__left{
+  font-size: 13px;
+  font-weight: 650;
+  color: var(--muted);
+}
 
-/* PARTNEŘI */
 .partners{
   display:flex;
   flex-direction: column;
   gap: 12px;
 }
-
 .partners__title{
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: .4px;
   font-size: 13px;
 }
-
 .partners__row{
   display:grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 12px;
 }
-
 .partner{
   border: 1px dashed var(--line);
   border-radius: 14px;
@@ -917,49 +632,25 @@ body{
   justify-content:center;
   text-decoration:none;
 }
-
-.partner--main{
-  border-style: solid;
-}
-
+.partner--main{ border-style: solid; }
 .partner img{
   width: 100%;
   height: 70px;
   object-fit: contain;
   opacity: .85;
 }
-
-.partner:hover img{
-  opacity: 1;
-}
+.partner:hover img{ opacity: 1; }
 
 .partners__note{
   font-size: 13px;
   color: var(--muted);
 }
 
-/* SPODNÍ LIŠTA */
-.footer__bar{
-  display:flex;
-  align-items:center;
-  justify-content: space-between;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.footer__left{
-  font-size: 13px;
-  font-weight: 650;
-  color: var(--muted);
-}
-
-/* SOCIÁLNÍ IKONY */
 .socialbar{
   display:flex;
   align-items:center;
   gap: 10px;
 }
-
 .socialbtn{
   width: 44px;
   height: 44px;
@@ -971,164 +662,214 @@ body{
   background: #fff;
   transition: transform .12s ease, background .12s ease;
 }
-
 .socialbtn:hover{
   transform: translateY(-1px);
   background: rgba(0,0,0,.04);
 }
-
 .socialbtn img{
   width: 22px;
   height: 22px;
   object-fit: contain;
   display:block;
 }
+.socialbtn--tvcom img{ opacity: .95; }
 
-/* DARK MODE */
+/* ----- Responsive ----- */
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+  .grid{ grid-template-columns: 1fr; }
+  .h1{ font-size: 28px; }
+  .nav__item{ font-size: 13px; padding: 12px 6px; }
+  .teammeta{ grid-template-columns: 1fr; }
+  .gallery{ grid-template-columns: repeat(2, 1fr); }
+  .partners__row{ grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 700px){
+  .nav{ display:none; }
+  .toplinks{ display:none; }
+  .menubtn{ display:inline-flex; }
+}
+
+@media (max-width: 600px){
+  .topbar__inner{ padding: 10px 0; }
+  .nav__item{ padding: 9px 9px; font-size: 12px; }
+  .h1{ font-size: 24px; }
+  .btn{ width: 100%; }
+  .footer__bar{ justify-content: center; }
+  .gallery{ grid-template-columns: 1fr; }
+  .footer__bar{
+    flex-direction: column;
+    gap: 12px;
+  }
+    .topbar__inner{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .schedule th,
+  .schedule td{
+    padding: 14px 10px;
+    font-size: 14px;
+  }
+}
+
+/* ----- Dark mode (data-theme="dark") ----- */
+:root[data-theme="dark"]{
+  --bg: #0b0b0e;
+  --ink: #eef2ff;
+  --muted: rgba(238,242,255,.72);
+  --line: rgba(238,242,255,.12);
+  --card: rgba(255,255,255,.06);
+}
+
+:root[data-theme="dark"] body{ background: var(--bg); color: var(--ink); }
+
+:root[data-theme="dark"] .nav{
+  background: rgba(11,11,14,.86);
+  border-bottom: 1px solid var(--line);
+}
+:root[data-theme="dark"] .nav__item{ color: var(--ink); }
+:root[data-theme="dark"] .nav__item:hover{ background: rgba(255,255,255,.06); }
+
+:root[data-theme="dark"] .nav__item.is-active{
+  background: rgba(255,59,48,.14);
+  box-shadow: inset 0 -3px 0 var(--accent);
+}
+
+:root[data-theme="dark"] .panel,
+:root[data-theme="dark"] .card{
+  background: var(--card);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .kv__row,
+:root[data-theme="dark"] .teamitem,
+:root[data-theme="dark"] .kvline,
+:root[data-theme="dark"] .linkitem,
+:root[data-theme="dark"] .thumb{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .btn--primary{
+  background: linear-gradient(90deg, var(--accent), #ff5a52);
+  border-color: transparent;
+  color: #0b0b0e;
+}
+:root[data-theme="dark"] .btn--ghost{
+  background: rgba(255,255,255,.05);
+  color: var(--ink);
+  border-color: rgba(238,242,255,.35);
+}
+:root[data-theme="dark"] .btn--ghost:hover{ background: rgba(255,255,255,.08); }
+
+:root[data-theme="dark"] .tablewrap{
+  border-color: var(--line);
+  background: rgba(255,255,255,.02);
+}
+
+:root[data-theme="dark"] .schedule{
+  background: rgba(255,255,255,.02);
+}
+
+:root[data-theme="dark"] .schedule th{
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+}
+
+:root[data-theme="dark"] .pill,
+:root[data-theme="dark"] .badge{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .teamlogo{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
+}
+
 :root[data-theme="dark"] .footer{
   background: rgba(255,255,255,.02);
   border-top-color: var(--line);
 }
-
-:root[data-theme="dark"] .partner{
-  background: rgba(255,255,255,.03);
-}
-
+:root[data-theme="dark"] .partner{ background: rgba(255,255,255,.03); }
 :root[data-theme="dark"] .socialbtn{
-  background: rgba(255,255,255,.02);
-}
-
-:root[data-theme="dark"] .socialbtn img{
-  filter: brightness(0) invert(1);
-}
-
-/* TVCOM boost */
-:root[data-theme="dark"] .socialbtn--tvcom img{
-  filter: brightness(0) invert(1) drop-shadow(0 1px 0 rgba(0,0,0,.55));
-}
-
-:root[data-theme="dark"] .socialbtn--tvcom{
   background: rgba(255,255,255,.02);
   border-color: rgba(238,242,255,.45);
 }
+:root[data-theme="dark"] .socialbtn img{ filter: brightness(0) invert(1); }
 
+/* TVCOM: nech bez invertu */
 :root[data-theme="dark"] .socialbtn--tvcom img{
-  filter: none;               /* vypnout invert */
+  filter: none;
   opacity: .95;
 }
 
-/* MOBIL */
-@media (max-width: 900px){
-  .partners__row{
-    grid-template-columns: 1fr 1fr;
-  }
+/* LAST MOMENT CHANGES */
+:root[data-theme="dark"] .hero__note{
+  background: rgba(255,255,255,.06);
+  border-color: var(--line);
+  color: var(--muted);
+}
+:root[data-theme="dark"] .hero__note{
+  background: rgba(255,255,255,.06);
+  border-color: var(--line);
+  color: var(--ink);
 }
 
-@media (max-width: 600px){
-  .footer__bar{
-    justify-content: center;
-  }
+/* Dark mode – partners look */
+:root[data-theme="dark"] .partner{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
 }
 
-/* LIVE řádek (jemné blikání jako REC) */
-tr.is-live td.score {
-  position: relative;
-  font-weight: 800;
+/* Kdybys měl placeholder text/box uvnitř partnera, ztlum ho */
+:root[data-theme="dark"] .partner img{
+  opacity: .92;
 }
 
-/* červená tečka */
-tr.is-live td.score::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 10px;
-  border-radius: 50%;
-  background: currentColor;
-  animation: liveDot 1s infinite;
-  vertical-align: middle;
+/* Dark mode – footer bar/typography trochu čitelnější */
+:root[data-theme="dark"] .partners__note,
+:root[data-theme="dark"] .footer__left{
+  color: var(--muted);
 }
 
-/* pulzování (červená -> bílá/transparent) */
-@keyframes liveDot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.15; }
+/* Dark mode: ztmavit světlé placeholder loga partnerů */
+:root[data-theme="dark"] .partner img{
+  filter: brightness(.75) contrast(1.05);
+  opacity: .95;
 }
 
-/* lehké podbarvení celého řádku */
-tr.is-live {
-  animation: liveRow 1.2s infinite;
+/* ===== FOOTER FIX (force layout) ===== */
+.footer__bar{
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;   /* <- tohle je klíč */
+  gap: 14px !important;
 }
 
-@keyframes liveRow {
-  0%, 100% { background-color: rgba(255, 0, 0, 0.06); }
-  50% { background-color: rgba(255, 0, 0, 0.00); }
-}
-
-/* Respektuj uživatele s omezením animací */
-@media (prefers-reduced-motion: reduce) {
-  tr.is-live,
-  tr.is-live td.score::before {
-    animation: none !important;
-  }
-}
-
-/* LIVE řádek (REC pulz) */
-tr.is-live {
-  animation: liveRow 1.2s infinite;
-}
-
-@keyframes liveRow {
-  0%, 100% { background-color: rgba(255, 0, 0, 0.06); }
-  50% { background-color: rgba(255, 0, 0, 0.00); }
-}
-
-/* červená "REC" tečka u skóre */
-tr.is-live td.score::before {
-  content: "";
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  margin-right: 10px;
-  border-radius: 50%;
-  background: red;
-  animation: liveDot 1s infinite;
-  vertical-align: middle;
-}
-
-@keyframes liveDot {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.15; }
-}
-
-/* respektuj users s reduced motion */
-@media (prefers-reduced-motion: reduce) {
-  tr.is-live,
-  tr.is-live td.score::before,
-  .badge--live {
-    animation: none !important;
-  }
-}
-
-table.schedule.results {
-  width: 100%;
-  table-layout: fixed;
-}
-
-table.schedule.results th,
-table.schedule.results td {
-  overflow: hidden;
-  text-overflow: ellipsis;
+.footer__left{
   white-space: nowrap;
 }
 
-/* ZÁPAS je delší → povol zalomení (u 5sloupcových tabulek je to 3. sloupec) */
-#tbl-patek td:nth-child(3),
-#tbl-sobota td:nth-child(3) {
-  white-space: normal;
+.socialbar{
+  margin-left: auto;              /* <- tlačí ikony doprava */
+  justify-content: flex-end;
 }
 
-/* PLAY-OFF: ZÁPAS je 4. sloupec */
-#tbl-nedele td:nth-child(4) {
-  white-space: normal;
+.socialbtn{
+  flex: 0 0 auto;                 /* <- aby se tlačítka nemačkala */
+}
+
+/* Mobil: pod sebe, ale hezky zarovnané */
+@media (max-width: 600px){
+  .footer__bar{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  .socialbar{
+    margin-left: 0;
+  }
 }
