@@ -290,7 +290,7 @@ body{
 
 .schedule th,
 .schedule td{
-  padding: 16px 14px;
+  padding: 12px 10px;
   border-bottom: 1px solid var(--line);
   text-align: left;
   white-space: nowrap;
@@ -369,8 +369,9 @@ body{
 
 /* ----- LIVE row pulse (REC vibe) ----- */
 tr.is-live{
-  animation: liveRow 1.2s infinite;
+  background: rgba(239,68,68,.10);
 }
+
 tr.is-live td.score{
   font-weight: 800;
 }
@@ -385,6 +386,35 @@ tr.is-live td.score::before{
   animation: liveDot 1s infinite;
   vertical-align: middle;
 }
+
+/* ----- LIVE row pulse (REC vibe) – jen výsledky ----- */
+table.schedule.results tr.is-live{
+  animation: liveRow 1.2s infinite;
+}
+
+table.schedule.results tr.is-live td.score{
+  font-weight: 800;
+}
+
+table.schedule.results tr.is-live td.score::before{
+  content:"";
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:10px;
+  border-radius:50%;
+  background: red;
+  animation: liveDot 1s infinite;
+  vertical-align: middle;
+}
+
+@media (prefers-reduced-motion: reduce){
+  table.schedule.results tr.is-live,
+  table.schedule.results tr.is-live td.score::before{
+    animation: none !important;
+  }
+}
+
 @keyframes liveDot{
   0%,100%{ opacity:1; }
   50%{ opacity:.15; }
@@ -392,12 +422,6 @@ tr.is-live td.score::before{
 @keyframes liveRow{
   0%,100%{ background-color: rgba(255,0,0,.06); }
   50%{ background-color: rgba(255,0,0,0); }
-}
-@media (prefers-reduced-motion: reduce){
-  tr.is-live,
-  tr.is-live td.score::before{
-    animation: none !important;
-  }
 }
 
 /* ----- Teams / lists / photos helpers ----- */
@@ -506,7 +530,11 @@ tr.is-live td.score::before{
   display: none;
   z-index: 1000;
 }
+
 .menu.is-open{ display:block; }
+
+.menu{ pointer-events:none; }
+.menu.is-open{ pointer-events:auto; }
 
 .menu__backdrop{
   position:absolute;
@@ -1193,8 +1221,470 @@ table.schedule.results td.score{
   border-color: var(--line);
 }
 
+/* ===== Dark mode: select + options ===== */
+:root[data-theme="dark"] select,
+:root[data-theme="dark"] option {
+  background-color: #121212;
+  color: #fff;
+}
+
+/* aktivní / hover option (některé prohlížeče) */
+:root[data-theme="dark"] option:checked,
+:root[data-theme="dark"] option:hover {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+}
+
 /* Tabulka: prázdný stav */
 .schedule .emptyrow td{
   color: var(--muted);
   font-style: italic;
+}
+
+/* === Day switcher: mobile-first === */
+.day-switch{
+  display:flex;
+  gap:.5rem;
+  flex-wrap:wrap;
+  margin: .75rem 0 1rem;
+}
+
+.day-switch__btn{
+  flex: 1 1 auto;
+  min-width: 110px;
+  padding: .75rem 1rem;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Day switcher musí být vždy klikatelnej */
+.day-switch{
+  position: relative;
+  z-index: 5;
+}
+
+.day-switch__btn{
+  pointer-events: auto;
+  touch-action: manipulation;
+}
+
+.day-switch__btn.is-active{
+  border-color: rgba(0,0,0,.45);
+  box-shadow: 0 1px 0 rgba(0,0,0,.10);
+}
+
+.day-switch__btn:focus-visible{
+  outline: 2px solid rgba(0,0,0,.35);
+  outline-offset: 2px;
+}
+
+/* Desktop: schovat přepínač, ukázat vše */
+@media (min-width: 901px){
+  .day-switch{ display:none; }
+
+}
+.schedule thead th{
+  position: sticky;
+  top: 0;
+  background: inherit;
+  z-index: 2;
+}
+
+tr.is-live{
+  background: rgba(239,68,68,.10);
+}
+
+/* LIVE badge v buňce ČAS */
+tr.is-live td:first-child{
+  position: relative;
+  font-weight: 800;
+}
+
+tr.is-live td:first-child::after{
+  content: "LIVE";
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: #dc2626;
+  border: 1px solid rgba(220,38,38,.4);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+tr.is-live td:first-child::after{
+  animation: livePulse 1.2s infinite;
+}
+
+@keyframes livePulse{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.4; }
+}
+
+.livebar{ display:flex; align-items:center; gap:.75rem; margin:.5rem 0 1rem; }
+#btnLive[disabled]{ opacity:.5; cursor:not-allowed; }
+tr.is-next{ background: rgba(59,130,246,.08); outline: 1px solid rgba(59,130,246,.25); }
+
+@media print{
+  /* schovat UI */
+  .topbar, .nav, .footer, .cta, .filters, .day-switch, .livebar{
+    display:none !important;
+  }
+
+  /* vždy ukázat všechny dny při tisku */
+  [data-day]{
+    display:block !important;
+  }
+
+  body{
+    background:#fff !important;
+  }
+
+  .wrap{
+    width:100% !important;
+    max-width:none !important;
+  }
+
+  /* hezčí tabulky v tisku */
+  table{
+    width:100% !important;
+    border-collapse: collapse !important;
+  }
+  th, td{
+    border:1px solid #ddd !important;
+    padding:8px 10px !important;
+  }
+
+  /* stránkování mezi dny */
+  [data-day="patek"], [data-day="sobota"]{
+    page-break-after: always;
+  }
+
+  tr, td, th{
+    page-break-inside: avoid;
+  }
+
+  @page{
+    margin: 12mm;
+  }
+}
+
+/* Rozpis: sloupec ČAS musí pojmout i LIVE badge */
+.schedule th:first-child,
+.schedule td:first-child{
+  width: 120px;
+  min-width: 110px;
+  white-space: nowrap;
+}
+
+/* Přetlač colgroup šířky pro sloupec ČAS */
+#tbl-rozpis-patek col:first-child,
+#tbl-rozpis-sobota col:first-child,
+#tbl-rozpis-nedele col:first-child{
+  width: 130px !important;
+}
+
+/* Rozpis: nikdy nebliká (jen výsledky můžou) */
+#tbl-rozpis-patek tr.is-live,
+#tbl-rozpis-sobota tr.is-live,
+#tbl-rozpis-nedele tr.is-live{
+  animation: none !important;
+}
+
+/* STOP: v ROZPISU nikdy nebliká celý řádek (ponecháme jen badge pulz) */
+table.schedule:not(.results) tr.is-live{
+  animation: none !important;
+}
+
+table.schedule:not(.results) tr.is-live td:first-child::after{
+  animation: none !important;
+}
+
+/* ROZPIS: LIVE nesmí barvit celý řádek (jen badge u času) */
+table.schedule:not(.results) tr.is-live{
+  background: transparent !important;
+  outline: none !important;
+}
+
+table.schedule:not(.results) tr.is-live{
+  background: transparent !important;
+  outline: none !important;
+}
+
+table.schedule:not(.results) tr.is-live td:first-child{
+  border-left: 4px solid rgba(220,38,38,.55);
+  padding-left: 10px;
+}
+
+/* ROZPIS: badge pro NEXT (DALŠÍ) – viditelné i bez podbarvení řádku */
+table.schedule:not(.results) tr.is-next td:first-child{
+  position: relative;
+  font-weight: 800;
+}
+
+table.schedule:not(.results) tr.is-next td:first-child::after{
+  content: "DALŠÍ";
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: #1d4ed8;
+  border: 1px solid rgba(29,78,216,.35);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+/* === LIVE BAR === */
+.livebar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin: 12px 0 20px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(0,0,0,.03);
+}
+
+.livebar__btn{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 2px solid #111;
+  background: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.livebar__btn[disabled]{
+  opacity:.6;
+  cursor: not-allowed;
+}
+
+.livebar__dot{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#999;
+  flex: 0 0 auto;
+}
+
+/* stav: nic neběží */
+.livebar__status{
+  font-size: 14px;
+  color: #555;
+}
+
+/* === LIVE STATE === */
+.livebar.is-live{
+  background: rgba(220,38,38,.08);
+}
+
+.livebar.is-live .livebar__dot{
+  background:#dc2626;
+  animation: liveDot 1.2s infinite;
+}
+
+.livebar.is-live .livebar__status{
+  color:#7f1d1d;
+  font-weight:600;
+}
+
+@keyframes liveDot{
+  0%,100%{ opacity:1; }
+  50%{ opacity:.35; }
+}
+
+/* Rozpis: sloupec SKUPINA a ODKAZY – ať to není nalepené vpravo */
+.schedule th:last-child,
+.schedule td:last-child{
+  text-align: left;
+}
+
+/* (pokud bude ODKAZY jako poslední, SKUPINA bude předposlední) */
+.schedule th:nth-last-child(2),
+.schedule td:nth-last-child(2){
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* ODKAZY: ikonky */
+.matchlinks{
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.matchlinks a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(0,0,0,.02);
+  text-decoration: none;
+}
+
+.matchlinks a:hover{
+  border-color: rgba(0,0,0,.25);
+}
+
+.matchlinks a:focus-visible{
+  outline: 2px solid rgba(0,0,0,.35);
+  outline-offset: 2px;
+}
+
+/* === VYSLEDKY: layout buněk === */
+.results .schedule td,
+.results .schedule th{
+  vertical-align: middle;
+}
+
+.results .schedule td.timecell{
+  width: 140px;
+  white-space: nowrap;
+}
+
+.results .schedule td.halacell{
+  width: 140px;
+  white-space: nowrap;
+}
+
+.results .schedule td.matchcell{
+  min-width: 220px;
+}
+
+.results .schedule td.scorecell{
+  width: 260px;
+}
+
+.results .schedule td.statecell{
+  width: 180px;
+  white-space: nowrap;
+}
+
+/* time + live badge */
+.badge{
+  display:inline-block;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,.15);
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  vertical-align: middle;
+}
+
+.badge--live{
+  color: #dc2626;
+  border-color: rgba(220,38,38,.35);
+  background: rgba(220,38,38,.08);
+}
+
+.timewrap{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+/* hala pill */
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-weight: 800;
+  border: 1px solid rgba(0,0,0,.12);
+  background: rgba(0,0,0,.03);
+}
+
+.pill--h1{ border-color: rgba(239,68,68,.35); background: rgba(239,68,68,.08); }
+.pill--h2{ border-color: rgba(59,130,246,.35); background: rgba(59,130,246,.08); }
+
+/* teams */
+.teams a{
+  display:block;
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* score block */
+.score{
+  display:grid;
+  gap: 6px;
+}
+
+.score__top{
+  display:flex;
+  align-items:center;
+  gap: 10px;
+}
+
+.score__dot{
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #dc2626;
+}
+
+.score__total{
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: .5px;
+}
+
+.score__qs{
+  font-weight: 900;
+  letter-spacing: .4px;
+}
+
+.score__split{
+  display:grid;
+  gap: 6px;
+}
+
+.score__team{
+  font-weight: 900;
+}
+
+.score__line{
+  font-weight: 800;
+}
+
+/* actions (LIVE button + tvcom link) */
+.actions{
+  display:flex;
+  justify-content:flex-end;
+  gap: 10px;
+  align-items:center;
+}
+
+.btn-live{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(220,38,38,.35);
+  background: rgba(220,38,38,.08);
+  color: #dc2626;
+  font-weight: 900;
+  cursor: default;
 }

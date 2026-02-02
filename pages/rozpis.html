@@ -55,26 +55,26 @@
   </div>
 
   <!-- MOBILE MENU OVERLAY -->
-<div class="menu" id="mobileMenu" aria-hidden="true">
-  <div class="menu__backdrop" data-close></div>
+  <div class="menu" id="mobileMenu" aria-hidden="true">
+    <div class="menu__backdrop" data-close></div>
 
-  <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
-    <div class="menu__head">
-      <div class="menu__title">Menu</div>
-      <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
-      <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
-    </div>
+    <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="menu__head">
+        <div class="menu__title">Menu</div>
+        <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
+        <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
+      </div>
 
-    <div class="menu__links">
-      <a class="menu__link" href="../index.html">Úvod</a>
-      <a class="menu__link" href="rozpis.html">Rozpis</a>
-      <a class="menu__link" href="vysledky.html">Výsledky</a>
-      <a class="menu__link" href="tymy.html">Týmy</a>
-      <a class="menu__link" href="info.html">Info</a>
-      <a class="menu__link" href="fotky.html">Fotky</a>
+      <div class="menu__links">
+        <a class="menu__link" href="../index.html">Úvod</a>
+        <a class="menu__link" href="rozpis.html">Rozpis</a>
+        <a class="menu__link" href="vysledky.html">Výsledky</a>
+        <a class="menu__link" href="tymy.html">Týmy</a>
+        <a class="menu__link" href="info.html">Info</a>
+        <a class="menu__link" href="fotky.html">Fotky</a>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- Nav -->
   <nav class="nav">
@@ -89,115 +89,147 @@
   </nav>
 
   <div class="wrap" style="margin-top:10px;">
-  <div id="data-status"
-       style="display:none; padding:8px 10px; border-radius:10px; font-size:14px; opacity:.85;">
+    <div id="data-status"
+        style="display:none; padding:8px 10px; border-radius:10px; font-size:14px; opacity:.85;">
+    </div>
   </div>
-</div>
 
   <main class="wrap">
 
-    <section class="pagehead">
-      <h1 class="h1">Rozpis zápasů</h1>
-      <p class="lead">24.–26. dubna • Hradec Králové • 2 haly v jedné budově</p>
+<section class="pagehead">
+  <h1 class="h1">Rozpis zápasů</h1>
+  <p class="lead">24.–26. dubna • Hradec Králové • 2 haly v jedné budově</p>
 
-      <div class="cta">
-        <a class="btn btn--primary" href="https://www.tvcom.cz/" target="_blank" rel="noopener">Sledovat stream (TVcom)</a>
-        <a class="btn btn--ghost" href="../index.html">Zpět na úvod</a>
-      </div>
+  <div class="cta">
+    <a class="btn btn--primary" href="https://www.tvcom.cz/" target="_blank" rel="noopener">Sledovat stream (TVcom)</a>
+    <a class="btn btn--ghost" href="../index.html">Zpět na úvod</a>
+  </div>
 
-      <p class="mini">Poslední aktualizace: <strong id="updated">—</strong></p>
-          <div class="filters" id="scheduleFilters">
-      <label class="filters__label" for="teamFilter">Tým</label>
+  <p class="mini">Poslední aktualizace: <strong id="updated">—</strong></p>
 
-      <select id="teamFilter" class="filters__select">
-        <option value="">Všechny týmy</option>
-      </select>
+  <div class="filters" id="scheduleFilters">
+    <label class="filters__label" for="teamFilter">Tým</label>
 
-      <button type="button" id="teamFilterReset" class="filters__reset">Reset</button>
+    <select id="teamFilter" class="filters__select">
+      <option value="">Všechny týmy</option>
+    </select>
 
-      <div class="filters__info" id="teamFilterInfo" aria-live="polite"></div>
-    </div>
-      <p class="mini">Tip: Časy a týmy se doplní, jakmile bude finální rozlosování.</p>
-    </section>
+    <button type="button" id="teamFilterReset" class="filters__reset">Reset</button>
 
-    <!-- Pátek -->
-    <section class="card">
-      <h2 class="h2">Pátek 24. dubna – skupiny</h2>
+    <div class="filters__info" id="teamFilterInfo" aria-live="polite"></div>
+  </div>
 
-      <div class="tablewrap">
-        <table class="schedule" id="tbl-rozpis-patek">
-          <colgroup>
-            <col style="width: 90px;">
-            <col style="width: 140px;">
-            <col>
-            <col style="width: 140px;">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Čas</th>
-              <th>Hala</th>
-              <th>Zápas</th>
-              <th>Skupina</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+  <p class="mini">Tip: Časy a týmy se doplní, jakmile bude finální rozlosování.</p>
 
-    <!-- Sobota -->
-    <section class="card">
-      <h2 class="h2">Sobota 25. dubna – skupiny</h2>
+  <!-- Day switcher (mobil-only, pokud máš v CSS schování na desktopu) -->
+  <div class="day-switch" role="tablist" aria-label="Přepínač dne rozpisu">
+    <button type="button" class="day-switch__btn is-active" data-day-btn="patek" role="tab" aria-selected="true">
+      Pátek
+    </button>
+    <button type="button" class="day-switch__btn" data-day-btn="sobota" role="tab" aria-selected="false">
+      Sobota
+    </button>
+    <button type="button" class="day-switch__btn" data-day-btn="nedele" role="tab" aria-selected="false">
+      Neděle
+    </button>
+  </div>
+  <div class="livebar" id="liveBar">
+    <button type="button" class="livebar__btn" id="btnLive" disabled>
+      <span class="livebar__dot"></span>
+      Teď se hraje
+    </button>
 
-      <div class="tablewrap">
-        <table class="schedule" id="tbl-rozpis-sobota">
-          <colgroup>
-            <col style="width: 90px;">
-            <col style="width: 140px;">
-            <col>
-            <col style="width: 140px;">
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Čas</th>
-              <th>Hala</th>
-              <th>Zápas</th>
-              <th>Skupina</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+    <span class="livebar__status" id="liveHint" aria-live="polite">
+      Teď nic neběží
+    </span>
+  </div>
 
-    <!-- Neděle -->
-    <section class="card">
-      <h2 class="h2">Neděle 26. dubna – play-off</h2>
+</section>
 
-      <p class="muted">
-        Play-off rozpis se doplní podle pořadí ve skupinách. Jakmile budou známé výsledky, přidáme konkrétní zápasy.
-      </p>
+<!-- Pátek -->
+<section class="card" data-day="patek" data-date="2026-04-24">
+  <h2 class="h2">Pátek 24. dubna – skupiny</h2>
 
-      <div class="tablewrap" style="margin-top:12px;">
-        <table class="schedule" id="tbl-rozpis-nedele">
-          <colgroup>
-            <col style="width: 90px;">
-            <col style="width: 140px;">
-            <col style="width: 180px;">
-            <col>
-          </colgroup>
-          <thead>
-            <tr>
-              <th>Čas</th>
-              <th>Hala</th>
-              <th>Fáze</th>
-              <th>Zápas</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-    </section>
+  <div class="tablewrap">
+    <table class="schedule" id="tbl-rozpis-patek">
+      <colgroup>
+        <col style="width: 130px;">
+        <col style="width: 140px;">
+        <col>
+        <col style="width: 90px;">
+        <col style="width: 110px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Čas</th>
+          <th>Hala</th>
+          <th>Zápas</th>
+          <th>Skupina</th>
+          <th>Odkazy</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Sobota -->
+<section class="card" data-day="sobota"  data-date="2026-04-25">
+  <h2 class="h2">Sobota 25. dubna – skupiny</h2>
+
+  <div class="tablewrap">
+    <table class="schedule" id="tbl-rozpis-sobota">
+      <colgroup>
+        <col style="width: 130px;">
+        <col style="width: 140px;">
+        <col>
+        <col style="width: 90px;">
+        <col style="width: 110px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Čas</th>
+          <th>Hala</th>
+          <th>Zápas</th>
+          <th>Skupina</th>
+          <th>Odkazy</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Neděle -->
+<section class="card" data-day="nedele" data-date="2026-04-26">
+  <h2 class="h2">Neděle 26. dubna – play-off</h2>
+
+  <p class="muted">
+    Play-off rozpis se doplní podle pořadí ve skupinách. Jakmile budou známé výsledky, přidáme konkrétní zápasy.
+  </p>
+
+  <div class="tablewrap" style="margin-top:12px;">
+    <table class="schedule" id="tbl-rozpis-nedele">
+      <colgroup>
+        <col style="width: 130px;">
+        <col style="width: 140px;">
+        <col style="width: 180px;">
+        <col>
+        <col style="width: 110px;">
+      </colgroup>
+      <thead>
+        <tr>
+          <th>Čas</th>
+          <th>Hala</th>
+          <th>Fáze</th>
+          <th>Zápas</th>
+          <th>Odkazy</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
 
   </main>
 

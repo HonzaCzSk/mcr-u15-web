@@ -1,4 +1,5 @@
 console.log("rozpis.js loaded");
+const DEBUG_MODE = new URLSearchParams(window.location.search).get("debug") === "1";
 const LS_KEY = "mcr_u15_rozpis_cache_v1";
 let originalData = null;
 let currentFilter = ""; // "" = Všechny týmy
@@ -9,20 +10,38 @@ const TEAM_FILTER_KEY = "mcr_u15_team_filter_v1";
   "Winner",
   "Loser"
 ];
+const DAY_DATE = {
+  patek: "2026-04-24",
+  sobota: "2026-04-25",
+  nedele: "2026-04-26",
+};
+let ACTIVE_DAY = null;
 
-function setStatus(msg, kind = "error") {
+
+function setStatus(msg, type = "info") {
   const el = document.getElementById("data-status");
   if (!el) return;
+
   el.style.display = "block";
   el.textContent = msg;
 
-  if (kind === "warn") {
-    el.style.background = "rgba(255, 165, 0, .10)";
-    el.style.border = "1px solid rgba(255, 165, 0, .25)";
-  } else {
-    el.style.background = "rgba(255, 0, 0, .08)";
-    el.style.border = "1px solid rgba(255, 0, 0, .25)";
-  }
+  // jednoduchý barvy bez závislosti na theme systému
+  const styles = {
+    ok:   { bg: "rgba(16,185,129,.12)", bd: "rgba(16,185,129,.35)" },
+    warn: { bg: "rgba(245,158,11,.14)", bd: "rgba(245,158,11,.40)" },
+    err:  { bg: "rgba(239,68,68,.12)",  bd: "rgba(239,68,68,.35)"  },
+    info: { bg: "rgba(59,130,246,.10)", bd: "rgba(59,130,246,.28)" }
+  };
+
+  const s = styles[type] || styles.info;
+  el.style.background = s.bg;
+  el.style.border = `1px solid ${s.bd}`;
+}
+
+function setUpdated(text) {
+  const el = document.getElementById("updated");
+  if (!el) return;
+  el.textContent = text;
 }
 
 function isValidRozpis(data) {
@@ -51,8 +70,8 @@ function setUpdatedNow() {
 
     // uložit jako poslední dobrou verzi
     localStorage.setItem(LS_KEY, JSON.stringify({ savedAt: Date.now(), data }));
-
     originalData = data;
+    window.originalData = data;
 
     const upd = document.getElementById("updated");
     if (upd) {
@@ -66,6 +85,9 @@ function setUpdatedNow() {
       }
     }
 
+    window.originalData = originalData;
+
+    renderRozpis(originalData);
     initTeamFilter(originalData);
     return;
 
@@ -94,7 +116,7 @@ function setUpdatedNow() {
       const when = cached?.savedAt ? new Date(cached.savedAt).toLocaleString("cs-CZ") : "dříve";
       setStatus(`Nepodařilo se načíst aktuální rozpis. Zobrazuji poslední uloženou verzi (${when}).`, "warn");
 
-      originalData = data;
+      window.originalData = originalData;
 
       const upd = document.getElementById("updated");
       if (upd) {
@@ -103,8 +125,11 @@ function setUpdatedNow() {
     );
   }
 
-      initTeamFilter(originalData);
-      return;
+    window.originalData = originalData;
+    renderRozpis(originalData);
+    initTeamFilter(originalData);
+    return;
+
     }
 
     } catch (e) {
@@ -122,9 +147,12 @@ function setUpdatedNow() {
         // updated z backupu
         const upd2 = document.getElementById("updated");
         if (upd2) upd2.textContent = backup.updated ?? "—";
+
       originalData = backup;
+      renderRozpis(originalData);
       initTeamFilter(originalData);
       return;
+
 
       }
       
@@ -136,6 +164,22 @@ function setUpdatedNow() {
     setStatus("Rozpis se nepodařilo načíst. Zkuste obnovit stránku.", "error");
   }
 })();
+
+function isMatchLive(timeStr, dateStr, durationMin = 60, nowRef = new Date()) {
+  if (!timeStr || !dateStr) return false;
+
+  const [Y, M, D] = dateStr.split("-").map(Number);
+  if ([Y, M, D].some(Number.isNaN)) return false;
+
+  const [h, m] = String(timeStr).split(":").map(Number);
+  if (Number.isNaN(h) || Number.isNaN(m)) return false;
+
+  const start = new Date(Y, M - 1, D, h, m, 0, 0);
+  const end = new Date(start);
+  end.setMinutes(start.getMinutes() + durationMin);
+
+  return nowRef >= start && nowRef <= end;
+}
 
 function renderRozpis(data) {
   const pillHtml = (hala) => {
@@ -162,6 +206,11 @@ function renderRozpis(data) {
 const fillTable = (tableId, rows, renderRow) => {
   const tbl = document.getElementById(tableId);
   if (!tbl) return;
+
+  const daySection = tbl.closest("[data-day]");
+  const dayKey = daySection?.getAttribute("data-day") || "";
+  const dayDate = DAY_DATE[dayKey] || ""; // <- datum dne z mapy
+
   const tbody = tbl.querySelector("tbody");
   if (!tbody) return;
 
@@ -177,36 +226,134 @@ const fillTable = (tableId, rows, renderRow) => {
     return;
   }
 
-  safeRows.forEach((r) => {
+  // "now" podle aktivního dne: vezmeme aktuální čas, ale datum nastavíme na den tabulky
+  // reálné datum (ISO) – LIVE jen když jsme ve správném dni turnaje
+  // === DEBUG MODE ===
+  // debug=1 -> simulujeme den podle tabu
+  // normal  -> LIVE jen při reálném dni turnaje
+
+  const realNow = new Date();
+  const realIso = new Date(
+    realNow.getFullYear(),
+    realNow.getMonth(),
+    realNow.getDate()
+  ).toISOString().slice(0, 10);
+
+  const isRealTournamentDay = dayDate && realIso === dayDate;
+  const allowLive = DEBUG_MODE || isRealTournamentDay;
+
+  // referenční čas:
+  // - debug: "jako kdyby" byl aktivní den
+  // - normal: jen reálný den turnaje, jinak 00:00 (kvůli NEXT)
+  let nowRef = realNow;
+
+  if (dayDate) {
+    const [Y, M, D] = dayDate.split("-").map(Number);
+    if (![Y, M, D].some(Number.isNaN)) {
+      if (allowLive) {
+        nowRef = new Date(Y, M - 1, D, realNow.getHours(), realNow.getMinutes(), 0, 0);
+      } else {
+        nowRef = new Date(Y, M - 1, D, 0, 0, 0, 0);
+      }
+    }
+  }
+
+  const nowMin = nowRef.getHours() * 60 + nowRef.getMinutes();
+
+  const toMin = (timeStr) => {
+    if (!timeStr) return null;
+    const [h, m] = String(timeStr).split(":").map(Number);
+    if (Number.isNaN(h) || Number.isNaN(m)) return null;
+    return h * 60 + m;
+  };
+
+  // pokud je v tabulce aspoň jeden LIVE, NEXT nebudeme zvýrazňovat (jen pro aktivní den)
+  const hasLive =
+    (dayKey === ACTIVE_DAY) &&
+    allowLive &&
+    safeRows.some(r => isMatchLive(r?.cas, dayDate, 60, nowRef));
+
+  let nextIdx = -1;
+  if (dayKey === ACTIVE_DAY && !hasLive) {
+    let bestDelta = Infinity;
+
+    safeRows.forEach((r, idx) => {
+      const m = toMin(r?.cas);
+      if (m == null) return;
+
+      const delta = m - nowMin;
+      if (delta > 0 && delta < bestDelta) {
+        bestDelta = delta;
+        nextIdx = idx;
+      }
+    });
+  }
+
+  safeRows.forEach((r, idx) => {
     const tr = document.createElement("tr");
+
+  if (dayKey === ACTIVE_DAY && allowLive && isMatchLive(r?.cas, dayDate, 60, nowRef)) {
+    tr.classList.add("is-live");
+  } else if (idx === nextIdx) {
+    tr.classList.add("is-next");
+  }
+
     tr.innerHTML = renderRow(r);
     tbody.appendChild(tr);
   });
 };
 
   // Pátek (skupiny)
-  fillTable("tbl-rozpis-patek", data.patek, (r) => `
-    <td>${r.cas ?? "—"}</td>
-    <td>${pillHtml(r.hala)}</td>
-    <td>${matchHtml(r)}</td>
-    <td>${r.skupina ?? "—"}</td>
-  `);
+  fillTable("tbl-rozpis-patek", data.patek, (r) => {
+    const matchId = makeMatchId({
+      dayKey: "patek",
+      cas: r?.cas,
+      hala: r?.hala,
+    });
+
+    return `
+      <td>${r.cas ?? "—"}</td>
+      <td>${pillHtml(r.hala)}</td>
+      <td>${matchHtml(r)}</td>
+      <td>${r.skupina ?? "—"}</td>
+      <td>${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+    `;
+  });
 
   // Sobota (skupiny)
-  fillTable("tbl-rozpis-sobota", data.sobota, (r) => `
-    <td>${r.cas ?? "—"}</td>
-    <td>${pillHtml(r.hala)}</td>
-    <td>${matchHtml(r)}</td>
-    <td>${r.skupina ?? "—"}</td>
-  `);
+  fillTable("tbl-rozpis-sobota", data.sobota, (r) => {
+    const matchId = makeMatchId({
+      dayKey: "sobota",
+      cas: r?.cas,
+      hala: r?.hala,
+    });
+
+    return `
+      <td>${r.cas ?? "—"}</td>
+      <td>${pillHtml(r.hala)}</td>
+      <td>${matchHtml(r)}</td>
+      <td>${r.skupina ?? "—"}</td>
+      <td>${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+    `;
+  });
 
   // Neděle (playoff)
-  fillTable("tbl-rozpis-nedele", data.nedele, (r) => `
-    <td>${r.cas ?? "—"}</td>
-    <td>${pillHtml(r.hala)}</td>
-    <td>${r.faze ?? "—"}</td>
-    <td>${matchHtml(r)}</td>
-  `);
+  fillTable("tbl-rozpis-nedele", data.nedele, (r) => {
+    const matchId = makeMatchId({
+      dayKey: "nedele",
+      cas: r?.cas,
+      hala: r?.hala,
+      phase: r?.faze,
+    });
+
+    return `
+      <td>${r.cas ?? "—"}</td>
+      <td>${pillHtml(r.hala)}</td>
+      <td>${r.faze ?? "—"}</td>
+      <td>${matchHtml(r)}</td>
+      <td>${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+    `;
+  });
 }
 
 function normalizeTeamName(s) {
@@ -413,4 +560,149 @@ function formatUpdatedHuman(dateInput) {
     hour: "2-digit",
     minute: "2-digit",
   });
+}
+
+// --- Day switcher + Live button (robust) ---
+(function () {
+  const DAY_VALUES = new Set(["patek", "sobota", "nedele"]);
+
+  function setActiveButton(day) {
+    ACTIVE_DAY = day; // ✅ JEDINÉ správné místo
+
+    document.querySelectorAll("[data-day-btn]").forEach(btn => {
+      const active = btn.getAttribute("data-day-btn") === day;
+      btn.classList.toggle("is-active", active);
+      btn.setAttribute("aria-selected", active ? "true" : "false");
+    });
+  }
+
+  function showDay(day, { scroll = false } = {}) {
+    if (!DAY_VALUES.has(day)) return;
+
+    // 1) nastav aktivní den
+    setActiveButton(day);
+
+    // 2) přerenderuj rozpis (LIVE / DALŠÍ se přepočítá)
+    if (window.originalData) {
+      renderRozpis(window.originalData);
+    }
+
+    // 3) zobraz sekce
+    const sections = document.querySelectorAll("[data-day]");
+    let targetSection = null;
+
+    sections.forEach(sec => {
+      const isTarget = sec.getAttribute("data-day") === day;
+      sec.style.display = isTarget ? "" : "none";
+      if (isTarget) targetSection = sec;
+    });
+
+    // 4) scroll
+    if (scroll && targetSection) {
+      requestAnimationFrame(() => {
+        targetSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    }
+  }
+
+  function refreshLiveUI() {
+    const btn = document.getElementById("btnLive");
+    const hint = document.getElementById("liveHint");
+    const bar = document.getElementById("liveBar");
+    if (!btn) return;
+
+    const liveRow = document.querySelector("tr.is-live");
+
+    if (btn) btn.disabled = !liveRow;
+    if (hint) hint.textContent = liveRow ? "Právě probíhá zápas" : "Teď nic neběží";
+
+    if (bar) bar.classList.toggle("is-live", !!liveRow);
+  }
+
+  function scrollToLive({ switchDay = true } = {}) {
+    const liveRow = document.querySelector("tr.is-live");
+    if (!liveRow) {
+      refreshLiveUI();
+      return false;
+    }
+
+    if (switchDay) {
+      const sec = liveRow.closest("[data-day]");
+      const day = sec?.getAttribute("data-day");
+      if (day && DAY_VALUES.has(day)) {
+        showDay(day, { scroll: false });
+      }
+    }
+
+    requestAnimationFrame(() => {
+      liveRow.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+
+    refreshLiveUI();
+    return true;
+  }
+
+  // Kliknutí na den = přepnout + scroll na začátek sekce
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-day-btn]");
+    if (!btn) return;
+
+    e.preventDefault();
+    e.stopPropagation();
+
+    const day = btn.getAttribute("data-day-btn");
+    if (!DAY_VALUES.has(day)) return;
+
+    showDay(day, { scroll: true });
+
+    const url = new URL(window.location.href);
+    url.searchParams.set("day", day);
+    history.replaceState({}, "", url);
+
+    // po přepnutí dne aktualizuj live UI (aby se disable/enable chovalo správně)
+    refreshLiveUI();
+  }, true);
+
+  // Tlačítko "Teď se hraje"
+  (function initLiveButton() {
+    const btn = document.getElementById("btnLive");
+    if (!btn) return;
+
+    refreshLiveUI();
+
+    btn.addEventListener("click", () => {
+      scrollToLive({ switchDay: true });
+    });
+  })();
+
+    // URL ?day=...
+  const params = new URLSearchParams(window.location.search);
+  const d = (params.get("day") || "").toLowerCase();
+  if (DAY_VALUES.has(d)) {
+    ACTIVE_DAY = d;
+    showDay(d);
+  } else {
+    ACTIVE_DAY = "patek"; // fallback, nebo klidně null
+  }
+})();
+
+function makeMatchId({ date, dayKey, cas, hala, phase }) {
+  // date preferuj, jinak vem DAY_DATE podle dayKey
+  const d = date || (dayKey && DAY_DATE[dayKey]) || "0000-00-00";
+  const t = (cas || "").replace(":", "-");
+  const h = (hala || "").toString().trim().toLowerCase().replace(/\s+/g, "");
+  const p = (phase || "").toString().trim().toLowerCase().replace(/\s+/g, "");
+  return [d, t || "xx-xx", h || "hala", p || "x"].join("_");
+}
+
+function renderLinks({ matchId, tvcomUrl }) {
+  const tv = tvcomUrl || "https://www.tvcom.cz/"; // zatím obecný
+  const res = `vysledky.html?match=${encodeURIComponent(matchId)}`;
+
+  return `
+    <span class="matchlinks">
+      <a href="${tv}" target="_blank" rel="noopener" aria-label="TVCOM stream">📺</a>
+      <a href="${res}" aria-label="Průběžné výsledky">📊</a>
+    </span>
+  `;
 }
