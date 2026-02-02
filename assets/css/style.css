@@ -1335,50 +1335,6 @@ tr.is-live td:first-child::after{
 #btnLive[disabled]{ opacity:.5; cursor:not-allowed; }
 tr.is-next{ background: rgba(59,130,246,.08); outline: 1px solid rgba(59,130,246,.25); }
 
-@media print{
-  /* schovat UI */
-  .topbar, .nav, .footer, .cta, .filters, .day-switch, .livebar{
-    display:none !important;
-  }
-
-  /* vždy ukázat všechny dny při tisku */
-  [data-day]{
-    display:block !important;
-  }
-
-  body{
-    background:#fff !important;
-  }
-
-  .wrap{
-    width:100% !important;
-    max-width:none !important;
-  }
-
-  /* hezčí tabulky v tisku */
-  table{
-    width:100% !important;
-    border-collapse: collapse !important;
-  }
-  th, td{
-    border:1px solid #ddd !important;
-    padding:8px 10px !important;
-  }
-
-  /* stránkování mezi dny */
-  [data-day="patek"], [data-day="sobota"]{
-    page-break-after: always;
-  }
-
-  tr, td, th{
-    page-break-inside: avoid;
-  }
-
-  @page{
-    margin: 12mm;
-  }
-}
-
 /* Rozpis: sloupec ČAS musí pojmout i LIVE badge */
 .schedule th:first-child,
 .schedule td:first-child{
@@ -1506,12 +1462,6 @@ table.schedule:not(.results) tr.is-next td:first-child::after{
 @keyframes liveDot{
   0%,100%{ opacity:1; }
   50%{ opacity:.35; }
-}
-
-/* Rozpis: sloupec SKUPINA a ODKAZY – ať to není nalepené vpravo */
-.schedule th:last-child,
-.schedule td:last-child{
-  text-align: left;
 }
 
 /* (pokud bude ODKAZY jako poslední, SKUPINA bude předposlední) */
@@ -1687,4 +1637,272 @@ table.schedule:not(.results) tr.is-next td:first-child::after{
   color: #dc2626;
   font-weight: 900;
   cursor: default;
+}
+
+/* Skóre nechceme na webu */
+.col-score {
+  display: none;
+}
+
+/* Sloupec Odkazy – zarovnání doprava */
+.col-links {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Ikonky vedle sebe, ne pod sebou */
+.col-links .matchlinks {
+  display: inline-flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* Web: odkazy vidíme */
+.col-links {
+  display: table-cell;
+}
+
+/* Web: skóre pryč + žádná šířka */
+.col-score { display: none; }
+col.col-score { width: 0 !important; }
+
+/* Web: sloupec skóre fakt zmizí a nebude dělat pruh */
+@media screen{
+  col.col-score{ width: 0 !important; }
+  th.col-score, td.col-score{ display: none !important; }
+
+  /* ODKAZY doprava */
+  th.col-links, td.col-links{
+    text-align: right !important;
+    white-space: nowrap;
+  }
+
+  th.col-links {
+    padding-right: 20px;
+  }
+
+  td.col-links .matchlinks{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+/* =========================================================
+   PRINT – FINÁLNÍ CLEAN (rozpis na papír)
+   ========================================================= */
+@media print {
+  @page { size: A4; margin: 12mm; }
+
+  /* pryč web UI */
+  .topbar, .nav, .menu, .footer, .partners, .socialbar,
+  .cta, #data-status,
+  button, select, input,
+  .filters, .day-switch, .livebar,
+  .matchlinks,
+  .btn, .themebtn, .menubtn, .muted  {
+    display: none !important;
+  }
+
+  /* netisknout URL za odkazy */
+  a[href^="http"]::after { content: "" !important; }
+
+  /* reset */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+    filter: none !important;
+  }
+  html, body { background: #fff !important; color: #000 !important; }
+  .wrap { max-width:none !important; width:100% !important; margin:0 !important; padding:0 !important; }
+
+  /* tisk nemá rád radius */
+  .card, .tablewrap, table, thead, tbody, tr, th, td, .pill, .badge {
+    border-radius: 0 !important;
+  }
+  .card, .tablewrap { overflow: visible !important; }
+
+  /* pagehead: nechat jen H1 */
+  .pagehead .lead,
+  .pagehead .cta,
+  .pagehead .mini,
+  .pagehead p,
+  .pagehead hr {
+    display: none !important;
+  }
+  .pagehead { margin: 0 0 8mm 0 !important; padding: 0 !important; }
+  .pagehead .h1 { margin: 0 !important; font-size: 18pt !important; }
+
+  /* nadpisy dnů přepsat přes data-print-title */
+  section.card > .h2 {
+    visibility: hidden !important;
+    position: relative !important;
+    margin: 0 0 6pt 0 !important;
+  }
+  section.card > .h2::after {
+    visibility: visible !important;
+    position: absolute !important;
+    left: 0;
+    top: 0;
+    content: attr(data-print-title) !important;
+    font-size: 12pt !important;
+    font-weight: 700 !important;
+  }
+
+  /* tabulky */
+  .schedule{
+    width: 100% !important;
+    border-collapse: collapse !important;
+    table-layout: fixed !important; /* respektuj colgroup */
+  }
+  .schedule th, .schedule td{
+    border: 1px solid #000 !important;
+    padding: 5pt 6pt !important;
+    font-size: 9.5pt !important;
+    vertical-align: middle !important;
+    background: transparent !important;
+    color: #000 !important;
+  }
+  thead { display: table-header-group; }
+  tr, td, th { page-break-inside: avoid; }
+
+  /* ZABÍT pseudo-badge LIVE + DALŠÍ (jsou přes ::after) */
+  table.schedule:not(.results) tr.is-live td:first-child::after,
+  table.schedule:not(.results) tr.is-next td:first-child::after{
+    content: "" !important;
+    display: none !important;
+  }
+
+  /* sloupec ODKAZY pryč */
+  col.col-links { width: 0 !important; }
+  th.col-links, td.col-links { display: none !important; }
+
+  /* SKÓRE jen v tisku */
+  col.col-score { width: 40mm !important; } /* víc místa na psaní */
+  th.col-score, td.col-score { display: table-cell !important; }
+
+  td.col-score{
+    position: relative;
+    height: 18pt;
+    font-weight: 700;
+    text-align: center;
+    font-size: 11pt;
+  }
+  td.col-score::after{
+    content:"";
+    position:absolute;
+    left: 6pt;
+    right: 6pt;
+    bottom: 6pt;
+    border-bottom: 1px solid #000;
+  }
+
+  /* =========================================================
+     ŠÍŘKY SLOUPCŮ – PRINT (sjednoceno)
+     ========================================================= */
+  /* základ (všechny rozpis tabulky) */
+  col.col-time { width: 14mm !important; min-width: 0 !important; }
+  col.col-hall { width: 18mm !important; }
+  col.col-group{ width: 22mm !important; }
+  col.col-match{ width: auto !important; }
+
+  /* pojistka: některé tabulky mají šířku přes col:first-child */
+  #tbl-rozpis-patek col:first-child,
+  #tbl-rozpis-sobota col:first-child,
+  #tbl-rozpis-nedele col:first-child{
+    width: 14mm !important;
+  }
+
+  /* ČAS: nikdy nekrátit (09…) */
+  .schedule th:first-child,
+  .schedule td:first-child{
+    width: 14mm !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+  }
+
+  /* ZÁPAS: v rozpisu se může zalomit (default 3. sloupec) */
+  .schedule td:nth-child(3){
+    white-space: normal !important;
+    overflow: visible !important;
+    text-overflow: clip !important;
+    font-weight: 600 !important;
+  }
+
+  /* PLAY-OFF (jen #tbl-rozpis-nedele):
+     - FÁZE (3. sloupec) užší
+     - ZÁPAS (4. sloupec) bere prostor
+     - žádné agresivní word-break */
+  #tbl-rozpis-nedele col.col-group { width: 22mm !important; }
+  #tbl-rozpis-nedele col.col-match { width: auto !important; }
+
+  #tbl-rozpis-nedele th:nth-child(3),
+  #tbl-rozpis-nedele td:nth-child(3){
+    font-size: 8.5pt !important;
+    font-weight: 650 !important;
+    text-align: center !important;
+    white-space: normal !important;
+    line-height: 1.1 !important;
+  }
+
+  #tbl-rozpis-nedele th:nth-child(4),
+  #tbl-rozpis-nedele td:nth-child(4){
+    white-space: normal !important;
+    font-weight: 650 !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+    hyphens: none !important;
+  }
+
+  /* PRINT: vypnout LIVE/NEXT vizuální zásahy (bold/outline/barvy) */
+  table.schedule:not(.results) tr.is-live,
+  table.schedule:not(.results) tr.is-next{
+    background: transparent !important;
+    outline: none !important;
+  }
+
+  table.schedule:not(.results) tr.is-live td:first-child,
+  table.schedule:not(.results) tr.is-next td:first-child{
+    font-weight: 400 !important;
+    border-left: 1px solid #000 !important; /* zachovat levou hranu tabulky */
+    padding-left: 6pt !important;           /* sjednocení s ostatními buňkami */
+  }
+
+  .pill,
+  .pill--h1{
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    font-weight: 600;
+  }
+
+  /* PRINT: odstranit linku v posledním sloupci SKÓRE */
+  td.col-score::after{
+    content: none !important;
+    border: 0 !important;
+  }
+  table.schedule td{
+    padding-top: 12pt !important;
+    padding-bottom: 12pt !important;
+  }
+  /* ať je prázdné skóre hezky vysoké i bez čáry */
+  td.col-score{
+    height: 22pt !important;
+  }
+
+  #tbl-rozpis-nedele thead th{
+    font-weight: 800 !important;
+  }
+
+  #tbl-rozpis-nedele thead th:nth-child(3),
+  #tbl-rozpis-nedele thead th:nth-child(4){
+    font-weight: 800 !important;
+  }
 }

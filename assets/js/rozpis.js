@@ -316,7 +316,8 @@ const fillTable = (tableId, rows, renderRow) => {
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
       <td>${r.skupina ?? "—"}</td>
-      <td>${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-score"></td>
     `;
   });
 
@@ -333,7 +334,8 @@ const fillTable = (tableId, rows, renderRow) => {
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
       <td>${r.skupina ?? "—"}</td>
-      <td>${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-score"></td>
     `;
   });
 
@@ -351,7 +353,8 @@ const fillTable = (tableId, rows, renderRow) => {
       <td>${pillHtml(r.hala)}</td>
       <td>${r.faze ?? "—"}</td>
       <td>${matchHtml(r)}</td>
-      <td>${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-score"></td>
     `;
   });
 }
@@ -706,3 +709,35 @@ function renderLinks({ matchId, tvcomUrl }) {
     </span>
   `;
 }
+
+(function () {
+  const tbl = document.querySelector("#tbl-rozpis-nedele");
+  if (!tbl) return;
+
+  // swap 3rd and 4th cells in each row (FÁZE <-> ZÁPAS)
+  function swapCols() {
+    tbl.querySelectorAll("tr").forEach(tr => {
+      const cells = tr.querySelectorAll("th, td");
+      if (cells.length < 4) return;
+      const a = cells[2];
+      const b = cells[3];
+      const aNext = a.nextSibling;
+      tr.insertBefore(b, a);
+      tr.insertBefore(a, aNext); // keeps order swapped
+    });
+  }
+
+  // run only for print lifecycle
+  window.addEventListener("beforeprint", () => {
+    // prevent double swap if browser fires beforeprint twice
+    if (tbl.dataset.swapped === "1") return;
+    swapCols();
+    tbl.dataset.swapped = "1";
+  });
+
+  window.addEventListener("afterprint", () => {
+    if (tbl.dataset.swapped !== "1") return;
+    swapCols(); // swap back
+    delete tbl.dataset.swapped;
+  });
+})();

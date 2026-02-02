@@ -148,16 +148,17 @@
 
 <!-- Pátek -->
 <section class="card" data-day="patek" data-date="2026-04-24">
-  <h2 class="h2">Pátek 24. dubna – skupiny</h2>
+  <h2 class="h2" data-print-title="Pátek 24. dubna">Pátek 24. dubna – skupiny</h2>
 
   <div class="tablewrap">
     <table class="schedule" id="tbl-rozpis-patek">
       <colgroup>
-        <col style="width: 130px;">
-        <col style="width: 140px;">
-        <col>
-        <col style="width: 90px;">
-        <col style="width: 110px;">
+        <col class="col-time" style="width: 130px;">
+        <col class="col-hall" style="width: 140px;">
+        <col class="col-match">
+        <col class="col-group" style="width: 300px;">
+        <col class="col-links" style="width: 90px;">
+        <col class="col-score" style="width: 0px;">
       </colgroup>
       <thead>
         <tr>
@@ -165,7 +166,8 @@
           <th>Hala</th>
           <th>Zápas</th>
           <th>Skupina</th>
-          <th>Odkazy</th>
+          <th class="col-links">Odkazy</th>
+          <th class="col-score">Skóre</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -175,16 +177,17 @@
 
 <!-- Sobota -->
 <section class="card" data-day="sobota"  data-date="2026-04-25">
-  <h2 class="h2">Sobota 25. dubna – skupiny</h2>
+  <h2 class="h2" data-print-title="Sobota 25. dubna">Sobota 25. dubna – skupiny</h2>
 
   <div class="tablewrap">
     <table class="schedule" id="tbl-rozpis-sobota">
       <colgroup>
-        <col style="width: 130px;">
-        <col style="width: 140px;">
-        <col>
-        <col style="width: 90px;">
-        <col style="width: 110px;">
+        <col class="col-time" style="width: 130px;">
+        <col class="col-hall" style="width: 140px;">
+        <col class="col-match">
+        <col class="col-group" style="width: 300px;">
+        <col class="col-links" style="width: 90px;">
+        <col class="col-score" style="width: 0px;">
       </colgroup>
       <thead>
         <tr>
@@ -192,7 +195,8 @@
           <th>Hala</th>
           <th>Zápas</th>
           <th>Skupina</th>
-          <th>Odkazy</th>
+          <th class="col-links">Odkazy</th>
+          <th class="col-score">Skóre</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -202,7 +206,7 @@
 
 <!-- Neděle -->
 <section class="card" data-day="nedele" data-date="2026-04-26">
-  <h2 class="h2">Neděle 26. dubna – play-off</h2>
+  <h2 class="h2" data-print-title="Neděle 26. dubna">Neděle 26. dubna – play-off</h2>
 
   <p class="muted">
     Play-off rozpis se doplní podle pořadí ve skupinách. Jakmile budou známé výsledky, přidáme konkrétní zápasy.
@@ -211,11 +215,12 @@
   <div class="tablewrap" style="margin-top:12px;">
     <table class="schedule" id="tbl-rozpis-nedele">
       <colgroup>
-        <col style="width: 130px;">
-        <col style="width: 140px;">
-        <col style="width: 180px;">
-        <col>
-        <col style="width: 110px;">
+        <col class="col-time" style="width: 130px;">
+        <col class="col-hall" style="width: 140px;">
+        <col class="col-match">
+        <col class="col-group" style="width: 300px;">
+        <col class="col-links" style="width: 90px;">
+        <col class="col-score" style="width: 0px;">
       </colgroup>
       <thead>
         <tr>
@@ -223,7 +228,8 @@
           <th>Hala</th>
           <th>Fáze</th>
           <th>Zápas</th>
-          <th>Odkazy</th>
+          <th class="col-links">Odkazy</th>
+          <th class="col-score">Skóre</th>
         </tr>
       </thead>
       <tbody></tbody>

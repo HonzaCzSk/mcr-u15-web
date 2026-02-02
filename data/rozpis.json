@@ -3,13 +3,13 @@
     {
       "cas": "09:00",
       "hala": 1,
-      "zapas": "Tým A1 – Tým A2",
+      "zapas": "Sokol Hradec Králové – USK Praha",
       "skupina": "A"
     },
     {
       "cas": "10:30",
       "hala": 2,
-      "zapas": "Tým B1 – Tým B2",
+      "zapas": "BK Sadská – Žabiny Brno",
       "skupina": "B"
     }
   ],
@@ -31,26 +31,26 @@
     {
       "cas": "09:00",
       "hala": 1,
-      "faze": "SF",
+      "faze": "Semifinále",
       "zapas": "A1 – B2"
     },
     {
       "cas": "10:45",
       "hala": 2,
-      "faze": "SF",
+      "faze": "Semifinále",
       "zapas": "B1 – A2"
     },
     {
       "cas": "13:00",
       "hala": 1,
       "faze": "3. místo",
-      "zapas": "Poražený SF1 – Poražený SF2"
+      "zapas": "SF1 – SF2"
     },
     {
       "cas": "15:00",
       "hala": 1,
       "faze": "Finále",
-      "zapas": "Vítěz SF1 – Vítěz SF2"
+      "zapas": "SF1 – SF2"
     }
   ]
 }
