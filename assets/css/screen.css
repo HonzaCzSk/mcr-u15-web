@@ -1,0 +1,133 @@
+@media (prefers-reduced-motion: reduce){
+  table.schedule.results tr.is-live,
+  table.schedule.results tr.is-live td.score::before{
+    animation: none !important;
+  }
+}
+
+@media (min-width: 701px){
+  .menu{ display:none !important; }
+}
+
+@media (max-width: 900px){
+  .hero{ grid-template-columns: 1fr; }
+  .grid{ grid-template-columns: 1fr; }
+  .h1{ font-size: 28px; }
+  .nav__item{ font-size: 13px; padding: 12px 6px; }
+  .teammeta{ grid-template-columns: 1fr; }
+  .gallery{ grid-template-columns: repeat(2, 1fr); }
+  .partners__row{ grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 700px){
+  .nav{ display:none; }
+  .toplinks{ display:none; }
+  .menubtn{ display:inline-flex; }
+}
+
+@media (max-width: 600px){
+  .topbar__inner{ padding: 10px 0; }
+  .nav__item{ padding: 9px 9px; font-size: 12px; }
+  .h1{ font-size: 24px; }
+  .btn{ width: 100%; }
+  .footer__bar{ justify-content: center; }
+  .gallery{ grid-template-columns: 1fr; }
+  .footer__bar{
+    flex-direction: column;
+    gap: 12px;
+  }
+    .topbar__inner{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .schedule th,
+  .schedule td{
+    padding: 14px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 600px){
+  .footer__bar{
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  .socialbar{
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 700px){
+  .scorewrap--stack .scorewrap__total{ font-size: 26px; }
+  .scorewrap--stack .qscore__head{
+    grid-template-columns: repeat(4, 38px);
+    gap: 6px;
+  }
+  .scorewrap--stack .qscore__rows{
+    grid-template-columns: 80px repeat(4, 38px);
+    gap: 6px;
+  }
+  .scorewrap--stack .qscore__box{
+    width: 38px;
+    height: 32px;
+    border-radius: 11px;
+  }
+}
+
+@media (min-width: 901px){
+  .day-switch{ display:none; }
+
+}
+
+@media screen{
+  col.col-score{ width: 0 !important; }
+  th.col-score, td.col-score{ display: none !important; }
+
+  /* ODKAZY doprava */
+  th.col-links, td.col-links{
+    text-align: right !important;
+    white-space: nowrap;
+  }
+
+  th.col-links {
+    padding-right: 20px;
+  }
+
+  td.col-links .matchlinks{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
+
+@media screen {
+  .schedule th:first-child,
+  .schedule td:first-child{
+    width: 120px;
+    min-width: 110px;
+    white-space: nowrap;
+  }
+
+  #tbl-rozpis-patek col:first-child,
+  #tbl-rozpis-sobota col:first-child,
+  #tbl-rozpis-nedele col:first-child{
+    width: 130px !important;
+  }
+
+    /* ČAS: nikdy ne tučně (hlavně u prvního/next/live řádku) */
+  #tbl-rozpis-patek td:first-child,
+  #tbl-rozpis-sobota td:first-child,
+  #tbl-rozpis-nedele td:first-child,
+  td.col-time,
+  th.col-time {
+    font-weight: 400 !important;
+    font-size: 9pt !important;
+    letter-spacing: 0 !important;
+  }
+
+    table.schedule:not(.results) tr.is-next td:first-child {
+    font-weight: 400 !important;
+  }
+}
