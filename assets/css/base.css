@@ -1948,6 +1948,10 @@ table.standings td.team{
   line-height: 1.15;
 }
 
+/* TABULKA: mezera mezi play-off a skupinami */
+.page-tabulka #playoff-section { 
+  margin-top: 24px; 
+}
 
 /* =========================
    TABLE POSITION COLUMN
@@ -1959,4 +1963,36 @@ table.standings td:first-child{
   text-align: center;
   font-weight: 800;
   color: var(--muted);
+}
+
+/* ===== PLAYOFF: zabránit layout shift (winner nesmí měnit výšku) ===== */
+
+/* Každý řádek týmu má pevnou výšku a text newrapuje */
+.playoff-grid .game .teamline{
+  min-height: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.playoff-grid .game .teamname{
+  display: block;
+  line-height: 24px;
+  white-space: nowrap;         /* žádné zalamování = stabilní výška */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Winner: ZRUŠ padding/background které mění layout, highlight udělej bez změny rozměrů */
+:root:not([data-theme="dark"]) .playoff-grid .game .winner{
+  padding: 0;                  /* klíč: žádný padding */
+  background: transparent;     /* klíč: žádný background blok */
+  border-radius: 0;
+  box-shadow: inset 0 -10px 0 rgba(0,0,0,.03);  /* “pill” efekt bez změny layoutu */
+}
+
+/* Dark můžeš nechat jen barevně */
+:root[data-theme="dark"] .playoff-grid .game .winner{
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
 }

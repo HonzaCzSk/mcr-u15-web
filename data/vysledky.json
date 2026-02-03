@@ -1,131 +1,115 @@
 {
-  "updated": "2026-02-03T11:21:00+01:00",
-  "games": {
-    "G01": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "G02": {
+  "updated": "2026-02-03T12:00:00+01:00",
+
+  "zapasy": [
+    {
+      "id": "G01",
+      "skupina": "A",
       "stav": "FINAL",
-      "skore": "1 : 99",
-      "quarters": [
-        [10, 12],
-        [21, 24],
-        [35, 40],
-        [50, 49]
-      ],
-      "note": ""
+      "zapas": "Tým Alpha - Tým Bravo",
+      "skore": "72:65"
     },
-    "G03": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "G02",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Charlie - Tým Delta",
+      "skore": "68:68"
     },
-    "G04": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "G03",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Alpha - Tým Charlie",
+      "skore": "80:70"
     },
-    "G05": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "G04",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Bravo - Tým Delta",
+      "skore": "60:75"
     },
-    "G06": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+
+    {
+      "id": "G05",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Echo - Tým Foxtrot",
+      "skore": "66:59"
     },
-    "G07": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "G06",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Golf - Tým Hotel",
+      "skore": "71:71"
     },
-    "G08": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "G07",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Echo - Tým Golf",
+      "skore": "78:82"
     },
-    "G09": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "G08",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Foxtrot - Tým Hotel",
+      "skore": "64:70"
     },
-    "G10": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+
+    {
+      "id": "QF1",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "1A - 4B",
+      "skore": "85:60"
     },
-    "G11": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "QF2",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "2A - 3B",
+      "skore": "77:73"
     },
-    "G12": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "QF3",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "1B - 4A",
+      "skore": "69:71"
     },
-    "QF1": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "QF4",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "2B - 3A",
+      "skore": "88:81"
     },
-    "QF2": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+
+    {
+      "id": "SF1",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "W QF1 - W QF2",
+      "skore": "90:78"
     },
-    "QF3": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+    {
+      "id": "SF2",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "W QF3 - W QF4",
+      "skore": "75:80"
     },
-    "QF4": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "SF1": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "SF2": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "S5_1": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "S5_2": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "M7": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "M5": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "M3": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
-    },
-    "FIN": {
-      "stav": "SCHEDULED",
-      "skore": "—",
-      "note": ""
+
+    {
+      "id": "F",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "W SF1 - W SF2",
+      "skore": "82:79"
     }
-  }
+  ]
 }

@@ -85,7 +85,9 @@ function buildBracket(matches) {
       slot.homePts = score.home;
       slot.awayPts = score.away;
       slot.score = `${score.home}:${score.away}`;
-      slot.winnerSide = score.home > score.away ? "home" : "away";
+      slot.winnerSide = score.home > score.away ? "home" :
+      score.home < score.away ? "away" :
+      null;
     }
   });
 
@@ -174,17 +176,30 @@ function renderRound(name, games) {
   `;
 }
 
+function resolveSeedLabel(label) {
+  const seeds = window.__PLAYOFF_SEEDS__ || {};
+  if (!label) return label;
+
+  // Replace only pure seeds like "1A", "4B"
+  if (/^\d[AB]$/i.test(label.trim())) {
+    return seeds[label.trim().toUpperCase()] || label;
+  }
+  return label;
+}
+
 function renderGame(g) {
-  const home = g.homeResolved ?? g.home;
-  const away = g.awayResolved ?? g.away;
+  const homeRaw = g.homeResolved ?? g.home;
+  const awayRaw = g.awayResolved ?? g.away;
 
-  const winner = g.winnerResolved || null;
+  const home = resolveSeedLabel(homeRaw);
+  const away = resolveSeedLabel(awayRaw);
+
   const isPlayed = !!g.score;
-
   const cls = ["game", isPlayed ? "game-played" : "game-upcoming"].join(" ");
 
-  const homeClass = winner === home ? "teamname winner" : "teamname";
-  const awayClass = winner === away ? "teamname winner" : "teamname";
+  // highlight podle winnerSide (ne podle textu)
+  const homeClass = g.winnerSide === "home" ? "teamname winner" : "teamname";
+  const awayClass = g.winnerSide === "away" ? "teamname winner" : "teamname";
 
   return `
     <div class="${cls}">
