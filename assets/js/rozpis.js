@@ -1,5 +1,8 @@
 console.log("rozpis.js loaded");
+const ROZPIS_URL = "../data/rozpis.json";
+const ROZPIS_BACKUP_URL = "../data/rozpis.backup.json";
 const DEBUG_MODE = new URLSearchParams(window.location.search).get("debug") === "1";
+let DEBUG_TIME = null;
 const LS_KEY = "mcr_u15_rozpis_cache_v1";
 let originalData = null;
 let currentFilter = ""; // "" = Všechny týmy
@@ -16,7 +19,8 @@ const DAY_DATE = {
   nedele: "2026-04-26",
 };
 let ACTIVE_DAY = null;
-
+const LIVE_WINDOW_MIN = 120;  // jak dlouho po startu bereme zápas jako "live"
+const NEXT_WINDOW_MIN = 60;  // jak dlouho dopředu bereme zápas jako "next"
 
 function setStatus(msg, type = "info") {
   const el = document.getElementById("data-status");
@@ -241,6 +245,7 @@ const fillTable = (tableId, rows, renderRow) => {
 
   const isRealTournamentDay = dayDate && realIso === dayDate;
   const allowLive = DEBUG_MODE || isRealTournamentDay;
+  const nextWindow = allowLive ? NEXT_WINDOW_MIN : 24 * 60; // mimo turnajový den ukaž DALŠÍ kdykoliv v rámci dne
 
   // referenční čas:
   // - debug: "jako kdyby" byl aktivní den
@@ -250,11 +255,16 @@ const fillTable = (tableId, rows, renderRow) => {
   if (dayDate) {
     const [Y, M, D] = dayDate.split("-").map(Number);
     if (![Y, M, D].some(Number.isNaN)) {
-      if (allowLive) {
+
+      if (DEBUG_MODE && DEBUG_TIME) {
+        const [h, m] = DEBUG_TIME.split(":").map(Number);
+        nowRef = new Date(Y, M - 1, D, h, m, 0, 0);
+      } else if (allowLive) {
         nowRef = new Date(Y, M - 1, D, realNow.getHours(), realNow.getMinutes(), 0, 0);
       } else {
         nowRef = new Date(Y, M - 1, D, 0, 0, 0, 0);
       }
+
     }
   }
 
@@ -271,20 +281,23 @@ const fillTable = (tableId, rows, renderRow) => {
   const hasLive =
     (dayKey === ACTIVE_DAY) &&
     allowLive &&
-    safeRows.some(r => isMatchLive(r?.cas, dayDate, 60, nowRef));
+    safeRows.some(r => isMatchLive(r?.cas, dayDate, LIVE_WINDOW_MIN, nowRef));
 
-  let nextIdx = -1;
-  if (dayKey === ACTIVE_DAY && !hasLive) {
-    let bestDelta = Infinity;
+  let nextTimeMin = null;
+  let bestDelta = Infinity;
 
-    safeRows.forEach((r, idx) => {
+  if (dayKey === ACTIVE_DAY) {
+    safeRows.forEach((r) => {
       const m = toMin(r?.cas);
       if (m == null) return;
 
+      // ignoruj LIVE
+      if (allowLive && isMatchLive(r?.cas, dayDate, LIVE_WINDOW_MIN, nowRef)) return;
+
       const delta = m - nowMin;
-      if (delta > 0 && delta < bestDelta) {
+      if (delta > 0 && delta <= nextWindow && delta < bestDelta) {
         bestDelta = delta;
-        nextIdx = idx;
+        nextTimeMin = m;
       }
     });
   }
@@ -292,9 +305,11 @@ const fillTable = (tableId, rows, renderRow) => {
   safeRows.forEach((r, idx) => {
     const tr = document.createElement("tr");
 
-  if (dayKey === ACTIVE_DAY && allowLive && isMatchLive(r?.cas, dayDate, 60, nowRef)) {
+  const rowMin = toMin(r?.cas);
+
+  if (dayKey === ACTIVE_DAY && allowLive && isMatchLive(r?.cas, dayDate, LIVE_WINDOW_MIN, nowRef)) {
     tr.classList.add("is-live");
-  } else if (idx === nextIdx) {
+  } else if (dayKey === ACTIVE_DAY && nextTimeMin != null && rowMin === nextTimeMin) {
     tr.classList.add("is-next");
   }
 
@@ -741,3 +756,13 @@ function renderLinks({ matchId, tvcomUrl }) {
     delete tbl.dataset.swapped;
   });
 })();
+
+window.debugNow = function (hhmm) {
+  if (!/^\d{2}:\d{2}$/.test(hhmm)) {
+    console.warn("Použij formát HH:MM");
+    return;
+  }
+  DEBUG_TIME = hhmm;
+  console.log("[DEBUG] Simulovaný čas:", hhmm);
+  renderRozpis(window.originalData);
+};

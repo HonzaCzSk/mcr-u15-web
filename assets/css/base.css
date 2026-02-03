@@ -1110,6 +1110,60 @@ tr.is-live td:first-child::after{
 #btnLive[disabled]{ opacity:.5; cursor:not-allowed; }
 tr.is-next{ background: rgba(59,130,246,.08); outline: 1px solid rgba(59,130,246,.25); }
 
+/* ========== ROZPIS: LIVE / NEXT highlight ========== */
+
+/* DALŠÍ zápas */
+table.schedule:not(.results) tbody tr.is-next{
+  background: rgba(59,130,246,.10);
+  outline: 1px solid rgba(59,130,246,.25);
+}
+
+table.schedule:not(.results) tbody tr.is-next td:first-child::after{
+  content: "DALŠÍ";
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563eb;
+  border: 1px solid rgba(37,99,235,.4);
+  border-radius: 999px;
+}
+
+/* LIVE: lehké červené podbarvení řádku */
+table.schedule:not(.results) tbody tr.is-live{
+  background: rgba(239, 68, 68, .10);
+  outline: 1px solid rgba(239, 68, 68, .18);
+}
+
+/* LIVE: levý pruh u času */
+table.schedule:not(.results) tbody tr.is-live td:first-child{
+  border-left: 4px solid rgba(220, 38, 38, .65);
+  padding-left: 10px;
+}
+
+/* LIVE badge (pulzovat klidně může) */
+table.schedule:not(.results) tbody tr.is-live td:first-child::after{
+  content: "LIVE";
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .3px;
+  color: #dc2626;
+  border: 1px solid rgba(220,38,38,.4);
+  border-radius: 999px;
+  vertical-align: middle;
+  animation: livePulse 1.2s infinite;
+}
+
+/* NEXT: nech jak máš, jen sjednotím selektor */
+table.schedule:not(.results) tbody tr.is-next{
+  background: rgba(59,130,246,.08);
+  outline: 1px solid rgba(59,130,246,.25);
+}
+
 /* Rozpis: sloupec ČAS musí pojmout i LIVE badge */
 .schedule th:first-child,
 .schedule td:first-child{
@@ -1132,16 +1186,16 @@ tr.is-next{ background: rgba(59,130,246,.08); outline: 1px solid rgba(59,130,246
   animation: none !important;
 }
 
-/* STOP: v ROZPISU nikdy nebliká celý řádek (ponecháme jen badge pulz) */
+/* STOP: v ROZPISU nikdy nebliká celý řádek (ponecháme jen badge pulz)
 table.schedule:not(.results) tr.is-live{
   animation: none !important;
 }
 
 table.schedule:not(.results) tr.is-live td:first-child::after{
   animation: none !important;
-}
+} */
 
-/* ROZPIS: LIVE nesmí barvit celý řádek (jen badge u času) */
+/* ROZPIS: LIVE nesmí barvit celý řádek (jen badge u času)
 table.schedule:not(.results) tr.is-live{
   background: transparent !important;
   outline: none !important;
@@ -1150,6 +1204,16 @@ table.schedule:not(.results) tr.is-live{
 table.schedule:not(.results) tr.is-live{
   background: transparent !important;
   outline: none !important;
+} */
+
+table.schedule:not(.results) tbody tr.is-live{
+  background: rgba(239,68,68,.08);
+}
+
+
+table.schedule:not(.results) tbody tr.is-live td:first-child{
+  border-left: 4px solid rgba(220, 38, 38, .65);
+  padding-left: 10px;
 }
 
 table.schedule:not(.results) tr.is-live td:first-child{
