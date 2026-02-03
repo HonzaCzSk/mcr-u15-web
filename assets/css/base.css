@@ -315,7 +315,7 @@ body{
 .schedule td:nth-child(3){ white-space: normal; }
 
 /* Results helper */
-.results .score{ font-weight: 950; }
+.results .score{ font-weight: 400; }
 
 /* Pills (Hala) */
 .pill{
@@ -375,6 +375,18 @@ tr.is-live{
 tr.is-live td.score{
   font-weight: 800;
 }
+
+/* Výsledky/rozpis – skóre: sjednotit výšku řádku */
+td.score{
+  display: table-cell;     /* vrátí to do normálu */
+  vertical-align: middle;
+  line-height: 1;
+}
+
+td.score > *{
+  line-height: 1;
+}
+
 tr.is-live td.score::before{
   content:"";
   display:inline-block;
@@ -406,6 +418,12 @@ table.schedule.results tr.is-live td.score::before{
   background: red;
   animation: liveDot 1s infinite;
   vertical-align: middle;
+}
+
+table.schedule.results tbody tr.is-focus{
+  outline: 2px solid rgba(59,130,246,.55);
+  background: rgba(59,130,246,.10);
+  box-shadow: 0 0 0 6px rgba(59,130,246,.06);
 }
 
 @keyframes liveDot{
@@ -790,11 +808,18 @@ table.schedule.results td:nth-child(5){
 
 /* Dark: TVCOM zůstane čitelné
 
-/* SKÓRE buňka: nic neschovávat
+/* SKÓRE buňka: nic neschovávat */
 table.schedule.results td.score{
-  overflow: visible;
-  white-space: normal;
-  vertical-align: middle;
+  font-weight: 400;
+}
+
+table.schedule.results td.score .score-main{
+  font-weight: 800;
+}
+
+table.schedule.results td.score .qgrid th,
+table.schedule.results td.score .qgrid td{
+  font-weight: 400;
 }
 
 /* SKÓRE: total nad quarters + centrovat
@@ -1164,13 +1189,13 @@ table.schedule:not(.results) tbody tr.is-next{
   outline: 1px solid rgba(59,130,246,.25);
 }
 
-/* Rozpis: sloupec ČAS musí pojmout i LIVE badge */
-.schedule th:first-child,
-.schedule td:first-child{
+/* Rozpis: sloupec ČAS musí pojmout i LIVE badge
+table.schedule > thead > tr > th:first-child,
+table.schedule > tbody > tr > td:first-child {
   width: 120px;
   min-width: 110px;
   white-space: nowrap;
-}
+} */
 
 /* Přetlač colgroup šířky pro sloupec ČAS */
 #tbl-rozpis-patek col:first-child,
@@ -1530,4 +1555,84 @@ col.col-score { width: 0 !important; }
 /* text vedle tlačítka */
 .livebar__status{
   color: var(--muted);
+}
+
+.score{
+  min-width: 140px;
+}
+
+.score-main{
+  font-weight: 800;
+  font-size: 18px;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+.quarters{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  opacity: .85;
+}
+
+.quarters th,
+.quarters td{
+  text-align: center;
+  padding: 2px 4px;
+  white-space: nowrap;
+}
+
+.quarters thead th{
+  font-weight: 600;
+  opacity: .7;
+}
+
+.quarters{
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  opacity: .85;
+  margin-bottom: 6px; /* důležité: odstup od celkového */
+}
+
+.quarters th,
+.quarters td{
+  text-align: center;
+  padding: 2px 4px;
+}
+
+.quarters thead th{
+  font-weight: 600;
+  opacity: .7;
+}
+
+td.score{
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* mini tabulka čtvrtin ve výsledcích */
+.qgrid{
+  width: auto;              /* ať se nesnaží roztáhnout na 100% */
+  margin: 0 auto 6px;       /* vycentrovat v buňce */
+  border-collapse: collapse;
+  font-size: 12px;
+  opacity: .85;
+}
+
+.qgrid th,
+.qgrid td{
+  padding: 2px 8px;         /* větší spacing mezi Q1–Q4 */
+  text-align: center;
+  white-space: nowrap;
+}
+
+.qgrid thead th{
+  font-weight: 600;
+  opacity: .7;
+}
+
+.score-main{
+  font-size: 18px;
+  text-align: center;
 }

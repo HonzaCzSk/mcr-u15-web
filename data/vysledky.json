@@ -1,33 +1,131 @@
 {
-  "updated": "1.2.2026 3:30",
-
-  "patek": [
-    {
-      "cas": "09:00",
-      "hala": 1,
-      "zapas": "Tým A1 – Tým A2",
-      "skore": "68 : 55",
-      "stav": "FIN"
-    }
-  ],
-
-  "sobota": [
-    {
-      "cas": "10:30",
-      "hala": 2,
-      "zapas": "Tým B1 – Tým B2",
+  "updated": "2026-02-03T00:00:00Z",
+  "games": {
+    "G01": {
+      "stav": "SCHEDULED",
       "skore": "—",
-      "stav": "SCHEDULED"
-    }
-  ],
-
-  "playoff": [
-    {
-      "cas": "12:00",
-      "hala": 1,
-      "zapas": "Tým C1 – Tým C2",
+      "note": ""
+    },
+    "G02": {
+      "stav": "FINAL",
+      "skore": "1 : 99",
+      "quarters": [
+        [10, 12],
+        [21, 24],
+        [35, 40],
+        [50, 49]
+      ],
+      "note": ""
+    },
+    "G03": {
+      "stav": "SCHEDULED",
       "skore": "—",
-      "stav": "SCHEDULED"
+      "note": ""
+    },
+    "G04": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G05": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G06": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G07": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G08": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G09": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G10": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G11": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "G12": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "QF1": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "QF2": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "QF3": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "QF4": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "SF1": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "SF2": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "S5_1": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "S5_2": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "M7": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "M5": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "M3": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
+    },
+    "FIN": {
+      "stav": "SCHEDULED",
+      "skore": "—",
+      "note": ""
     }
-  ]
+  }
 }

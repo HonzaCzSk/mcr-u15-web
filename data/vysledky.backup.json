@@ -1,0 +1,15 @@
+{
+  "updated": "2026-02-01T03:30:00Z",
+
+  "patek": [
+    { "cas": "09:00", "hala": 1, "zapas": "Tým A1 – Tým A2", "skore": "68 : 55", "stav": "FIN" }
+  ],
+
+  "sobota": [
+    { "cas": "10:30", "hala": 2, "zapas": "Tým B1 – Tým B2", "skore": "—", "stav": "SCHEDULED" }
+  ],
+
+  "playoff": [
+    { "cas": "12:00", "hala": 1, "faze": "SF", "zapas": "Tým C1 – Tým C2", "skore": "—", "stav": "SCHEDULED" }
+  ]
+}

@@ -103,8 +103,8 @@
 }
 
 @media screen {
-  .schedule th:first-child,
-  .schedule td:first-child{
+  table.schedule > thead > tr > th:first-child,
+  table.schedule > tbody > tr > td:first-child {
     width: 120px;
     min-width: 110px;
     white-space: nowrap;
@@ -129,5 +129,23 @@
 
     table.schedule:not(.results) tr.is-next td:first-child {
     font-weight: 400 !important;
+  }
+
+      /* Zarovnání obsahu sloupce SKÓRE víc doleva */
+  table.schedule.results td.score{
+    text-align: left;        /* místo center */
+    padding-left: 12px;      /* jemný offset pod nadpis SKÓRE */
+  }
+
+  /* Q-grid zarovnat k levému okraji buňky */
+  table.schedule.results td.score .qgrid{
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .score-main
+  {
+    text-align: left;
+    margin-left: 33px;
   }
 }

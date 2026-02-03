@@ -7,6 +7,7 @@ const LS_KEY = "mcr_u15_rozpis_cache_v1";
 let originalData = null;
 let currentFilter = ""; // "" = Všechny týmy
 const TEAM_FILTER_KEY = "mcr_u15_team_filter_v1";
+const CHANGES_KEY = "mcr_u15_rozpis_time_changes_v1";
   const TEAM_IGNORE_PREFIXES = [
   "Vítěz",
   "Poražený",
@@ -72,6 +73,22 @@ function setUpdatedNow() {
     const contentHash = simpleHash(raw);
     if (!isValidRozpis(data)) throw new Error("Invalid rozpis.json structure");
 
+    // === DIFF ZMĚN ČASŮ (BOD 3) ===
+    let prevData = null;
+    try {
+      const cached = JSON.parse(localStorage.getItem(LS_KEY) || "null");
+      prevData = cached?.data || null;
+    } catch (e) {}
+
+    const changes = diffTimeChanges(prevData, data);
+    if (changes.length) {
+      localStorage.setItem(CHANGES_KEY, JSON.stringify({
+        at: Date.now(),
+        changes
+      }));
+    }
+    renderChangesLine(changes);
+
     // uložit jako poslední dobrou verzi
     localStorage.setItem(LS_KEY, JSON.stringify({ savedAt: Date.now(), data }));
     originalData = data;
@@ -92,6 +109,12 @@ function setUpdatedNow() {
     window.originalData = originalData;
 
     renderRozpis(originalData);
+
+    try {
+      const ch = JSON.parse(localStorage.getItem(CHANGES_KEY) || "null");
+      renderChangesLine(ch?.changes || []);
+    } catch (e) {}
+
     initTeamFilter(originalData);
     return;
 
@@ -131,6 +154,12 @@ function setUpdatedNow() {
 
     window.originalData = originalData;
     renderRozpis(originalData);
+
+    try {
+      const ch = JSON.parse(localStorage.getItem(CHANGES_KEY) || "null");
+      renderChangesLine(ch?.changes || []);
+    } catch (e) {}
+
     initTeamFilter(originalData);
     return;
 
@@ -154,6 +183,12 @@ function setUpdatedNow() {
 
       originalData = backup;
       renderRozpis(originalData);
+
+      try {
+        const ch = JSON.parse(localStorage.getItem(CHANGES_KEY) || "null");
+        renderChangesLine(ch?.changes || []);
+      } catch (e) {}
+
       initTeamFilter(originalData);
       return;
 
@@ -207,7 +242,7 @@ function renderRozpis(data) {
     return `${m.zapas ?? "—"}${tv}`;
   };
 
-const fillTable = (tableId, rows, renderRow) => {
+const fillTable = (tableId, rows, renderRow, focusId) => {
   const tbl = document.getElementById(tableId);
   if (!tbl) return;
 
@@ -320,7 +355,7 @@ const fillTable = (tableId, rows, renderRow) => {
 
   // Pátek (skupiny)
   fillTable("tbl-rozpis-patek", data.patek, (r) => {
-    const matchId = makeMatchId({
+    const matchId = r?.id || makeMatchId({
       dayKey: "patek",
       cas: r?.cas,
       hala: r?.hala,
@@ -338,7 +373,7 @@ const fillTable = (tableId, rows, renderRow) => {
 
   // Sobota (skupiny)
   fillTable("tbl-rozpis-sobota", data.sobota, (r) => {
-    const matchId = makeMatchId({
+    const matchId = r?.id || makeMatchId({
       dayKey: "sobota",
       cas: r?.cas,
       hala: r?.hala,
@@ -356,7 +391,7 @@ const fillTable = (tableId, rows, renderRow) => {
 
   // Neděle (playoff)
   fillTable("tbl-rozpis-nedele", data.nedele, (r) => {
-    const matchId = makeMatchId({
+    const matchId = r?.id || makeMatchId({
       dayKey: "nedele",
       cas: r?.cas,
       hala: r?.hala,
@@ -540,6 +575,64 @@ function simpleHash(str) {
     h = (h * 31 + str.charCodeAt(i)) >>> 0;
   }
   return String(h);
+}
+
+function getRowKey(dayKey, r) {
+  // Ideál: stabilní id v rozpis.json
+  if (r?.id) return String(r.id);
+
+  // Fallback: klíč z obsahu (méně stabilní, ale funguje bez id)
+  return `${dayKey}|${r?.zapas ?? ""}|${r?.hala ?? ""}|${r?.skupina ?? r?.faze ?? ""}`;
+}
+
+function buildTimeIndex(data) {
+  const idx = new Map();
+  ["patek", "sobota", "nedele"].forEach((dayKey) => {
+    const rows = Array.isArray(data?.[dayKey]) ? data[dayKey] : [];
+    rows.forEach((r) => {
+      idx.set(getRowKey(dayKey, r), { dayKey, cas: r?.cas ?? "—", hala: r?.hala ?? "—", zapas: r?.zapas ?? "—" });
+    });
+  });
+  return idx;
+}
+
+function diffTimeChanges(prevData, newData) {
+  if (!prevData || !newData) return [];
+
+  const a = buildTimeIndex(prevData);
+  const b = buildTimeIndex(newData);
+  const changes = [];
+
+  for (const [key, nb] of b.entries()) {
+    const pa = a.get(key);
+    if (!pa) continue;
+
+    if (pa.cas !== nb.cas) {
+      changes.push({
+        day: nb.dayKey,
+        zapas: nb.zapas,
+        hala: nb.hala,
+        from: pa.cas,
+        to: nb.cas
+      });
+    }
+  }
+  return changes;
+}
+
+function renderChangesLine(changes) {
+  const el = document.getElementById("changes");
+  if (!el) return;
+
+  if (!changes || changes.length === 0) {
+    el.textContent = "bez změn";
+    return;
+  }
+
+  // max 3 změny do řádku, zbytek jako +N
+  const parts = changes.slice(0, 3).map(c => `${c.from}→${c.to} (${c.hala})`);
+  const more = changes.length > 3 ? ` +${changes.length - 3}` : "";
+  el.textContent = parts.join(", ") + more;
 }
 
 function formatUpdatedHuman(dateInput) {
@@ -766,3 +859,7 @@ window.debugNow = function (hhmm) {
   console.log("[DEBUG] Simulovaný čas:", hhmm);
   renderRozpis(window.originalData);
 };
+
+function getMatchFromUrl(){
+  return new URLSearchParams(location.search).get("match");
+}
