@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="language" content="cs">
+  <meta name="author" content="Pořadatel MČR U15">
+  <meta name="robots" content="index, follow">
+
+  <title>MČR U15 – Tabulka</title>
+  <meta name="description" content="Tabulky skupin MČR U15 – dívky.">
+
+  <link rel="canonical" href="https://www.mcr-u15.cz/pages/tabulka.html">
+
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
+
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/screen.css" media="screen">
+  <link rel="stylesheet" href="../assets/css/dark.css">
+  <link rel="stylesheet" href="../assets/css/print.css" media="print">
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="topbar">
+  <div class="wrap topbar__inner">
+    <div class="brand">
+      <span class="brand__dot"></span>
+      <a class="brand__name" href="../index.html">MČR U15</a>
+    </div>
+
+    <div class="topright">
+      <div class="toplinks">
+        <a href="https://www.cbf.cz/" target="_blank" rel="noopener">CZ.BASKETBALL</a>
+        <a href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener">Hradecké lvice</a>
+      </div>
+
+      <button class="themebtn" id="themeToggle" type="button" aria-label="Přepnout motiv">
+        DARK
+      </button>
+
+      <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">
+        ☰
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE MENU OVERLAY -->
+<div class="menu" id="mobileMenu" aria-hidden="true">
+  <div class="menu__backdrop" data-close></div>
+
+  <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+    <div class="menu__head">
+      <div class="menu__title">Menu</div>
+      <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
+      <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
+    </div>
+
+    <div class="menu__links">
+      <a class="menu__link" href="../index.html">Úvod</a>
+      <a class="menu__link" href="rozpis.html">Rozpis</a>
+      <a class="menu__link" href="vysledky.html">Výsledky</a>
+      <a class="menu__link" href="tabulka.html">Tabulka</a>
+      <a class="menu__link" href="tymy.html">Týmy</a>
+      <a class="menu__link" href="info.html">Info</a>
+      <a class="menu__link" href="fotky.html">Fotky</a>
+    </div>
+  </div>
+</div>
+
+<!-- Main nav -->
+<nav class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__item" href="../index.html">Úvod</a>
+    <a class="nav__item" href="rozpis.html">Rozpis</a>
+    <a class="nav__item" href="vysledky.html">Výsledky</a>
+    <a class="nav__item is-active" href="tabulka.html">Tabulka</a>
+    <a class="nav__item" href="tymy.html">Týmy</a>
+    <a class="nav__item" href="info.html">Info</a>
+    <a class="nav__item" href="fotky.html">Fotky</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header class="pagehead">
+    <h1 class="h1">Tabulka</h1>
+    <p class="lead">Poslední aktualizace: <span id="updated">—</span></p>
+  </header>
+
+  <section id="playoff-section" class="panel" style="margin-bottom:14px;">
+    <!-- tabulka.js sem dá placeholder / nasazení -->
+  </section>
+
+  <section id="groups-section">
+    <h2 class="h2">Skupina A</h2>
+    <div class="tablewrap">
+      <table id="tbl-standings-a" class="schedule standings"></table>
+    </div>
+
+    <div style="height:14px;"></div>
+
+    <h2 class="h2">Skupina B</h2>
+    <div class="tablewrap">
+      <table id="tbl-standings-b" class="schedule standings"></table>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <!-- footer nechávám stejný styl jako na indexu, jen cesty ../ -->
+    <div class="partners">
+      <div class="partners__title">Partneři turnaje</div>
+
+      <div class="partners__row">
+        <a class="partner" href="#" aria-label="Hlavní partner">
+          <img src="../assets/img/partners/partner-main.svg" alt="Hlavní partner" loading="lazy">
+        </a>
+
+        <a class="partner" href="#" aria-label="Partner">
+          <img src="../assets/img/partners/partner-1.svg" alt="Partner" loading="lazy">
+        </a>
+
+        <a class="partner" href="#" aria-label="Partner">
+          <img src="../assets/img/partners/partner-2.svg" alt="Partner" loading="lazy">
+        </a>
+
+        <a class="partner" href="#" aria-label="Partner">
+          <img src="../assets/img/partners/partner-3.svg" alt="Partner" loading="lazy">
+        </a>
+      </div>
+
+      <div class="partners__note">
+        Partneři turnaje budou zveřejněni přibližně dva týdny před zahájením akce.
+      </div>
+    </div>
+
+    <div class="footer__inner">
+      <div class="footer__left">© MČR U15 – Hradec Králové</div>
+
+      <div class="socialbar" aria-label="Odkazy">
+        <a class="socialbtn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+          <img src="../assets/img/social/instagram.svg" onerror="this.style.display='none'" alt="Instagram">
+        </a>
+        <a class="socialbtn socialbtn--tvcom" href="https://www.tvcom.cz/" target="_blank" rel="noopener" aria-label="TVcom">
+          <img src="../assets/img/social/tvcom.svg" alt="TVcom">
+        </a>
+        <a class="socialbtn" href="https://www.cbf.cz/" target="_blank" rel="noopener" aria-label="ČBF">
+          <img src="../assets/img/social/cbf.svg" onerror="this.style.display='none'" alt="ČBF">
+        </a>
+        <a class="socialbtn" href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener" aria-label="Hradecké lvice">
+          <img src="../assets/img/social/lvice.svg" onerror="this.style.display='none'" alt="Hradecké lvice">
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/tabulka.js" defer></script>
+<script src="../assets/js/playoff.js" defer></script>
+<script src="../assets/js/theme.js"></script>
+<script src="../assets/js/menu.js"></script>
+
+</body>
+</html>

@@ -96,9 +96,9 @@ function setUpdatedNow() {
 
     const upd = document.getElementById("updated");
     if (upd) {
-      if (data.updated) {
-        // když si chceš někdy ručně přepsat, pořád to jde
-        upd.textContent = formatUpdatedHuman(data.updated);
+      const updatedValue = data.updated ?? data.update ?? null;
+      if (updatedValue) {
+        upd.textContent = formatUpdatedHuman(updatedValue);
       } else if (lastMod) {
         upd.textContent = formatUpdatedHuman(lastMod);
       } else {
@@ -147,9 +147,9 @@ function setUpdatedNow() {
 
       const upd = document.getElementById("updated");
       if (upd) {
-    upd.textContent = formatUpdatedHuman(
-      data.updated || effectiveUpdated
-    );
+        upd.textContent = formatUpdatedHuman(
+          data.updated || data.update || effectiveUpdated
+        );
   }
 
     window.originalData = originalData;
@@ -179,7 +179,7 @@ function setUpdatedNow() {
         setStatus("Zobrazuji záložní rozpis (backup).", "warn");
         // updated z backupu
         const upd2 = document.getElementById("updated");
-        if (upd2) upd2.textContent = backup.updated ?? "—";
+        if (upd2) upd2.textContent = formatUpdatedHuman(backup.updated ?? backup.update ?? "—");
 
       originalData = backup;
       renderRozpis(originalData);
@@ -235,11 +235,7 @@ function renderRozpis(data) {
   };
 
   const matchHtml = (m) => {
-    // tvůj JSON má přímo text v m.zapas
-    const tv = m.tvcom
-      ? ` <a class="muted" href="${m.tvcom}" target="_blank" rel="noopener">TVCOM</a>`
-      : "";
-    return `${m.zapas ?? "—"}${tv}`;
+    return `${m.zapas ?? "—"}`;
   };
 
 const fillTable = (tableId, rows, renderRow, focusId) => {
@@ -425,16 +421,23 @@ function parseTeamsFromMatchText(matchText) {
 function extractTeamsFromSchedule(data) {
   const set = new Set();
 
-  // bereme JEN skupinové dny (pá + so)
+  // bereme JEN skupinové zápasy (skupina A/B), ne Play-off
   ["patek", "sobota"].forEach((dayKey) => {
-    const rows = Array.isArray(data?.[dayKey]) ? data[dayKey] : [];
-    rows.forEach((r) => {
-      parseTeamsFromMatchText(r?.zapas).forEach((team) => {
-        if (TEAM_IGNORE_PREFIXES.some((p) => team.startsWith(p))) return;
-        set.add(team);
-      });
+  const rows = Array.isArray(data?.[dayKey]) ? data[dayKey] : [];
+
+  rows.forEach((r) => {
+    // ✅ jen skupiny A a B
+    if (r?.skupina !== "A" && r?.skupina !== "B") return;
+
+    parseTeamsFromMatchText(r?.zapas).forEach((team) => {
+      if (TEAM_IGNORE_PREFIXES.some((p) => team.startsWith(p))) return;
+      if (/^\d+\s*[AB]$/i.test(team)) return; // 1A, 4B
+      if (/^[WL]\s+/i.test(team)) return;     // W QF1, L SF2
+
+      set.add(team);
     });
   });
+});
 
   return Array.from(set);
 }
@@ -511,7 +514,6 @@ function initTeamFilter(data) {
   if (!select) return;
 
   // naplnit týmy z dat
-  //const teams = extractTeamsFromSchedule(data).sort((a, b) => a.localeCompare(b, "cs"));
   let teams = extractTeamsFromSchedule(data);
   teams = addSampleTeamsIfDebug(teams);
   teams.sort((a, b) => a.localeCompare(b, "cs"));
@@ -641,36 +643,18 @@ function formatUpdatedHuman(dateInput) {
   const d = new Date(dateInput);
   if (isNaN(d)) return "—";
 
-  const now = new Date();
-
-  const isSameDay = (a, b) =>
-    a.getFullYear() === b.getFullYear() &&
-    a.getMonth() === b.getMonth() &&
-    a.getDate() === b.getDate();
-
-  const yesterday = new Date(now);
-  yesterday.setDate(now.getDate() - 1);
-
-  const time = d.toLocaleTimeString("cs-CZ", {
-    hour: "2-digit",
-    minute: "2-digit",
-  });
-
-  if (isSameDay(d, now)) {
-    return `dnes ${time}`;
-  }
-
-  if (isSameDay(d, yesterday)) {
-    return `včera ${time}`;
-  }
-
-  return d.toLocaleString("cs-CZ", {
+  const datePart = d.toLocaleDateString("cs-CZ", {
     day: "numeric",
-    month: "numeric",
+    month: "long",
     year: "numeric",
+  });
+
+  const timePart = d.toLocaleTimeString("cs-CZ", {
     hour: "2-digit",
     minute: "2-digit",
   });
+
+  return `${datePart} ${timePart}`;
 }
 
 // --- Day switcher + Live button (robust) ---
@@ -807,12 +791,15 @@ function makeMatchId({ date, dayKey, cas, hala, phase }) {
 }
 
 function renderLinks({ matchId, tvcomUrl }) {
-  const tv = tvcomUrl || "https://www.tvcom.cz/"; // zatím obecný
   const res = `vysledky.html?match=${encodeURIComponent(matchId)}`;
+
+  const tv = tvcomUrl
+    ? `<a href="${tvcomUrl}" target="_blank" rel="noopener" aria-label="TVCOM stream">📺</a>`
+    : `<span class="muted" aria-hidden="true">📺</span>`;
 
   return `
     <span class="matchlinks">
-      <a href="${tv}" target="_blank" rel="noopener" aria-label="TVCOM stream">📺</a>
+      ${tv}
       <a href="${res}" aria-label="Průběžné výsledky">📊</a>
     </span>
   `;

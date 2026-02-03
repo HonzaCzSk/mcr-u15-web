@@ -1,0 +1,115 @@
+{
+  "updated": "2026-02-03T12:00:00+01:00",
+
+  "zapasy": [
+    {
+      "id": "G01",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Alpha - Tým Bravo",
+      "skore": "72:65"
+    },
+    {
+      "id": "G02",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Charlie - Tým Delta",
+      "skore": "68:68"
+    },
+    {
+      "id": "G03",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Alpha - Tým Charlie",
+      "skore": "80:70"
+    },
+    {
+      "id": "G04",
+      "skupina": "A",
+      "stav": "FINAL",
+      "zapas": "Tým Bravo - Tým Delta",
+      "skore": "60:75"
+    },
+
+    {
+      "id": "G05",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Echo - Tým Foxtrot",
+      "skore": "66:59"
+    },
+    {
+      "id": "G06",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Golf - Tým Hotel",
+      "skore": "71:71"
+    },
+    {
+      "id": "G07",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Echo - Tým Golf",
+      "skore": "78:82"
+    },
+    {
+      "id": "G08",
+      "skupina": "B",
+      "stav": "FINAL",
+      "zapas": "Tým Foxtrot - Tým Hotel",
+      "skore": "64:70"
+    },
+
+    {
+      "id": "QF1",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "1A - 4B",
+      "skore": "85:60"
+    },
+    {
+      "id": "QF2",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "2A - 3B",
+      "skore": "77:73"
+    },
+    {
+      "id": "QF3",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "1B - 4A",
+      "skore": "69:71"
+    },
+    {
+      "id": "QF4",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "2B - 3A",
+      "skore": "88:81"
+    },
+
+    {
+      "id": "SF1",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "W QF1 - W QF2",
+      "skore": "90:78"
+    },
+    {
+      "id": "SF2",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "W QF3 - W QF4",
+      "skore": "75:80"
+    },
+
+    {
+      "id": "F",
+      "skupina": "Play-off",
+      "stav": "FINAL",
+      "zapas": "W SF1 - W SF2",
+      "skore": "82:79"
+    }
+  ]
+}

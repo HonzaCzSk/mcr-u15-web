@@ -20,14 +20,22 @@ function safeArray(x){ return Array.isArray(x) ? x : []; }
 
 function formatUpdatedHuman(dateInput) {
   if (!dateInput) return "—";
+
   const d = new Date(dateInput);
-  if (!isNaN(d)) {
-    return d.toLocaleString("cs-CZ", {
-      day: "numeric", month: "numeric", year: "numeric",
-      hour: "2-digit", minute: "2-digit"
-    });
-  }
-  return String(dateInput);
+  if (isNaN(d)) return "—";
+
+  const datePart = d.toLocaleDateString("cs-CZ", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+
+  const timePart = d.toLocaleTimeString("cs-CZ", {
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+
+  return `${datePart} ${timePart}`;
 }
 
 function setUpdated(text) {
@@ -267,7 +275,9 @@ function buildRowsFromRozpis(rozpis, vysledky){
     const vysledky = vyslRes.data;
 
     // Updated: prefer vysledky.updated, fallback rozpis.updated
-    setUpdated(formatUpdatedHuman(vysledky.updated || rozpis.updated));
+    setUpdated(formatUpdatedHuman(
+      vysledky.updated || vysledky.update || rozpis.updated || rozpis.update
+    ));
 
     const rows = buildRowsFromRozpis(rozpis, vysledky);
     const focusId = getMatchFromUrl();

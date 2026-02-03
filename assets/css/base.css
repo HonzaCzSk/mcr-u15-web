@@ -285,7 +285,7 @@ body{
   width: 100%;
   border-collapse: collapse;
   background: var(--card);
-  table-layout: fixed; /* KEY: aligned columns */
+  table-layout: auto; /* KEY: aligned columns */
 }
 
 .schedule th,
@@ -1635,4 +1635,328 @@ td.score{
 .score-main{
   font-size: 18px;
   text-align: center;
+}
+
+:root{
+  --bracket-bg: rgba(0,0,0,.02);
+  --bracket-border: rgba(0,0,0,.14);
+  --bracket-shadow: 0 8px 24px rgba(0,0,0,.08);
+  --bracket-text-muted: rgba(0,0,0,.55);
+}
+
+
+/* =========================
+   PLAY-OFF bracket (screen)
+   ========================= */
+
+.playoff-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(220px, 1fr));
+  grid-template-rows: repeat(4, auto);
+  column-gap: 24px;
+  row-gap: 16px;
+  align-items: center;
+}
+
+.round h3{
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--bracket-text-muted);
+}
+
+.game .teamname{
+  font-size: 15px;
+}
+
+.game .score{
+  font-size: 14px;
+}
+
+.game .teamname{
+  font-size: 15px;
+}
+
+.game .score{
+  font-size: 14px;
+}
+
+.game{
+  border: 1px solid var(--bracket-border);
+  border-radius: 14px;
+  padding: 8px 10px;
+  background: var(--bracket-bg);
+  min-height: 78px;   /* ↓ bylo moc velké */
+}
+.game{
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 12px;
+  align-items: center;
+}
+
+:root[data-theme="dark"]{
+  --bracket-bg: rgba(255,255,255,.03);
+  --bracket-border: rgba(255,255,255,.18);
+  --bracket-shadow: 0 8px 24px rgba(0,0,0,.35);
+  --bracket-text-muted: rgba(255,255,255,.62);
+}
+
+.game .teamline{
+  display: grid;
+  grid-template-columns: 1fr auto; /* ← jméno má maximum místa */
+  align-items: center;
+  gap: 10px;
+}
+.game .teamline{
+  grid-column: 1;
+}
+
+
+.game .teamname{
+  font-weight: 850;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  line-height: 1.15;
+  color: inherit;
+}
+
+.game .winner{
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:root:not([data-theme="dark"]) .game .winner{
+  background: rgba(0,0,0,.03);
+  padding: 2px 6px;
+  border-radius: 999px;
+}
+
+.game .score{
+  text-align: right;
+  font-weight: 900;
+  font-size: 13px;
+  min-width: 56px;   /* ← kontrola šířky */
+}
+.game .score{
+  grid-column: 2;
+  grid-row: 1 / span 2;   /* score bude vedle obou řádků */
+  align-self: center;
+  text-align: right;
+}
+
+/* sjednotíme spacing: žádné marginy na .game, gap řeší .round */
+.round{
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.round-qf{
+  grid-column: 1;
+  grid-row: 1 / span 4;   /* všechny 4 QF */
+}
+
+.round-sf{
+  grid-column: 2;
+  grid-row: 2 / span 2;   /* mezi QF */
+}
+
+.round-f{
+  grid-column: 3;
+  grid-row: 2 / span 2;   /* centrované vůči SF */
+}
+
+/* ----- PLAYOFF UX STATES ----- */
+
+.game-upcoming{
+  opacity: .70;
+}
+
+.game .score{
+  margin-top: 8px;
+  font-weight: 900;
+  opacity: .9;
+}
+
+:root[data-theme="dark"] .game-played{
+  border-color: rgba(255,255,255,.24);
+}
+
+/* winner highlight */
+.game .winner{
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* jemné zvýraznění odehraného zápasu */
+.game-played{
+  border-color: rgba(255,255,255,.22);
+  background: rgba(255,255,255,.06);
+}
+
+/* budoucí zápas víc “ticho” */
+.game-upcoming{
+  background: rgba(255,255,255,.02);
+}
+
+/* hover (desktop only) */
+@media (hover: hover){
+  .game{
+    transition: transform .15s ease, box-shadow .15s ease;
+  }
+  .game:hover{
+    transform: translateY(-2px);
+    box-shadow: var(--bracket-shadow);
+  }
+}
+
+/* =========================
+   TABLE BASE (standings)
+   ========================= */
+
+:root{
+  --tbl-border: rgba(0,0,0,.14);
+  --tbl-head-bg: rgba(0,0,0,.03);
+  --tbl-row-hover: rgba(0,0,0,.04);
+}
+
+:root[data-theme="dark"]{
+  --tbl-border: rgba(255,255,255,.16);
+  --tbl-head-bg: rgba(255,255,255,.04);
+  --tbl-row-hover: rgba(255,255,255,.05);
+}
+
+/* cílíme přímo na tvoje tabulky v tabulka.html */
+table.standings{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--tbl-border);
+  border-radius: 14px;
+}
+
+table.standings thead th{
+  background: var(--tbl-head-bg);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--tbl-border);
+}
+
+table.standings tbody td{
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--tbl-border);
+  font-weight: 650;
+}
+
+table.standings tbody tr:last-child td{
+  border-bottom: 0;
+}
+
+table.standings tbody tr:hover td{
+  background: var(--tbl-row-hover);
+}
+
+table.standings td.team{
+  font-weight: 900;
+}
+
+.section-card{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 18px;
+  background: var(--card, transparent);
+}
+
+.section-title{
+  margin: 0 0 12px 0;
+  font-size: 22px;
+  font-weight: 950;
+  letter-spacing: .02em;
+}
+
+.tbl{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid var(--tbl-border);
+  border-radius: 14px;
+}
+
+.tbl thead th{
+  background: var(--tbl-head-bg);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .10em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--tbl-border);
+}
+
+.tbl tbody td{
+  padding: 10px 10px;
+  border-bottom: 1px solid var(--tbl-border);
+  font-weight: 650;
+}
+
+.tbl tbody tr:last-child td{
+  border-bottom: 0;
+}
+
+.tbl tbody tr:hover td{
+  background: var(--tbl-row-hover);
+}
+
+.tbl td.team{
+  font-weight: 900;
+}
+
+.tbl td strong{
+  font-weight: 950;
+}
+
+/* Číselné sloupce: úzké, ale nikdy nula */
+table.standings th:not(:nth-child(2)),
+table.standings td:not(:nth-child(2)){
+  white-space: nowrap;
+  width: 1%;
+  min-width: 44px;   /* klíč */
+}
+
+
+/* sloupec TÝM = maximum prostoru */
+table.standings th:nth-child(2),
+table.standings td:nth-child(2){
+  width: auto;
+}
+
+table.standings td.team{
+  white-space: normal;
+  line-height: 1.15;
+}
+
+
+/* =========================
+   TABLE POSITION COLUMN
+   ========================= */
+
+table.standings th:first-child,
+table.standings td:first-child{
+  width: 42px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--muted);
 }

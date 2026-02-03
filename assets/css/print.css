@@ -228,3 +228,67 @@
     word-break: keep-all !important;
   }
 }
+
+@media print {
+
+  /* PLAY-OFF pavouk: v tisku musí být jasné rámečky a žádná opacity */
+  #playoff-section{
+    page-break-inside: avoid;
+  }
+
+  .playoff-grid{
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr !important;
+    grid-template-rows: repeat(4, auto) !important;
+    column-gap: 10mm !important;
+    row-gap: 6mm !important;
+    align-items: center !important;
+  }
+
+  .round{
+    gap: 6mm !important;
+  }
+
+  .round h3{
+    color: #000 !important;
+    font-size: 10pt !important;
+    letter-spacing: .12em !important;
+    margin: 0 0 4mm 0 !important;
+  }
+
+  .game{
+    border: 1px solid #000 !important;
+    background: transparent !important;
+    color: #000 !important;
+    opacity: 1 !important;
+    padding: 4mm 5mm !important;
+    min-height: 0 !important;
+    border-radius: 0 !important; /* v tisku čisté */
+  }
+
+  .game-upcoming,
+  .game-played{
+    opacity: 1 !important; /* zabít zesvětlování */
+  }
+
+  .game .teamname{
+    font-size: 10.5pt !important;
+    font-weight: 700 !important;
+  }
+
+  .game .score{
+    font-size: 10pt !important;
+    font-weight: 700 !important;
+    min-width: 0 !important;
+  }
+
+  /* winner: v tisku žádné šedé pill pozadí, jen podtržení */
+  .game .winner{
+    color: #000 !important;
+    background: transparent !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2pt !important;
+  }
+}
