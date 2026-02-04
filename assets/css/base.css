@@ -435,6 +435,48 @@ table.schedule.results tbody tr.is-focus{
   50%{ background-color: rgba(255,0,0,0); }
 }
 
+/* =========================================
+   TABULKY – WEB (rozpis + výsledky)
+   ========================================= */
+
+/* ČAS – u kraje, centrovaný */
+table.schedule th.col-time,
+table.schedule td.col-time {
+  text-align: left;
+  white-space: nowrap;
+}
+
+/* HALA – u kraje, centrovaná */
+table.schedule th.col-hall,
+table.schedule td.col-hall {
+  text-align: center;
+}
+
+/* ZÁPAS – hlavní obsah, vlevo */
+table.schedule th.col-match,
+table.schedule td.col-match {
+  text-align: center;
+}
+
+/* SKUPINA / FÁZE – střed */
+table.schedule th.col-group,
+table.schedule td.col-group {
+  text-align: center;
+}
+
+/* SKÓRE – střed */
+table.schedule th.col-score,
+table.schedule td.col-score {
+  text-align: center;
+}
+
+/* ODKAZY – doprava (jen rozpis) */
+table.schedule th.col-links,
+table.schedule td.col-links {
+  text-align: right;
+  white-space: nowrap;
+}
+
 /* ----- Teams / lists / photos helpers ----- */
 .stack{ display:grid; gap: 14px; margin: 14px 0 24px; }
 
@@ -747,67 +789,6 @@ table.schedule.results tbody tr.is-focus{
   flex: 0 0 auto;                 /* <- aby se tlačítka nemačkala */
 }
 
-/* Mobil: pod sebe, ale hezky zarovnané */
-
-/* =========================================================
-   RESULTS (vysledky.html) – clean layout (no !important)
-   =========================================================
-
-ZÁPAS: týmy pod sebou
-.match{
-  display: grid;
-  gap: 6px;
-}
-.match__team{
-  font-weight: 950;
-  line-height: 1.15;
-}
-.match__team a{
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-/* STAV: hlavička doprostřed
-table.schedule.results th:nth-child(5){
-  text-align: center;
-}
-
-/* STAV: buňka doprostřed (vertikálně i horizontálně)
-table.schedule.results td:nth-child(5){
-  text-align: center;
-  vertical-align: middle;
-}
-
-/* Wrapper ve STAV buňce
-.statuscell{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  min-height: 100%;
-}
-
-/* TVCOM jako “tlačítko”
-.tvcomlink{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border: 1px solid var(--line);
-  background: rgba(0,0,0,.02);
-  font-weight: 950;
-  font-size: 12px;
-  letter-spacing: .3px;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: var(--ink);
-}
-.tvcomlink:hover{ background: rgba(0,0,0,.04); }
-
-/* Dark: TVCOM zůstane čitelné
-
 /* SKÓRE buňka: nic neschovávat */
 table.schedule.results td.score{
   font-weight: 400;
@@ -1098,6 +1079,23 @@ table.schedule.results td.score .qgrid td{
   z-index: 2;
 }
 
+/* fallback bez tříd – podle pozice */
+table.schedule th:nth-child(1),
+table.schedule td:nth-child(1) { text-align: center; } /* ČAS */
+
+table.schedule th:nth-child(2),
+table.schedule td:nth-child(2) { text-align: center; } /* HALA */
+
+table.schedule th:nth-child(3),
+table.schedule td:nth-child(3) { text-align: left; }   /* ZÁPAS */
+
+table.schedule th:nth-child(4),
+table.schedule td:nth-child(4) { text-align: center; } /* SKUPINA/FÁZE */
+
+table.schedule th:nth-child(5),
+table.schedule td:nth-child(5) { text-align: center; } /* SKÓRE / ODKAZY */
+
+
 tr.is-live{
   background: rgba(239,68,68,.10);
 }
@@ -1211,30 +1209,9 @@ table.schedule > tbody > tr > td:first-child {
   animation: none !important;
 }
 
-/* STOP: v ROZPISU nikdy nebliká celý řádek (ponecháme jen badge pulz)
-table.schedule:not(.results) tr.is-live{
-  animation: none !important;
-}
-
-table.schedule:not(.results) tr.is-live td:first-child::after{
-  animation: none !important;
-} */
-
-/* ROZPIS: LIVE nesmí barvit celý řádek (jen badge u času)
-table.schedule:not(.results) tr.is-live{
-  background: transparent !important;
-  outline: none !important;
-}
-
-table.schedule:not(.results) tr.is-live{
-  background: transparent !important;
-  outline: none !important;
-} */
-
 table.schedule:not(.results) tbody tr.is-live{
   background: rgba(239,68,68,.08);
 }
-
 
 table.schedule:not(.results) tbody tr.is-live td:first-child{
   border-left: 4px solid rgba(220, 38, 38, .65);
@@ -1529,7 +1506,7 @@ table.schedule:not(.results) tr.is-next td:first-child::after{
 
 /* Web: skóre pryč + žádná šířka */
 .col-score { display: none; }
-col.col-score { width: 0 !important; }
+col.col-score { width: 0; }
 
 /* Web: sloupec skóre fakt zmizí a nebude dělat pruh */
 
@@ -1601,11 +1578,6 @@ col.col-score { width: 0 !important; }
   padding: 2px 4px;
 }
 
-.quarters thead th{
-  font-weight: 600;
-  opacity: .7;
-}
-
 td.score{
   vertical-align: middle;
   white-space: nowrap;
@@ -1614,7 +1586,7 @@ td.score{
 /* mini tabulka čtvrtin ve výsledcích */
 .qgrid{
   width: auto;              /* ať se nesnaží roztáhnout na 100% */
-  margin: 0 auto 6px;       /* vycentrovat v buňce */
+  margin: 0 auto 6px;      /* vycentrovat v buňce */
   border-collapse: collapse;
   font-size: 12px;
   opacity: .85;
@@ -1644,6 +1616,176 @@ td.score{
   --bracket-text-muted: rgba(0,0,0,.55);
 }
 
+/* =========================================
+   VÝSLEDKY – SLOUPEC SKÓRE (WEB)
+   ========================================= */
+
+/* celý sloupec skóre centrovat */
+table.schedule th.col-score,
+table.schedule td.col-score {
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* wrapper skóre (— / Q1–Q4 / finální skóre) */
+table.schedule td.col-score > * {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* mini tabulka čtvrtin */
+.score-breakdown {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 13px;
+}
+
+.score-breakdown table {
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.score-breakdown th,
+.score-breakdown td {
+  padding: 2px 6px;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* finální skóre */
+.score-final {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* =========================================================
+   TABULKY – ROZPIS + VÝSLEDKY (WEB)
+   ========================================================= */
+
+/* základ: vertikální zarovnání všude */
+table.schedule th,
+table.schedule td {
+  vertical-align: middle;
+}
+
+/* ===== POSTRANNÍ SLOUPCE – NA STŘED ===== */
+
+/* ČAS */
+table.schedule th:nth-child(1),
+table.schedule td:nth-child(1) {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* HALA */
+table.schedule th:nth-child(2),
+table.schedule td:nth-child(2) {
+  text-align: center;
+}
+
+/* SKUPINA / FÁZE (pokud existuje) */
+table.schedule th:nth-child(4),
+table.schedule td:nth-child(4) {
+  text-align: center;
+}
+
+/* STAV (results) */
+table.schedule th:last-child,
+table.schedule td:last-child {
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* ===== HLAVNÍ OBSAH ===== */
+
+/* ZÁPAS – vždy vlevo */
+table.schedule th:nth-child(3),
+table.schedule td:nth-child(3) {
+  text-align: left;
+}
+
+/* ===== SKÓRE (VÝSLEDKY) ===== */
+
+/* hlavička SKÓRE */
+table.schedule.results th:nth-child(4) {
+  text-align: center;
+}
+
+/* buňka skóre */
+table.schedule.results td:nth-child(4) {
+  text-align: center;
+}
+
+/* vnitřní layout skóre */
+table.schedule .score,
+table.schedule .qgrid,
+table.schedule .quarters,
+table.schedule .score-main {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+/* tabulka čtvrtin */
+table.schedule .qgrid,
+table.schedule .quarters {
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+table.schedule .qgrid th,
+table.schedule .qgrid td,
+table.schedule .quarters th,
+table.schedule .quarters td {
+  padding: 2px 6px;
+  text-align: center;
+  font-weight: 400;
+}
+
+/* finální skóre */
+table.schedule .score-main {
+  margin-top: 6px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* =========================================================
+   VÝSLEDKY – CENTROVAT TABULKU ČTVRTIN
+   ========================================================= */
+
+/* buňka SKÓRE */
+table.schedule td.col-score {
+  text-align: center;
+}
+
+/* wrapper skóre – flex, aby se centrovalo vše */
+table.schedule td.col-score .score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* TO JE KLÍČ */
+}
+
+/* tabulka čtvrtin */
+table.schedule td.col-score .qgrid,
+table.schedule td.col-score .quarters {
+  margin: 0 auto;        /* pojistka */
+}
+
+/* tabulka čtvrtin – vnitřek */
+table.schedule .qgrid th,
+table.schedule .qgrid td {
+  text-align: center;
+}
+
+/* finální skóre (už máš, ale sjednotíme) */
+table.schedule .score-main {
+  margin-top: 6px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 700;
+}
 
 /* =========================
    PLAY-OFF bracket (screen)
@@ -1665,14 +1807,6 @@ td.score{
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--bracket-text-muted);
-}
-
-.game .teamname{
-  font-size: 15px;
-}
-
-.game .score{
-  font-size: 14px;
 }
 
 .game .teamname{
@@ -1714,7 +1848,6 @@ td.score{
 .game .teamline{
   grid-column: 1;
 }
-
 
 .game .teamname{
   font-weight: 850;
@@ -1995,4 +2128,29 @@ table.standings td:first-child{
   padding: 0;
   background: transparent;
   box-shadow: none;
+}
+
+/* VÝSLEDKY: centrovat blok skóre + čtvrtiny (robustně) */
+table.schedule.results td.score .score,
+table.schedule.results td.scorecell .score,
+table.schedule.results td:nth-child(4) .score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* klíč */
+}
+
+/* samotná tabulka čtvrtin musí být "auto width" a margin auto */
+table.schedule.results .qgrid,
+table.schedule.results .quarters {
+  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* buňky uvnitř centrovat */
+table.schedule.results .qgrid th,
+table.schedule.results .qgrid td,
+table.schedule.results .quarters th,
+table.schedule.results .quarters td {
+  text-align: center;
 }

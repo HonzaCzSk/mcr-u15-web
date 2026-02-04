@@ -168,7 +168,6 @@
   table.schedule:not(.results) tr.is-live td:first-child,
   table.schedule:not(.results) tr.is-next td:first-child{
     padding-left: 4pt !important;
-    border-left: 0 !important;
   }
 
   /* čas: přetlačit 120px / min-width 110px */
@@ -290,5 +289,19 @@
     border-radius: 0 !important;
     text-decoration: underline !important;
     text-underline-offset: 2pt !important;
+  }
+
+    /* DALŠÍ/LIVE řádky v tisku nesmí mít žádné zvýraznění času ani levý okraj */
+  table.schedule tr.is-next td:first-child,
+  table.schedule tr.is-live td:first-child {
+    font-weight: 400 !important;
+    border-left: 1px solid #000 !important;
+    padding-left: 4pt !important; /* stejné jako ostatní */
+  }
+
+  /* pokud se tučný čas dělá přes span uvnitř buňky */
+  table.schedule tr.is-next td:first-child *,
+  table.schedule tr.is-live td:first-child * {
+    font-weight: 400 !important;
   }
 }

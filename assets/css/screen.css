@@ -137,12 +137,6 @@
     padding-left: 12px;      /* jemný offset pod nadpis SKÓRE */
   }
 
-  /* Q-grid zarovnat k levému okraji buňky */
-  table.schedule.results td.score .qgrid{
-    margin-left: 0;
-    margin-right: 0;
-  }
-
   .score-main
   {
     text-align: left;
