@@ -7,17 +7,27 @@ function dataUrl(filename){
 }
 
 export async function loadTeams(){
-  const res = await fetch(dataUrl("tymy.json") + "?v=" + Date.now(), { cache:"no-store" });
-  if(!res.ok) throw new Error("Nejde načíst tymy.json");
-  return await res.json();
+  const url = dataUrl("tymy.json");
+  const sep = url.includes("?") ? "&" : "?";
+  const res = await fetch(`${url}${sep}v=${Date.now()}`, { cache: "no-store" });
+  if (!res.ok) throw new Error(`Nelze načíst tymy.json (${res.status})`);
+  const teams = await res.json();
+
+  // mini validace
+  for (const t of teams) {
+    if (!t?.id || !t?.name || !t?.seed || !t?.group) {
+      throw new Error("Neplatná položka v tymy.json: " + JSON.stringify(t));
+    }
+  }
+  return teams;
 }
 
 export function teamId(t){
-  return "team-" + t.id;
+  return t.id; // bez prefixu
 }
 
 export function teamHrefById(id){
-  return "tymy.html#team-" + id;
+  return `tymy.html#${id}`;
 }
 
 export function teamHrefByName(teams, name){

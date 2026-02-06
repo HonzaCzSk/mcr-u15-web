@@ -283,7 +283,7 @@ function renderPlayoffSection(playoffEl, orderA, orderB, gamesById) {
   // když ještě není pořadí, ukaž aspoň placeholder
   if (!orderA?.length || !orderB?.length) {
     playoffEl.innerHTML = `
-      <h2>NASAZENÍ DO QF</h2>
+      <h2>NASAZENÍ DO ČTVRTFINÁLE</h2>
       <p class="muted">Z tabulek po skupinách.</p>
       <div class="qf-list">
         <div class="qf-item">
@@ -340,7 +340,7 @@ function renderPlayoffSection(playoffEl, orderA, orderB, gamesById) {
     .join("");
 
   playoffEl.innerHTML = `
-    <h2>NASAZENÍ DO QF</h2>
+    <h2>NASAZENÍ DO ČTVRTFINÁLE</h2>
     <p class="muted">Z tabulek po skupinách.</p>
     <div class="qf-list">
       ${rows}

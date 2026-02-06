@@ -2669,3 +2669,307 @@ h1.h1 {
 .qf-item{
   padding: 12px 14px;
 }
+
+.team__head{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  text-align:left;
+  background:transparent;
+  border:0;
+  padding:0;
+  cursor:pointer;
+}
+
+.team__panel{ margin-top: 10px; }
+
+/* QUICK VIEW (horní přehled) */
+.quick-group{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.quick-title{
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+
+.quick-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.team-quick-card{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: 16px;
+  padding: 14px 14px;
+
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+
+.team-quick-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.035);
+}
+
+.team-quick-card:focus-visible{
+  outline: 2px solid rgba(255,59,59,.75); /* nebo var(--accent) */
+  outline-offset: 3px;
+}
+
+.team-quick-name{
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.team-quick-meta{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  opacity: .9;
+}
+.pill.muted{ opacity: .75; font-weight: 600; }
+
+/* TEAM CARD (accordion) */
+.team{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+  margin-top: 12px;
+}
+
+.team:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.03);
+}
+
+.team__head{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+
+  padding: 16px 18px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.team__head .h2{
+  font-size: 18px; /* název nejvýraznější */
+  font-weight: 900;
+  letter-spacing: .02em;
+  margin: 0;
+}
+
+.team__head .muted{
+  margin: 8px 0 0;
+  opacity: .75;
+  font-size: 13px;
+}
+
+/* chevron */
+.team__chev{
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  border-right: 2px solid rgba(255,255,255,.7);
+  border-bottom: 2px solid rgba(255,255,255,.7);
+  transform: rotate(45deg);
+  transition: transform .15s ease;
+  flex: 0 0 auto;
+}
+
+.team__head[aria-expanded="true"] .team__chev{
+  transform: rotate(225deg);
+}
+
+.team__panel{
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding: 14px 18px 18px;
+}
+
+/* jemná "flash" po příchodu na hash */
+.team.flash{
+  outline: 2px solid rgba(255,59,59,.55);
+  outline-offset: 3px;
+}
+
+.team-meta{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.quick-group{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius: 18px;
+  padding: 18px;
+}
+
+.quick-title{
+  margin: 0 0 12px;
+  font-size: 14px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  opacity: .9;
+}
+
+.quick-grid{
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 900px){
+  .quick-grid{ grid-template-columns: 1fr; }
+}
+
+.team-quick-card{
+  display: block;
+  text-decoration: none;
+  color: inherit;
+
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: 16px;
+  padding: 14px;
+
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+}
+.team-quick-card:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.035);
+}
+.team-quick-card:focus-visible{
+  outline: 2px solid rgba(255,59,59,.70);
+  outline-offset: 3px;
+}
+
+.team-quick-name{
+  font-weight: 900;
+  font-size: 16px;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+.team-quick-meta{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill{
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .02em;
+  opacity: .9;
+}
+.pill.muted{ opacity: .75; font-weight: 600; }
+
+.team-meta{
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.team{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform .12s ease, border-color .12s ease, background .12s ease;
+  margin-top: 12px;
+}
+.team:hover{
+  transform: translateY(-2px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.03);
+}
+
+/* ACTIVE = otevřená karta */
+.team.is-open{
+  border-color: rgba(255,59,59,.45);
+  background: rgba(255,59,59,.06);
+}
+.team.is-open .team__head{
+  background: rgba(255,59,59,.04);
+}
+
+.team__head{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 14px;
+
+  padding: 16px 18px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+}
+
+.team__chev{
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  border-right: 2px solid rgba(255,255,255,.7);
+  border-bottom: 2px solid rgba(255,255,255,.7);
+  transform: rotate(45deg);
+  transition: transform .15s ease;
+  flex: 0 0 auto;
+}
+.team__head[aria-expanded="true"] .team__chev{
+  transform: rotate(225deg);
+}
+
+.team__panel{
+  border-top: 1px solid rgba(255,255,255,.10);
+  padding: 14px 18px 18px;
+}
+
+.team.flash{
+  outline: 2px solid rgba(255,59,59,.55);
+  outline-offset: 3px;
+}
