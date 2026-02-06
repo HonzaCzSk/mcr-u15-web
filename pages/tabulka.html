@@ -56,7 +56,6 @@
   <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
     <div class="menu__head">
       <div class="menu__title">Menu</div>
-      <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
       <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
     </div>
 
@@ -85,31 +84,25 @@
   </div>
 </nav>
 
-<main class="wrap page-tabulka">
-
-  <header class="pagehead">
-    <h1 class="h1">Tabulka</h1>
-    <p class="mini">Poslední aktualizace: <span id="updated">—</span></p>
-  </header>
-
-  <section id="playoff-section" class="panel" style="margin-bottom:14px;">
-    <!-- tabulka.js sem dá placeholder / nasazení -->
-  </section>
+<main>
+<div class="wrap">
+  <h1 class="h1">TABULKA</h1>
+  <p class="muted">Poslední aktualizace: <span id="updated">—</span></p>
 
   <section id="groups-section">
-    <h2 class="h2">Skupina A</h2>
+    <h2 class="h2">SKUPINA A</h2>
     <div class="tablewrap">
       <table id="tbl-standings-a" class="schedule standings"></table>
     </div>
 
-    <div style="height:14px;"></div>
-
-    <h2 class="h2">Skupina B</h2>
+    <h2 class="h2" style="margin-top:18px;">SKUPINA B</h2>
     <div class="tablewrap">
       <table id="tbl-standings-b" class="schedule standings"></table>
     </div>
   </section>
 
+  <section id="playoff-section" style="margin-top:18px;"></section>
+</div>
 </main>
 
 <footer class="footer">
@@ -162,8 +155,8 @@
   </div>
 </footer>
 
-<script src="../assets/js/tabulka.js" defer></script>
-<script src="../assets/js/playoff.js" defer></script>
+<script type="module" src="../assets/js/tabulka.js"></script>
+<script type="module" src="../assets/js/playoff.js"></script>
 <script src="../assets/js/theme.js"></script>
 <script src="../assets/js/menu.js"></script>
 

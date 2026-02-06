@@ -121,7 +121,7 @@
   }
 
   /* PLAY-OFF: FÁZE je 3. sloupec → zmenšit a dovolit zalomení */
-  #tbl-rozpis-nedele col.col-group { width: 14mm !important; } /* Fáze užší */
+  #tbl-rozpis-nedele col.col-group { width: 22mm !important; } /* Fáze užší */
   #tbl-rozpis-nedele th:nth-child(3),
   #tbl-rozpis-nedele td:nth-child(3){
     font-size: 8.5pt !important;
@@ -143,7 +143,7 @@
     border: 1px solid #000 !important;
     background: transparent !important;
     padding: 1pt 4pt !important;
-    font-size: 9pt !important;
+    font-size: 8.5pt !important;
     font-weight: 700 !important;
   }
 
@@ -217,14 +217,12 @@
     hyphens: none !important;
     white-space: normal !important;
   }
-
-  /* 3) PLAY-OFF: FÁZE (3. sloupec) drž úzké, ale ne na úkor zápasu */
-  #tbl-rozpis-nedele col.col-group{ width: 16mm !important; }
 }
 
 @media print {
   #tbl-rozpis-nedele td:nth-child(4){
     word-break: keep-all !important;
+
   }
 }
 

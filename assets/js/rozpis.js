@@ -1,6 +1,6 @@
 console.log("rozpis.js loaded");
-const ROZPIS_URL = "../data/rozpis.json";
-const ROZPIS_BACKUP_URL = "../data/rozpis.backup.json";
+const ROZPIS_URL = "../../data/rozpis.json";
+const ROZPIS_BACKUP_URL = "../../data/rozpis.backup.json";
 const DEBUG_MODE = new URLSearchParams(window.location.search).get("debug") === "1";
 let DEBUG_TIME = null;
 const LS_KEY = "mcr_u15_rozpis_cache_v1";
@@ -63,7 +63,7 @@ function setUpdatedNow() {
 (async () => {
   try {
     // 1) pokus: načíst z webu
-    const url = `../data/rozpis.json?v=${Date.now()}`;
+    const url = `../../data/rozpis.json?v=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
     const lastMod = res.headers.get("last-modified"); // např. "Sun, 02 Feb 2026 22:25:00 GMT"
     if (!res.ok) throw new Error(`Fetch failed: ${res.status}`);
@@ -171,7 +171,7 @@ function setUpdatedNow() {
 
     // 3) fallback: statický záložní soubor (backup)
     try {
-      const resB = await fetch("../data/rozpis.backup.json?v=" + Date.now(), { cache: "no-store" });
+      const resB = await fetch("../../data/rozpis.backup.json?v=" + Date.now(), { cache: "no-store" });
       if (!resB.ok) throw new Error("Backup file missing");
       const backup = await resB.json();
 

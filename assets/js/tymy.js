@@ -1,50 +1,15 @@
-// tymy.js – accordion pro soupisky + otevření po kliknutí z "Skupina A/B"
+import { loadTeams, teamId } from "./teams-store.js";
 
-(() => {
-  const toggles = Array.from(document.querySelectorAll('.team__toggle'));
+document.addEventListener("DOMContentLoaded", async () => {
+  const root = document.getElementById("teams-root");
+  if(!root) return;
 
-  const setOpen = (btn, open) => {
-    const card = btn.closest('.team');
-    const body = card?.querySelector('.team__body');
-    if (!body) return;
+  const teams = await loadTeams();
 
-    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    body.hidden = !open;
-  };
-
-  // toggle click
-  toggles.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isOpen = btn.getAttribute('aria-expanded') === 'true';
-      setOpen(btn, !isOpen);
-    });
-  });
-
-  // klik z rychlého seznamu -> otevře kartu a scrollne
-  document.querySelectorAll('.js-open-team').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const hash = link.getAttribute('href');
-      if (!hash || !hash.startsWith('#')) return;
-
-      const target = document.querySelector(hash);
-      if (!target) return;
-
-      e.preventDefault();
-
-      const btn = target.querySelector('.team__toggle');
-      if (btn) setOpen(btn, true);
-
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-      // upraví URL hash bez skoku
-      history.replaceState(null, '', hash);
-    });
-  });
-
-  // pokud přijdeš na URL s hashem, otevři příslušný tým
-  if (location.hash) {
-    const target = document.querySelector(location.hash);
-    const btn = target?.querySelector('.team__toggle');
-    if (btn) setOpen(btn, true);
-  }
-})();
+  root.innerHTML = teams.map(t => `
+    <section class="card team" id="${teamId(t)}">
+      <h2 class="h2">${t.name}</h2>
+      <p class="muted">Seed ${t.seed} · Skupina ${t.group}</p>
+    </section>
+  `).join("");
+});

@@ -1,11 +1,22 @@
 // assets/js/playoff.js
 // Play-off pavouk – logika + render (winner highlight funguje i v SF/F)
 
+import { loadTeams, teamHrefById } from "./teams-store.js";
+
 const ROUND_LABELS = {
   QF: "Čtvrtfinále",
   SF: "Semifinále",
   F: "Finále",
 };
+
+const VYSLEDKY_URL = new URL("../../data/vysledky.json", import.meta.url).toString();
+
+const teams = await loadTeams();
+const TEAM_BY_NAME = new Map(
+  teams
+    .filter(t => t?.name && t?.id)
+    .map(t => [normKey(t.name), t])
+);
 
 document.addEventListener("DOMContentLoaded", initPlayoff);
 
@@ -14,7 +25,7 @@ async function initPlayoff() {
   if (!container) return;
 
   try {
-    const vysledky = await fetchJson("../data/vysledky.json");
+    const vysledky = await fetchJson(VYSLEDKY_URL);
     const matches = extractPlayoffMatches(vysledky);
 
     const bracket = buildBracket(matches);
@@ -23,6 +34,27 @@ async function initPlayoff() {
     console.error(e);
     container.innerHTML = `<p class="muted">Play-off pavouk se nepodařilo načíst.</p>`;
   }
+}
+
+function normKey(s) {
+  return String(s ?? "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}
+
+function linkTeam(name, cls) {
+  // neklikat na placeholdery
+  const raw = String(name ?? "").trim();
+  if (/^(W|L)\s+/i.test(raw) || /^\d[AB]$/i.test(raw)) {
+    return `<span class="${cls}">${escapeHtml(raw)}</span>`;
+  }
+
+  const t = TEAM_BY_NAME.get(normKey(raw));
+  if (!t) return `<span class="${cls}">${escapeHtml(raw)}</span>`;
+
+  return `<a class="teamlink" href="${teamHrefById(t.id)}"><span class="${cls}">${escapeHtml(t.name)}</span></a>`;
 }
 
 /* ---------- FETCH ---------- */
@@ -47,7 +79,7 @@ const PLAYOFF_TEMPLATE = {
     { id: "SF1", home: "W QF1", away: "W QF2" },
     { id: "SF2", home: "W QF3", away: "W QF4" },
   ],
-  F: [{ id: "F", home: "W SF1", away: "W SF2" }],
+  F: [{ id: "FIN", home: "W SF1", away: "W SF2" }],
 };
 
 /* ---------- EXTRACT ---------- */
@@ -55,6 +87,20 @@ const PLAYOFF_TEMPLATE = {
 function extractPlayoffMatches(data) {
   const out = [];
   walk(data);
+  // fallback: pokud data mají formát { games: {QF1:{...}} }
+  if (out.length === 0 && data?.games && typeof data.games === "object") {
+    for (const [id, g] of Object.entries(data.games)) {
+      if (!/^QF[1-4]$|^SF[1-2]$|^F$|^FIN$/i.test(id)) continue;
+      const normId = id.toUpperCase() === "F" ? "FIN" : id.toUpperCase();
+      out.push({
+        id: normId,
+        skupina: "Play-off",
+        stav: g?.stav,
+        skore: g?.skore,
+        note: g?.note || ""
+      });
+    }
+  }
   return out;
 
   function walk(x) {
@@ -85,16 +131,16 @@ function buildBracket(matches) {
       slot.homePts = score.home;
       slot.awayPts = score.away;
       slot.score = `${score.home}:${score.away}`;
-      slot.winnerSide = score.home > score.away ? "home" :
-      score.home < score.away ? "away" :
-      null;
+      slot.winnerSide =
+        score.home > score.away ? "home" :
+        score.home < score.away ? "away" :
+        null;
     }
   });
 
   // 2) propagace vítězů QF -> SF -> F
   const winners = new Map();
 
-  // QF
   bracket.QF.forEach((g) => {
     g.homeResolved = g.home;
     g.awayResolved = g.away;
@@ -104,7 +150,6 @@ function buildBracket(matches) {
     winners.set(g.id, g.winnerResolved);
   });
 
-  // SF
   bracket.SF.forEach((g) => {
     g.homeResolved = resolveRef(g.home, winners);
     g.awayResolved = resolveRef(g.away, winners);
@@ -114,7 +159,6 @@ function buildBracket(matches) {
     winners.set(g.id, g.winnerResolved);
   });
 
-  // F
   bracket.F.forEach((g) => {
     g.homeResolved = resolveRef(g.home, winners);
     g.awayResolved = resolveRef(g.away, winners);
@@ -129,7 +173,7 @@ function buildBracket(matches) {
 
 function resolveRef(label, winners) {
   const s = String(label || "");
-  const mm = s.match(/^W\s+(QF\d|SF\d|F)$/i);
+  const mm = s.match(/^W\s+(QF\d|SF\d|F|FIN)$/i);
   if (!mm) return s;
   const id = mm[1].toUpperCase();
   return winners.get(id) || s;
@@ -158,13 +202,10 @@ function renderBracket(container, bracket) {
 
 function renderRound(name, games) {
   const cls =
-    name === "QF"
-      ? "round round-qf"
-      : name === "SF"
-      ? "round round-sf"
-      : name === "F"
-      ? "round round-f"
-      : "round";
+    name === "QF" ? "round round-qf" :
+    name === "SF" ? "round round-sf" :
+    name === "F"  ? "round round-f"  :
+    "round";
 
   const title = ROUND_LABELS[name] || name;
 
@@ -180,7 +221,6 @@ function resolveSeedLabel(label) {
   const seeds = window.__PLAYOFF_SEEDS__ || {};
   if (!label) return label;
 
-  // Replace only pure seeds like "1A", "4B"
   if (/^\d[AB]$/i.test(label.trim())) {
     return seeds[label.trim().toUpperCase()] || label;
   }
@@ -197,14 +237,13 @@ function renderGame(g) {
   const isPlayed = !!g.score;
   const cls = ["game", isPlayed ? "game-played" : "game-upcoming"].join(" ");
 
-  // highlight podle winnerSide (ne podle textu)
   const homeClass = g.winnerSide === "home" ? "teamname winner" : "teamname";
   const awayClass = g.winnerSide === "away" ? "teamname winner" : "teamname";
 
   return `
     <div class="${cls}">
-      <div class="teamline"><span class="${homeClass}">${escapeHtml(home)}</span></div>
-      <div class="teamline"><span class="${awayClass}">${escapeHtml(away)}</span></div>
+      <div class="teamline">${linkTeam(home, homeClass)}</div>
+      <div class="teamline">${linkTeam(away, awayClass)}</div>
       <div class="score">${g.score ?? "—"}</div>
     </div>
   `;

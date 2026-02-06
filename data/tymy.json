@@ -1,0 +1,50 @@
+[
+  {
+    "id": "zabiny-brno",
+    "name": "Žabiny Brno",
+    "seed": "A1",
+    "group": "A"
+  },
+  {
+    "id": "bk-lvice-litomerice",
+    "name": "BK Lvice Litoměřice",
+    "seed": "A2",
+    "group": "A"
+  },
+  {
+    "id": "tygri-praha",
+    "name": "Tygři Praha",
+    "seed": "A3",
+    "group": "A"
+  },
+  {
+    "id": "valecnice-decin",
+    "name": "Válečnice Děčín",
+    "seed": "A4",
+    "group": "A"
+  },
+  {
+    "id": "sbs-ostrava",
+    "name": "SBŠ Ostrava",
+    "seed": "B1",
+    "group": "B"
+  },
+  {
+    "id": "sokol-hradec-kralove",
+    "name": "Sokol Hradec Králové",
+    "seed": "B2",
+    "group": "B"
+  },
+  {
+    "id": "bsk-tj-jicin",
+    "name": "BSK TJ Jičín",
+    "seed": "B3",
+    "group": "B"
+  },
+  {
+    "id": "tj-sokol-kladno",
+    "name": "TJ Sokol Kladno",
+    "seed": "B4",
+    "group": "B"
+  }
+]
