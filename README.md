@@ -2,7 +2,7 @@
 
 ## Základní informace
 
-**Mistrovství České republiky U15 – dívky v basketbalu**
+### Mistrovství České republiky U15 – dívky v basketbalu
 
 - **Termín:** 24.–26. dubna  
 - **Místo:** Hradec Králové, Eliščino nábřeží 777  

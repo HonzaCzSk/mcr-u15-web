@@ -751,22 +751,6 @@ table.schedule td.col-links {
 }
 .socialbtn--tvcom img{ opacity: .95; }
 
-/* ----- Responsive ----- */
-
-/* ----- Dark mode (data-theme="dark") ----- */
-
-/* TVCOM: nech bez invertu */
-
-/* LAST MOMENT CHANGES */
-
-/* Dark mode – partners look */
-
-/* Kdybys měl placeholder text/box uvnitř partnera, ztlum ho */
-
-/* Dark mode – footer bar/typography trochu čitelnější */
-
-/* Dark mode: ztmavit světlé placeholder loga partnerů */
-
 /* ===== FOOTER FIX (force layout) ===== */
 .footer__bar{
   display: flex !important;
@@ -1824,13 +1808,6 @@ table.schedule .score-main {
   align-items: center;
 }
 
-:root[data-theme="dark"]{
-  --bracket-bg: rgba(255,255,255,.03);
-  --bracket-border: rgba(255,255,255,.18);
-  --bracket-shadow: 0 8px 24px rgba(0,0,0,.35);
-  --bracket-text-muted: rgba(255,255,255,.62);
-}
-
 .game .teamline{
   display: grid;
   grid-template-columns: 1fr auto; /* ← jméno má maximum místa */
@@ -1856,11 +1833,7 @@ table.schedule .score-main {
   text-underline-offset: 3px;
 }
 
-:root:not([data-theme="dark"]) .game .winner{
-  background: rgba(0,0,0,.03);
-  padding: 2px 6px;
-  border-radius: 999px;
-}
+
 
 .game .score{
   text-align: right;
@@ -1909,10 +1882,6 @@ table.schedule .score-main {
   opacity: .9;
 }
 
-:root[data-theme="dark"] .game-played{
-  border-color: rgba(255,255,255,.24);
-}
-
 /* winner highlight */
 .game .winner{
   color: var(--accent);
@@ -1950,12 +1919,6 @@ table.schedule .score-main {
   --tbl-border: rgba(0,0,0,.14);
   --tbl-head-bg: rgba(0,0,0,.03);
   --tbl-row-hover: rgba(0,0,0,.04);
-}
-
-:root[data-theme="dark"]{
-  --tbl-border: rgba(255,255,255,.16);
-  --tbl-head-bg: rgba(255,255,255,.04);
-  --tbl-row-hover: rgba(255,255,255,.05);
 }
 
 /* cílíme přímo na tvoje tabulky v tabulka.html */
@@ -2099,21 +2062,6 @@ table.standings td:first-child{
   white-space: nowrap;         /* žádné zalamování = stabilní výška */
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* Winner: ZRUŠ padding/background které mění layout, highlight udělej bez změny rozměrů */
-:root:not([data-theme="dark"]) .playoff-grid .game .winner{
-  padding: 0;                  /* klíč: žádný padding */
-  background: transparent;     /* klíč: žádný background blok */
-  border-radius: 0;
-  box-shadow: inset 0 -10px 0 rgba(0,0,0,.03);  /* “pill” efekt bez změny layoutu */
-}
-
-/* Dark můžeš nechat jen barevně */
-:root[data-theme="dark"] .playoff-grid .game .winner{
-  padding: 0;
-  background: transparent;
-  box-shadow: none;
 }
 
 /* VÝSLEDKY: centrovat blok skóre + čtvrtiny (robustně) */
@@ -2973,3 +2921,290 @@ h1.h1 {
   outline: 2px solid rgba(255,59,59,.55);
   outline-offset: 3px;
 }
+
+/* search */
+.team-search{ margin: 0 0 14px; }
+.team-search__input{
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  color: inherit;
+  outline: none;
+}
+.team-search__input:focus-visible{
+  outline: 2px solid rgba(255,59,59,.70);
+  outline-offset: 3px;
+}
+
+/* hover highlight from quick view */
+.team.is-hovered{
+  border-color: rgba(255,255,255,.25);
+  background: rgba(255,255,255,.045);
+  transform: translateY(-2px);
+}
+
+.team-search{
+  position: sticky;
+  top: 86px; /* uprav podle výšky headeru */
+  z-index: 5;
+}
+
+#teams-quick{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.team-search{
+  grid-column: 1 / -1;
+}
+
+.quick-title{
+  position: relative;
+  padding-left: 12px;
+}
+
+.quick-title::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 14px;
+  border-radius: 99px;
+  background: rgba(255,59,59,.75); /* var(--accent) pokud máš */
+}
+
+.team.is-hovered{
+  border-color: rgba(255,255,255,.22);
+  box-shadow: 0 0 0 1px rgba(255,255,255,.06) inset;
+}
+
+.team-quick-card.is-active{
+  border-color: rgba(255,59,59,.45);
+  background: rgba(255,59,59,.06);
+}
+
+[hidden]{ display: none !important; }
+
+.teamlink{
+  color: inherit;
+  text-decoration: none;
+}
+.teamlink:hover .teamname{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.standings tbody tr:first-child {
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+}
+
+.team-info{
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 14px 16px;
+  align-items: start;
+}
+
+.team-info__logo img{
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  object-fit: cover;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+}
+
+.team-logo-placeholder{
+  width: 72px;
+  height: 72px;
+  border-radius: 16px;
+  border: 1px dashed rgba(255,255,255,.18);
+  background: rgba(255,255,255,.03);
+}
+
+.team-info__grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 14px;
+}
+
+.info-row{
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+
+.info-row__label{
+  font-size: 12px;
+  opacity: .70;
+  margin-bottom: 6px;
+}
+
+.info-row__value{
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.team-info__links{
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.btnlink{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.03);
+  text-decoration: none;
+  color: inherit;
+  font-weight: 800;
+  font-size: 13px;
+}
+
+.btnlink:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.18);
+  background: rgba(255,255,255,.04);
+}
+
+.btnlink.is-disabled{
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+.team-info__note{
+  grid-column: 1 / -1;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,59,59,.06);
+  border-radius: 14px;
+  padding: 10px 12px;
+  opacity: .9;
+}
+
+.btnlink::after{
+  content: "↗";
+  margin-left: 6px;
+  font-size: 11px;
+  opacity: .6;
+}
+.btnlink.is-disabled::after{
+  content: "";
+}
+
+.roster{
+  margin-top: 14px;
+  border: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.02);
+  border-radius: 16px;
+  padding: 12px 12px;
+}
+
+.roster__head{
+  display:flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.roster__title{ font-weight: 900; }
+.roster__tablewrap{ overflow:auto; }
+
+.roster__table{
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 8px;
+  font-size: 14px;
+}
+
+.roster__table thead th{
+  font-size: 12px;
+  opacity: .7;
+  text-align: left;
+  padding: 0 10px 6px;
+  white-space: nowrap;
+}
+
+.roster__table tbody tr{
+  border-radius: 14px;
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.08);
+}
+
+.roster__table tbody td{
+  padding: 10px 10px;
+  white-space: nowrap;
+}
+
+.roster__no{ width: 44px; opacity: .85; font-weight: 800; }
+.roster__name{ font-weight: 800; }
+
+.teamlink{
+  color: inherit;
+  text-decoration: none;
+  font-weight: 800;
+}
+.teamlink:hover{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.team.flash{
+  outline: 2px solid rgba(255,59,59,.55);
+  outline-offset: 4px;
+  box-shadow: 0 16px 40px rgba(0,0,0,.10);
+}
+
+.roster__cap{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-left: 8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,59,59,.45);
+  background: rgba(255,59,59,.10);
+  font-size: 11px;
+  font-weight: 900;
+  opacity: .95;
+}
+
+/* roster musí zabrat celou šířku v gridu team-info */
+.roster{
+  grid-column: 1 / -1;
+}
+
+.roster__table{
+  width: 100%;
+}
+
+.roster__tablewrap{
+  width: 100%;
+}
+
+.roster__table{
+  border-collapse: collapse;
+}
+
+.roster__table tbody tr{
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+.roster__table tbody td{
+  padding: 10px 10px;
+}
+
+.roster__count{ white-space: nowrap; }
+.roster__head{ padding: 2px 2px 6px; }

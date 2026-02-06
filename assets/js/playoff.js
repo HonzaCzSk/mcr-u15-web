@@ -1,7 +1,14 @@
 // assets/js/playoff.js
 // Play-off pavouk – logika + render (winner highlight funguje i v SF/F)
 
-import { loadTeams, teamHrefById } from "./teams-store.js";
+import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
+
+let TEAM_BY_NAME = new Map();
+
+async function initTeamLinks(){
+  const { byName } = await buildTeamIndex();
+  TEAM_BY_NAME = byName; // Map
+}
 
 const ROUND_LABELS = {
   QF: "Čtvrtfinále",
@@ -11,16 +18,10 @@ const ROUND_LABELS = {
 
 const VYSLEDKY_URL = new URL("../../data/vysledky.json", import.meta.url).toString();
 
-const teams = await loadTeams();
-const TEAM_BY_NAME = new Map(
-  teams
-    .filter(t => t?.name && t?.id)
-    .map(t => [normKey(t.name), t])
-);
-
 document.addEventListener("DOMContentLoaded", initPlayoff);
 
 async function initPlayoff() {
+  await initTeamLinks();
   const container = document.getElementById("playoff-section");
   if (!container) return;
 
@@ -34,14 +35,6 @@ async function initPlayoff() {
     console.error(e);
     container.innerHTML = `<p class="muted">Play-off pavouk se nepodařilo načíst.</p>`;
   }
-}
-
-function normKey(s) {
-  return String(s ?? "")
-    .trim()
-    .toLowerCase()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
 }
 
 function linkTeam(name, cls) {

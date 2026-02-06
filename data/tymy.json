@@ -3,48 +3,136 @@
     "id": "zabiny-brno",
     "name": "Žabiny Brno",
     "seed": "A1",
-    "group": "A"
+    "group": "A",
+    "city": "Brno",
+    "club": "Žabiny Brno",
+    "coach": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "bk-lvice-litomerice",
     "name": "BK Lvice Litoměřice",
     "seed": "A2",
-    "group": "A"
+    "group": "A",
+    "city": "Litoměřice",
+    "club": "BK Lvice Litoměřice",
+    "coach": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "tygri-praha",
     "name": "Tygři Praha",
     "seed": "A3",
-    "group": "A"
+    "group": "A",
+    "city": "Praha",
+    "club": "Tygři Praha",
+    "coach": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "valecnice-decin",
     "name": "Válečnice Děčín",
     "seed": "A4",
-    "group": "A"
+    "group": "A",
+    "city": "Děčín",
+    "club": "Válečnice Děčín",
+    "coach": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "sbs-ostrava",
     "name": "SBŠ Ostrava",
     "seed": "B1",
-    "group": "B"
+    "group": "B",
+    "city": "Ostrava",
+    "club": "SBŠ Ostrava",
+    "coach": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "sokol-hradec-kralove",
     "name": "Sokol Hradec Králové",
     "seed": "B2",
-    "group": "B"
+    "group": "B",
+    "city": "Hradec Králové",
+    "club": "Sokol Hradec Králové",
+    "coach": null,
+    "website": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
+    ],
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "bsk-tj-jicin",
     "name": "BSK TJ Jičín",
     "seed": "B3",
-    "group": "B"
+    "group": "B",
+    "city": "Jičín",
+    "club": "BSK TJ Jičín",
+    "coach": null,
+    "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "tj-sokol-kladno",
     "name": "TJ Sokol Kladno",
     "seed": "B4",
-    "group": "B"
+    "group": "B",
+    "city": "Kladno",
+    "club": "TJ Sokol Kladno",
+    "coach": null,
+        "roster": [
+      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
+      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
+    ],
+    "website": null,
+    "instagram": null,
+    "logo": null,
+    "note": "Soupiska a týmové info bude doplněno před turnajem."
   }
 ]

@@ -219,3 +219,16 @@
 @media (max-width: 900px){
   .quick-grid{ grid-template-columns: 1fr; }
 }
+
+@media (max-width: 900px){
+  #teams-quick{ grid-template-columns: 1fr; }
+  .team-search{ position: static; }
+}
+
+@media (max-width: 700px){
+  .team-info{ grid-template-columns: 60px 1fr; }
+  .team-info__grid{ grid-template-columns: 1fr; }
+  .team-info__logo img, .team-logo-placeholder{
+    width: 60px; height: 60px; border-radius: 14px;
+  }
+}

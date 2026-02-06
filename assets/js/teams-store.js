@@ -40,3 +40,23 @@ export function teamHrefByName(teams, name){
 export function teamBySeed(teams, seed){
   return teams.find(t => t.seed === seed) || null;
 }
+
+export async function buildTeamIndex(){
+  const teams = await loadTeams();
+  const byId = new Map();
+  const byName = new Map();
+
+  for (const t of teams){
+    byId.set(t.id, t);
+    byName.set(normKey(t.name), t);
+  }
+  return { teams, byId, byName };
+}
+
+export function normKey(s){
+  return String(s ?? "")
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+}

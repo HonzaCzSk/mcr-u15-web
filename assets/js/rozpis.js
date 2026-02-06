@@ -1,4 +1,23 @@
 console.log("rozpis.js loaded");
+
+import { buildTeamIndex, teamHrefById, normKey, escapeHtml } from "./teams-store.js";
+
+let TEAM_BY_NAME = new Map();
+
+async function initTeamLinks(){
+  const { byName } = await buildTeamIndex();
+  TEAM_BY_NAME = byName;
+}
+
+function teamLink(name){
+  if (!TEAM_BY_NAME || !name) return escapeHtml(name ?? "—");
+
+  const t = TEAM_BY_NAME.get(normKey(name));
+  if (!t) return escapeHtml(name);
+
+  return `<a class="teamlink" href="${teamHrefById(t.id)}">${escapeHtml(name)}</a>`;
+}
+
 const ROZPIS_URL = "../../data/rozpis.json";
 const ROZPIS_BACKUP_URL = "../../data/rozpis.backup.json";
 const DEBUG_MODE = new URLSearchParams(window.location.search).get("debug") === "1";
@@ -43,25 +62,14 @@ function setStatus(msg, type = "info") {
   el.style.border = `1px solid ${s.bd}`;
 }
 
-function setUpdated(text) {
-  const el = document.getElementById("updated");
-  if (!el) return;
-  el.textContent = text;
-}
-
 function isValidRozpis(data) {
   if (!data || typeof data !== "object") return false;
   return ["patek", "sobota", "nedele"].every((k) => Array.isArray(data[k]));
 }
 
-function setUpdatedNow() {
-  const el = document.getElementById("updated");
-  if (!el) return;
-  el.textContent = new Date().toLocaleString("cs-CZ");
-}
-
 (async () => {
   try {
+    initTeamLinks();
     // 1) pokus: načíst z webu
     const url = `../../data/rozpis.json?v=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
@@ -228,15 +236,17 @@ function renderRozpis(data) {
     return `<span class="pill">Hala ${hala ?? "—"}</span>`;
   };
 
-  const teamLink = (t) => {
-    if (!t || !t.name) return "—";
-    if (!t.id) return t.name;
-    return `<a href="tymy.html#tym-${t.id}" class="teamlink">${t.name}</a>`;
-  };
+const matchHtml = (m) => {
+  const text = String(m?.zapas ?? "—");
+  const [a, b] = parseTeamsFromMatchText(text);
+  if (!a || !b) return escapeHtml(text);
 
-  const matchHtml = (m) => {
-    return `${m.zapas ?? "—"}`;
-  };
+  // neklikat na placeholdery
+  if (/^\d[AB]$/i.test(a) || /^\d[AB]$/i.test(b)) return escapeHtml(text);
+  if (/^[WL]\s+/i.test(a) || /^[WL]\s+/i.test(b)) return escapeHtml(text);
+
+  return `${teamLink(a)} <span class="muted">–</span> ${teamLink(b)}`;
+};
 
 const fillTable = (tableId, rows, renderRow, focusId) => {
   const tbl = document.getElementById(tableId);
@@ -846,7 +856,3 @@ window.debugNow = function (hhmm) {
   console.log("[DEBUG] Simulovaný čas:", hhmm);
   renderRozpis(window.originalData);
 };
-
-function getMatchFromUrl(){
-  return new URLSearchParams(location.search).get("match");
-}

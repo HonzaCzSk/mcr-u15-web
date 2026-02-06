@@ -1,4 +1,7 @@
 console.log("vysledky.js loaded (rozpis + vysledky json)");
+console.log("normKey test:", normKey("Sokol Hradec Králové"));
+
+import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
 
 // Paths (vysledky.html is in /pages/)
 const ROZPIS_URL = "../data/rozpis.json";
@@ -9,6 +12,23 @@ const VYSLEDKY_BACKUP_URL = "../data/vysledky.backup.json";
 
 const LS_ROZPIS_KEY = "mcr_u15_rozpis_cache_v1";
 const LS_VYSLEDKY_KEY = "mcr_u15_vysledky_cache_v1";
+
+
+let TEAM_BY_NAME = new Map();
+
+async function initTeamLinks(){
+  const { byName } = await buildTeamIndex();
+  TEAM_BY_NAME = byName;
+}
+
+function teamLink(name){
+  if (!TEAM_BY_NAME || !name) return escapeHtml(name ?? "—");
+
+  const t = TEAM_BY_NAME.get(normKey(name));
+  if (!t) return escapeHtml(name);
+
+  return `<a class="teamlink" href="${teamHrefById(t.id)}">${escapeHtml(name)}</a>`;
+}
 
 function $(id){ return document.getElementById(id); }
 
@@ -213,6 +233,15 @@ function fillTable(tableId, rows, renderRow, focusId){
   });
 }
 
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
 function buildRowsFromRozpis(rozpis, vysledky){
   const games = (vysledky?.games && typeof vysledky.games === "object") ? vysledky.games : {};
 
@@ -266,6 +295,7 @@ function buildRowsFromRozpis(rozpis, vysledky){
 
 (async () => {
   try {
+    await initTeamLinks();
     const [rozpisRes, vyslRes] = await Promise.all([
       loadWithFallback(ROZPIS_URL, ROZPIS_BACKUP_URL, LS_ROZPIS_KEY, isValidRozpis),
       loadWithFallback(VYSLEDKY_URL, VYSLEDKY_BACKUP_URL, LS_VYSLEDKY_KEY, isValidVysledky)
@@ -285,7 +315,7 @@ function buildRowsFromRozpis(rozpis, vysledky){
     fillTable("tbl-patek", rows.patek, (r) => `
       <td>${r.cas}</td>
       <td>${pillHtml(r.hala)}</td>
-      <td>${r.zapas}</td>
+      <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
         ${renderQuarterGrid(r.quarters)}
         <div class="score-main">${scoreHtml(r.skore)}</div>
@@ -296,7 +326,7 @@ function buildRowsFromRozpis(rozpis, vysledky){
     fillTable("tbl-sobota", rows.sobota, (r) => `
       <td>${r.cas}</td>
       <td>${pillHtml(r.hala)}</td>
-      <td>${r.zapas}</td>
+      <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
         ${renderQuarterGrid(r.quarters)}
         <div class="score-main">${scoreHtml(r.skore)}</div>
@@ -308,7 +338,7 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${r.cas}</td>
       <td>${pillHtml(r.hala)}</td>
       <td>${r.faze}</td>
-      <td>${r.zapas}</td>
+      <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
         ${renderQuarterGrid(r.quarters)}
         <div class="score-main">${scoreHtml(r.skore)}</div>
@@ -326,3 +356,17 @@ function buildRowsFromRozpis(rozpis, vysledky){
     setUpdated("chyba načtení");
   }
 })();
+
+function renderMatchLinked(zapas){
+  const text = String(zapas ?? "—").trim();
+  const parts = text.split(/\s*[–—-]\s*/);
+  if (parts.length < 2) return escapeHtml(text);
+
+  const a = parts[0].trim(), b = parts[1].trim();
+
+  // placeholdery nech bez odkazu
+  if (/^\d[AB]$/i.test(a) || /^\d[AB]$/i.test(b)) return escapeHtml(text);
+  if (/^[WL]\s+/i.test(a) || /^[WL]\s+/i.test(b)) return escapeHtml(text);
+
+  return `${teamLink(a)} <span class="muted">–</span> ${teamLink(b)}`;
+}
