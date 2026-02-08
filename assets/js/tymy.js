@@ -167,6 +167,7 @@ function renderTeams(root, teams) {
               ${infoRow("Klub", t.club)}
               ${infoRow("Město", t.city)}
               ${infoRow("Trenér/ka", t.coach)}
+              ${infoRow("Asistent/ka", t.assistantCoach)}
             </div>
 
             <div class="team-info__links">

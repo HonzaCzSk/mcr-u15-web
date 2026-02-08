@@ -1,0 +1,58 @@
+{
+  "updated": "2026-02-08",
+  "featured": [
+    {
+      "title": "Oficiální galerie (test)",
+      "url": "https://example.com",
+      "tag": "externí"
+    }
+  ],
+  "days": [
+    {
+      "label": "Pátek",
+      "links": [
+        {
+          "title": "Výběr dne (test)",
+          "url": "https://example.com"
+        }
+      ]
+    },
+    {
+      "label": "Sobota",
+      "links": []
+    },
+    {
+      "label": "Neděle",
+      "links": []
+    }
+  ],
+  "clips": [
+    {
+      "title": "Aftermovie (test)",
+      "url": "https://example.com",
+      "platform": "YouTube"
+    }
+  ],
+  "thumbs": [
+    {
+      "src": "../assets/img/photos/thumbs/day1_001.jpg",
+      "full": "../assets/img/photos/full/day1_001.jpg",
+      "alt": "Test foto – Day 1 (001)"
+    },
+    {
+      "src": "../assets/img/photos/thumbs/day1_002.jpg",
+      "full": "../assets/img/photos/full/day1_002.jpg",
+      "alt": "Test foto – Day 1 (002)"
+    },
+    {
+      "src": "../assets/img/photos/thumbs/day2_001.jpg",
+      "full": "../assets/img/photos/full/day2_001.jpg",
+      "alt": "Test foto – Day 2 (001)"
+    },
+    {
+      "src": "../assets/img/photos/thumbs/day3_001.jpg",
+      "full": "../assets/img/photos/full/day3_001.jpg",
+      "alt": "Test foto – Day 3 (001)"
+    }
+  ]
+}

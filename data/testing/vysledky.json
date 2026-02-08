@@ -1,0 +1,55 @@
+{
+  "updated": "2026-02-08T18:05:00+01:00",
+  "games": {
+    "G01": {
+      "stav": "FINAL",
+      "skore": "62 : 48",
+      "quarters": [[18,10],[34,22],[49,35],[62,48]],
+      "note": ""
+    },
+    "G02": {
+      "stav": "LIVE",
+      "skore": "28 : 31",
+      "quarters": [[12,14],[28,31]],
+      "note": "2Q – 03:12"
+    },
+    "G03": {
+      "stav": "FINAL",
+      "skore": "55 : 55",
+      "quarters": [[14,10],[27,25],[38,38],[55,55]],
+      "note": "PO"
+    },
+    "G04": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "G05": {
+      "stav": "FINAL",
+      "skore": "44 : 60",
+      "quarters": [[9,15],[22,31],[33,48],[44,60]],
+      "note": ""
+    },
+    "G06": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+
+    "G07": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "G08": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "G09": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "G10": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "G11": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "G12": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+
+    "QF1": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "QF2": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "QF3": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "QF4": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+
+    "SF1": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "SF2": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+
+    "S5_1": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "S5_2": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+
+    "M7": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "M5": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+    "M3": { "stav": "SCHEDULED", "skore": "—", "note": "" },
+
+    "FIN": { "stav": "SCHEDULED", "skore": "—", "note": "" }
+  }
+}

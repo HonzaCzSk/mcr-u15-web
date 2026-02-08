@@ -1,0 +1,57 @@
+{
+  "updated": "2026-02-08",
+  "venue": {
+    "title": "Místo konání",
+    "address": "Eliščino nábřeží 777, Hradec Králové",
+    "note": "2 haly v jedné budově",
+    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eli%C5%A1%C4%8Dino+n%C3%A1b%C5%99e%C5%BE%C3%AD+777%2C+Hradec+Kr%C3%A1lov%C3%A9"
+  },
+  "transport": {
+    "title": "Doprava",
+    "items": [
+      "MHD: snadné spojení v rámci Hradce Králové (upřesníme zastávky).",
+      "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
+    ]
+  },
+  "parking": {
+    "title": "Parkování",
+    "status": "placeholder",
+    "text": "Upřesníme 2 týdny před akcí."
+  },
+  "tickets": {
+    "title": "Vstupné",
+    "text": "Zdarma"
+  },
+  "org": {
+    "title": "Organizační info",
+    "text": "Placeholder – doplníme detaily k akreditaci, šatnám a režimu v hale."
+  },
+  "cta": {
+    "primaryText": "Otevřít v Google Maps",
+    "secondaryText": "Napsat organizátorům",
+    "contactsHref": "kontakty.html"
+  },
+  "contacts": [
+    {
+      "type": "email",
+      "label": "Email",
+      "name": "Organizátor",
+      "value": "info@mcr-u15.cz",
+      "href": "mailto:info@mcr-u15.cz"
+    },
+    {
+      "type": "phone",
+      "label": "Telefon",
+      "name": "Hlavní organizátor",
+      "value": "+420 777 123 456",
+      "href": "tel:+420777123456"
+    },
+    {
+      "type": "instagram",
+      "label": "Instagram",
+      "name": "Turnaj / klub",
+      "value": "@mcru15",
+      "href": "https://instagram.com/mcru15"
+    }
+  ]
+}

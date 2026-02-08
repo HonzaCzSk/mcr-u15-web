@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fotky | MČR U15 – dívky</title>
-  <meta name="description" content="Fotogalerie a odkazy na galerie z MČR U15 dívek v basketbalu.">
+  <title>Kontakty | MČR U15 – dívky</title>
+  <meta name="description" content="Kontakty na organizátory MČR U15 dívek – email, telefon a odkazy.">
   <link rel="icon" href="../assets/img/favicon.ico">
   <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../assets/css/print.css" media="print">
 </head>
 
-<body class="page-fotky">
+<body class="page-kontakty">
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap topbar__inner">
@@ -54,7 +54,7 @@
         <a class="menu__link" href="tymy.html">Týmy</a>
         <a class="menu__link" href="info.html">Info</a>
         <a class="menu__link is-active" href="kontakty.html">Kontakty</a>
-        <a class="menu__link is-active" href="fotky.html">Fotky</a>
+        <a class="menu__link" href="fotky.html">Fotky</a>
       </div>
     </div>
   </div>
@@ -68,44 +68,30 @@
       <a class="nav__item" href="tabulka.html">Tabulka</a>
       <a class="nav__item" href="tymy.html">Týmy</a>
       <a class="nav__item" href="info.html">Info</a>
-      <a class="nav__item" href="kontakty.html">Kontakty</a>
-      <a class="nav__item is-active" href="fotky.html">Fotky</a>
+      <a class="nav__item is-active" href="kontakty.html">Kontakty</a>
+      <a class="nav__item" href="fotky.html">Fotky</a>
     </div>
   </nav>
 
   <main class="wrap">
     <section class="pagehead">
-      <h1 class="h1">Fotky</h1>
-      <p class="lead">Odkazy na fotogalerie a denní výběry.</p>
+      <h1 class="h1">Kontakty</h1>
+      <p class="lead">Email a telefon na organizátory. Klikni a rovnou voláš / píšeš.</p>
 
-      <p class="mini" id="media-status">Načítám…</p>
-      <p class="mini" id="media-updated" style="display:none;"></p>
+      <p class="mini" id="contacts-status">Načítám…</p>
+      <p class="mini" id="contacts-updated" style="display:none;"></p>
     </section>
 
-    <section class="grid">
-      <div class="card">
-        <h2 class="h2">Oficiální galerie</h2>
-        <div class="linklist" id="featured-links"></div>
-        <p class="mini">Sem dej primární odkazy, co budete nejvíc sdílet.</p>
-      </div>
-
-      <div class="card">
-        <h2 class="h2">Denní výběry</h2>
-        <div id="day-links" class="daylist"></div>
-        <p class="mini">Rozděleno po dnech, ať lidi rychle najdou aktuální obsah.</p>
-      </div>
+    <section class="grid" id="contacts-grid">
+      <!-- plní se z JS -->
     </section>
 
     <section class="card">
-      <h2 class="h2">Pohledy &amp; videa</h2>
-      <div id="clips" class="clips"></div>
-      <p class="mini">Aftermovie, reels a nejlepší akce (bez embedů).</p>
-    </section>
-
-    <section class="card">
-      <h2 class="h2">Náhledy</h2>
-      <p class="mini">Tady mohou být malé náhledy (když budete mít svoje fotky lokálně v projektu).</p>
-      <div class="gallery" id="gallery-grid"></div>
+      <h2 class="h2">Poznámka</h2>
+      <p class="mini">
+        Pokud řešíš něco akutního v průběhu turnaje, preferuj telefon.
+        Pro obecné dotazy (program, ubytování, logistika) napiš email.
+      </p>
     </section>
   </main>
 
@@ -167,9 +153,8 @@
     </div>
   </footer>
 
-  <script src="../assets/js/fotky.js"></script>
+  <script src="../assets/js/kontakty.js"></script>
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/menu.js"></script>
-
 </body>
 </html>

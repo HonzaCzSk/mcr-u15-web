@@ -14,6 +14,18 @@
   --accentB: #ffb000;     /* highlight */
   --accent2: #111827;     /* topbar */
   --blue: #2b7fff;        /* hover/link */
+
+  /* --- Radius system --- */
+  --r-xs: 10px;   /* malé prvky (tagy, malé buttony) */
+  --r-sm: 12px;   /* tlačítka / menší karty */
+  --r-md: 14px;   /* karty standard */
+  --r-lg: 18px;   /* velké bloky (hero) */
+  --r-pill: 999px;
+
+  /* --- Shadow system (light) --- */
+  --sh-sm: 0 6px 18px rgba(0,0,0,.06);
+  --sh-md: 0 12px 30px rgba(0,0,0,.10);
+
 }
 
 *{ box-sizing:border-box; }
@@ -57,7 +69,7 @@ body{
   color: var(--muted);
   font-weight: 700;
 }
-.muted{ color: var(--muted); margin: 0; }
+.muted{ color: var(--muted); margin: 0; margin-bottom: 15px; }
 .mini{
   margin-top: 10px;
   font-size: 13px;
@@ -193,7 +205,7 @@ body{
   align-items:center;
   justify-content:center;
   padding: 11px 14px;
-  border-radius: 12px;
+  border-radius: var(--r-sm);
   border: 2px solid var(--ink);
   font-weight: 950;
   text-transform: uppercase;
@@ -226,7 +238,7 @@ body{
 .panel{
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: var(--r-md);
   padding: 14px;
 }
 .panel__title{
@@ -260,8 +272,9 @@ body{
   overflow:hidden;
   background: var(--card);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: var(--r-md);
   padding: 16px;
+  box-shadow: var(--sh-sm);
 }
 .card--accent{
   border-color: rgba(255,59,48,.28);
@@ -1090,7 +1103,13 @@ tr.is-live td:first-child{
   font-weight: 800;
 }
 
-tr.is-live td:first-child::after{
+/* PŮVODNÍ (špatně – platí i pro výsledky) */
+/*
+tr.is-live td:first-child::after{ ... }
+*/
+
+/* NOVĚ – jen pro rozpis (tabulky bez .results) */
+table.schedule:not(.results) tr.is-live td:first-child::after{
   content: "LIVE";
   display: inline-block;
   margin-left: 8px;
@@ -1102,10 +1121,17 @@ tr.is-live td:first-child::after{
   border: 1px solid rgba(220,38,38,.4);
   border-radius: 999px;
   vertical-align: middle;
+  animation: livePulse 1.2s infinite;
 }
 
-tr.is-live td:first-child::after{
-  animation: livePulse 1.2s infinite;
+/* A případně i tu tučnost jen pro rozpis */
+table.schedule:not(.results) tr.is-live td:first-child{
+  position: relative;
+  font-weight: 800;
+}
+
+table.schedule.results tr.is-live td:first-child::after{
+  content: none !important;
 }
 
 @keyframes livePulse{
@@ -3208,3 +3234,255 @@ h1.h1 {
 
 .roster__count{ white-space: nowrap; }
 .roster__head{ padding: 2px 2px 6px; }
+
+/* =========================================
+   FOTKY – media hub (scoped)
+   ========================================= */
+
+.page-fotky .linklist{
+  display: grid;
+  gap: 12px;
+}
+
+/* Featured odkazy jako “row cards” */
+.page-fotky .linkcard{
+  display: block;
+  padding: 14px 14px;
+  border-radius: 14px;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+  color: var(--ink);
+}
+.page-fotky .linkcard:hover{
+  transform: translateY(-2px);
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.18);
+}
+.page-fotky .linkcard__top{
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.page-fotky .linkcard__title{
+  font-weight: 900;
+  line-height: 1.2;
+}
+.page-fotky .linkcard:hover .linkcard__title{
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.page-fotky .linkcard__meta{
+  margin-top: 6px;
+  opacity: .75;
+  font-size: .92rem;
+}
+
+/* Denní výběry */
+.page-fotky .daylist{ display:grid; gap:12px; }
+.page-fotky .dayblock{
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+}
+.page-fotky .dayblock__title{
+  font-weight: 950;
+  margin-bottom: 8px;
+}
+.page-fotky .dayblock__links{ display:grid; gap:6px; }
+.page-fotky .daylink{
+  text-decoration:none;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  color: var(--ink);
+  font-weight: 800;
+}
+.page-fotky .daylink:hover{
+  background: rgba(0,0,0,.03);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Clips */
+.page-fotky .clips{ display:grid; gap:10px; }
+.page-fotky .clipitem{
+  display:block;
+  text-decoration:none;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(0,0,0,.02);
+  color: var(--ink);
+  transition: transform .15s ease, border-color .15s ease, background .15s ease;
+}
+.page-fotky .clipitem:hover{
+  transform: translateY(-2px);
+  background: rgba(0,0,0,.03);
+  border-color: rgba(0,0,0,.18);
+}
+.page-fotky .clipitem__title{ font-weight: 950; line-height: 1.2; }
+.page-fotky .clipitem__meta{
+  margin-top: 8px;
+  display:flex;
+  align-items:center;
+  justify-content: space-between;
+  gap: 10px;
+  opacity: .9;
+}
+
+/* Galerie – auto grid + 4:3 */
+.page-fotky .gallery{
+  margin-top: 12px;
+  display:grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+}
+.page-fotky .thumb{
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(0,0,0,.02);
+  padding: 0;
+  cursor: pointer;
+  aspect-ratio: 4 / 3;
+  display:block;
+}
+.page-fotky .thumb img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform .18s ease;
+  display:block;
+}
+.page-fotky .thumb:hover img{ transform: scale(1.04); }
+
+/* Empty stav */
+.page-fotky .empty{
+  opacity: .75;
+  padding: 10px 0;
+}
+
+/* Lightbox */
+.page-fotky .lightbox{
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+}
+.page-fotky .lightbox[aria-hidden="false"]{ display:block; }
+.page-fotky .lightbox__backdrop{
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.72);
+}
+.page-fotky .lightbox__wrap{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding: 18px;
+}
+.page-fotky .lightbox__img{
+  max-width: min(1100px, 92vw);
+  max-height: 90vh;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.04);
+}
+.page-fotky .lightbox__caption{
+  margin-top: 10px;
+  text-align:center;
+  opacity: .85;
+  max-width: min(1100px, 92vw);
+  color: #fff;
+}
+.page-fotky .lightbox__close{
+  position:absolute;
+  top: 14px;
+  right: 14px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.35);
+  color: #fff;
+  cursor:pointer;
+}
+.page-fotky .lightbox__nav{
+  position:absolute;
+  top:50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 60px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.16);
+  background: rgba(0,0,0,.35);
+  color:#fff;
+  cursor:pointer;
+  font-size: 32px;
+  line-height: 1;
+}
+.page-fotky .lightbox__prev{ left: 14px; }
+.page-fotky .lightbox__next{ right: 14px; }
+
+/* lock scroll */
+html.lb-open, html.lb-open body{ overflow: hidden; }
+
+/* jen rozpis (ne výsledky) */
+table.schedule:not(.results) tr.is-live td.score::before{
+  content:"";
+  display:inline-block;
+  width:10px;
+  height:10px;
+  margin-right:10px;
+  border-radius:50%;
+  background:red;
+  animation: liveDot 1s infinite;
+  vertical-align: middle;
+}
+
+/* Výsledky: žádná blikající tečka u skóre */
+table.schedule.results tr.is-live td.score::before{
+  content: none !important;
+  display: none !important;
+  animation: none !important;
+}
+
+/* spacing – safe globally */
+main > section{ margin-bottom: 48px; }
+
+/* =========================
+   MICRO POLISH (clean, single source)
+   ========================= */
+
+a{ text-underline-offset: 3px; }
+a:hover{ text-decoration-thickness: 2px; }
+
+main > section{ margin-bottom: 56px; }
+.pagehead{ margin: 28px 0 22px; }
+
+/* Nav hover jemně (bez 3 různých verzí) */
+.nav__item{
+  position: relative;
+  transition: background .15s ease, color .15s ease;
+}
+.nav__item:hover{ background: rgba(0,0,0,.04); }
+
+/* Hero = jeden radius + clipping */
+.hero{
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+/* Hero panel = radius + clip */
+.hero__panel .panel{
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+

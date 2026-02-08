@@ -3,12 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Informace | MČR U15 – dívky</title>
-  <meta name="description" content="Organizační informace k MČR U15 dívek v basketbalu – místo konání, doprava, parkování, vstupné.">
-
-    <link rel="icon" href="../assets/img/favicon.ico">
-    <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
+  <title>Info | MČR U15 – dívky</title>
+  <meta name="description" content="Praktické informace k MČR U15 dívek v basketbalu – místo konání, doprava, parkování a kontakty.">
+  <link rel="icon" href="../assets/img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/img/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/img/apple-touch-icon.png">
   <link rel="stylesheet" href="../assets/css/base.css">
@@ -17,14 +15,13 @@
   <link rel="stylesheet" href="../assets/css/print.css" media="print">
 </head>
 
-<body>
-
+<body class="page-info">
   <!-- TOPBAR -->
   <div class="topbar">
     <div class="wrap topbar__inner">
       <div class="brand">
         <span class="brand__dot"></span>
-        <a class="brand__name" href="index.html">MČR U15</a>
+        <a class="brand__name" href="../index.html">MČR U15</a>
       </div>
 
       <div class="topright">
@@ -33,33 +30,34 @@
           <a href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener">Hradecké lvice</a>
         </div>
 
-        <button class="themebtn" id="themeToggle" type="button">DARK</button>
+        <button class="themebtn" id="themeToggle" type="button" aria-label="Přepnout motiv">DARK</button>
         <button class="menubtn" id="menuToggle" type="button" aria-label="Otevřít menu">☰</button>
       </div>
     </div>
   </div>
 
-<!-- MOBILE MENU OVERLAY -->
-<div class="menu" id="mobileMenu" aria-hidden="true">
-  <div class="menu__backdrop" data-close></div>
+  <!-- MOBILE MENU OVERLAY -->
+  <div class="menu" id="mobileMenu" aria-hidden="true">
+    <div class="menu__backdrop" data-close></div>
 
-  <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
-    <div class="menu__head">
-      <div class="menu__title">Menu</div>
-      <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
-    </div>
+    <div class="menu__panel" role="dialog" aria-modal="true" aria-label="Menu">
+      <div class="menu__head">
+        <div class="menu__title">Menu</div>
+        <button class="menu__close" type="button" data-close aria-label="Zavřít menu">✕</button>
+      </div>
 
-    <div class="menu__links">
-      <a class="menu__link" href="../index.html">Úvod</a>
-      <a class="menu__link" href="rozpis.html">Rozpis</a>
-      <a class="menu__link" href="vysledky.html">Výsledky</a>
-      <a class="menu__link" href="tabulka.html">Tabulka</a>
-      <a class="menu__link" href="tymy.html">Týmy</a>
-      <a class="menu__link" href="info.html">Info</a>
-      <a class="menu__link" href="fotky.html">Fotky</a>
+      <div class="menu__links">
+        <a class="menu__link" href="../index.html">Úvod</a>
+        <a class="menu__link" href="rozpis.html">Rozpis</a>
+        <a class="menu__link" href="vysledky.html">Výsledky</a>
+        <a class="menu__link" href="tabulka.html">Tabulka</a>
+        <a class="menu__link" href="tymy.html">Týmy</a>
+        <a class="menu__link is-active" href="info.html">Info</a>
+        <a class="menu__link" href="kontakty.html">Kontakty</a>
+        <a class="menu__link" href="fotky.html">Fotky</a>
+      </div>
     </div>
   </div>
-</div>
 
   <!-- NAV -->
   <nav class="nav">
@@ -70,176 +68,100 @@
       <a class="nav__item" href="tabulka.html">Tabulka</a>
       <a class="nav__item" href="tymy.html">Týmy</a>
       <a class="nav__item is-active" href="info.html">Info</a>
+      <a class="nav__item" href="kontakty.html">Kontakty</a>
       <a class="nav__item" href="fotky.html">Fotky</a>
     </div>
   </nav>
 
   <main class="wrap">
-
+    <!-- HLAVIČKA -->
     <section class="pagehead">
-      <h1 class="h1">Organizační informace</h1>
+      <h1 class="h1">Info</h1>
       <p class="lead">
-        Mistrovství České republiky U15 – dívky<br>
-        24.–26. dubna • Hradec Králové
+        Praktické informace k turnaji. Některé detaily doplníme blíž k termínu akce.
       </p>
     </section>
 
-    <section class="grid">
+    <!-- INFO KARTY -->
+    <section class="grid" id="info-cards">
+      <!-- plní se z JS / JSON -->
+      <p class="mini">Načítám informace…</p>
+    </section>
 
-      <!-- Místo -->
-      <div class="card">
-        <h2 class="h2">Místo konání</h2>
-        <p>
-          Turnaj se odehraje ve sportovním areálu na adrese:
-        </p>
-        <p class="muted">
-          <strong>Eliščino nábřeží 777, Hradec Králové</strong>
-        </p>
-        <p class="mini">
-          K dispozici jsou dvě haly v rámci jedné budovy. Přesuny mezi halami jsou možné
-          vnitřními prostory.
-        </p>
+    <!-- CTA -->
+    <section class="card">
+      <h2 class="h2">Rychlé odkazy</h2>
+      <div class="linklist" id="info-cta">
+        <!-- plní se z JS -->
       </div>
-
-      <!-- Doprava -->
-      <div class="card">
-        <h2 class="h2">Doprava</h2>
-        <ul class="list">
-          <li>MHD: zastávky v docházkové vzdálenosti od haly</li>
-          <li>Vlak: hlavní nádraží cca 15 minut pěšky</li>
-          <li>Auto: příjezd možný z centra i z městského okruhu</li>
-        </ul>
-        <p class="mini">
-          Doporučujeme sledovat aktuální dopravní situaci.
-        </p>
-      </div>
-
-      <!-- Parkování -->
-      <div class="card">
-        <h2 class="h2">Parkování</h2>
-        <p>
-          Parkování je možné v okolí sportovního areálu a na přilehlých parkovištích.
-        </p>
-        <ul class="list">
-          <li>krátkodobé parkování u haly</li>
-          <li>veřejná parkoviště v docházkové vzdálenosti</li>
-        </ul>
-        <p class="mini">
-          Kapacita parkovacích míst je omezená – doporučujeme včasný příjezd.
-        </p>
-      </div>
-
-      <!-- Vstupné -->
-      <div class="card card--accent">
-        <h2 class="h2">Vstupné</h2>
-        <p>
-          Vstup na všechny zápasy turnaje je
-          <strong>zdarma</strong>.
-        </p>
-        <p class="mini">
-          Přijďte podpořit mládežnický basketbal.
-        </p>
-      </div>
-
-      <!-- Organizace -->
-      <div class="card">
-        <h2 class="h2">Organizační pokyny</h2>
-        <p>
-          Detailní organizační informace (časový harmonogram, akreditace,
-          technické pokyny) budou zveřejněny přibližně
-          <strong>dva týdny před zahájením turnaje</strong>.
-        </p>
-      </div>
-
-      <!-- Kontakt -->
-      <div class="card">
-        <h2 class="h2">Pořadatel</h2>
-        <p>
-          Hlavním pořadatelem turnaje je Česká basketbalová federace
-          ve spolupráci s klubem Hradecké lvice.
-        </p>
-        <p class="mini">
-          Oficiální kontakty a další informace budou doplněny před turnajem.
-        </p>
-      </div>
-
-<!-- Partneři -->
-<section style="margin-top:20px;">
-  <div class="card">
-    <h2 class="h2">Partneři turnaje</h2>
-    <p>
-      Turnaj je pořádán za podpory partnerů a sponzorů.
-    </p>
-    <p class="mini">
-      Přehled partnerů a jejich prezentace bude zveřejněna
-      přibližně dva týdny před zahájením turnaje v souladu
-      s platnými pravidly soutěže.
-    </p>
-  </div>
-
-</section>
+      <p class="mini">
+        Pokud něco není jasné, napište organizátorům – odpovíme co nejdříve.
+      </p>
+    </section>
   </main>
 
-<footer class="footer">
-  <div class="wrap footer__wrap">
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="wrap footer__wrap">
 
-    <!-- PARTNEŘI -->
-    <section class="partners">
-      <h2 class="partners__title">Partneři turnaje</h2>
+      <!-- PARTNEŘI -->
+      <section class="partners">
+        <h2 class="partners__title">Partneři turnaje</h2>
 
-      <div class="partners__row">
-        <a class="partner partner--main" href="#" aria-label="Hlavní partner">
-          <img src="../assets/img/partners/partner-main.svg" alt="Hlavní partner" loading="lazy">
-        </a>
+        <div class="partners__row">
+          <a class="partner partner--main" href="#" aria-label="Hlavní partner">
+            <img src="../assets/img/partners/partner-main.svg" alt="Hlavní partner" loading="lazy">
+          </a>
 
-        <a class="partner" href="#" aria-label="Partner">
-          <img src="../assets/img/partners/partner-1.svg" alt="Partner" loading="lazy">
-        </a>
+          <a class="partner" href="#" aria-label="Partner">
+            <img src="../assets/img/partners/partner-1.svg" alt="Partner" loading="lazy">
+          </a>
 
-        <a class="partner" href="#" aria-label="Partner">
-          <img src="../assets/img/partners/partner-2.svg" alt="Partner" loading="lazy">
-        </a>
+          <a class="partner" href="#" aria-label="Partner">
+            <img src="../assets/img/partners/partner-2.svg" alt="Partner" loading="lazy">
+          </a>
 
-        <a class="partner" href="#" aria-label="Partner">
-          <img src="../assets/img/partners/partner-3.svg" alt="Partner" loading="lazy">
-        </a>
+          <a class="partner" href="#" aria-label="Partner">
+            <img src="../assets/img/partners/partner-3.svg" alt="Partner" loading="lazy">
+          </a>
+        </div>
+
+        <p class="partners__note">
+          Partneři turnaje budou zveřejněni přibližně dva týdny před zahájením akce.
+        </p>
+      </section>
+
+      <!-- SPODNÍ ŘÁDEK FOOTERU -->
+      <div class="footer__bar">
+        <div class="footer__left">
+          © MČR U15 – Hradec Králové
+        </div>
+
+        <nav class="socialbar" aria-label="Odkazy">
+          <a class="socialbtn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="../assets/img/social/instagram.svg" alt="">
+          </a>
+
+          <a class="socialbtn socialbtn--tvcom" href="https://www.tvcom.cz/" target="_blank" rel="noopener" aria-label="TVcom">
+            <img src="../assets/img/social/tvcom.svg" alt="">
+          </a>
+
+          <a class="socialbtn" href="https://www.cbf.cz/" target="_blank" rel="noopener" aria-label="ČBF">
+            <img src="../assets/img/social/cbf.svg" alt="">
+          </a>
+
+          <a class="socialbtn" href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener" aria-label="Hradecké lvice">
+            <img src="../assets/img/social/lvice.svg" alt="">
+          </a>
+        </nav>
       </div>
 
-      <p class="partners__note">
-        Partneři turnaje budou zveřejněni přibližně dva týdny před zahájením akce.
-      </p>
-    </section>
-
-    <!-- SPODNÍ ŘÁDEK FOOTERU -->
-    <div class="footer__bar">
-      <div class="footer__left">
-        © MČR U15 – Hradec Králové
-      </div>
-
-      <nav class="socialbar" aria-label="Odkazy">
-        <a class="socialbtn" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram">
-          <img src="../assets/img/social/instagram.svg" alt="">
-        </a>
-
-        <a class="socialbtn socialbtn--tvcom" href="https://www.tvcom.cz/" target="_blank" rel="noopener" aria-label="TVcom">
-          <img src="../assets/img/social/tvcom.svg" alt="">
-        </a>
-
-        <a class="socialbtn" href="https://www.cbf.cz/" target="_blank" rel="noopener" aria-label="ČBF">
-          <img src="../assets/img/social/cbf.svg" alt="">
-        </a>
-
-        <a class="socialbtn" href="https://www.hradeckelvice.cz/" target="_blank" rel="noopener" aria-label="Hradecké lvice">
-          <img src="../assets/img/social/lvice.svg" alt="">
-        </a>
-      </nav>
     </div>
+  </footer>
 
-  </div>
-</footer>
-
+  <!-- SCRIPTS -->
+  <script src="../assets/js/info.js"></script>
   <script src="../assets/js/theme.js"></script>
   <script src="../assets/js/menu.js"></script>
-
 </body>
 </html>

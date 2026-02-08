@@ -1,7 +1,7 @@
 /* =========================
 TABULKA – skupiny + nasazení
 ========================= */
-console.log("TABULKA BUILD 2026-02-05 23:59");
+console.log("TABULKA BUILD 2026-02-08");
 import { loadTeams, teamHrefById } from "./teams-store.js";
 
 // tabulka.html je v /pages/
@@ -13,7 +13,7 @@ const VYSLEDKY_BACKUP_URL = new URL("../../data/backup/vysledky.backup.json", im
 const LS_ROZPIS_KEY = "mcr_u15_rozpis_cache_v1";
 const LS_VYSLEDKY_KEY = "mcr_u15_vysledky_cache_v1";
 
-const MODE = "playoff"; // "groups" / "playoff"
+const MODE = "groups"; // "groups" / "playoff"
 
 // ========== loader ==========
 
@@ -394,16 +394,11 @@ async function init() {
   const gamesById = new Map();
 
   // 0) render base tables ALWAYS (nuly)
-  console.log("INIT start", { hasA: !!tableA, hasB: !!tableB });
-
   const baseA = baseOrder("A");
   const baseB = baseOrder("B");
-  console.log("BASE ORDERS", { baseA, baseB });
 
-  renderStandingsTable(tableA, baseA, new Map(baseA.map(n => [n, initTeam(n)])));
-  renderStandingsTable(tableB, baseB, new Map(baseB.map(n => [n, initTeam(n)])));
-
-  console.log("AFTER BASE RENDER", { aLen: tableA.innerHTML.length, bLen: tableB.innerHTML.length });
+  renderStandingsTable(tableA, baseA, new Map(baseA.map((n) => [n, initTeam(n)])));
+  renderStandingsTable(tableB, baseB, new Map(baseB.map((n) => [n, initTeam(n)])));
 
   // 1) load data (vysledky + rozpis) – pokud to selže, nech aspoň nuly
   let vysledkyRes, rozpisRes;
@@ -427,18 +422,38 @@ async function init() {
   }
 
   const vysledky = vysledkyRes.data;
+  const rozpis = rozpisRes.data;
 
-  // 2) collect FINAL matches for groups A/B
-  const matchesA = [];
-  const matchesB = [];
-
-  const zapasy = Array.isArray(vysledky?.zapasy) ? vysledky.zapasy : [];
+  // 2) sjednoť gamesById z vysledky.games
   if (vysledky?.games && typeof vysledky.games === "object") {
     for (const [id, g] of Object.entries(vysledky.games)) {
-      gamesById.set(id, { id, ...g }); // sjednocení formátu
+      gamesById.set(String(id).trim(), { id: String(id).trim(), ...g });
     }
   }
 
+  // 3) meta z ROZPISU: id -> {skupina, zapas}
+  const metaById = new Map();
+  for (const day of ["patek", "sobota", "nedele"]) {
+    for (const item of rozpis?.[day] || []) {
+      const id = String(item?.id || "").trim();
+      if (!id) continue;
+
+      // skupina: "A"/"B"/... (u play-off může být třeba "QF", to ignorujeme)
+      const skupina = String(item?.skupina || "").trim().toUpperCase();
+
+      // název zápasu: "Tým A - Tým B"
+      const zapas = item?.zapas;
+
+      metaById.set(id, { skupina, zapas });
+    }
+  }
+
+  // 4) collect FINAL matches for groups A/B
+  const matchesA = [];
+  const matchesB = [];
+
+  // 4a) starý formát: vysledky.zapasy (když existuje)
+  const zapasy = Array.isArray(vysledky?.zapasy) ? vysledky.zapasy : [];
   for (const g of zapasy) {
     const skup = String(g?.skupina || "").trim().toUpperCase();
     if (skup !== "A" && skup !== "B") continue;
@@ -457,7 +472,31 @@ async function init() {
     else matchesB.push(record);
   }
 
-  // 3) compute standings
+  // 4b) nový formát: vysledky.games + rozpis meta (tohle je ten zásadní fix)
+  if (matchesA.length === 0 && matchesB.length === 0 && gamesById.size && metaById.size) {
+    for (const [id, g] of gamesById.entries()) {
+      const meta = metaById.get(id);
+      if (!meta) continue;
+
+      const skup = String(meta.skupina || "").toUpperCase();
+      if (skup !== "A" && skup !== "B") continue;
+
+      const stav = normalizeStav(g?.stav);
+      if (stav !== "FINAL" && stav !== "FIN") continue;
+
+      const t = parseTeamsFromZapas(meta.zapas);
+      if (!t) continue;
+
+      const score = parseScoreFromString(g?.skore);
+      if (!score) continue;
+
+      const record = { teamA: t.teamA, teamB: t.teamB, scoreA: score.scoreA, scoreB: score.scoreB };
+      if (skup === "A") matchesA.push(record);
+      else matchesB.push(record);
+    }
+  }
+
+  // 5) compute standings
   const sortedA = matchesA.length
     ? sortStandingsWithH2H(baseA, matchesA)
     : { globalStats: new Map(baseA.map((n) => [n, initTeam(n)])), order: baseA };
@@ -466,11 +505,11 @@ async function init() {
     ? sortStandingsWithH2H(baseB, matchesB)
     : { globalStats: new Map(baseB.map((n) => [n, initTeam(n)])), order: baseB };
 
-  // 4) render
+  // 6) render
   renderStandingsTable(tableA, sortedA.order, sortedA.globalStats);
   renderStandingsTable(tableB, sortedB.order, sortedB.globalStats);
 
-  // 5) expose seeds for playoff.js
+  // 7) expose seeds for playoff.js
   window.__PLAYOFF_SEEDS__ = {
     "1A": sortedA.order[0] ?? "1A",
     "2A": sortedA.order[1] ?? "2A",

@@ -543,3 +543,142 @@
   border-color: rgba(255,59,59,.45);
   background: rgba(255,59,59,.12);
 }
+
+:root[data-theme="dark"] .page-fotky .linkcard,
+:root[data-theme="dark"] .page-fotky .dayblock,
+:root[data-theme="dark"] .page-fotky .daylink,
+:root[data-theme="dark"] .page-fotky .clipitem,
+:root[data-theme="dark"] .page-fotky .thumb{
+  background: rgba(255,255,255,.03);
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .page-fotky .linkcard:hover,
+:root[data-theme="dark"] .page-fotky .daylink:hover,
+:root[data-theme="dark"] .page-fotky .clipitem:hover{
+  background: rgba(255,255,255,.06);
+}
+
+/* =========================
+   HERO – theme-safe overrides
+   (works with :root[data-theme="dark"])
+   ========================= */
+
+/* default (LIGHT) */
+:root:not([data-theme="dark"]) .hero{
+  background: linear-gradient(180deg, #f3f4f6, #e9ebef);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+:root:not([data-theme="dark"]) .hero .h1{ color:#111; }
+:root:not([data-theme="dark"]) .hero .lead{ color: rgba(0,0,0,0.72); }
+
+/* hero CTA – ghost in LIGHT */
+:root:not([data-theme="dark"]) .hero .btn--ghost{
+  background: rgba(0,0,0,0.06);
+  color: #111;
+  border-color: rgba(0,0,0,0.20);
+}
+
+/* panel in LIGHT */
+:root:not([data-theme="dark"]) .hero__panel .panel{
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(0,0,0,0.10);
+  color: #111;
+}
+:root:not([data-theme="dark"]) .hero__panel .panel .panel__title{
+  color: #111;
+}
+
+/* DARK */
+:root[data-theme="dark"] .hero{
+  background: linear-gradient(180deg, rgba(10,10,10,0.85), rgba(10,10,10,0.95));
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+:root[data-theme="dark"] .hero .h1{ color:#fff; }
+:root[data-theme="dark"] .hero .lead{ color: rgba(255,255,255,0.85); }
+
+/* hero CTA – ghost in DARK (necháme kompatibilní s dark.css, jen jemně doladíme) */
+:root[data-theme="dark"] .hero .btn--ghost{
+  background: rgba(255,255,255,0.06);
+  color: var(--ink);
+  border-color: rgba(238,242,255,.35);
+}
+
+/* panel in DARK */
+:root[data-theme="dark"] .hero__panel .panel{
+  background: rgba(0,0,0,0.55);
+  border-color: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+:root[data-theme="dark"] .hero__panel .panel .panel__title{
+  color: #fff;
+  letter-spacing: .12em;
+}
+
+:root:not([data-theme="dark"]) .hero__panel .panel{
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+:root[data-theme="dark"] .hero .btn--primary{
+  box-shadow: 0 10px 30px rgba(225,6,0,.25);
+}
+
+:root:not([data-theme="dark"]) .card--accent{
+  border-color: rgba(225,6,0,.25);
+}
+
+/* 6) HERO: jemný glow u primárního CTA v dark (event vibe) */
+:root[data-theme="dark"] .hero .btn--primary {
+  box-shadow: 0 12px 28px rgba(225,6,0,.22);
+}
+
+/* 7) HERO panel v light: ať není “placka” */
+:root:not([data-theme="dark"]) .hero__panel .panel {
+  box-shadow: 0 10px 30px rgba(0,0,0,.08);
+}
+
+/* 8) “Důležité” karta (card--accent) v light: ať nevypadá jako error */
+:root:not([data-theme="dark"]) .card--accent {
+  border-color: rgba(225,6,0,.22);
+}
+
+/* light */
+:root:not([data-theme="dark"]) .card {
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+:root:not([data-theme="dark"]) .card:hover {
+  box-shadow: 0 14px 34px rgba(0,0,0,.10);
+  border-color: rgba(0,0,0,.12);
+}
+
+/* dark */
+:root[data-theme="dark"] .card {
+  box-shadow: 0 10px 26px rgba(0,0,0,.35);
+}
+:root[data-theme="dark"] .card:hover {
+  box-shadow: 0 18px 44px rgba(0,0,0,.45);
+  border-color: rgba(255,255,255,.14);
+}
+
+/* Light: zjemnit stín, ať to nevypadá jak “kartička z iOS” */
+:root:not([data-theme="dark"]) .hero__panel .panel{
+  box-shadow: 0 8px 22px rgba(0,0,0,.07);
+}
+
+/* Dark: stín klidně slabší (už máš tmavé pozadí) */
+:root[data-theme="dark"] .hero__panel .panel{
+  box-shadow: 0 10px 26px rgba(0,0,0,.30);
+}
+
+/* Light: panel ať nesvítí čistě bíle na šedém hero */
+:root:not([data-theme="dark"]) .hero__panel .panel{
+  background: rgba(255,255,255,0.65);          /* nebyla to "stěna bílé" */
+  border: 1px solid rgba(0,0,0,0.08);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+:root:not([data-theme="dark"]) .hero{
+  background: #f6f7f9;   /* skoro bílá */
+}

@@ -1,0 +1,23 @@
+{
+  "updated": "2026-02-08",
+  "featured": [
+    { "title": "Flickr – Turnajová galerie", "url": "https://example.com", "tag": "Oficiální" },
+    { "title": "Google Photos – Výběr dne 1", "url": "https://example.com", "tag": "Den 1" }
+  ],
+  "days": [
+    {
+      "label": "Den 1 (pátek)",
+      "links": [
+        { "title": "Výběr dne (Google Photos)", "url": "https://example.com" },
+        { "title": "IG Stories highlights", "url": "https://example.com" }
+      ]
+    }
+  ],
+  "clips": [
+    { "title": "Aftermovie", "url": "https://youtube.com/", "platform": "YouTube" },
+    { "title": "Top plays – Den 2", "url": "https://instagram.com/", "platform": "Instagram" }
+  ],
+  "thumbs": [
+    { "src": "../assets/img/gallery/d1-001.jpg", "alt": "Žabiny vs Kladno", "full": "../assets/img/gallery/d1-001.jpg" }
+  ]
+}
