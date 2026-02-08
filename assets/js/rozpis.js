@@ -1,6 +1,6 @@
 console.log("rozpis.js loaded");
 
-import { buildTeamIndex, teamHrefById, normKey, escapeHtml } from "./teams-store.js";
+import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
 
 let TEAM_BY_NAME = new Map();
 
@@ -19,7 +19,7 @@ function teamLink(name){
 }
 
 const ROZPIS_URL = "../../data/rozpis.json";
-const ROZPIS_BACKUP_URL = "../../data/rozpis.backup.json";
+const ROZPIS_BACKUP_URL = "../../data/backup/rozpis.backup.json";
 const DEBUG_MODE = new URLSearchParams(window.location.search).get("debug") === "1";
 let DEBUG_TIME = null;
 const LS_KEY = "mcr_u15_rozpis_cache_v1";
@@ -69,7 +69,7 @@ function isValidRozpis(data) {
 
 (async () => {
   try {
-    initTeamLinks();
+    await initTeamLinks();
     // 1) pokus: načíst z webu
     const url = `../../data/rozpis.json?v=${Date.now()}`;
     const res = await fetch(url, { cache: "no-store" });
@@ -237,13 +237,17 @@ function renderRozpis(data) {
   };
 
 const matchHtml = (m) => {
-  const text = String(m?.zapas ?? "—");
-  const [a, b] = parseTeamsFromMatchText(text);
-  if (!a || !b) return escapeHtml(text);
+  const text = String(m?.zapas ?? "—").trim();
+  const parts = text.split(/\s*[–—-]\s*/);
+  if (parts.length < 2) return escapeHtml(text);
 
-  // neklikat na placeholdery
+  const a = parts[0].trim();
+  const b = parts[1].trim();
+
+  // placeholdery nelinkuj
   if (/^\d[AB]$/i.test(a) || /^\d[AB]$/i.test(b)) return escapeHtml(text);
   if (/^[WL]\s+/i.test(a) || /^[WL]\s+/i.test(b)) return escapeHtml(text);
+  if (TEAM_IGNORE_PREFIXES.some(p => a.startsWith(p) || b.startsWith(p))) return escapeHtml(text);
 
   return `${teamLink(a)} <span class="muted">–</span> ${teamLink(b)}`;
 };
@@ -856,3 +860,12 @@ window.debugNow = function (hhmm) {
   console.log("[DEBUG] Simulovaný čas:", hhmm);
   renderRozpis(window.originalData);
 };
+
+function escapeHtml(s) {
+  return String(s ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}

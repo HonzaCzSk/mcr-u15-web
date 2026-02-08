@@ -4,11 +4,11 @@ console.log("normKey test:", normKey("Sokol Hradec Králové"));
 import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
 
 // Paths (vysledky.html is in /pages/)
-const ROZPIS_URL = "../data/rozpis.json";
-const ROZPIS_BACKUP_URL = "../data/rozpis.backup.json";
+const ROZPIS_URL = "../../data/rozpis.json";
+const ROZPIS_BACKUP_URL = "../../data/backup/rozpis.backup.json";
 
-const VYSLEDKY_URL = "../data/vysledky.json";
-const VYSLEDKY_BACKUP_URL = "../data/vysledky.backup.json";
+const VYSLEDKY_URL = "../../data/vysledky.json";
+const VYSLEDKY_BACKUP_URL = "../../data/backup/vysledky.backup.json";
 
 const LS_ROZPIS_KEY = "mcr_u15_rozpis_cache_v1";
 const LS_VYSLEDKY_KEY = "mcr_u15_vysledky_cache_v1";

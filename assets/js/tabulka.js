@@ -6,14 +6,14 @@ import { loadTeams, teamHrefById } from "./teams-store.js";
 
 // tabulka.html je v /pages/
 const ROZPIS_URL = new URL("../../data/rozpis.json", import.meta.url).toString();
-const ROZPIS_BACKUP_URL = new URL("../../data/rozpis.backup.json", import.meta.url).toString();
+const ROZPIS_BACKUP_URL = new URL("../../data/backup/rozpis.backup.json", import.meta.url).toString();
 const VYSLEDKY_URL = new URL("../../data/vysledky.json", import.meta.url).toString();
-const VYSLEDKY_BACKUP_URL = new URL("../../data/vysledky.backup.json", import.meta.url).toString();
+const VYSLEDKY_BACKUP_URL = new URL("../../data/backup/vysledky.backup.json", import.meta.url).toString();
 
 const LS_ROZPIS_KEY = "mcr_u15_rozpis_cache_v1";
 const LS_VYSLEDKY_KEY = "mcr_u15_vysledky_cache_v1";
 
-const MODE = "groups"; // "groups" / "playoff"
+const MODE = "playoff"; // "groups" / "playoff"
 
 // ========== loader ==========
 
