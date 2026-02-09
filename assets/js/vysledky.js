@@ -154,6 +154,24 @@ function scoreHtml(skore) {
   return s && s !== "" ? s : "—";
 }
 
+
+function scoreMainHtml(game){
+  const st = String(game?.stav ?? "").trim().toUpperCase();
+  const raw = String(game?.skore ?? "").trim();
+
+  // Scheduled: neukazuj dominantní finální skóre
+  if (st === "SCHEDULED" && (!raw || raw === "—")) return "—";
+
+  // FIN: zvýrazni vítěze
+  if (st === "FIN" || st === "FINAL") return renderFinalScoreBold(raw);
+
+  // LIVE: ukaz aktuální skóre, pokud je
+  if (st === "LIVE") return raw ? scoreHtml(raw) : "—";
+
+  // fallback
+  return scoreHtml(raw);
+}
+
 async function fetchJsonNoStore(url) {
   const res = await fetch(url + "?v=" + Date.now(), { cache: "no-store" });
   if (!res.ok) throw new Error(`Fetch failed: ${res.status} for ${url}`);
@@ -317,8 +335,8 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${pillHtml(r.hala)}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
+        <div class="score-main">${scoreMainHtml(r)}</div>
         ${renderQuarterGrid(r.quarters)}
-        <div class="score-main">${scoreHtml(r.skore)}</div>
       </td>
       <td>${badgeHtml(r.stav)}</td>
     `, focusId);
@@ -328,8 +346,8 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${pillHtml(r.hala)}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
+        <div class="score-main">${scoreMainHtml(r)}</div>
         ${renderQuarterGrid(r.quarters)}
-        <div class="score-main">${scoreHtml(r.skore)}</div>
       </td>
       <td>${badgeHtml(r.stav)}</td>
     `, focusId);
@@ -340,8 +358,8 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${r.faze}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
+        <div class="score-main">${scoreMainHtml(r)}</div>
         ${renderQuarterGrid(r.quarters)}
-        <div class="score-main">${scoreHtml(r.skore)}</div>
       </td>
       <td>${badgeHtml(r.stav)}</td>
     `, focusId);

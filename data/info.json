@@ -2,25 +2,35 @@
   "updated": "2026-02-08",
   "venue": {
     "title": "Místo konání",
-    "address": "Eliščino nábřeží 777, Hradec Králové",
-    "note": "2 haly v jedné budově",
-    "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Eli%C5%A1%C4%8Dino+n%C3%A1b%C5%99e%C5%BE%C3%AD+777%2C+Hradec+Kr%C3%A1lov%C3%A9"
+    "address": "Eliščino nábřeží 777, Hradec Králové, 500 03",
+    "note": "",
+    "mapsUrl": "https://www.google.com/maps/place/TJ+Sokol+Hradec+Kr%C3%A1lov%C3%A9/@50.2132827,15.8290453,20.87z/data=!4m6!3m5!1s0x470c2b2ee9083f57:0xdadd5997f9d5361d!8m2!3d50.213257!4d15.8289909!16s%2Fg%2F11h52sp2wy!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDIwNC4wIKXMDSoASAFQAw%3D%3D"
   },
   "transport": {
     "title": "Doprava",
     "items": [
-      "MHD: snadné spojení v rámci Hradce Králové (upřesníme zastávky).",
+      "Nejbližší zastávka u haly je Muzeum.",
+      "Z hlavního nádraží se sem dostanete autobusy 12, 16 a trolejbusy 3, 7.",
       "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
     ]
   },
   "parking": {
     "title": "Parkování",
-    "status": "placeholder",
-    "text": "Upřesníme 2 týdny před akcí."
+    "status": "final",
+    "paragraphs": [
+      "MHD: zastávka Muzeum – autobusy 12, 16 · trolejbusy 3, 7.",
+      "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
+    ],
+    "mapUrl": "/assets/docs/parkovani-hk-zony.pdf",
+    "mapLabel": "Mapa parkovacích zón (PDF)"
   },
   "tickets": {
     "title": "Vstupné",
-    "text": "Zdarma"
+    "paragraphs": [
+      "Vstup zdarma",
+      "Po celé dny turnaje je vstup bez placení.",
+      "V hale bude občerstvení (bufet)."
+    ]
   },
   "org": {
     "title": "Organizační info",

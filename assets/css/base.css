@@ -284,6 +284,91 @@ body{
 .list{ margin:0; padding-left: 18px; }
 .list li{ margin: 7px 0; }
 
+/* =========================
+   INFO page – polish (cards)
+   ========================= */
+
+/* Info cards: cleaner spacing + subtle accent bar */
+.page-info #info-cards .card{
+  position: relative;
+  padding: 18px;
+  border-radius: var(--r-lg);
+  box-shadow: var(--sh-md);
+}
+
+.page-info #info-cards .card::before{
+  content:"";
+  position:absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 4px;
+  background: rgba(255,59,48,.55);
+}
+
+@media (hover: hover){
+  .page-info #info-cards .card{
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .page-info #info-cards .card:hover{
+    transform: translateY(-2px);
+    border-color: rgba(11,11,14,.16);
+    box-shadow: 0 18px 44px rgba(0,0,0,.12);
+  }
+}
+
+/* Consistent card titles + optional badge */
+.page-info #info-cards .card h2,
+.page-info #info-cards .card h3{
+  display:flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 26px;
+  letter-spacing: -0.2px;
+}
+
+.page-info #info-cards .card h2 .badge,
+.page-info #info-cards .card h3 .badge{
+  padding: 4px 10px;
+  font-size: 11px;
+  letter-spacing: .3px;
+  background: rgba(43,127,255,.10);
+  border-color: rgba(43,127,255,.28);
+}
+
+/* Replace default bullets with tighter, clearer list */
+.page-info #info-cards ul{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-info #info-cards li{
+  display:flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 7px 0;
+}
+
+.page-info #info-cards li::before{
+  content: "•";
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--muted);
+  font-weight: 950;
+  line-height: 1;
+}
+
+.list li::before { color: var(--text-muted); }
+
+/* Links inside info cards: make them feel like actions */
+.page-info #info-cards a{
+  font-weight: 900;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
 /* ----- Tables wrapper ----- */
 .tablewrap{
   width: 100%;
@@ -3486,3 +3571,38 @@ main > section{ margin-bottom: 56px; }
   overflow: hidden;
 }
 
+.card .highlight {
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+  color: var(--text-strong);
+}
+
+.card .place{font-weight:700; margin-bottom:.35rem;}
+.card .kv .k{opacity:.7; font-size:.9rem; margin-top:.35rem;}
+.card .kv .v{line-height:1.5;}
+
+.ticket-main {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: .4rem;
+}
+
+.list {
+  padding-left: 1rem;
+}
+
+.list li {
+  list-style: none;
+  position: relative;
+  padding-left: 1rem;
+  margin-bottom: .5rem;
+}
+
+.list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--text-muted);
+}

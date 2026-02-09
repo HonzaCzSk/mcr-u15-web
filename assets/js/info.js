@@ -13,20 +13,51 @@
     cards.push(cardHTML(
       "Místo konání",
       `
+        <div class="place">Hala Eliščino nábřeží</div>
         <div class="kv">
           <div class="k">Adresa</div>
-          <div class="v">${escapeHTML(data.venue.address)}</div>
+          <div class="v">
+            Eliščino nábřeží 777<br>
+            Hradec Králové, 500 03
+          </div>
         </div>
-        <div class="muted">${escapeHTML(data.venue.note)}</div>
-        <a class="link" href="${data.venue.mapsUrl}" target="_blank" rel="noopener">Google Maps →</a>
+        <a class="link" href="${data.venue.mapsUrl}" target="_blank" rel="noopener">
+          Google Maps →
+        </a>
       `
     ));
 
-    // 2) Doprava
+    // 2) Doprava (MHD + Auto)
+    const t = data.transport.items || [];
+
+    // vezmeme první dvě položky jako MHD (pokud existují)
+    const mhdParts = [];
+    if (t[0]) mhdParts.push(t[0].replace(/\.$/, "")); // bez tečky na konci
+    if (t[1]) mhdParts.push(t[1].replace(/\.$/, "")); // bez tečky na konci
+
+    const mhdText = mhdParts.length
+      ? `MHD: ${mhdParts.join(". ")}.`
+      : null;
+
+    // auto necháme jako třetí položku (pokud existuje), ale sjednotíme prefix
+    let autoText = null;
+    if (t[2]) {
+      autoText = t[2].startsWith("Auto:")
+        ? t[2]
+        : `Auto: ${t[2]}`;
+    }
+
+    // sestavíme finální seznam (max 2 položky)
+    const transportLines = [mhdText, autoText].filter(Boolean);
+
     cards.push(cardHTML(
       data.transport.title,
       `<ul class="list">
-        ${data.transport.items.map(x => `<li>${escapeHTML(x)}</li>`).join("")}
+        ${transportLines.map(line => {
+          // zvýraznění prefixu "MHD:" / "Auto:"
+          const safe = escapeHTML(line).replace(/^(MHD|Auto):/, "<strong>$1:</strong>");
+          return `<li>${safe}</li>`;
+        }).join("")}
       </ul>`
     ));
 
@@ -34,16 +65,34 @@
     const parkingBadge = data.parking.status === "placeholder"
       ? `<span class="badge badge-muted">Upřesníme</span>`
       : "";
+
+    const parkingBody = `
+      ${data.parking.paragraphs
+        .map(p => `<p>${escapeHTML(p)}</p>`)
+        .join("")}
+
+      ${data.parking.mapUrl ? `
+        <a class="link" href="${data.parking.mapUrl}" target="_blank" rel="noopener">
+          ${escapeHTML(data.parking.mapLabel || "Mapa parkovacích zón →")}
+        </a>
+      ` : ""}
+    `;
+
     cards.push(cardHTML(
       `${data.parking.title} ${parkingBadge}`,
-      `<p>${escapeHTML(data.parking.text)}</p>`
+      parkingBody
     ));
-
+        
     // 4) Vstupné
-    cards.push(cardHTML(
-      data.tickets.title,
-      `<p class="big">${escapeHTML(data.tickets.text)}</p>`
-    ));
+    const ticketsBody = data.tickets.paragraphs
+      .map((p, i) =>
+        `<p class="${i === 0 ? "ticket-main" : i === 1 ? "muted" : ""}">
+          ${escapeHTML(p)}
+        </p>`
+      )
+      .join("");
+
+    cards.push(cardHTML(data.tickets.title, ticketsBody));
 
     // 5) Organizační info
     cards.push(cardHTML(

@@ -356,6 +356,8 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
     tr.classList.add("is-live");
   } else if (dayKey === ACTIVE_DAY && nextTimeMin != null && rowMin === nextTimeMin) {
     tr.classList.add("is-next");
+  } else if (dayKey === ACTIVE_DAY && allowLive && rowMin != null && rowMin < nowMin) {
+    tr.classList.add("is-done");
   }
 
     tr.innerHTML = renderRow(r);
