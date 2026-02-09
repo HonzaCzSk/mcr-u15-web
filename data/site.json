@@ -1,0 +1,35 @@
+{
+  "tournament": {
+    "name": "Mistrovství ČR U15 – dívky",
+    "shortName": "MČR U15",
+    "category": "U15",
+    "year": "2026",
+    "city": "Hradec Králové"
+  },
+
+  "branding": {
+    "logo": "assets/img/favicon-32x32.png",
+    "accentColor": "#c62828"
+  },
+
+  "venue": {
+    "name": "Hala Eliščino nábřeží",
+    "city": "Hradec Králové"
+  },
+
+  "match": {
+    "durationMinutes": 40,
+    "liveBufferMinutes": 5
+  },
+
+  "cta": {
+    "primary": {
+      "text": "Rozpis zápasů",
+      "href": "pages/rozpis.html"
+    },
+    "secondary": {
+      "text": "Info pro návštěvníky",
+      "href": "pages/info.html"
+    }
+  }
+}
