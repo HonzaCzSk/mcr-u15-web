@@ -52,7 +52,7 @@
 
     cards.push(cardHTML(
       data.transport.title,
-      `<ul class="list">
+      `<ul class="list transport-list">
         ${transportLines.map(line => {
           // zvýraznění prefixu "MHD:" / "Auto:"
           const safe = escapeHTML(line).replace(/^(MHD|Auto):/, "<strong>$1:</strong>");

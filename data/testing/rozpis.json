@@ -1,41 +1,205 @@
 {
-  "updated": "2026-02-08T18:00:00+01:00",
+  "updated": "2026-02-09T12:00:00+01:00",
   "patek": [
-    { "id": "G01", "cas": "09:00", "hala": "A", "zapas": "Žabiny Brno – BK Lvice Litoměřice", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G02", "cas": "09:00", "hala": "B", "zapas": "SBŠ Ostrava – Sokol Hradec Králové", "skupina": "B", "tvcom": "https://tvcom.cz" },
-
-    { "id": "G03", "cas": "10:30", "hala": "A", "zapas": "Tygři Praha – Válečnice Děčín", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G04", "cas": "10:30", "hala": "B", "zapas": "BSK TJ Jičín – TJ Sokol Kladno", "skupina": "B", "tvcom": "https://tvcom.cz" },
-
-    { "id": "G05", "cas": "12:00", "hala": "A", "zapas": "Žabiny Brno – Tygři Praha", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G06", "cas": "12:00", "hala": "B", "zapas": "SBŠ Ostrava – BSK TJ Jičín", "skupina": "B", "tvcom": "https://tvcom.cz" }
+    {
+      "id": "G01",
+      "cas": "09:00",
+      "hala": "A",
+      "zapas": "A1 – A2",
+      "skupina": "A",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G02",
+      "cas": "09:00",
+      "hala": "B",
+      "zapas": "B1 – B2",
+      "skupina": "B",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G03",
+      "cas": "10:30",
+      "hala": "A",
+      "zapas": "A3 – A4",
+      "skupina": "A",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G04",
+      "cas": "10:30",
+      "hala": "B",
+      "zapas": "B3 – B4",
+      "skupina": "B",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G05",
+      "cas": "12:00",
+      "hala": "A",
+      "zapas": "A1 – A3",
+      "skupina": "A",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G06",
+      "cas": "12:00",
+      "hala": "B",
+      "zapas": "B1 – B3",
+      "skupina": "B",
+      "tvcom": "https://tvcom.cz"
+    }
   ],
   "sobota": [
-    { "id": "G07", "cas": "09:00", "hala": "A", "zapas": "BK Lvice Litoměřice – Válečnice Děčín", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G08", "cas": "09:00", "hala": "B", "zapas": "Sokol Hradec Králové – TJ Sokol Kladno", "skupina": "B", "tvcom": "https://tvcom.cz" },
-
-    { "id": "G09", "cas": "10:30", "hala": "A", "zapas": "Žabiny Brno – Válečnice Děčín", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G10", "cas": "10:30", "hala": "B", "zapas": "SBŠ Ostrava – TJ Sokol Kladno", "skupina": "B", "tvcom": "https://tvcom.cz" },
-
-    { "id": "G11", "cas": "12:00", "hala": "A", "zapas": "BK Lvice Litoměřice – Tygři Praha", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G12", "cas": "12:00", "hala": "B", "zapas": "Sokol Hradec Králové – BSK TJ Jičín", "skupina": "B", "tvcom": "https://tvcom.cz" },
-
-    { "id": "QF1", "cas": "14:00", "hala": "A", "faze": "QF", "zapas": "Žabiny Brno (1A) – TJ Sokol Kladno (4B)", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "QF2", "cas": "14:00", "hala": "B", "faze": "QF", "zapas": "BK Lvice Litoměřice (2A) – BSK TJ Jičín (3B)", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "QF3", "cas": "15:30", "hala": "A", "faze": "QF", "zapas": "SBŠ Ostrava (1B) – Válečnice Děčín (4A)", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "QF4", "cas": "15:30", "hala": "B", "faze": "QF", "zapas": "Sokol Hradec Králové (2B) – Tygři Praha (3A)", "skupina": "Play-off", "tvcom": "https://tvcom.cz" }
+    {
+      "id": "G07",
+      "cas": "09:00",
+      "hala": "A",
+      "zapas": "A2 – A4",
+      "skupina": "A",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G08",
+      "cas": "09:00",
+      "hala": "B",
+      "zapas": "B2 – B4",
+      "skupina": "B",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G09",
+      "cas": "10:30",
+      "hala": "A",
+      "zapas": "A1 – A4",
+      "skupina": "A",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G10",
+      "cas": "10:30",
+      "hala": "B",
+      "zapas": "B1 – B4",
+      "skupina": "B",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G11",
+      "cas": "12:00",
+      "hala": "A",
+      "zapas": "A2 – A3",
+      "skupina": "A",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "G12",
+      "cas": "12:00",
+      "hala": "B",
+      "zapas": "B2 – B3",
+      "skupina": "B",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "QF1",
+      "cas": "14:00",
+      "hala": "A",
+      "faze": "QF",
+      "zapas": "1A – 4B",
+      "skupina": "Play-off",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "QF2",
+      "cas": "14:00",
+      "hala": "B",
+      "faze": "QF",
+      "zapas": "2A – 3B",
+      "skupina": "Play-off",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "QF3",
+      "cas": "15:30",
+      "hala": "A",
+      "faze": "QF",
+      "zapas": "1B – 4A",
+      "skupina": "Play-off",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "QF4",
+      "cas": "15:30",
+      "hala": "B",
+      "faze": "QF",
+      "zapas": "2B – 3A",
+      "skupina": "Play-off",
+      "tvcom": "https://tvcom.cz"
+    }
   ],
   "nedele": [
-    { "id": "SF1", "cas": "09:00", "hala": "A", "faze": "SF", "zapas": "Vítěz QF1 – Vítěz QF2", "tvcom": "https://tvcom.cz" },
-    { "id": "SF2", "cas": "09:00", "hala": "B", "faze": "SF", "zapas": "Vítěz QF3 – Vítěz QF4", "tvcom": "https://tvcom.cz" },
-
-    { "id": "S5_1", "cas": "10:30", "hala": "A", "faze": "SF 5.–8.", "zapas": "Poražený QF1 – Poražený QF2", "tvcom": "https://tvcom.cz" },
-    { "id": "S5_2", "cas": "10:30", "hala": "B", "faze": "SF 5.–8.", "zapas": "Poražený QF3 – Poražený QF4", "tvcom": "https://tvcom.cz" },
-
-    { "id": "M7", "cas": "12:00", "hala": "B", "faze": "7. místo", "zapas": "Poražený S5_1 – Poražený S5_2", "tvcom": "https://tvcom.cz" },
-    { "id": "M5", "cas": "13:30", "hala": "A", "faze": "5. místo", "zapas": "Vítěz S5_1 – Vítěz S5_2", "tvcom": "https://tvcom.cz" },
-
-    { "id": "M3", "cas": "15:00", "hala": "B", "faze": "3. místo", "zapas": "Poražený SF1 – Poražený SF2", "tvcom": "https://tvcom.cz" },
-    { "id": "FIN", "cas": "16:30", "hala": "A", "faze": "FIN", "zapas": "Vítěz SF1 – Vítěz SF2", "tvcom": "https://tvcom.cz" }
+    {
+      "id": "SF1",
+      "cas": "09:00",
+      "hala": "A",
+      "faze": "SF",
+      "zapas": "W QF1 – W QF2",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "SF2",
+      "cas": "09:00",
+      "hala": "B",
+      "faze": "SF",
+      "zapas": "W QF3 – W QF4",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "S5_1",
+      "cas": "10:30",
+      "hala": "A",
+      "faze": "SF 5.–8.",
+      "zapas": "L QF1 – L QF2",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "S5_2",
+      "cas": "10:30",
+      "hala": "B",
+      "faze": "SF 5.–8.",
+      "zapas": "L QF3 – L QF4",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "M7",
+      "cas": "12:00",
+      "hala": "B",
+      "faze": "7. místo",
+      "zapas": "L S5_1 – L S5_2",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "M5",
+      "cas": "13:30",
+      "hala": "A",
+      "faze": "5. místo",
+      "zapas": "W S5_1 – W S5_2",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "M3",
+      "cas": "15:00",
+      "hala": "B",
+      "faze": "3. místo",
+      "zapas": "L SF1 – L SF2",
+      "tvcom": "https://tvcom.cz"
+    },
+    {
+      "id": "FIN",
+      "cas": "16:30",
+      "hala": "A",
+      "faze": "FIN",
+      "zapas": "W SF1 – W SF2",
+      "tvcom": "https://tvcom.cz"
+    }
   ]
 }

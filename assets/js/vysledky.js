@@ -154,24 +154,6 @@ function scoreHtml(skore) {
   return s && s !== "" ? s : "—";
 }
 
-
-function scoreMainHtml(game){
-  const st = String(game?.stav ?? "").trim().toUpperCase();
-  const raw = String(game?.skore ?? "").trim();
-
-  // Scheduled: neukazuj dominantní finální skóre
-  if (st === "SCHEDULED" && (!raw || raw === "—")) return "—";
-
-  // FIN: zvýrazni vítěze
-  if (st === "FIN" || st === "FINAL") return renderFinalScoreBold(raw);
-
-  // LIVE: ukaz aktuální skóre, pokud je
-  if (st === "LIVE") return raw ? scoreHtml(raw) : "—";
-
-  // fallback
-  return scoreHtml(raw);
-}
-
 async function fetchJsonNoStore(url) {
   const res = await fetch(url + "?v=" + Date.now(), { cache: "no-store" });
   if (!res.ok) throw new Error(`Fetch failed: ${res.status} for ${url}`);
@@ -263,7 +245,7 @@ function escapeHtml(s) {
 function buildRowsFromRozpis(rozpis, vysledky){
   const games = (vysledky?.games && typeof vysledky.games === "object") ? vysledky.games : {};
 
-  const patek = safeArray(rozpis.patek).map(r => {
+  const mapGroupRow = (r) => {
     const q = games[r.id]?.quarters ?? [];
     const autoSkore = finalScoreFromQuarters(q);
 
@@ -276,9 +258,9 @@ function buildRowsFromRozpis(rozpis, vysledky){
       skore: autoSkore ?? (games[r.id]?.skore ?? "—"),
       stav: games[r.id]?.stav ?? "SCHEDULED"
     };
-  });
+  };
 
-  const sobota = safeArray(rozpis.sobota).map(r => {
+  const mapPlayoffRow = (r) => {
     const q = games[r.id]?.quarters ?? [];
     const autoSkore = finalScoreFromQuarters(q);
 
@@ -286,30 +268,40 @@ function buildRowsFromRozpis(rozpis, vysledky){
       id: r.id,
       cas: r.cas ?? "—",
       hala: r.hala ?? "—",
+      faze: r.faze ?? r.fáze ?? "—",
       zapas: r.zapas ?? "—",
       quarters: q,
       skore: autoSkore ?? (games[r.id]?.skore ?? "—"),
       stav: games[r.id]?.stav ?? "SCHEDULED"
     };
+  };
+
+  const patek = safeArray(rozpis.patek).map(mapGroupRow);
+  const sobota = safeArray(rozpis.sobota).map(mapGroupRow);
+
+  // Play-off může být ve "nedele", někdy i na konci soboty (QF) – vezmeme obojí.
+  const playoffItems = [
+    ...safeArray(rozpis.sobota),
+    ...safeArray(rozpis.nedele),
+    ...safeArray(rozpis.playoff) // zpětná kompatibilita, kdyby existovalo
+  ].filter(r => {
+    const skup = String(r?.skupina ?? "").trim().toUpperCase();
+    return skup === "PLAY-OFF" || skup === "PLAYOFF" || skup === "PLAY OFF" || !!r?.faze;
   });
 
-  const playoff = safeArray(rozpis.playoff).map(r => {
-    const q = games[r.id]?.quarters ?? [];
-    const autoSkore = finalScoreFromQuarters(q);
-
-    return {
-      id: r.id,
-      cas: r.cas ?? "—",
-      hala: r.hala ?? "—",
-      zapas: r.zapas ?? "—",
-      quarters: q,
-      skore: autoSkore ?? (games[r.id]?.skore ?? "—"),
-      stav: games[r.id]?.stav ?? "SCHEDULED"
-    };
-  });
+  // odstranění duplicit podle id (sobota+nedele)
+  const seen = new Set();
+  const playoff = [];
+  for (const r of playoffItems) {
+    const id = String(r?.id ?? "").trim();
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    playoff.push(mapPlayoffRow(r));
+  }
 
   return { patek, sobota, playoff };
 }
+
 
 (async () => {
   try {
@@ -335,8 +327,8 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${pillHtml(r.hala)}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
-        <div class="score-main">${scoreMainHtml(r)}</div>
         ${renderQuarterGrid(r.quarters)}
+        <div class="score-main">${scoreHtml(r.skore)}</div>
       </td>
       <td>${badgeHtml(r.stav)}</td>
     `, focusId);
@@ -346,8 +338,8 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${pillHtml(r.hala)}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
-        <div class="score-main">${scoreMainHtml(r)}</div>
         ${renderQuarterGrid(r.quarters)}
+        <div class="score-main">${scoreHtml(r.skore)}</div>
       </td>
       <td>${badgeHtml(r.stav)}</td>
     `, focusId);
@@ -358,8 +350,8 @@ function buildRowsFromRozpis(rozpis, vysledky){
       <td>${r.faze}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
-        <div class="score-main">${scoreMainHtml(r)}</div>
         ${renderQuarterGrid(r.quarters)}
+        <div class="score-main">${scoreHtml(r.skore)}</div>
       </td>
       <td>${badgeHtml(r.stav)}</td>
     `, focusId);

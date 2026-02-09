@@ -85,6 +85,13 @@ async function loadWithFallback(url, backupUrl, lsKey, validator) {
 
 const teams = await loadTeams();
 
+// seed (A1/B3/...) -> team name (source of truth: tymy.json)
+const TEAM_BY_SEED = new Map(
+  teams
+    .filter((t) => t?.seed && t?.name)
+    .map((t) => [String(t.seed).trim().toUpperCase(), t.name])
+);
+
 function normKey(s) {
   return String(s ?? "")
     .trim()
@@ -117,6 +124,17 @@ function baseOrder(groupLetter) {
     .slice()
     .sort((a, b) => seedRank(a) - seedRank(b))
     .map((t) => t.name);
+}
+
+function resolveTeamToken(token) {
+  const raw = String(token ?? "").trim();
+  if (!raw) return "";
+
+  // A1/B4/... (group seeds)
+  const up = raw.toUpperCase();
+  if (/^[AB]\d$/.test(up)) return TEAM_BY_SEED.get(up) || raw;
+
+  return raw;
 }
 
 // ========== standings ==========
@@ -231,8 +249,29 @@ function parseTeamsFromZapas(zapasStr) {
   const s = String(zapasStr).replace(/[–—]/g, "-").replace(/\s+/g, " ").trim();
   const m = s.match(/^(.+?)\s*-\s*(.+?)$/);
   if (!m) return null;
-  const left = m[1].trim();
-  const right = m[2].trim();
+  const leftRaw = m[1].trim();
+  const rightRaw = m[2].trim();
+  const resolveToken = (tok) => {
+    const t = String(tok || "").trim();
+    if (!t) return t;
+
+    // A1 / B3 ...
+    const m1 = t.match(/^([AB])(\d)$/i);
+    if (m1) {
+      return TEAM_BY_SEED.get(`${m1[1].toUpperCase()}${m1[2]}`) || t;
+    }
+
+    // 1A / 4B ... (někdy v play-off zápisech)
+    const m2 = t.match(/^(\d)([AB])$/i);
+    if (m2) {
+      return TEAM_BY_SEED.get(`${m2[2].toUpperCase()}${m2[1]}`) || t;
+    }
+
+    return t;
+  };
+
+  const left = resolveToken(leftRaw);
+  const right = resolveToken(rightRaw);
   if (!left || !right) return null;
   return { teamA: left, teamB: right };
 }

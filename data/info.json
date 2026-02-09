@@ -10,7 +10,7 @@
     "title": "Doprava",
     "items": [
       "Nejbližší zastávka u haly je Muzeum.",
-      "Z hlavního nádraží se sem dostanete autobusy 12, 16 a trolejbusy 3, 7.",
+      "Z hlavního nádraží se sem dostanete autobusy 12, 13, 16 a trolejbusy 3, 4, 7.",
       "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
     ]
   },
@@ -18,7 +18,7 @@
     "title": "Parkování",
     "status": "final",
     "paragraphs": [
-      "MHD: zastávka Muzeum – autobusy 12, 16 · trolejbusy 3, 7.",
+      "MHD: zastávka Muzeum – autobusy 12, 13, 16 · trolejbusy 3, 4, 7.",
       "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
     ],
     "mapUrl": "/assets/docs/parkovani-hk-zony.pdf",
@@ -28,7 +28,7 @@
     "title": "Vstupné",
     "paragraphs": [
       "Vstup zdarma",
-      "Po celé dny turnaje je vstup bez placení.",
+      "Po celou dobu turnaje je vstup bez placení.",
       "V hale bude občerstvení (bufet)."
     ]
   },
