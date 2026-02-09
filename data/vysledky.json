@@ -1,18 +1,9 @@
 {
-  "updated": "2026-02-07T15:00:00+01:00",
+  "updated": "2026-02-09T13:25:00+01:00",
   "games": {
     "G01": { "stav": "SCHEDULED", "skore": "—", "note": "" },
     "G02": { "stav": "SCHEDULED", "skore": "—", "note": "" },
-    "G03": { 
-      "stav": "FINAL",
-      "skore": "50 : 49",
-      "quarters": [
-        [10, 12],
-        [21, 24],
-        [35, 40],
-        [50, 49]
-      ], 
-      "note": "" },
+    "G03": { "stav": "SCHEDULED", "skore": "—", "note": "" },
     "G04": { "stav": "SCHEDULED", "skore": "—", "note": "" },
     "G05": { "stav": "SCHEDULED", "skore": "—", "note": "" },
     "G06": { "stav": "SCHEDULED", "skore": "—", "note": "" },
