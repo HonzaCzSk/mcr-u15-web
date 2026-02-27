@@ -9,23 +9,22 @@
   "transport": {
     "title": "Doprava",
     "items": [
-      "Nejbližší zastávka u haly je Muzeum.",
-      "Z hlavního nádraží se sem dostanete autobusy 12, 13, 16 a trolejbusy 3, 4, 7.",
-      "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
+      "Zastávka Muzeum – busy 12, 13, 16, 17 · trolejbusy 3, 4, 7", "",
+      "Auto: Hlavní tah D11 Praha – HK, silnice I/35 z Pardubic nebo D35 Liberec – Olomouc (doporučujeme se vyhnout Vysokému Mýtu)."
     ]
   },
   "parking": {
     "title": "Parkování",
     "status": "final",
     "paragraphs": [
-      "MHD: zastávka Muzeum – autobusy 12, 13, 16 · trolejbusy 3, 4, 7.",
-      "Auto: příjezd od centra po hlavních tazích (doporučujeme dorazit s rezervou)."
+      "MHD: Z hlavního nádraží se k nám do haly dostanete autobusy 12, 13, 16, 17 a trolejbusy 3, 4, 7.",
+      "Auto: Parkování v okolí haly je možné, ale doporučujeme dorazit s rezervou kvůli omezené kapacitě a možným dopravním komplikacím."
     ],
     "mapUrl": "/assets/docs/parkovani-hk-zony.pdf",
     "mapLabel": "Mapa parkovacích zón (PDF)"
   },
   "tickets": {
-    "title": "Vstupné",
+    "title": "Vstupné a občerstvení",
     "paragraphs": [
       "Vstup zdarma",
       "Po celou dobu turnaje je vstup bez placení.",
@@ -37,7 +36,7 @@
     "text": "Placeholder – doplníme detaily k akreditaci, šatnám a režimu v hale."
   },
   "cta": {
-    "primaryText": "Otevřít v Google Maps",
+    "primaryText": "Navigace v Google Maps",
     "secondaryText": "Napsat organizátorům",
     "contactsHref": "kontakty.html"
   },
@@ -45,23 +44,30 @@
     {
       "type": "email",
       "label": "Email",
-      "name": "Organizátor",
+      "name": "Organizátor 1 - informace, všeobecné dotazy",
       "value": "basket.ovc@seznam.cz",
       "href": "mailto:basket.ovc@seznam.cz"
     },
     {
+      "type": "email",
+      "label": "Email",
+      "name": "Organizátor 2 - vysílání, média, sociální sítě",
+      "value": "mistrovstvi.republiky.u15@gmail.com",
+      "href": "mailto:mistrovstvi.republiky.u15@gmail.com"
+    },
+    {
       "type": "phone",
       "label": "Telefon",
-      "name": "Hlavní organizátor",
+      "name": "Organizátor Akce",
       "value": "+420 725 450 130",
       "href": "tel:+420725450130"
     },
     {
       "type": "instagram",
       "label": "Instagram",
-      "name": "Turnaj / klub",
-      "value": "@mcru15",
-      "href": "https://instagram.com/mcru15"
+      "name": "Klub",
+      "value": "@hradeckelvice",
+      "href": "https://instagram.com/hradeckelvice"
     }
   ]
 }

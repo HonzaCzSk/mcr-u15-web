@@ -13,7 +13,7 @@
     cards.push(cardHTML(
       "Místo konání",
       `
-        <div class="place">Hala Eliščino nábřeží</div>
+        <div class="place">Hala Eliščino nábřeží / TJ Sokol Hradec Králové</div>
         <div class="kv">
           <div class="k">Adresa</div>
           <div class="v">
@@ -46,7 +46,7 @@
         ? t[2]
         : `Auto: ${t[2]}`;
     }
-
+    
     // sestavíme finální seznam (max 2 položky)
     const transportLines = [mhdText, autoText].filter(Boolean);
 

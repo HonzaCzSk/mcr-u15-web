@@ -208,7 +208,7 @@ function isValidRozpis(data) {
     }
 
     // 4) poslední možnost: zobrazit hlášku (aspoň něco)
-    setStatus("Rozpis se nepodařilo načíst. Zkuste obnovit stránku.", "error");
+    setStatus("Rozpis se nepodařilo načíst. A nic se nezobrazí --> Testujeme.", "error");
   }
 })();
 
