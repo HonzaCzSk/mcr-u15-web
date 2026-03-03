@@ -91,10 +91,10 @@ function renderCard(c) {
 }
 
   function iconFor(type) {
-    if (type === "email") return "✉️";
-    if (type === "phone") return "📞";
-    if (type === "instagram") return "📷";
-    return "🔗";
+    if (type === "email") return "";
+    if (type === "phone") return "";
+    if (type === "instagram") return "";
+    return "";
   }
 
   function esc(s) {
