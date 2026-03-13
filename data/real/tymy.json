@@ -95,7 +95,7 @@
     "assistantCoach": "Ondřej Borovec",
     "website": "https://hradeckelvice.cz",
         "roster": [
-      { "no": 4, "name": "Dominika Pencáková", "pos": "F", "year": 2009 },
+      { "no": 4, "name": "Dominika Pencáková", "pos": "F", "year": 2009, "captain": true },
       { "no": 5, "name": "Emma Černá", "pos": "G", "year": 2010 },
       { "no": 6, "name": "Viktorie Volejníková", "pos": "G", "year": 2009 },
       { "no": 7, "name": "Adéla Mlejnková", "pos": "F", "year": 2010 },

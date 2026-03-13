@@ -1,0 +1,9 @@
+# personal data
+data\real\tymy.json
+
+# environment
+.env
+
+# editor
+.vscode
+.DS_Store
