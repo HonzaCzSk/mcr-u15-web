@@ -1,34 +1,44 @@
-# MČR U15 – dívky v basketbalu
+# MČR U15 – Basketball Championship Website
 
-Oficiální web Mistrovství České republiky U15 (dívky).
+Repository for the official website of the Czech U15 Girls Basketball Championship.
 
-## Základní informace
+The site provides match schedules, results, team rosters, and tournament information.
 
-**Termín:** 24.–26. dubna  
-**Místo:** Hradec Králové, Eliščino nábřeží 777  
-**Vstupné:** zdarma  
+Live website: https://mcr-u15.cz
 
-Turnaj se odehraje ve dvou halách v rámci jedné budovy. Přesuny mezi halami jsou možné vnitřními prostory.
+## Tech Stack
 
-## Turnaj
+- HTML
+- CSS
+- Vanilla JavaScript
+- GitHub Pages (hosting)
 
-**Počet týmů:** 8  
+## Project Structure
 
-**Systém:**
+    ├─ index.html (main entry)
+    ├─ css/ (stylesheets)
+    ├─ js/ (website scripts)
+    ├─ data/ (tournament data)
+    ├─ images/ (images & team photos)
+    └─ pages/ (additionals)
 
-- 2 skupiny po 4 týmech  
-- zápasy ve skupinách  
-- následné play-off  
+## Content
 
-## Na webu najdete
+The website contains:
 
-- rozlosování skupin a kompletní rozpis zápasů  
-- průběžně aktualizované výsledky  
-- informace o místě konání, dopravě a parkování  
-- soupisky týmů včetně týmových fotografií  
-- aktuality a shrnutí jednotlivých dnů  
-- odkazy na fotografické galerie  
+- group draw and match schedule
+- live updated results
+- tournament bracket
+- team rosters and photos
+- location and visitor information
+- tournament news and photo galleries
 
-## Organizační informace
+## Deployment
 
-Detailní organizační pokyny budou doplněny přibližně dva týdny před začátkem akce.
+The website is deployed using GitHub Pages.  
+Any push to the main branch updates the live site.
+
+## About the Tournament
+
+Czech Republic U15 Girls Basketball Championship  
+8 teams competing in group stage followed by playoffs.
