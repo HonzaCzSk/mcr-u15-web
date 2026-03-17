@@ -1,5 +1,5 @@
 {
-  "updated": "2026-02-08",
+  "updated": "17.03.2026 08:50",
   "venue": {
     "title": "Místo konání",
     "address": "Eliščino nábřeží 777, Hradec Králové, 500 03",
@@ -44,21 +44,21 @@
     {
       "type": "email",
       "label": "Email",
-      "name": "Organizátor 1 - informace, všeobecné dotazy",
+      "name": "Jiří Jirsa – Organizační pracovník, obecné dotazy",
       "value": "basket.ovc@seznam.cz",
       "href": "mailto:basket.ovc@seznam.cz"
     },
     {
       "type": "email",
       "label": "Email",
-      "name": "Organizátor 2 - vysílání, média, sociální sítě",
+      "name": "Jan Votroubek – vysílání, média, sociální sítě",
       "value": "mistrovstvi.republiky.u15@gmail.com",
       "href": "mailto:mistrovstvi.republiky.u15@gmail.com"
     },
     {
       "type": "phone",
       "label": "Telefon",
-      "name": "Organizátor Akce",
+      "name": "Jiří Jirsa",
       "value": "+420 725 450 130",
       "href": "tel:+420725450130"
     },

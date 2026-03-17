@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+ 
+Sitemap: https://mcr-u15.cz/sitemap.xml
