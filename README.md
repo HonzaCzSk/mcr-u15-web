@@ -15,7 +15,8 @@ Live website: <https://mcr-u15.cz>
 
 ## Project Structure
 
-```├── index.html                  # Main entry point
+```text
+├── index.html                  # Main entry point
 ├── pages/                      # Subpages
 │   ├── rozpis.html             # Match schedule
 │   ├── vysledky.html           # Results

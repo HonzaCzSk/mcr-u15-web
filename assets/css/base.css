@@ -767,17 +767,12 @@ table.schedule td.col-links {
   flex-direction: column;
   gap: 18px;
 }
-.footer__bar{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  flex-wrap: nowrap;
-}
+
 .footer__left{
   font-size: 13px;
   font-weight: 650;
   color: var(--muted);
+  white-space: nowrap;
 }
 
 .partners{
@@ -793,7 +788,7 @@ table.schedule td.col-links {
 }
 .partners__row{
   display:grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 12px;
 }
 .partner{
@@ -850,15 +845,11 @@ table.schedule td.col-links {
 
 /* ===== FOOTER FIX (force layout) ===== */
 .footer__bar{
-  display: flex !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  flex-wrap: nowrap !important;   /* <- tohle je klíč */
-  gap: 14px !important;
-}
-
-.footer__left{
-  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  margin-top: 14px;
 }
 
 .socialbar{

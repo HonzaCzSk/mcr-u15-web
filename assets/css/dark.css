@@ -686,3 +686,17 @@
 :root:not([data-theme="dark"]) .hero{
   background: #f6f7f9;   /* skoro bílá */
 }
+
+/* Partner logos – HK city logo switches with theme */
+:root:not([data-theme="dark"]) .logo-hk-white { display: none; }
+:root[data-theme="dark"]       .logo-hk-black { display: none; }
+
+/* KHK and APS — force to white silhouette in dark mode */
+:root[data-theme="dark"] .partner-khk img,
+:root[data-theme="dark"] .partner-aps img {
+  filter: brightness(0) invert(1);
+}
+
+/* THHK — switch to white-text version in dark mode */
+:root[data-theme="dark"]       .partner-thhk .logo-color { display: none; }
+:root:not([data-theme="dark"]) .partner-thhk .logo-dark  { display: none; }
