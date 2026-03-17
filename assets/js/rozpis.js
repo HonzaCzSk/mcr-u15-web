@@ -1,5 +1,3 @@
-console.log("rozpis.js loaded");
-
 import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
 
 let TEAM_BY_NAME = new Map();
@@ -179,7 +177,7 @@ function isValidRozpis(data) {
 
     // 3) fallback: statický záložní soubor (backup)
     try {
-      const resB = await fetch("../../data/rozpis.backup.json?v=" + Date.now(), { cache: "no-store" });
+      const resB = await fetch("../../data/backup/rozpis.backup.json?v=" + Date.now(), { cache: "no-store" });
       if (!resB.ok) throw new Error("Backup file missing");
       const backup = await resB.json();
 
@@ -230,10 +228,11 @@ function isMatchLive(timeStr, dateStr, durationMin = 60, nowRef = new Date()) {
 
 function renderRozpis(data) {
   const pillHtml = (hala) => {
-    const n = Number(hala);
-    if (n === 1) return '<span class="pill pill--h1">Hala 1</span>';
-    if (n === 2) return '<span class="pill pill--h2">Hala 2</span>';
-    return `<span class="pill">Hala ${hala ?? "—"}</span>`;
+    const s = String(hala ?? "").trim();
+    const n = Number(s);
+    if (n === 1 || s.toUpperCase() === "A") return '<span class="pill pill--h1">Hala A</span>';
+    if (n === 2 || s.toUpperCase() === "B") return '<span class="pill pill--h2">Hala B</span>';
+    return `<span class="pill">Hala ${s || "—"}</span>`;
   };
 
 const matchHtml = (m) => {
@@ -520,9 +519,8 @@ function applyTeamFilter(selectedTeam) {
 
   // URL parametr pro sdílení
   setQueryParam("team", currentFilter);
+  localStorage.setItem(TEAM_FILTER_KEY, currentFilter);
 }
-localStorage.setItem(TEAM_FILTER_KEY, currentFilter);
-const saved = localStorage.getItem(TEAM_FILTER_KEY) || "";
 
 function initTeamFilter(data) {
   const select = document.getElementById("teamFilter");
@@ -546,6 +544,7 @@ function initTeamFilter(data) {
   });
 
   // URL ?team=...
+  const saved = localStorage.getItem(TEAM_FILTER_KEY) || "";
   const fromUrl = getQueryParam("team");
   if (fromUrl) {
     const exact = teams.find((t) => t === fromUrl);

@@ -4,7 +4,7 @@ Repository for the official website of the Czech U15 Girls Basketball Championsh
 
 The site provides match schedules, results, team rosters, and tournament information.
 
-Live website: https://mcr-u15.cz
+Live website: <https://mcr-u15.cz>
 
 ## Tech Stack
 

@@ -1,6 +1,3 @@
-console.log("vysledky.js loaded (rozpis + vysledky json)");
-console.log("normKey test:", normKey("Sokol Hradec Králové"));
-
 import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
 
 // Paths (vysledky.html is in /pages/)

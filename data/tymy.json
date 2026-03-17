@@ -7,10 +7,7 @@
     "city": "Brno",
     "club": "Žabiny Brno",
     "coach": null,
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -24,10 +21,7 @@
     "city": "Litoměřice",
     "club": "BK Lvice Litoměřice",
     "coach": null,
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -41,10 +35,7 @@
     "city": "Praha",
     "club": "Tygři Praha",
     "coach": null,
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -58,10 +49,7 @@
     "city": "Děčín",
     "club": "Válečnice Děčín",
     "coach": null,
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -75,10 +63,7 @@
     "city": "Ostrava",
     "club": "SBŠ Ostrava",
     "coach": null,
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -94,13 +79,10 @@
     "coach": null,
     "assistantCoach": null,
     "website": "https://hradeckelvice.cz",
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
-    ],
+    "roster": [],
     "instagram": "https://www.instagram.com/hradeckelvice",
     "logo": "../assets/img/teamLogos/lviceLogo.png",
-    "note": "TESTUJEME"
+    "note": null
   },
   {
     "id": "bsk-tj-jicin",
@@ -110,10 +92,7 @@
     "city": "Jičín",
     "club": "BSK TJ Jičín",
     "coach": null,
-    "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010 },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009, "captain": true }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -127,10 +106,7 @@
     "city": "Kladno",
     "club": "TJ Sokol Kladno",
     "coach": null,
-        "roster": [
-      { "no": 4, "name": "Jméno Příjmení", "pos": "G", "year": 2010, "captain": true },
-      { "no": 12, "name": "Jméno Příjmení", "pos": "F", "year": 2009 }
-    ],
+    "roster": [],
     "website": null,
     "instagram": null,
     "logo": null,

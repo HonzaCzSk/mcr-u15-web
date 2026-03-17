@@ -1,7 +1,6 @@
 /* =========================
 TABULKA – skupiny + nasazení
 ========================= */
-console.log("TABULKA BUILD 2026-02-08");
 import { loadTeams, teamHrefById } from "./teams-store.js";
 
 // tabulka.html je v /pages/
