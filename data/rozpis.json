@@ -1,37 +1,23 @@
 {
-  "updated": "2026-02-06T00:00:00+01:00",
+  "updated": "2026-03-18T00:00:00+01:00",
   "patek": [
-    { "id": "G01", "cas": "09:00", "hala": "A", "zapas": "A1 – A2", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G02", "cas": "09:00", "hala": "B", "zapas": "B1 – B2", "skupina": "B", "tvcom": "https://tvcom.cz" },
-    { "id": "G03", "cas": "10:30", "hala": "A", "zapas": "A3 – A4", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G04", "cas": "10:30", "hala": "B", "zapas": "B3 – B4", "skupina": "B", "tvcom": "https://tvcom.cz" },
-    { "id": "G05", "cas": "12:00", "hala": "A", "zapas": "A1 – A3", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G06", "cas": "12:00", "hala": "B", "zapas": "B1 – B3", "skupina": "B", "tvcom": "https://tvcom.cz" }
+    { "id": "G01", "cas": "11:00", "hala": "A", "zapas": "A1 – B4", "skupina": "QF", "tvcom": "https://tvcom.cz" },
+    { "id": "G02", "cas": "13:15", "hala": "A", "zapas": "A2 – B3", "skupina": "QF", "tvcom": "https://tvcom.cz" },
+    { "id": "G03", "cas": "15:30", "hala": "A", "zapas": "A3 – B2", "skupina": "QF", "tvcom": "https://tvcom.cz" },
+    { "id": "CER1", "cas": "17:15", "hala": "A", "zapas": "Zahájení MČR U15", "skupina": "Ceremoniál", "type": "ceremony" },
+    { "id": "G04", "cas": "18:00", "hala": "A", "zapas": "A4 – B1", "skupina": "QF", "tvcom": "https://tvcom.cz" }
   ],
   "sobota": [
-    { "id": "G07", "cas": "09:00", "hala": "A", "zapas": "A2 – A4", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G08", "cas": "09:00", "hala": "B", "zapas": "B2 – B4", "skupina": "B", "tvcom": "https://tvcom.cz" },
-    { "id": "G09", "cas": "10:30", "hala": "A", "zapas": "A1 – A4", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G10", "cas": "10:30", "hala": "B", "zapas": "B1 – B4", "skupina": "B", "tvcom": "https://tvcom.cz" },
-    { "id": "G11", "cas": "12:00", "hala": "A", "zapas": "A2 – A3", "skupina": "A", "tvcom": "https://tvcom.cz" },
-    { "id": "G12", "cas": "12:00", "hala": "B", "zapas": "B2 – B3", "skupina": "B", "tvcom": "https://tvcom.cz" },
-
-    { "id": "QF1", "cas": "14:00", "hala": "A", "faze": "QF", "zapas": "1A – 4B", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "QF2", "cas": "14:00", "hala": "B", "faze": "QF", "zapas": "2A – 3B", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "QF3", "cas": "15:30", "hala": "A", "faze": "QF", "zapas": "1B – 4A", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "QF4", "cas": "15:30", "hala": "B", "faze": "QF", "zapas": "2B – 3A", "skupina": "Play-off", "tvcom": "https://tvcom.cz" }
+    { "id": "P1", "cas": "10:00", "hala": "A", "faze": "Prohrávající", "zapas": "L G01 – L G03", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
+    { "id": "P2", "cas": "12:15", "hala": "A", "faze": "Prohrávající", "zapas": "L G02 – L G04", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
+    { "id": "V1", "cas": "14:30", "hala": "A", "faze": "Vítězové", "zapas": "W G01 – W G03", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
+    { "id": "V2", "cas": "16:45", "hala": "A", "faze": "Vítězové", "zapas": "W G02 – W G04", "skupina": "Play-off", "tvcom": "https://tvcom.cz" }
   ],
   "nedele": [
-    { "id": "SF1", "cas": "09:00", "hala": "A", "faze": "SF", "zapas": "W QF1 – W QF2", "tvcom": "https://tvcom.cz" },
-    { "id": "SF2", "cas": "09:00", "hala": "B", "faze": "SF", "zapas": "W QF3 – W QF4", "tvcom": "https://tvcom.cz" },
-
-    { "id": "S5_1", "cas": "10:30", "hala": "A", "faze": "SF 5.–8.", "zapas": "L QF1 – L QF2", "tvcom": "https://tvcom.cz" },
-    { "id": "S5_2", "cas": "10:30", "hala": "B", "faze": "SF 5.–8.", "zapas": "L QF3 – L QF4", "tvcom": "https://tvcom.cz" },
-
-    { "id": "M7", "cas": "12:00", "hala": "B", "faze": "7. místo", "zapas": "L S5_1 – L S5_2", "tvcom": "https://tvcom.cz" },
-    { "id": "M5", "cas": "13:30", "hala": "A", "faze": "5. místo", "zapas": "W S5_1 – W S5_2", "tvcom": "https://tvcom.cz" },
-
-    { "id": "M3", "cas": "15:00", "hala": "B", "faze": "3. místo", "zapas": "L SF1 – L SF2", "tvcom": "https://tvcom.cz" },
-    { "id": "FIN", "cas": "16:30", "hala": "A", "faze": "FIN", "zapas": "W SF1 – W SF2", "tvcom": "https://tvcom.cz" }
+    { "id": "M7", "cas": "08:30", "hala": "A", "faze": "O 7. místo", "zapas": "L P1 – L P2", "tvcom": "https://tvcom.cz" },
+    { "id": "M5", "cas": "10:30", "hala": "A", "faze": "O 5. místo", "zapas": "W P1 – W P2", "tvcom": "https://tvcom.cz" },
+    { "id": "M3", "cas": "12:45", "hala": "A", "faze": "O 3. místo", "zapas": "L V1 – L V2", "tvcom": "https://tvcom.cz" },
+    { "id": "FIN", "cas": "15:00", "hala": "A", "faze": "Finále", "zapas": "W V1 – W V2", "tvcom": "https://tvcom.cz" },
+    { "id": "CER2", "cas": "17:00", "hala": "A", "faze": "Ceremoniál", "zapas": "Vyhlášení výsledků a předání medailí", "type": "ceremony" }
   ]
 }

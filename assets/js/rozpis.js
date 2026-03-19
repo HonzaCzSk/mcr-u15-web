@@ -1,10 +1,23 @@
 import { buildTeamIndex, teamHrefById, normKey } from "./teams-store.js";
 
 let TEAM_BY_NAME = new Map();
+let TEAM_BY_SEED = new Map();
 
 async function initTeamLinks(){
-  const { byName } = await buildTeamIndex();
+  const { teams, byName } = await buildTeamIndex();
   TEAM_BY_NAME = byName;
+  for (const t of teams) {
+    if (t.seed) TEAM_BY_SEED.set(String(t.seed).trim().toUpperCase(), t);
+  }
+}
+
+function resolveSeedToken(token) {
+  const up = String(token || "").trim().toUpperCase();
+  if (/^[AB]\d$/.test(up)) {
+    const t = TEAM_BY_SEED.get(up);
+    return t ? t.name : token;
+  }
+  return token;
 }
 
 function teamLink(name){
@@ -248,7 +261,11 @@ const matchHtml = (m) => {
   if (/^[WL]\s+/i.test(a) || /^[WL]\s+/i.test(b)) return escapeHtml(text);
   if (TEAM_IGNORE_PREFIXES.some(p => a.startsWith(p) || b.startsWith(p))) return escapeHtml(text);
 
-  return `${teamLink(a)} <span class="muted">–</span> ${teamLink(b)}`;
+  // resolve seed tokens like A1, B3 to real team names
+  const aResolved = resolveSeedToken(a);
+  const bResolved = resolveSeedToken(b);
+
+  return `${teamLink(aResolved)} <span class="muted">–</span> ${teamLink(bResolved)}`;
 };
 
 const fillTable = (tableId, rows, renderRow, focusId) => {
@@ -366,6 +383,13 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
 
   // Pátek (skupiny)
   fillTable("tbl-rozpis-patek", data.patek, (r) => {
+    if (r?.type === "ceremony") {
+      return `
+        <td>${r.cas ?? "—"}</td>
+        <td>—</td>
+        <td colspan="4" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+      `;
+    }
     const matchId = r?.id || makeMatchId({
       dayKey: "patek",
       cas: r?.cas,
@@ -384,6 +408,13 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
 
   // Sobota (skupiny)
   fillTable("tbl-rozpis-sobota", data.sobota, (r) => {
+    if (r?.type === "ceremony") {
+      return `
+        <td>${r.cas ?? "—"}</td>
+        <td>—</td>
+        <td colspan="4" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+      `;
+    }
     const matchId = r?.id || makeMatchId({
       dayKey: "sobota",
       cas: r?.cas,
@@ -402,6 +433,13 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
 
   // Neděle (playoff)
   fillTable("tbl-rozpis-nedele", data.nedele, (r) => {
+    if (r?.type === "ceremony") {
+      return `
+        <td>${r.cas ?? "—"}</td>
+        <td>—</td>
+        <td colspan="5" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+      `;
+    }
     const matchId = r?.id || makeMatchId({
       dayKey: "nedele",
       cas: r?.cas,

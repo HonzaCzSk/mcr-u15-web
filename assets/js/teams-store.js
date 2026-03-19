@@ -13,9 +13,9 @@ export async function loadTeams(){
   if (!res.ok) throw new Error(`Nelze načíst tymy.json (${res.status})`);
   const teams = await res.json();
 
-  // mini validace
+  // mini validace — vyžadujeme jen id a name, seed/group mohou být null (před losem)
   for (const t of teams) {
-    if (!t?.id || !t?.name || !t?.seed || !t?.group) {
+    if (!t?.id || !t?.name) {
       throw new Error("Neplatná položka v tymy.json: " + JSON.stringify(t));
     }
   }

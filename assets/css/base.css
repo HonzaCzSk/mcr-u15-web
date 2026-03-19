@@ -36,6 +36,17 @@ body{
   background: var(--bg);
   color: var(--ink);
   line-height: 1.55;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body > main {
+  width: 100%;
+}
+
+.footer{
+  margin-top: auto;
 }
 
 /* ----- Layout ----- */
@@ -76,8 +87,6 @@ body{
   margin-top: 10px;
   font-size: 13px;
   color: var(--muted);
-  border-top: 1px solid var(--line);
-  padding-top: 10px;
 }
 
 /* ----- Topbar ----- */
@@ -767,12 +776,17 @@ table.schedule td.col-links {
   flex-direction: column;
   gap: 18px;
 }
-
+.footer__bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: nowrap;
+}
 .footer__left{
   font-size: 13px;
   font-weight: 650;
   color: var(--muted);
-  white-space: nowrap;
 }
 
 .partners{
@@ -788,25 +802,25 @@ table.schedule td.col-links {
 }
 .partners__row{
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 12px;
 }
 .partner{
   border: 1px dashed var(--line);
   border-radius: 14px;
   padding: 12px;
-  background: rgba(255,255,255,0.6);
+  background: rgba(0,0,0,.02);
   display:flex;
   align-items:center;
   justify-content:center;
   text-decoration:none;
 }
-
+.partner--main{ border-style: solid; }
 .partner img{
   width: 100%;
   height: 70px;
   object-fit: contain;
-  opacity: .9;
+  opacity: .85;
 }
 .partner:hover img{ opacity: 1; }
 
@@ -845,11 +859,15 @@ table.schedule td.col-links {
 
 /* ===== FOOTER FIX (force layout) ===== */
 .footer__bar{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap;
-  margin-top: 14px;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  flex-wrap: nowrap !important;   /* <- tohle je klíč */
+  gap: 14px !important;
+}
+
+.footer__left{
+  white-space: nowrap;
 }
 
 .socialbar{
@@ -2740,6 +2758,8 @@ h1.h1 {
   background: rgba(255,255,255,.03);
   border-radius: 18px;
   padding: 18px;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .quick-title{
@@ -3060,8 +3080,32 @@ h1.h1 {
   align-items: start;
 }
 
+#teams-quick.single-group{
+  grid-template-columns: 1fr;
+}
+
+#teams-quick.single-group .quick-group{
+  max-width: 100%;
+  width: 100%;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+#teams-quick.single-group .quick-grid{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .team-search{
   grid-column: 1 / -1;
+}
+
+/* Single group: span full width and center */
+#teams-quick .quick-group:only-of-type {
+  grid-column: 1 / -1;
+  max-width: 680px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .quick-title{
@@ -3617,4 +3661,11 @@ main > section{ margin-bottom: 56px; }
 /* Info → Doprava: bez pseudo-bulletů */
 .page-info .transport-list li::before {
   content: none;
+}
+
+/* Ceremony rows in schedule */
+.ceremony-row {
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.01em;
 }

@@ -6,7 +6,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const root = document.getElementById("teams-root");
   if (!quick || !root) return;
 
-const teamsAll = await loadTeams();
+let teamsAll = [];
+try {
+  teamsAll = await loadTeams();
+} catch(e) {
+  console.error("Nepodařilo se načíst týmy:", e);
+  root.innerHTML = `<p class="muted">Týmy se nepodařilo načíst.</p>`;
+  return;
+}
 
 renderQuickView(quick, teamsAll);
 renderTeams(root, teamsAll);
@@ -22,11 +29,12 @@ window.addEventListener("hashchange", () => openByHash(root));
 function groupTeams(teams) {
   const map = new Map();
   for (const t of teams) {
-    if (!map.has(t.group)) map.set(t.group, []);
-    map.get(t.group).push(t);
+    const g = t.group || "—";
+    if (!map.has(g)) map.set(g, []);
+    map.get(g).push(t);
   }
   for (const [g, arr] of map) {
-    arr.sort((a, b) => String(a.seed).localeCompare(String(b.seed), "cs"));
+    arr.sort((a, b) => String(a.seed || "").localeCompare(String(b.seed || ""), "cs"));
   }
   return map;
 }
@@ -81,6 +89,13 @@ function setupSearch(quickRoot, teamsRoot) {
 function renderQuickView(container, teams) {
   const groups = groupTeams(teams);
 
+  // single group: center it
+  if (groups.size <= 1) {
+    container.classList.add("single-group");
+  } else {
+    container.classList.remove("single-group");
+  }
+
   container.innerHTML =
     `
       <div class="team-search">
@@ -98,7 +113,7 @@ function renderQuickView(container, teams) {
       .map(
         ([group, arr]) => `
           <div class="quick-group" data-group="${escapeHtml(group)}">
-            <h2 class="quick-title">Skupina ${escapeHtml(group)}</h2>
+            <h2 class="quick-title">${group && group !== "—" ? `Skupina ${escapeHtml(group)}` : "Týmy"}</h2>
 
             <div class="quick-grid">
               ${arr
@@ -108,14 +123,12 @@ function renderQuickView(container, teams) {
                       class="team-quick-card"
                       href="#${teamId(t)}"
                       data-team="${teamId(t)}"
-                      data-hay="${escapeHtml(`${t.name} ${t.seed} ${t.group}`.toLowerCase())}"
+                      data-hay="${escapeHtml(`${t.name} ${t.seed ?? ''} ${t.group ?? ''}`.toLowerCase())}"
                     >
                       <div class="team-quick-name">${escapeHtml(t.name)}</div>
                       <div class="team-quick-meta">
-                        <span class="pill">${escapeHtml(t.seed)}</span>
-                        <span class="pill muted">Skupina ${escapeHtml(
-                          t.group
-                        )}</span>
+                        ${t.seed ? `<span class="pill">${escapeHtml(t.seed)}</span>` : ""}
+                        ${t.group ? `<span class="pill muted">Skupina ${escapeHtml(t.group)}</span>` : ""}
                       </div>
                     </a>
                   `
@@ -139,7 +152,7 @@ function renderTeams(root, teams) {
   root.innerHTML = sorted.map(t => {
     const id = teamId(t);
     return `
-      <article class="card team" id="${id}" data-hay="${escapeHtml(`${t.name} ${t.seed} ${t.group}`.toLowerCase())}">
+      <article class="card team" id="${id}" data-hay="${escapeHtml(`${t.name} ${t.seed ?? ''} ${t.group ?? ''}`.toLowerCase())}">
         <button class="team__head"
           type="button"
           aria-expanded="false"
@@ -148,8 +161,8 @@ function renderTeams(root, teams) {
               <div class="h2">${escapeHtml(t.name)}</div>
 
               <div class="team-meta">
-                <span class="pill">${escapeHtml(t.seed)}</span>
-                <span class="pill muted">Skupina ${escapeHtml(t.group)}</span>
+                ${t.seed ? `<span class="pill">${escapeHtml(t.seed)}</span>` : ""}
+                ${t.group ? `<span class="pill muted">Skupina ${escapeHtml(t.group)}</span>` : ""}
               </div>
             </div>
           <span class="team__chev" aria-hidden="true"></span>

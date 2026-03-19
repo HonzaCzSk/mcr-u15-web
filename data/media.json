@@ -1,11 +1,38 @@
 {
-  "updated": "17.03.2026 09:50",
-  "featured": [],
+  "updated": "2026-03-18",
+  "featured": [
+    {
+      "title": "Oficiální galerie turnaje",
+      "url": "https://eu.zonerama.com/mcru15/1765660",
+      "tag": "Zonerama"
+    }
+  ],
   "days": [
-    { "label": "Pátek", "links": [] },
-    { "label": "Sobota", "links": [] },
-    { "label": "Neděle", "links": [] }
+    { "label": "Pátek 24. dubna", "links": [] },
+    { "label": "Sobota 25. dubna", "links": [] },
+    { "label": "Neděle 26. dubna", "links": [] }
   ],
   "clips": [],
-  "thumbs": []
+  "thumbs": [
+    {
+      "src": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400",
+      "full": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200",
+      "alt": "Basketbal – testovací foto 1"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=400",
+      "full": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=1200",
+      "alt": "Basketbal – testovací foto 2"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1519861531473-9200262188bf?w=400",
+      "full": "https://images.unsplash.com/photo-1519861531473-9200262188bf?w=1200",
+      "alt": "Basketbal – testovací foto 3"
+    },
+    {
+      "src": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400",
+      "full": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=1200",
+      "alt": "Basketbal – testovací foto 4"
+    }
+  ]
 }
