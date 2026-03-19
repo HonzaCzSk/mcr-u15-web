@@ -273,15 +273,15 @@ function buildRowsFromRozpis(rozpis, vysledky){
     };
   };
 
-  const patek = safeArray(rozpis.patek).map(mapGroupRow);
-  const sobota = safeArray(rozpis.sobota).map(mapGroupRow);
+  const patek = safeArray(rozpis.patek).filter(r => r?.type !== "ceremony").map(mapGroupRow);
+  const sobota = safeArray(rozpis.sobota).filter(r => r?.type !== "ceremony").map(mapGroupRow);
 
   // Play-off může být ve "nedele", někdy i na konci soboty (QF) – vezmeme obojí.
   const playoffItems = [
     ...safeArray(rozpis.sobota),
     ...safeArray(rozpis.nedele),
     ...safeArray(rozpis.playoff) // zpětná kompatibilita, kdyby existovalo
-  ].filter(r => {
+  ].filter(r => r?.type !== "ceremony").filter(r => {
     const skup = String(r?.skupina ?? "").trim().toUpperCase();
     return skup === "PLAY-OFF" || skup === "PLAYOFF" || skup === "PLAY OFF" || !!r?.faze;
   });
