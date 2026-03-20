@@ -7,8 +7,8 @@ const ROZPIS_BACKUP_URL = "../../data/backup/rozpis.backup.json";
 const VYSLEDKY_URL = "../../data/vysledky.json";
 const VYSLEDKY_BACKUP_URL = "../../data/backup/vysledky.backup.json";
 
-const LS_ROZPIS_KEY = "mcr_u15_rozpis_cache_v1";
-const LS_VYSLEDKY_KEY = "mcr_u15_vysledky_cache_v1";
+const LS_ROZPIS_KEY = "mcr_u15_rozpis_cache_v2";
+const LS_VYSLEDKY_KEY = "mcr_u15_vysledky_cache_v2";
 
 
 let TEAM_BY_NAME = new Map();
@@ -273,28 +273,20 @@ function buildRowsFromRozpis(rozpis, vysledky){
     };
   };
 
-  const patek = safeArray(rozpis.patek).filter(r => r?.type !== "ceremony").map(mapGroupRow);
-  const sobota = safeArray(rozpis.sobota).filter(r => r?.type !== "ceremony").map(mapGroupRow);
+  // Pátek: všechny zápasy bez ceremonií
+  const patek = safeArray(rozpis.patek)
+    .filter(r => r?.type !== "ceremony")
+    .map(mapGroupRow);
 
-  // Play-off může být ve "nedele", někdy i na konci soboty (QF) – vezmeme obojí.
-  const playoffItems = [
-    ...safeArray(rozpis.sobota),
-    ...safeArray(rozpis.nedele),
-    ...safeArray(rozpis.playoff) // zpětná kompatibilita, kdyby existovalo
-  ].filter(r => r?.type !== "ceremony").filter(r => {
-    const skup = String(r?.skupina ?? "").trim().toUpperCase();
-    return skup === "PLAY-OFF" || skup === "PLAYOFF" || skup === "PLAY OFF" || !!r?.faze;
-  });
+  // Sobota: všechny zápasy bez ceremonií
+  const sobota = safeArray(rozpis.sobota)
+    .filter(r => r?.type !== "ceremony")
+    .map(mapPlayoffRow);
 
-  // odstranění duplicit podle id (sobota+nedele)
-  const seen = new Set();
-  const playoff = [];
-  for (const r of playoffItems) {
-    const id = String(r?.id ?? "").trim();
-    if (!id || seen.has(id)) continue;
-    seen.add(id);
-    playoff.push(mapPlayoffRow(r));
-  }
+  // Play-off: pouze neděle, bez ceremonií
+  const playoff = safeArray(rozpis.nedele)
+    .filter(r => r?.type !== "ceremony")
+    .map(mapPlayoffRow);
 
   return { patek, sobota, playoff };
 }

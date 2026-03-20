@@ -1,11 +1,11 @@
 {
-  "updated": "2026-03-18T00:00:00+01:00",
+  "updated": "2026-03-20T12:55:00+01:00",
   "patek": [
-    { "id": "G01", "cas": "11:00", "hala": "A", "zapas": "A1 – B4", "skupina": "QF", "tvcom": "https://tvcom.cz" },
-    { "id": "G02", "cas": "13:15", "hala": "A", "zapas": "A2 – B3", "skupina": "QF", "tvcom": "https://tvcom.cz" },
-    { "id": "G03", "cas": "15:30", "hala": "A", "zapas": "A3 – B2", "skupina": "QF", "tvcom": "https://tvcom.cz" },
+    { "id": "G01", "cas": "11:00", "hala": "A", "zapas": "A1 – B4", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" },
+    { "id": "G02", "cas": "13:15", "hala": "A", "zapas": "A2 – B3", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" },
+    { "id": "G03", "cas": "15:30", "hala": "A", "zapas": "A3 – B2", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" },
     { "id": "CER1", "cas": "17:15", "hala": "A", "zapas": "Zahájení MČR U15", "skupina": "Ceremoniál", "type": "ceremony" },
-    { "id": "G04", "cas": "18:00", "hala": "A", "zapas": "A4 – B1", "skupina": "QF", "tvcom": "https://tvcom.cz" }
+    { "id": "G04", "cas": "18:00", "hala": "A", "zapas": "A4 – B1", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" }
   ],
   "sobota": [
     { "id": "P1", "cas": "10:00", "hala": "A", "faze": "Prohrávající", "zapas": "L G01 – L G03", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
