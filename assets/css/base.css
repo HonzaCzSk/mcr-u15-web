@@ -805,6 +805,42 @@ table.schedule td.col-links {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 12px;
 }
+
+/* Generální partner – celá šířka */
+.partners__general {
+  display: flex;
+  justify-content: center;
+}
+
+.partners__general-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.partners__general .partner {
+  max-width: 320px;
+  width: 100%;
+  padding: 16px 32px;
+}
+
+.partners__general .partner img {
+  height: 56px;
+}
+
+.partners__section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
 .partner{
   border: 1px dashed var(--line);
   border-radius: 14px;
