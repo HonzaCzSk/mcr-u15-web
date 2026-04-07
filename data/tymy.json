@@ -7,7 +7,9 @@
     "city": "Brno",
     "club": "Žabiny Brno",
     "coach": null,
-    "roster": [],
+    "roster": [
+
+      ],
     "website": null,
     "instagram": null,
     "logo": null,
@@ -34,12 +36,26 @@
     "group": null,
     "city": "Praha",
     "club": "Tygři Praha",
-    "coach": null,
-    "roster": [],
-    "website": null,
-    "instagram": null,
-    "logo": null,
-    "note": "Soupiska a týmové info bude doplněno před turnajem."
+    "coach": "Olga Prodan",
+    "assistantCoach": "Tomáš Bešina",
+    "roster": [      
+      { "no": 12, "name": "Tereza Zbrojová", "pos": "", "year": 2011 },
+      { "no": 15, "name": "Zuzana Decastelo", "pos": "", "year": 2011 },
+      { "no": 16, "name": "Diana Piloušková", "pos": "", "year": 2012 },
+      { "no": 18, "name": "Beata Přibylová", "pos": "", "year": 2011 },
+      { "no": 20, "name": "Vesna Jelínková", "pos": "", "year": 2011 },
+      { "no": 27, "name": "Ema Kutinová", "pos": "", "year": 2011 },
+      { "no": 29, "name": "Ciara Okonkwo", "pos": "", "year": 2012 },
+      { "no": 32, "name": "Johana Diabelková", "pos": "", "year": 2011 },
+      { "no": 37, "name": "Nikola Krtková", "pos": "", "year": 2011 },
+      { "no": 44, "name": "Anna Formánková", "pos": "", "year": 2011 },
+      { "no": 54, "name": "Diana Pauerová", "pos": "", "year": 2011 },
+      { "no": 70, "name": "Amélie Ciprová", "pos": "", "year": 2011 }
+    ],
+    "website": "https://tygri.eu/",
+    "instagram": "https://www.instagram.com/bs_tygri_praha/",
+    "logo": "../assets/img/teamLogos/tygriPrahaLogo.png",
+    "note": ""
   },
   {
     "id": "valecnice-decin",
