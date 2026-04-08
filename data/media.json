@@ -1,5 +1,5 @@
 {
-  "updated": "2026-03-20",
+  "updated": "2026-04-08",
   "featured": [
     {
       "title": "Oficiální galerie turnaje",
@@ -15,24 +15,14 @@
   "clips": [],
   "thumbs": [
     {
-      "src": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=400",
-      "full": "https://images.unsplash.com/photo-1546519638-68e109498ffc?w=1200",
-      "alt": "Basketbal – testovací foto 1"
+      "src": "./assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
+      "full": "./assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
+      "alt": "BSK TJ Jičín"
     },
     {
-      "src": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=400",
-      "full": "https://images.unsplash.com/photo-1504450758481-7338eba7524a?w=1200",
-      "alt": "Basketbal – testovací foto 2"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1519861531473-9200262188bf?w=400",
-      "full": "https://images.unsplash.com/photo-1519861531473-9200262188bf?w=1200",
-      "alt": "Basketbal – testovací foto 3"
-    },
-    {
-      "src": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=400",
-      "full": "https://images.unsplash.com/photo-1574623452334-1e0ac2b3ccb4?w=1200",
-      "alt": "Basketbal – testovací foto 4"
+      "src": "./assets/img/teamPhotos/valecniceDecinPhoto.jpg",
+      "full": "./assets/img/teamPhotos/valecniceDecinPhoto.jpg",
+      "alt": "Valečnice Děčín"
     }
   ]
 }
