@@ -21,6 +21,124 @@
   <link rel="stylesheet" href="../assets/css/screen.css" media="screen">
   <link rel="stylesheet" href="../assets/css/dark.css">
   <link rel="stylesheet" href="../assets/css/print.css" media="print">
+  <style>
+    /* ── DARK (default) ── */
+    :root,
+    [data-theme="dark"] {
+      --st-bg:        #1e1e1e;
+      --st-border:    rgba(255,255,255,0.08);
+      --st-border2:   rgba(255,255,255,0.18);
+      --st-head-bg:   rgba(255,255,255,0.05);
+      --st-muted:     #888;
+      --st-text:      #e8e8e8;
+      --st-hover:     rgba(255,255,255,0.04);
+    }
+
+    /* ── LIGHT ── */
+    [data-theme="light"] {
+      --st-bg:        #ffffff;
+      --st-border:    rgba(0,0,0,0.08);
+      --st-border2:   rgba(0,0,0,0.18);
+      --st-head-bg:   rgba(0,0,0,0.04);
+      --st-muted:     #888;
+      --st-text:      #111;
+      --st-hover:     rgba(0,0,0,0.03);
+    }
+
+    #standings-groups {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .standings-group {
+      background: var(--st-bg);
+      border: 1px solid var(--st-border);
+      border-radius: 12px;
+      overflow: hidden;
+      color: var(--st-text);
+    }
+
+    .standings-group__title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.7rem 1.25rem;
+      background: var(--st-head-bg);
+      color: var(--st-muted);
+      margin: 0;
+      border-bottom: 1px solid var(--st-border);
+    }
+
+    .standings-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .standings-table thead th {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--st-muted);
+      padding: 0.55rem 1.25rem;
+      text-align: left;
+      border-bottom: 1px solid var(--st-border);
+    }
+
+    .standings-table thead th:nth-child(1) { width: 2.5rem; text-align: center; }
+    .standings-table thead th:nth-child(3),
+    .standings-table thead th:nth-child(4) { text-align: right; }
+
+    .standings-table tbody tr {
+      border-bottom: 1px solid var(--st-border);
+      transition: background 0.12s;
+    }
+
+    .standings-table tbody tr:last-child { border-bottom: none; }
+    .standings-table tbody tr:hover { background: var(--st-hover); }
+
+    .standings-table tbody td {
+      padding: 0.75rem 1.25rem;
+      font-size: 0.9rem;
+      color: var(--st-text);
+    }
+
+    .standings-table tbody td:nth-child(1) {
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: var(--st-muted);
+      width: 2.5rem;
+    }
+
+    .standings-table tbody td:nth-child(3),
+    .standings-table tbody td:nth-child(4) {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      color: var(--st-muted);
+      font-size: 0.85rem;
+    }
+
+    .standings-table .teamlink {
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--st-text);
+    }
+
+    .standings-table .teamlink:hover { text-decoration: underline; }
+
+    /* oddělovač po 2. místě */
+    .standings-table tbody tr:nth-child(2) {
+      border-bottom: 2px solid var(--st-border2);
+    }
+
+    @media (max-width: 600px) {
+      #standings-groups { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -92,9 +210,7 @@
   <p class="lead">Tato tabulka slouží pro testovací účely.</p>
   <p class="muted">Poslední aktualizace: <span id="updated">—</span></p>
 
-  <div class="tablewrap">
-    <table id="tbl-standings" class="schedule standings"></table>
-  </div>
+  <div id="standings-groups"></div>
 </div>
 </main>
 
@@ -110,7 +226,7 @@
     <img src="../assets/img/partners/logo-ceps.svg" alt="ČEPS" loading="lazy">
   </a>
 </div>
- 
+
 <div class="partners__section-label" style="margin-top:14px;">Partneři</div>
 <div class="partners__row">
   <a class="partner" href="https://www.hradeckralove.org" target="_blank" rel="noopener" aria-label="Statutární město Hradec Králové">

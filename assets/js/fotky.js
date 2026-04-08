@@ -72,12 +72,16 @@
         const url = escapeHtml(x.url);
         const tag = escapeHtml(x.tag || "");
         return `
-          <a class="linkcard" href="${url}" target="_blank" rel="noopener noreferrer">
-            <div class="linkcard__top">
-              <div class="linkcard__title">${title}</div>
-              ${tag ? `<span class="pill">${tag}</span>` : ""}
+          <a class="gallery-banner" href="${url}" target="_blank" rel="noopener noreferrer">
+            <div class="gallery-banner__icon" aria-hidden="true">📷</div>
+            <div class="gallery-banner__body">
+              <div class="gallery-banner__title">${title}</div>
+              <div class="gallery-banner__sub">Kompletní fotogalerie z turnaje</div>
             </div>
-            <div class="linkcard__meta">Otevřít externí galerii →</div>
+            <div class="gallery-banner__right">
+              ${tag ? `<span class="gallery-banner__tag">${tag}</span>` : ""}
+              <span class="gallery-banner__arrow">→</span>
+            </div>
           </a>
         `;
       })

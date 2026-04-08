@@ -1,28 +1,39 @@
 {
-  "updated": "2026-04-08",
+  "updated": "2026-04-09",
+
   "featured": [
     {
-      "title": "Oficiální galerie turnaje",
-      "url": "",
-      "tag": "N/A"
+      "title": "Oficiální galerie – Zonerama",
+      "url": "https://www.zonerama.com/tvuj-odkaz",
+      "tag": "Zonerama"
     }
   ],
+
   "days": [
-    { "label": "Pátek 24. dubna", "links": [] },
-    { "label": "Sobota 25. dubna", "links": [] },
-    { "label": "Neděle 26. dubna", "links": [] }
-  ],
-  "clips": [],
-  "thumbs": [
     {
-      "src": "./assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
-      "full": "./assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
-      "alt": "BSK TJ Jičín"
+      "label": "Pátek 24. 4.",
+      "links": [
+        { "title": "Galerie – pátek", "url": "https://zonerama.com/patek" }
+      ]
     },
     {
-      "src": "./assets/img/teamPhotos/valecniceDecinPhoto.jpg",
-      "full": "./assets/img/teamPhotos/valecniceDecinPhoto.jpg",
-      "alt": "Valečnice Děčín"
+      "label": "Sobota 25. 4.",
+      "links": [
+        { "title": "Galerie – sobota", "url": "https://zonerama.com/sobota" }
+      ]
+    },
+    {
+      "label": "Neděle 26. 4.",
+      "links": [
+        { "title": "Galerie – neděle", "url": "https://zonerama.com/nedele" }
+      ]
     }
-  ]
+  ],
+
+  "thumbs": [
+    { "src": "../../assets/img/hala/hala-01.jpg", "alt": "Hala Eliščino nábřeží" },
+    { "src": "../../assets/img/hala/hala-02.jpg", "alt": "Palubovka" }
+  ],
+
+  "clips": []
 }

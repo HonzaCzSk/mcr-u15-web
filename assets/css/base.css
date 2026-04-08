@@ -3705,3 +3705,29 @@ main > section{ margin-bottom: 56px; }
   color: var(--accent);
   letter-spacing: 0.01em;
 }
+
+.team-photo-drawer {
+  margin-top: 0.75rem;
+  overflow: hidden;
+}
+
+.team-photo-img {
+  width: 100%;
+  max-width: 480px;
+  border-radius: 8px;
+  display: block;
+}
+
+.standings-group {
+  margin-bottom: 2rem;
+}
+
+.standings-group__title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.standings-table {
+  width: 100%;
+}

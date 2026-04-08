@@ -38,24 +38,30 @@ function parseScore(raw) {
   return { a: +m[1], b: +m[2] };
 }
 
+function seedNum(seed) {
+  const m = String(seed || "").match(/(\d+)/);
+  return m ? parseInt(m[1], 10) : 999;
+}
+
 function renderTable(tableEl, teams, statsMap) {
   if (!tableEl) return;
 
-  // Sort: most wins first, then fewest losses
+  // Sort: most wins first, then fewest losses, then seed
   const sorted = [...teams].sort((ta, tb) => {
     const a = statsMap.get(ta.name) || initTeam(ta.name);
     const b = statsMap.get(tb.name) || initTeam(tb.name);
     if (b.V !== a.V) return b.V - a.V;
     if (a.P !== b.P) return a.P - b.P;
-    return ta.name.localeCompare(tb.name, "cs");
+    return seedNum(ta.seed) - seedNum(tb.seed);
   });
 
   const rows = sorted.map((team, idx) => {
     const s = statsMap.get(team.name) || initTeam(team.name);
     const href = teamHrefById(team.id);
+    const seedLabel = seedNum(team.seed) !== 999 ? seedNum(team.seed) : idx + 1;
     return `
       <tr>
-        <td>${idx + 1}</td>
+        <td>${seedLabel}</td>
         <td><a class="teamlink" href="${href}">${escapeHtml(team.name)}</a></td>
         <td>${s.Z}</td>
         <td>${s.V}–${s.R}–${s.P}</td>
@@ -73,9 +79,46 @@ function renderTable(tableEl, teams, statsMap) {
   `;
 }
 
+function renderGroupTables(teams, statsMap) {
+  // Rozděl týmy do skupin
+  const groups = new Map();
+  for (const t of teams) {
+    const g = t.group || "—";
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(t);
+  }
+
+  // Seřaď skupiny abecedně (A, B, ...)
+  const sortedGroups = [...groups.keys()].sort((a, b) => a.localeCompare(b, "cs"));
+
+  const container = document.getElementById("standings-groups");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  for (const groupKey of sortedGroups) {
+    const groupTeams = groups.get(groupKey);
+    const title = groupKey !== "—" ? `Skupina ${groupKey}` : "Týmy";
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "standings-group";
+    wrapper.innerHTML = `
+      <h2 class="standings-group__title">${title}</h2>
+      <table class="standings-table" id="tbl-group-${groupKey}">
+        <thead>
+          <tr><th>#</th><th>Tým</th><th>Z</th><th>V–R–P</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    `;
+    container.appendChild(wrapper);
+
+    renderTable(wrapper.querySelector("table"), groupTeams, statsMap);
+  }
+}
+
 async function init() {
   const updatedEl = document.getElementById("updated");
-  const tableEl = document.getElementById("tbl-standings");
 
   // Load teams
   let teams = [];
@@ -86,9 +129,9 @@ async function init() {
     return;
   }
 
-  // Render empty table immediately
+  // Render empty tables immediately
   const emptyStats = new Map(teams.map(t => [t.name, initTeam(t.name)]));
-  renderTable(tableEl, teams, emptyStats);
+  renderGroupTables(teams, emptyStats);
 
   // Load vysledky
   let vysledky = null;
@@ -158,7 +201,7 @@ async function init() {
     }
   }
 
-  renderTable(tableEl, teams, statsMap);
+  renderGroupTables(teams, statsMap);
 }
 
 init();

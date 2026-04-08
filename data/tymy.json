@@ -18,14 +18,15 @@
   {
     "id": "bk-lvice-litomerice",
     "name": "BK Lvice Litoměřice",
-    "seed": null,
-    "group": null,
+    "seed": "",
+    "group": "",
     "city": "Litoměřice",
     "club": "BK Lvice Litoměřice",
     "coach": null,
     "roster": [],
     "website": null,
     "instagram": null,
+    "photo": null,
     "logo": null,
     "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
@@ -52,6 +53,7 @@
       { "no": 54, "name": "Diana Pauerová", "pos": "", "year": 2011 },
       { "no": 70, "name": "Amélie Ciprová", "pos": "", "year": 2011 }
     ],
+    "photo": null,
     "website": "https://tygri.eu/",
     "instagram": "https://www.instagram.com/bs_tygri_praha/",
     "logo": "../assets/img/teamLogos/tygriPrahaLogo.png",
@@ -80,6 +82,7 @@
       { "no": 32, "name": "Tereza Činková", "pos": "", "year": 2011 },
       { "no": 66, "name": "Tereza Potočná", "pos": "", "year": 2012 }
     ],
+    "photo": "../../assets/img/teamPhotos/valecniceDecinPhoto.jpg",
     "website": "https://mladez.bkdecin.cz/",
     "instagram": null,
     "logo": "../assets/img/teamLogos/valecniceDecinLogo.png",
@@ -139,6 +142,7 @@
       { "no": 58, "name": "Alžběta Lenártová", "pos": "", "year": 2012 },
       { "no": 67, "name": "Barbora Smolíková", "pos": "", "year": 2011 }
     ],
+    "photo": "../../assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
     "website": "https://www.basketjicin.cz/",
     "instagram": "https://www.instagram.com/bskjicin/",
     "logo": "../assets/img/teamLogos/bskTjJicinLogo.webp",
