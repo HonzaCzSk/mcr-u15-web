@@ -385,11 +385,14 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
   fillTable("tbl-rozpis-patek", data.patek, (r) => {
     if (r?.type === "ceremony") {
       return `
+        <td class="col-id">${r.id || 'CER'}</td>
         <td>${r.cas ?? "—"}</td>
-        <td>—</td>
-        <td colspan="4" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+        <td>${pillHtml(r.hala)}</td>
+        <td colspan="5" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
       `;
     }
+
+
     const matchId = r?.id || makeMatchId({
       dayKey: "patek",
       cas: r?.cas,
@@ -397,6 +400,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
     });
 
     return `
+      <td class="col-id">${matchId}</td>
       <td>${r.cas ?? "—"}</td>
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
@@ -404,17 +408,21 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
       <td class="col-score"></td>
     `;
+
   });
 
   // Sobota (skupiny)
   fillTable("tbl-rozpis-sobota", data.sobota, (r) => {
     if (r?.type === "ceremony") {
       return `
+        <td class="col-id">${r.id || 'CER'}</td>
         <td>${r.cas ?? "—"}</td>
-        <td>—</td>
-        <td colspan="4" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+        <td>${pillHtml(r.hala)}</td>
+        <td colspan="5" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
       `;
     }
+
+
     const matchId = r?.id || makeMatchId({
       dayKey: "sobota",
       cas: r?.cas,
@@ -422,6 +430,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
     });
 
     return `
+      <td class="col-id">${matchId}</td>
       <td>${r.cas ?? "—"}</td>
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
@@ -429,17 +438,21 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
       <td class="col-score"></td>
     `;
+
   });
 
   // Neděle (playoff)
   fillTable("tbl-rozpis-nedele", data.nedele, (r) => {
     if (r?.type === "ceremony") {
       return `
+        <td class="col-id">${r.id || 'CER'}</td>
         <td>${r.cas ?? "—"}</td>
-        <td>—</td>
-        <td colspan="5" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+        <td>${pillHtml(r.hala)}</td>
+        <td colspan="6" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
       `;
     }
+
+
     const matchId = r?.id || makeMatchId({
       dayKey: "nedele",
       cas: r?.cas,
@@ -448,6 +461,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
     });
 
     return `
+      <td class="col-id">${matchId}</td>
       <td>${r.cas ?? "—"}</td>
       <td>${pillHtml(r.hala)}</td>
       <td>${r.faze ?? "—"}</td>
@@ -455,6 +469,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
       <td class="col-score"></td>
     `;
+
   });
 }
 
