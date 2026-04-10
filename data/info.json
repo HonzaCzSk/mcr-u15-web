@@ -1,5 +1,5 @@
 {
-  "updated": "07.04.2026 18:50",
+  "updated": "10.04.2026 21:20",
   "venue": {
     "title": "Místo konání",
     "address": "Eliščino nábřeží 777, Hradec Králové, 500 03",
@@ -44,23 +44,23 @@
     {
       "type": "email",
       "label": "Email",
-      "name": "Jiří Jirsa – Organizační pracovník, obecné dotazy",
-      "value": "basket.ovc@seznam.cz",
-      "href": "mailto:basket.ovc@seznam.cz"
+      "name": "Jan Uhlíř – Pořadatel, obecné dotazy",
+      "value": "uhlirj@volny.cz",
+      "href": "mailto:uhlirj@volny.cz"
     },
     {
       "type": "email",
       "label": "Email",
-      "name": "Jan Votroubek – vysílání, fotografie, sociální sítě",
+      "name": "Jan Votroubek – statistiky, web, sociální sítě",
       "value": "mistrovstvi.republiky@gmail.com",
       "href": "mailto:mistrovstvi.republiky@gmail.com"
     },
     {
       "type": "phone",
       "label": "Telefon",
-      "name": "Jiří Jirsa",
-      "value": "+420 725 450 130",
-      "href": "tel:+420725450130"
+      "name": "Jan Uhlíř",
+      "value": "+420 777 893 910",
+      "href": "tel:+420777893910"
     },
     {
       "type": "instagram",

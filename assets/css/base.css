@@ -798,7 +798,7 @@ table.schedule td.col-links {
   font-weight: 950;
   text-transform: uppercase;
   letter-spacing: .4px;
-  font-size: 13px;
+  font-size: 15px;
 }
 .partners__row{
   display:grid;
@@ -808,6 +808,7 @@ table.schedule td.col-links {
 
 /* Generální partner – celá šířka */
 .partners__general {
+  gap: 12px;
   display: flex;
   justify-content: center;
 }

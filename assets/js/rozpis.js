@@ -464,8 +464,8 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td class="col-id">${matchId}</td>
       <td>${r.cas ?? "—"}</td>
       <td>${pillHtml(r.hala)}</td>
-      <td>${r.faze ?? "—"}</td>
       <td>${matchHtml(r)}</td>
+      <td>${r.faze ?? "—"}</td>
       <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
       <td class="col-score"></td>
     `;
