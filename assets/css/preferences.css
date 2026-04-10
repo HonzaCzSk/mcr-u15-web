@@ -3,13 +3,16 @@
 #cookie-banner {
   position: fixed;
   bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 1rem;
+  right: 1rem;
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
   z-index: 9999;
-  width: min(560px, calc(100vw - 2rem));
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.35s ease, visibility 0.35s ease;
+  box-sizing: border-box;
 }
 
 #cookie-banner.is-visible {
@@ -31,6 +34,8 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   background: #1e1e1e;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 [data-theme="light"] .cookie-banner__inner {
