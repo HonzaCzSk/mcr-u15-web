@@ -125,13 +125,25 @@
     "group": null,
     "city": "Hradec Králové",
     "club": "Sokol Hradec Králové",
-    "coach": null,
+    "coach": "Jan Uhlíř",
     "assistantCoach": null,
     "website": "https://hradeckelvice.cz",
-    "roster": [],
+            "roster": [
+      { "no": 4, "name": "Sára Vaňková", "pos": "", "year": 2011, "captain": null },
+      { "no": 5, "name": "Sofie Diadovská", "pos": "", "year": 2011 },
+      { "no": 6, "name": "Michaela Smetanová", "pos": "", "year": 2011 },
+      { "no": 7, "name": "Sofie Sokolová", "pos": "", "year": 2011 },
+      { "no": 8, "name": "Barbora Čapková", "pos": "", "year": 2011 },
+      { "no": 9, "name": "Sára Jacková", "pos": "", "year": 2011 },
+      { "no": 10, "name": "Nella Pencáková", "pos": "", "year": 2011 },
+      { "no": 13, "name": "Sofie Pencáková", "pos": "", "year": 2011 },
+      { "no": 14, "name": "Magdaléna Michaela Kulichová", "pos": "", "year": 2011 },
+      { "no": 21, "name": "Marie Tomášová", "pos": "", "year": 2011 },
+      { "no": 22, "name": "Nela Krušinová", "pos": "", "year": 2011 }
+    ],
     "instagram": "https://www.instagram.com/hradeckelvice",
     "logo": "../assets/img/teamLogos/lviceLogo.png",
-    "note": "Soupiska a týmové info bude doplněno před turnajem."
+    "note": "Testovací soupiska - Soupiska a týmové info bude doplněno před turnajem."
   },
   {
     "id": "bsk-tj-jicin",

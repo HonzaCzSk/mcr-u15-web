@@ -325,6 +325,7 @@ function buildRowsFromRozpis(rozpis, vysledky){
     fillTable("tbl-sobota", rows.sobota, (r) => `
       <td>${r.cas}</td>
       <td>${pillHtml(r.hala)}</td>
+      <td>${r.faze}</td>
       <td>${renderMatchLinked(r.zapas)}</td>
       <td class="score">
         ${renderQuarterGrid(r.quarters)}

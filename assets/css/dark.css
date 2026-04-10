@@ -686,3 +686,14 @@
 :root:not([data-theme="dark"]) .hero{
   background: #f6f7f9;   /* skoro bílá */
 }
+
+    /* light mode */
+    [data-theme="light"] .gallery-banner {
+      background: rgba(0,0,0,0.03);
+      border-color: rgba(0,0,0,0.1);
+    }
+
+    [data-theme="light"] .gallery-banner:hover {
+      background: rgba(0,0,0,0.06);
+      border-color: rgba(0,0,0,0.2);
+    }

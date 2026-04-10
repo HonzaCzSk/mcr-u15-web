@@ -194,7 +194,9 @@ function renderTeams(root, teams) {
               ${infoRow("Klub", t.club)}
               ${infoRow("Město", t.city)}
               ${infoRow("Trenér/ka", t.coach)}
-              ${infoRow("Asistent/ka", t.assistantCoach)}
+              ${Array.isArray(t.assistantCoaches) && t.assistantCoaches.length
+                ? t.assistantCoaches.map((a, i) => infoRow(i === 0 ? "Asistent/ka" : "Asistent/ka 2", a)).join("")
+                : infoRow("Asistent/ka", t.assistantCoach ?? null)}
             </div>
 
             <div class="team-info__links">
