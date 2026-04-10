@@ -39,10 +39,8 @@
 
     document.body.appendChild(banner);
 
-    // malý timeout aby proběhl CSS transition při objevení
-    requestAnimationFrame(() => {
-      requestAnimationFrame(() => banner.classList.add("is-visible"));
-    });
+    // timeout aby proběhl CSS transition při objevení
+    setTimeout(() => banner.classList.add("is-visible"), 50);
 
     document.getElementById("cookie-accept").addEventListener("click", grantConsent);
   }
