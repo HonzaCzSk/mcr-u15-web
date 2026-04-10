@@ -7,24 +7,24 @@
 
   function grant() {
     try { localStorage.setItem(KEY, "granted"); } catch {}
-    const el = document.getElementById("cookie-banner");
+    const el = document.getElementById("site-notice");
     if (el) el.remove();
   }
 
   function show() {
-    if (document.getElementById("cookie-banner")) return;
+    if (document.getElementById("site-notice")) return;
 
     const el = document.createElement("div");
-    el.id = "cookie-banner";
+    el.id = "site-notice";
     el.innerHTML = `
-      <div class="cookie-banner__inner">
-        <div class="cookie-banner__icon">🍪</div>
-        <div class="cookie-banner__text">
+      <div class="site-notice__inner">
+        <div class="site-notice__icon">🍪</div>
+        <div class="site-notice__text">
           <strong>Tento web ukládá vaše preference</strong>
           <span>Používáme <em>localStorage</em> pouze pro uložení zvoleného barevného motivu. Žádná osobní data neshromažďujeme.</span>
         </div>
-        <div class="cookie-banner__actions">
-          <button class="cookie-btn--accept" id="cookie-accept" type="button">Rozumím</button>
+        <div class="site-notice__actions">
+          <button class="notice-btn" id="cookie-accept" type="button">Rozumím</button>
         </div>
       </div>
     `;
