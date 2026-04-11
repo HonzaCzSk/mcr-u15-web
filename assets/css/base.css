@@ -3922,3 +3922,37 @@ main > section{ margin-bottom: 56px; }
 @media (max-width: 600px) {
   #standings-groups { grid-template-columns: 1fr; }
 }
+
+.plakat-link {
+  display: block;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 260px;
+  margin: 15px 0 0 33.15px;
+}
+
+.plakat-img {
+  width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+.plakat-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 0.6rem;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.plakat-link:hover .plakat-overlay {
+  opacity: 1;
+}
