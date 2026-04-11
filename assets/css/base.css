@@ -251,6 +251,7 @@ body > main {
   border: 1px solid var(--line);
   border-radius: var(--r-md);
   padding: 14px;
+  justify-items: center;
 }
 .panel__title{
   font-weight: 950;
@@ -3929,7 +3930,11 @@ main > section{ margin-bottom: 56px; }
   border-radius: 8px;
   overflow: hidden;
   max-width: 260px;
-  margin: 15px 0 0 33.15px;
+  border: 1px solid rgba(255,255,255,1);
+}
+
+[data-theme="light"] .plakat-link {
+  border-color: rgba(0,0,0,1);
 }
 
 .plakat-img {
