@@ -3925,6 +3925,7 @@ main > section{ margin-bottom: 56px; }
 }
 
 .plakat-link {
+  margin-top: 15px;
   display: block;
   position: relative;
   border-radius: 8px;
