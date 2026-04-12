@@ -1836,7 +1836,7 @@ table.schedule td:last-child {
 /* ZÁPAS – vždy vlevo */
 table.schedule th:nth-child(3),
 table.schedule td:nth-child(3) {
-  text-align: left;
+  text-align: center;
 }
 
 /* ===== SKÓRE (VÝSLEDKY) ===== */
