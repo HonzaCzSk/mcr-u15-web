@@ -1846,11 +1846,6 @@ table.schedule.results th:nth-child(4) {
   text-align: center;
 }
 
-/* buňka skóre */
-table.schedule.results td:nth-child(4) {
-  text-align: center;
-}
-
 /* vnitřní layout skóre */
 table.schedule .score,
 table.schedule .qgrid,

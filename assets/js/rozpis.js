@@ -862,8 +862,8 @@ function renderLinks({ matchId, tvcomUrl, livestatsId }) {
   const res = `vysledky.html?match=${encodeURIComponent(matchId)}`;
 
   const tv = tvcomUrl
-    ? `<a href="${tvcomUrl}" target="_blank" rel="noopener" aria-label="TVCOM stream">📺</a>`
-    : `<span class="muted" aria-hidden="true">📺</span>`;
+    ? `<a href="${tvcomUrl}" target="_blank" rel="noopener" aria-label="TVCOM stream">📽️</a>`
+    : `<span class="muted" aria-hidden="true">📽️</span>`;
 
   const liveStatsUrl = livestatsId
     ? `https://fibalivestats.dcd.shared.geniussports.com/u/CBFFE/${encodeURIComponent(livestatsId)}/`
