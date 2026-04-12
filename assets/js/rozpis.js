@@ -405,7 +405,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
       <td>${r.skupina ?? "—"}</td>
-      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom, livestatsId: r?.livestats })}</td>
       <td class="col-score"></td>
     `;
 
@@ -435,7 +435,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
       <td>${r.skupina ?? "—"}</td>
-      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom, livestatsId: r?.livestats })}</td>
       <td class="col-score"></td>
     `;
 
@@ -466,7 +466,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       <td>${pillHtml(r.hala)}</td>
       <td>${matchHtml(r)}</td>
       <td>${r.faze ?? "—"}</td>
-      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom })}</td>
+      <td class="col-links">${renderLinks({ matchId, tvcomUrl: r?.tvcom, livestatsId: r?.livestats })}</td>
       <td class="col-score"></td>
     `;
 
@@ -858,17 +858,25 @@ function makeMatchId({ date, dayKey, cas, hala, phase }) {
   return [d, t || "xx-xx", h || "hala", p || "x"].join("_");
 }
 
-function renderLinks({ matchId, tvcomUrl }) {
+function renderLinks({ matchId, tvcomUrl, livestatsId }) {
   const res = `vysledky.html?match=${encodeURIComponent(matchId)}`;
 
   const tv = tvcomUrl
     ? `<a href="${tvcomUrl}" target="_blank" rel="noopener" aria-label="TVCOM stream">📺</a>`
     : `<span class="muted" aria-hidden="true">📺</span>`;
 
+  const liveStatsUrl = livestatsId
+    ? `https://fibalivestats.dcd.shared.geniussports.com/u/CBFFE/${encodeURIComponent(livestatsId)}/`
+    : null;
+
+  const stats = liveStatsUrl
+    ? `<a href="${liveStatsUrl}" target="_blank" rel="noopener" aria-label="FIBA LiveStats">📊</a>`
+    : `<a href="${res}" aria-label="Průběžné výsledky">📊</a>`;
+
   return `
     <span class="matchlinks">
       ${tv}
-      <a href="${res}" aria-label="Průběžné výsledky">📊</a>
+      ${stats}
     </span>
   `;
 }

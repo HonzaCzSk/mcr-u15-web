@@ -1,23 +1,60 @@
 {
-  "updated": "2026-04-10T21:21:00+02:00",
+  "updated": "2026-04-12T18:15:00+02:00",
   "patek": [
-    { "id": "G01", "cas": "11:00", "hala": "A", "zapas": "A1 – B4", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "G02", "cas": "13:15", "hala": "A", "zapas": "A2 – B3", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "G03", "cas": "15:30", "hala": "A", "zapas": "A3 – B2", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" },
+    { "id": "G01", "cas": "11:00", "hala": "A", 
+      "zapas": "Válečnice Děčín – SBŠ Ostrava", "skupina": "Předkolo Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": ""},
+    
+    { "id": "G02", "cas": "13:15", "hala": "A",
+      "zapas": "TJ Sokol Kladno – BSK TJ Jičín", "skupina": "Předkolo Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+      
+    { "id": "G03", "cas": "15:30", "hala": "A", 
+      "zapas": "BK Lvice Litoměřice – Žabiny Brno", "skupina": "Předkolo Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
     { "id": "CER", "cas": "17:15", "hala": "A", "zapas": "Zahájení MČR U15", "skupina": "Ceremoniál", "type": "ceremony" },
-    { "id": "G04", "cas": "18:00", "hala": "A", "zapas": "A4 – B1", "skupina": "Předkolo Play-off", "tvcom": "https://tvcom.cz" }
+    
+    { "id": "G04", "cas": "18:00", "hala": "A", 
+      "zapas": "Sokol Hradec Králové – Tygři Praha", "skupina": "Předkolo Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": "" }
   ],
+
   "sobota": [
-    { "id": "P1", "cas": "10:00", "hala": "A", "faze": "Prohrávající", "zapas": "L G01 – L G03", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "P2", "cas": "12:15", "hala": "A", "faze": "Prohrávající", "zapas": "L G02 – L G04", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "V1", "cas": "14:30", "hala": "A", "faze": "Vítězové", "zapas": "W G01 – W G03", "skupina": "Play-off", "tvcom": "https://tvcom.cz" },
-    { "id": "V2", "cas": "16:45", "hala": "A", "faze": "Vítězové", "zapas": "W G02 – W G04", "skupina": "Play-off", "tvcom": "https://tvcom.cz" }
+    { "id": "P1", "cas": "10:00", "hala": "A",
+      "faze": "Prohrávající", "zapas": "L G01 – L G03", "skupina": "Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
+    { "id": "P2", "cas": "12:15", "hala": "A",
+      "faze": "Prohrávající", "zapas": "L G02 – L G04", "skupina": "Play-off",
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
+    { "id": "V1", "cas": "14:30", "hala": "A", 
+      "faze": "Vítězové", "zapas": "W G01 – W G03", "skupina": "Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
+    { "id": "V2", "cas": "16:45", "hala": "A",
+      "faze": "Vítězové", "zapas": "W G02 – W G04", "skupina": "Play-off", 
+      "tvcom": "https://tvcom.cz", "livestats": "" }
   ],
+
   "nedele": [
-    { "id": "M7", "cas": "08:30", "hala": "A", "faze": "O 7. místo", "zapas": "L P1 – L P2", "tvcom": "https://tvcom.cz" },
-    { "id": "M5", "cas": "10:30", "hala": "A", "faze": "O 5. místo", "zapas": "W P1 – W P2", "tvcom": "https://tvcom.cz" },
-    { "id": "M3", "cas": "12:45", "hala": "A", "faze": "O 3. místo", "zapas": "L V1 – L V2", "tvcom": "https://tvcom.cz" },
-    { "id": "FIN", "cas": "15:00", "hala": "A", "faze": "Finále", "zapas": "W V1 – W V2", "tvcom": "https://tvcom.cz" },
+    { "id": "M7", "cas": "08:30", "hala": "A", 
+      "faze": "O 7. místo", "zapas": "L P1 – L P2", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
+    { "id": "M5", "cas": "10:30", "hala": "A",
+      "faze": "O 5. místo", "zapas": "W P1 – W P2", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
+    { "id": "M3", "cas": "12:45", "hala": "A",
+      "faze": "O 3. místo", "zapas": "L V1 – L V2", 
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+      
+    { "id": "FIN", "cas": "15:00", "hala": "A",
+      "faze": "Finále", "zapas": "W V1 – W V2",
+      "tvcom": "https://tvcom.cz", "livestats": "" },
+
     { "id": "CER", "cas": "17:00", "hala": "A", "faze": "Ceremoniál", "zapas": "Vyhlášení výsledků a předání medailí", "type": "ceremony" }
   ]
 }
