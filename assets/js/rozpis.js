@@ -330,7 +330,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
   ).toISOString().slice(0, 10);
 
   const isRealTournamentDay = dayDate && realIso === dayDate;
-  const allowLive = DEBUG_MODE || isRealTournamentDay;
+  const allowLive = isRealTournamentDay; // LIVE jen ve správný den, i v debug módu
   const nextWindow = allowLive ? NEXT_WINDOW_MIN : 24 * 60; // mimo turnajový den: DALŠÍ jen pokud je zápas do 24h
 
   // referenční čas:
@@ -342,9 +342,9 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
     const [Y, M, D] = dayDate.split("-").map(Number);
     if (![Y, M, D].some(Number.isNaN)) {
 
-      if (DEBUG_MODE && DEBUG_TIME) {
-        const [h, m] = DEBUG_TIME.split(":").map(Number);
-        nowRef = new Date(Y, M - 1, D, h, m, 0, 0);
+      if (DEBUG_MODE && realNow) {
+        // V debug módu použij čas z ?time= parametru
+        nowRef = new Date(Y, M - 1, D, realNow.getHours(), realNow.getMinutes(), 0, 0);
       } else if (allowLive) {
         nowRef = new Date(Y, M - 1, D, realNow.getHours(), realNow.getMinutes(), 0, 0);
       } else {
@@ -882,9 +882,9 @@ function formatUpdatedHuman(dateInput) {
   } else {
     // Auto-detekce podle reálného data
     const today = (() => { const t = new URLSearchParams(window.location.search).get('time'); return ((DEBUG_MODE && t) ? new Date(t) : new Date()).toISOString().slice(0, 10); })()
-    if (today === "2026-04-24") ACTIVE_DAY = "patek";
-    else if (today === "2026-04-25") ACTIVE_DAY = "sobota";
-    else if (today === "2026-04-26") ACTIVE_DAY = "nedele";
+    if (today === "2026-04-24") { ACTIVE_DAY = "patek"; showDay("patek"); }
+    else if (today === "2026-04-25") { ACTIVE_DAY = "sobota"; showDay("sobota"); }
+    else if (today === "2026-04-26") { ACTIVE_DAY = "nedele"; showDay("nedele"); }
     else {
       // Mimo turnaj — DALŠÍ jen u nejbližšího dne pokud je do 24h
       const now = (DEBUG_MODE && new URLSearchParams(window.location.search).get('time'))
