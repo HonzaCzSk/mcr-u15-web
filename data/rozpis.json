@@ -6,17 +6,17 @@
       "tvcom": "https://tvcom.cz", "livestats": ""},
     
     { "id": "G02", "cas": "13:15", "hala": "A",
-      "zapas": "TJ Sokol Kladno – BSK TJ Jičín", "skupina": "Předkolo Play-off", 
+      "zapas": "Žabiny Brno – TJ Sokol Kladno", "skupina": "Předkolo Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
       
     { "id": "G03", "cas": "15:30", "hala": "A", 
-      "zapas": "BK Lvice Litoměřice – Žabiny Brno", "skupina": "Předkolo Play-off", 
+      "zapas": "Tygři Praha – BSK TJ Jičín", "skupina": "Předkolo Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "CER", "cas": "17:15", "hala": "A", "zapas": "Zahájení Mistrovství republiky U15", "skupina": "Ceremoniál", "type": "ceremony" },
     
     { "id": "G04", "cas": "18:00", "hala": "A", 
-      "zapas": "Sokol Hradec Králové – Tygři Praha", "skupina": "Předkolo Play-off", 
+      "zapas": "Sokol Hradec Králové – BK Lvice Litoměřice", "skupina": "Předkolo Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" }
   ],
 

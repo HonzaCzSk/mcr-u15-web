@@ -31,7 +31,7 @@
   {
     "id": "tj-sokol-kladno",
     "name": "TJ Sokol Kladno",
-    "seed": "A2",
+    "seed": "A3",
     "group": "A",
     "city": "Kladno",
     "club": "TJ Sokol Kladno",
@@ -46,7 +46,7 @@
   {
     "id": "bk-lvice-litomerice",
     "name": "BK Lvice Litoměřice",
-    "seed": "A3",
+    "seed": "A4",
     "group": "A",
     "city": "Litoměřice",
     "club": "BK Lvice Litoměřice",
@@ -62,7 +62,7 @@
   {
     "id": "tygri-praha",
     "name": "Tygři Praha",
-    "seed": "A4",
+    "seed": "A2",
     "group": "A",
     "city": "Praha",
     "club": "Tygři Praha",
