@@ -221,6 +221,7 @@ function fillTable(tableId, rows, renderRow, focusId){
     const tr = document.createElement("tr");
     const st = String(r?.stav ?? "").toUpperCase();
     if (st === "LIVE") tr.classList.add("is-live");
+    if (st === "FIN" || st === "FINAL") tr.classList.add("is-fin");
     if (focusId && String(r.id).trim() === String(focusId).trim()) {
       tr.classList.add("is-focus");
       tr.id = "focus-match";
