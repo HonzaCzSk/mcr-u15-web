@@ -20,7 +20,7 @@
       { "no": 21, "name": "Eliška Králová", "pos": "", "year": 2011 },
       { "no": 31, "name": "Veronika Vaňková", "pos": "", "year": 2012 },
       { "no": 32, "name": "Tereza Činková", "pos": "", "year": 2011 },
-      { "no": 66, "name": "Tereza Potočná", "pos": "", "year": 2012 }
+      { "no": 66, "name": "Veronika Tauscheová", "pos": "", "year": 2012 }
     ],
     "photo": "../../assets/img/teamPhotos/valecniceDecinPhoto.jpg",
     "website": "https://mladez.bkdecin.cz/",
@@ -28,6 +28,7 @@
     "logo": "../assets/img/teamLogos/valecniceDecinLogo.png",
     "note": ""
   },
+  
   {
     "id": "tj-sokol-kladno",
     "name": "TJ Sokol Kladno",
@@ -88,7 +89,6 @@
     "logo": "../assets/img/teamLogos/tygriPrahaLogo.png",
     "note": ""
   },
-
 
   {
     "id": "sokol-hradec-kralove",
