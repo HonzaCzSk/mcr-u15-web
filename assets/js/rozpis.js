@@ -31,8 +31,19 @@ function teamLink(name){
 
 const ROZPIS_URL = "../../data/rozpis.json";
 const ROZPIS_BACKUP_URL = "../../data/backup/rozpis.backup.json";
-const DEBUG_MODE = new URLSearchParams(window.location.search).get("debug") === "1";
+const DEBUG_MODE = new URLSearchParams(window.location.search).has("debug");
 let DEBUG_TIME = null;
+
+// Debug banner
+document.addEventListener("DOMContentLoaded", () => {
+  if (!DEBUG_MODE) return;
+  const t = new URLSearchParams(window.location.search).get("time");
+  const label = t ? new Date(t).toLocaleString("cs-CZ") : "bez času";
+  const banner = document.createElement("div");
+  banner.style.cssText = "position:fixed;bottom:60px;right:16px;background:#b91c1c;color:#fff;padding:6px 12px;border-radius:8px;font-size:12px;font-weight:700;z-index:9998;pointer-events:none;";
+  banner.textContent = `🛠 DEBUG: ${label}`;
+  document.body.appendChild(banner);
+});
 const LS_KEY = "mcr_u15_rozpis_cache_v1";
 let originalData = null;
 let currentFilter = ""; // "" = Všechny týmy
@@ -51,7 +62,21 @@ const DAY_DATE = {
 };
 let ACTIVE_DAY = null;
 const LIVE_WINDOW_MIN = 120;  // jak dlouho po startu bereme zápas jako "live"
-const NEXT_WINDOW_MIN = 60;  // jak dlouho dopředu bereme zápas jako "next"
+const NEXT_WINDOW_MIN = 30;  // jak dlouho dopředu bereme zápas jako "next"
+
+// --- Debug mode ---
+// Použití: ?debug=1&time=2026-04-24T11:30
+// Např:   rozpis.html?debug=1&time=2026-04-24T11:05
+// DEBUG_MODE a DEBUG_TIME jsou definovány níže v souboru
+
+function getNow() {
+  if (DEBUG_MODE && DEBUG_TIME) {
+    // Sestavíme datum z URL parametru time (ISO formát)
+    const t = new URLSearchParams(window.location.search).get("time");
+    if (t) return new Date(t);
+  }
+  return new Date();
+}
 
 function setStatus(msg, type = "info") {
   const el = document.getElementById("data-status");
@@ -297,7 +322,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
   // debug=1 -> simulujeme den podle tabu
   // normal  -> LIVE jen při reálném dni turnaje
 
-  const realNow = new Date();
+  const realNow = (() => { const t = new URLSearchParams(window.location.search).get('time'); return (DEBUG_MODE && t) ? new Date(t) : new Date(); })();
   const realIso = new Date(
     realNow.getFullYear(),
     realNow.getMonth(),
@@ -306,7 +331,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
 
   const isRealTournamentDay = dayDate && realIso === dayDate;
   const allowLive = DEBUG_MODE || isRealTournamentDay;
-  const nextWindow = allowLive ? NEXT_WINDOW_MIN : 24 * 60; // mimo turnajový den ukaž DALŠÍ kdykoliv v rámci dne
+  const nextWindow = allowLive ? NEXT_WINDOW_MIN : 24 * 60; // mimo turnajový den: DALŠÍ jen pokud je zápas do 24h
 
   // referenční čas:
   // - debug: "jako kdyby" byl aktivní den
@@ -355,7 +380,17 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
       // ignoruj LIVE
       if (allowLive && isMatchLive(r?.cas, dayDate, LIVE_WINDOW_MIN, nowRef)) return;
 
-      const delta = m - nowMin;
+      let delta;
+      if (!allowLive && dayDate) {
+        // Mimo turnajový den: porovnej reálný čas s datem+časem zápasu
+        const [Y, M, D] = dayDate.split("-").map(Number);
+        const [h, min] = String(r.cas || "").split(":").map(Number);
+        const matchStart = new Date(Y, M - 1, D, h, min, 0, 0);
+        delta = (matchStart - realNow) / 60000; // v minutách
+      } else {
+        delta = m - nowMin;
+      }
+
       if (delta > 0 && delta <= nextWindow && delta < bestDelta) {
         bestDelta = delta;
         nextTimeMin = m;
@@ -845,7 +880,26 @@ function formatUpdatedHuman(dateInput) {
     ACTIVE_DAY = d;
     showDay(d);
   } else {
-    ACTIVE_DAY = "patek"; // fallback, nebo klidně null
+    // Auto-detekce podle reálného data
+    const today = (() => { const t = new URLSearchParams(window.location.search).get('time'); return ((DEBUG_MODE && t) ? new Date(t) : new Date()).toISOString().slice(0, 10); })()
+    if (today === "2026-04-24") ACTIVE_DAY = "patek";
+    else if (today === "2026-04-25") ACTIVE_DAY = "sobota";
+    else if (today === "2026-04-26") ACTIVE_DAY = "nedele";
+    else {
+      // Mimo turnaj — DALŠÍ jen u nejbližšího dne pokud je do 24h
+      const now = (DEBUG_MODE && new URLSearchParams(window.location.search).get('time'))
+        ? new Date(new URLSearchParams(window.location.search).get('time'))
+        : new Date();
+      for (const [key, date] of Object.entries(DAY_DATE)) {
+        const dayStart = new Date(date + "T00:00:00");
+        const diffMin = (dayStart - now) / 60000;
+        if (diffMin > 0 && diffMin <= 24 * 60) {
+          ACTIVE_DAY = key;
+          break;
+        }
+      }
+      // Pokud žádný den není do 24h, ACTIVE_DAY zůstane null → žádný pill
+    }
   }
 })();
 
