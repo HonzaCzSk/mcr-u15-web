@@ -1,6 +1,7 @@
 # personal data
 data\tymy.json
 data\real\tymy.json
+assets\img\teamPhotos\
 
 # environment
 .env

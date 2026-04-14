@@ -154,6 +154,11 @@ function isValidRozpis(data) {
 
     renderRozpis(originalData);
 
+    // V debug módu přepni na správný den po načtení dat
+    if (DEBUG_MODE && ACTIVE_DAY) {
+      showDay(ACTIVE_DAY);
+    }
+
     try {
       const ch = JSON.parse(localStorage.getItem(CHANGES_KEY) || "null");
       renderChangesLine(ch?.changes || []);
@@ -423,7 +428,7 @@ const fillTable = (tableId, rows, renderRow, focusId) => {
         <td class="col-id">${r.id || 'CER'}</td>
         <td>${r.cas ?? "—"}</td>
         <td>${pillHtml(r.hala)}</td>
-        <td colspan="5" class="ceremony-row">🏅 ${escapeHtml(r.zapas)}</td>
+        <td colspan="5" class="ceremony-row"> ${escapeHtml(r.zapas)}</td>
       `;
     }
 
@@ -882,9 +887,9 @@ function formatUpdatedHuman(dateInput) {
   } else {
     // Auto-detekce podle reálného data
     const today = (() => { const t = new URLSearchParams(window.location.search).get('time'); return ((DEBUG_MODE && t) ? new Date(t) : new Date()).toISOString().slice(0, 10); })()
-    if (today === "2026-04-24") { ACTIVE_DAY = "patek"; showDay("patek"); }
-    else if (today === "2026-04-25") { ACTIVE_DAY = "sobota"; showDay("sobota"); }
-    else if (today === "2026-04-26") { ACTIVE_DAY = "nedele"; showDay("nedele"); }
+    if (today === "2026-04-24") ACTIVE_DAY = "patek";
+    else if (today === "2026-04-25") ACTIVE_DAY = "sobota";
+    else if (today === "2026-04-26") ACTIVE_DAY = "nedele";
     else {
       // Mimo turnaj — DALŠÍ jen u nejbližšího dne pokud je do 24h
       const now = (DEBUG_MODE && new URLSearchParams(window.location.search).get('time'))
