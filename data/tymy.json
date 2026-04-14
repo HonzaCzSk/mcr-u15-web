@@ -22,10 +22,10 @@
       { "no": 32, "name": "Tereza Činková", "pos": "", "year": 2011 },
       { "no": 66, "name": "Veronika Tauscheová", "pos": "", "year": 2012 }
     ],
-    "photo": "../../assets/img/teamPhotos/valecniceDecinPhoto.jpg",
     "website": "https://mladez.bkdecin.cz/",
     "instagram": null,
     "logo": "../assets/img/teamLogos/valecniceDecinLogo.png",
+    "photo": "../assets/img/teamPhotos/valecniceDecinPhoto.jpg",
     "note": ""
   },
   
@@ -57,6 +57,7 @@
     "website": "https://www.basketkladno.cz/",
     "instagram": "https://www.instagram.com/basketball_kladno/",
     "logo": null,
+    "photo": null,
     "note": "Soupiska a týmové info bude doplněno před turnajem."
   },
 
@@ -86,9 +87,9 @@
     ],
     "website": "https://www.lvicelitomerice.cz/",
     "instagram": "https://www.instagram.com/bklvicelitomerice/",
-    "photo": "../../assets/img/teamPhotos/bkLviceLitomericePhoto.jpeg",
+    "photo": "../assets/img/teamPhotos/bkLviceLitomericePhoto.jpeg",
     "logo": "../assets/img/teamLogos/bkLviceLitomericeLogo.png",
-    "note": "Soupiska a týmové info bude doplněno před turnajem."
+    "note": ""
   },
 
   {
@@ -130,8 +131,7 @@
     "club": "Sokol Hradec Králové",
     "coach": "Jan Uhlíř",
     "assistantCoach": "Karel Adamec",
-    "website": "https://hradeckelvice.cz",
-            "roster": [
+    "roster": [
       { "no": 6, "name": "Veronika Suchomelová", "pos": "", "year": 2011, "captain": null },
       { "no": 9, "name": "Sára Vaňková", "pos": "", "year": 2011 },
       { "no": 13, "name": "Nella Pencáková", "pos": "", "year": 2011 },
@@ -144,8 +144,9 @@
       { "no": 39, "name": "Sofie Diadovská", "pos": "", "year": 2011 },
       { "no": 40, "name": "Sofie Sokolová", "pos": "", "year": 2011 },
       { "no": 41, "name": "Marie Tomášová", "pos": "", "year": 2011 }
-
+      
     ],
+    "website": "https://hradeckelvice.cz",
     "instagram": "https://www.instagram.com/hradeckelvice",
     "logo": "../assets/img/teamLogos/lviceLogo.png",
     "photo": "../assets/img/teamPhotos/sokolHradecKralovePhoto.JPG", 
@@ -160,7 +161,6 @@
     "city": "Brno",
     "club": "Žabiny Brno",
     "coach": "Petr Křivánek",
-    "photo": "../../assets/img/teamPhotos/ZabinyBrnoPhoto.jpg",
     "roster": [
       { "no": 4, "name": "Michaela Musilová", "pos": "", "year": 2011 },
       { "no": 6, "name": "Sára Baldrmanová", "pos": "", "year": 2012 },
@@ -177,10 +177,11 @@
       { "no": 21, "name": "Alexandra Kočičková", "pos": "", "year": 2012 },
       { "no": 22, "name": "Andrea Jurašek", "pos": "", "year": 2012 },
       { "no": 23, "name": "Markéta Pařízková", "pos": "", "year": 2012 }
-      ],
+    ],
     "website": "https://www.bkzabiny.cz/",
     "instagram": "https://www.instagram.com/zabiny_brno_mladez/",
-    "logo": "../../assets/img/teamLogos/zabinyBrnoLogo.png",
+    "logo": "../assets/img/teamLogos/zabinyBrnoLogo.png",
+    "photo": "../assets/img/teamPhotos/ZabinyBrnoPhoto.jpg",
     "note": ""
   },
 
@@ -209,10 +210,10 @@
       { "no": 58, "name": "Alžběta Lenártová", "pos": "", "year": 2012 },
       { "no": 67, "name": "Barbora Smolíková", "pos": "", "year": 2011 }
     ],
-    "photo": "../assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
     "website": "https://www.basketjicin.cz/",
     "instagram": "https://www.instagram.com/bskjicin/",
     "logo": "../assets/img/teamLogos/bskTjJicinLogo.webp",
+    "photo": "../assets/img/teamPhotos/bskTjJicinPhoto.jpeg",
     "note": ""
   },
   
