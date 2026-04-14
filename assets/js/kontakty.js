@@ -16,7 +16,7 @@
 
     const data = await res.json();
 
-    statusEl.textContent = "Načteno.";
+    statusEl.textContent = "";
     if (data.updated) {
       updatedEl.style.display = "";
       updatedEl.textContent = `Aktualizováno: ${data.updated}`;
