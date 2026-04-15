@@ -55,6 +55,6 @@
       "faze": "Finále", "zapas": "W V1 – W V2",
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
-    { "id": "CER", "cas": "17:15", "hala": "A", "faze": "Ceremoniál", "zapas": "Vyhlášení výsledků, předání cen a medailí", "type": "ceremony" }
+    { "id": "CER", "cas": "17:15", "hala": "A", "faze": "Ceremoniál", "zapas": "Vyhlášení výsledků a předání cen, pohárů a medailí", "type": "ceremony" }
   ]
 }

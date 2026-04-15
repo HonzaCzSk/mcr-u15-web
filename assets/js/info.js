@@ -94,12 +94,6 @@
 
     cards.push(cardHTML(data.tickets.title, ticketsBody));
 
-    // 5) Organizační info
-    cards.push(cardHTML(
-      data.org.title,
-      `<p>${escapeHTML(data.org.text)}</p>`
-    ));
-
     cardsEl.innerHTML = cards.join("");
 
     // CTA

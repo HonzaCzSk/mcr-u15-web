@@ -32,6 +32,10 @@ function initTeam(name) {
   return { name, Z: 0, V: 0, R: 0, P: 0 };
 }
 
+function getPoints(s) {
+  return s.V * 3 + s.R * 1;
+}
+
 function parseScore(raw) {
   const m = String(raw ?? "").match(/(\d+)\s*[:\-]\s*(\d+)/);
   if (!m) return null;
@@ -46,10 +50,12 @@ function seedNum(seed) {
 function renderTable(tableEl, teams, statsMap) {
   if (!tableEl) return;
 
-  // Sort: most wins first, then fewest losses, then seed
+  // Sort: body (V*3+R*1), pak výhry, pak prohry, pak seed
   const sorted = [...teams].sort((ta, tb) => {
     const a = statsMap.get(ta.name) || initTeam(ta.name);
     const b = statsMap.get(tb.name) || initTeam(tb.name);
+    const pa = getPoints(a), pb = getPoints(b);
+    if (pb !== pa) return pb - pa;
     if (b.V !== a.V) return b.V - a.V;
     if (a.P !== b.P) return a.P - b.P;
     return seedNum(ta.seed) - seedNum(tb.seed);
@@ -65,16 +71,17 @@ function renderTable(tableEl, teams, statsMap) {
         <td><a class="teamlink" href="${href}">${escapeHtml(team.name)}</a></td>
         <td>${s.Z}</td>
         <td>${s.V}–${s.R}–${s.P}</td>
+        <td><strong>${getPoints(s)}</strong></td>
       </tr>
     `;
   }).join("");
 
   tableEl.innerHTML = `
     <thead>
-      <tr><th>#</th><th>Tým</th><th>Z</th><th>V–R–P</th></tr>
+      <tr><th>#</th><th>Tým</th><th>Z</th><th>V–R–P</th><th>B</th></tr>
     </thead>
     <tbody>
-      ${rows || `<tr><td colspan="4">Žádné týmy.</td></tr>`}
+      ${rows || `<tr><td colspan="5">Žádné týmy.</td></tr>`}
     </tbody>
   `;
 }
@@ -106,7 +113,7 @@ function renderGroupTables(teams, statsMap) {
       <h2 class="standings-group__title">${title}</h2>
       <table class="standings-table" id="tbl-group-${groupKey}">
         <thead>
-          <tr><th>#</th><th>Tým</th><th>Z</th><th>V–R–P</th></tr>
+          <tr><th>#</th><th>Tým</th><th>Z</th><th>V–R–P</th><th>B</th></tr>
         </thead>
         <tbody></tbody>
       </table>

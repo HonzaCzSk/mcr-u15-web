@@ -83,6 +83,7 @@ body > main {
 }
 
 .muted{ color: var(--muted); margin: 0; margin-bottom: 15px; }
+
 .mini{
   margin-top: 10px;
   font-size: 13px;
@@ -209,7 +210,7 @@ body > main {
   display:flex;
   gap:10px;
   flex-wrap:wrap;
-  margin-bottom: 12px;
+  margin: 12px 0 12px 0;
 }
 .btn{
   display:inline-flex;
@@ -261,6 +262,7 @@ body > main {
   margin-bottom: 10px;
 }
 .kv{ display:grid; gap:10px; }
+
 .kv__row{
   display:flex;
   justify-content:space-between;
@@ -280,6 +282,15 @@ body > main {
   padding: 8px 0 18px;
   margin-bottom: 20px;
 }
+
+.hero__text .grid{
+  display:grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+  padding: 8px 0 18px;
+  margin-bottom: 20px;
+}
+
 .card{
   overflow:hidden;
   background: var(--card);
@@ -1285,8 +1296,14 @@ table.schedule.results tr.is-live td:first-child::after{
   50%{ opacity:.4; }
 }
 
-.livebar{ display:flex; align-items:center; gap:.75rem; margin:.5rem 0 1rem; }
+.livebar{
+  display: flex; 
+  align-items: center; 
+  gap:v.75rem;
+}
+
 #btnLive[disabled]{ opacity:.5; cursor:not-allowed; }
+
 tr.is-next{ background: rgba(59,130,246,.08); outline: 1px solid rgba(59,130,246,.25); }
 
 /* ========== ROZPIS: LIVE / NEXT highlight ========== */
@@ -1396,7 +1413,7 @@ table.schedule:not(.results) tr.is-next td:first-child::after{
   display:flex;
   align-items:center;
   gap:12px;
-  margin: 12px 0 20px;
+  margin: 12px 0 12px;
   padding: 10px 14px;
   border-radius: 12px;
   background: rgba(0,0,0,.03);
