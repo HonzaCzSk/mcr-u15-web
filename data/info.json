@@ -23,6 +23,10 @@
     "mapUrl": "https://www.google.com/maps/place/Parkovac%C3%AD+d%C5%AFm+Jana+Gayera/@50.2131035,15.8300475,17z/data=!3m1!4b1!4m6!3m5!1s0x470c2b03f369f269:0xe97c16abede55340!8m2!3d50.2131035!4d15.8326224!16s%2Fg%2F11hyjcgyly!5m1!1e2?entry=ttu&g_ep=EgoyMDI2MDQxMy4wIKXMDSoASAFQAw%3D%3D",
     "mapLabel": "Parkovací dům Jana Gayera"
   },
+  "org": {
+    "title": "Hradecký majáles",
+    "text": "Od úterý 21. do čtvrtka 23.4. se konají přípravy na Hradecký majáles a od pátka 24. do neděle 26.4 se v Hradci Králové bude odehrávat tradiční Hradecký majáles kolem malšovického stadionu, který přiláká tisíce návštěvníků. Během příprav a akce se uzavírají některé komunikace (ulice malšovická), což může ovlivnit dopravu či způsobit komplikace při cesté k nám do haly. Více na webu [Hradeckého majálesu](https://hradec.majales.cz)."
+  },
   "tickets": {
     "title": "Vstupné a občerstvení",
     "paragraphs": [
