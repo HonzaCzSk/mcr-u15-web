@@ -204,7 +204,17 @@ function renderTeams(root, teams) {
               ${linkBtn("Instagram", t.instagram)}
               ${linkBtn("Fotografie", t.photo)}
             </div>
-            ${t.note ? `<div class="team-info__note">${escapeHtml(t.note)}</div>` : ``}
+            ${t.note ? `
+              <div class="team-info__note">
+                <div class="team-note__label">Vyjádření týmu</div>
+                <div class="team-note__text">
+                  ${t.note
+                    .split('\n\n')
+                    .map(p => `<p>${escapeHtml(p)}</p>`)
+                    .join('')}
+                </div>
+              </div>
+            ` : ``}
             ${renderRoster(t.roster)}
           </div>
         </div>

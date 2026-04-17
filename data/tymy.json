@@ -69,6 +69,7 @@
     "city": "Litoměřice",
     "club": "BK Lvice Litoměřice",
     "coach": "Anna Svobodová",
+    "assistantCoaches": "",
     "roster": [
       { "no": 5, "name": "Marie Lišková", "pos": "", "year": 2011 },
       { "no": 6, "name": "Zoe Hornerová", "pos": "", "year": 2012 },
@@ -90,7 +91,7 @@
     "instagram": "https://www.instagram.com/bklvicelitomerice/",
     "photo": "../assets/img/teamPhotos/bkLviceLitomericePhoto.jpeg",
     "logo": "../assets/img/teamLogos/bkLviceLitomericeLogo.png",
-    "note": ""
+    "note": "Z postupu na Mistrovství republiky máme v Litoměřicích velikou radost. I na závěrečném turnaji v konkurenci těch nejlepších týmů se budeme snažit předvádět naší nejlepší hru, ve které se chceme opřít převážně o týmové pojetí a velké nasazení. Budeme bojovat o každý centimetr palubovky, jako správné Lvice. \n\nPostupem z prvního místa extraligy skupiny A jsme splnili dílčí cíl, který jsme si před sezonou dali. Finálový turnaj otevíráme stejně jako v loňském roce hned prvním zápasem s těžkým soupeřem z Ostravy. Zde bude rozhodovat správné mentální nastavení hráček a doskok. Rádi bychom navázali na loňské umístění, nicméně jsme si vědomi síly soupeřů a tak žádný zápas na MČR nebude mít předem daného favorita. Do Hradce se všichni těšíme a uděláme maximum, abychom potěšili naše fanoušky, kteří nás celou sezonu v hojném počtu podporují."
   },
 
   {
@@ -151,7 +152,7 @@
     "instagram": "https://www.instagram.com/hradeckelvice",
     "logo": "../assets/img/teamLogos/lviceLogo.png",
     "photo": "../assets/img/teamPhotos/sokolHradecKralovePhoto.JPG", 
-    "note": ""
+    "note": "Letošní MČR je pro celý náš tým obzvláště důležité. Tato sezóna je poslední, kterou jsme prožily s trenéry, kteří se nám věnovali od U10. Je to pro nás vyvrcholení nejenom celé sezóny, ale také několikaletého tréninkového úsilí. To, že se letošní MČR koná právě u nás, v Hradci, bereme jako příležitost poděkovat našim fanouškům a především rodičům za jejich dlouholetou podporu. Nepamatujeme si zápas, na kterém by fanoušci chyběli. Cíl pro letošní sezónu byl jasný hned od začátku, užít si naši poslední společnou sezónu a obhájit loňské prvenství na Mistrovství České republiky."
   },
 
   {
@@ -183,7 +184,7 @@
     "website": "https://www.bkzabiny.cz/",
     "instagram": "https://www.instagram.com/zabiny_brno_mladez/",
     "logo": "../assets/img/teamLogos/zabinyBrnoLogo.png",
-    "photo": "../assets/img/teamPhotos/ZabinyBrnoPhoto.jpg",
+    "photo": "../assets/img/teamPhotos/zabinyBrnoPhoto.jpg",
     "note": ""
   },
 
@@ -247,6 +248,6 @@
     "instagram": "https://www.instagram.com/sbsostrava_mladez/",
     "photo": "../assets/img/teamPhotos/sbsOstravaPhoto.jpg",
     "logo": "../assets/img/teamLogos/sbsOstravaLogo.png",
-    "note": ""
+    "note": "Před sezonou jsme si stanovili cíl postoupit na MČR. I když nám cestu zkomplikovala zranění, dokázali jsme se s tím poprat a cíl jsme splnili. Teď jdeme bojovat proti nejlepším týmům v republice. Půjdeme zápas od zápasu, necháme na hřišti všechno a nasbíráme další cenné zkušenosti."
   }
 ]

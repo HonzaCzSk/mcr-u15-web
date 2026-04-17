@@ -856,6 +856,14 @@ table.schedule td.col-links {
   padding: 16px 32px;
 }
 
+.partner .mullerPharma {
+  max-width: 320px;
+  padding: 16px 32px;
+  height: 56px;
+  object-fit: contain;
+  opacity: .85;
+}
+
 .partners__general .partner img {
   height: 56px;
 }
@@ -4097,4 +4105,28 @@ main > section{ margin-bottom: 56px; }
   .quick-group {
     margin-bottom: 1rem;
   }
+}
+
+.team-info__note {
+  margin-top: 16px;
+}
+
+.team-note__label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.team-note__text {
+  padding-left: 12px;
+  border-left: 3px solid #ccc;
+  font-style: italic;
+  line-height: 1.6;
+  color: #ddd;
+}
+
+.team-note__text p {
+  margin: 0 0 8px 0;
 }
