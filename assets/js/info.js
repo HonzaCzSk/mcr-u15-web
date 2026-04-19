@@ -36,14 +36,14 @@
     if (t[1]) mhdParts.push(t[1].replace(/\.$/, "")); // bez tečky na konci
 
     const mhdText = mhdParts.length
-      ? `MHD: ${mhdParts.join(". ")}.`
+      ? `MHD: ${mhdParts.join("")}.`
       : null;
 
     // auto necháme jako třetí položku (pokud existuje), ale sjednotíme prefix
     let autoText = null;
     if (t[2]) {
       autoText = t[2].startsWith("Auto:")
-        ? t[2]
+        ? `Auto: ${t[2]}`
         : `Auto: ${t[2]}`;
     }
     
