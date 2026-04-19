@@ -3,21 +3,21 @@
   "patek": [
     { "id": "G01", "cas": "10:00", "hala": "A", 
       "zapas": "Válečnice Děčín – SBŠ Ostrava", "skupina": "Předkolo Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": ""},
+      "tvcom": "https://tvcom.cz", "livestats": "2839263"},
     
     { "id": "G02", "cas": "12:30", "hala": "A",
       "zapas": "Žabiny Brno – TJ Sokol Kladno", "skupina": "Předkolo Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz", "livestats": "2839264" },
       
     { "id": "G03", "cas": "15:00", "hala": "A", 
       "zapas": "Tygři Praha – BSK TJ Jičín", "skupina": "Předkolo Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz", "livestats": "2839262" },
 
     { "id": "CER", "cas": "16:45", "hala": "A", "zapas": "Zahájení Mistrovství republiky U15", "skupina": "Ceremoniál", "type": "ceremony" },
     
     { "id": "G04", "cas": "17:30", "hala": "A", 
       "zapas": "Sokol Hradec Králové – BK Lvice Litoměřice", "skupina": "Předkolo Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": "" }
+      "tvcom": "https://tvcom.cz", "livestats": "2839265" }
   ],
 
   "sobota": [
