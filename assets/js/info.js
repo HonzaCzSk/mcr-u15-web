@@ -86,7 +86,7 @@
     // 4) Vstupné
     const ticketsBody = data.tickets.paragraphs
       .map((p, i) =>
-        `<p class="${i === 0 ? "ticket-main" : i === 1 ? "muted" : ""}">
+        `<p class="${i === 0 ? "" : i === 1 ? "" : "h2"}">
           ${linkifyHTML(p)}
         </p>`
       )
