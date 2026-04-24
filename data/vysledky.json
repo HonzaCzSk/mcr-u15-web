@@ -1,7 +1,7 @@
 {
   "updated": "2026-04-20T22:17:00+02:00",
   "games": {
-    "G01": { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
+    "G01": { "stav": "LIVE", "skore": "—", "quarters": [[18, 11], [39, 16]], "note": "" },
     "G02": { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
     "G03": { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
     "G04": { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
