@@ -15,7 +15,7 @@
 
     { "id": "CER", "cas": "16:45", "hala": "A", "zapas": "Zahájení Mistrovství republiky U15", "skupina": "Ceremoniál", "type": "ceremony" },
     
-    { "id": "G04", "cas": "17:30", "hala": "A", 
+    { "id": "G04", "cas": "18:00", "hala": "A", 
       "zapas": "Sokol Hradec Králové – BK Lvice Litoměřice", "skupina": "Předkolo Play-off", 
       "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263632-MCR-zen-U15-Sokol-HrKr-BK-Lvice-Litomerice.htm", "livestats": "2839265" }
   ],
