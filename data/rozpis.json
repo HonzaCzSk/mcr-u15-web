@@ -22,19 +22,19 @@
 
   "sobota": [
     { "id": "P1", "cas": "10:00", "hala": "A",
-      "faze": "Prohrávající", "zapas": "L G01 – L G02", "skupina": "Play-off", 
+      "faze": "Prohrávající", "zapas": "SBŠ Ostrava – TJ Sokol Kladno", "skupina": "Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "P2", "cas": "12:30", "hala": "A",
-      "faze": "Prohrávající", "zapas": "L G03 – L G04", "skupina": "Play-off",
+      "faze": "Prohrávající", "zapas": "BSK TJ Jičín – L G04", "skupina": "Play-off",
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "V1", "cas": "15:00", "hala": "A", 
-      "faze": "Vítězové", "zapas": "W G01 – W G02", "skupina": "Play-off", 
+      "faze": "Vítězové", "zapas": "Válečnice Děčín – Žabiny Brno", "skupina": "Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "V2", "cas": "17:30", "hala": "A",
-      "faze": "Vítězové", "zapas": "W G03 – W G04", "skupina": "Play-off", 
+      "faze": "Vítězové", "zapas": "Tygři Praha – W G04", "skupina": "Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" }
   ],
 
