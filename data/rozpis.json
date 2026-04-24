@@ -26,7 +26,7 @@
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "P2", "cas": "12:30", "hala": "A",
-      "faze": "Prohrávající", "zapas": "BSK TJ Jičín – L G04", "skupina": "Play-off",
+      "faze": "Prohrávající", "zapas": "BSK TJ Jičín – BK Lvice Litoměřice", "skupina": "Play-off",
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "V1", "cas": "15:00", "hala": "A", 
@@ -34,7 +34,7 @@
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "V2", "cas": "17:30", "hala": "A",
-      "faze": "Vítězové", "zapas": "Tygři Praha – W G04", "skupina": "Play-off", 
+      "faze": "Vítězové", "zapas": "Tygři Praha – Sokol Hradec Králové", "skupina": "Play-off", 
       "tvcom": "https://tvcom.cz", "livestats": "" }
   ],
 
