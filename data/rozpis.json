@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-25T14:28:00+02:00",
+  "updated": "2026-04-25T17:29:00+02:00",
   "patek": [
     { "id": "G01", "cas": "10:00", "hala": "A", 
       "zapas": "Válečnice Děčín – SBŠ Ostrava", "skupina": "Předkolo Play-off", 
@@ -48,11 +48,11 @@
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "M3", "cas": "13:00", "hala": "A",
-      "faze": "O 3. místo", "zapas": "L V1 – L V2", 
+      "faze": "O 3. místo", "zapas": "Žabiny Brno – L V2", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
       
     { "id": "FIN", "cas": "15:15", "hala": "A",
-      "faze": "Finále", "zapas": "W V1 – W V2",
+      "faze": "Finále", "zapas": "Válečnice Děčín – W V2",
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "CER", "cas": "17:15", "hala": "A", "faze": "Ceremoniál", "zapas": "Vyhlášení výsledků a předání cen, pohárů a medailí", "type": "ceremony" }
