@@ -40,11 +40,11 @@
 
   "nedele": [
     { "id": "M7", "cas": "08:30", "hala": "A", 
-      "faze": "O 7. místo", "zapas": "SBŠ Ostrava – L P2", 
+      "faze": "O 7. místo", "zapas": "SBŠ Ostrava – BSK TJ Jičín", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "M5", "cas": "10:45", "hala": "A",
-      "faze": "O 5. místo", "zapas": "TJ Sokol Kladno – W P2", 
+      "faze": "O 5. místo", "zapas": "TJ Sokol Kladno – BK Lvice Litoměřice", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "M3", "cas": "13:00", "hala": "A",
