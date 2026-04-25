@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-25T09:14:00+02:00",
+  "updated": "2026-04-25T12:29:00+02:00",
   "patek": [
     { "id": "G01", "cas": "10:00", "hala": "A", 
       "zapas": "Válečnice Děčín – SBŠ Ostrava", "skupina": "Předkolo Play-off", 
@@ -40,11 +40,11 @@
 
   "nedele": [
     { "id": "M7", "cas": "08:30", "hala": "A", 
-      "faze": "O 7. místo", "zapas": "L P1 – L P2", 
+      "faze": "O 7. místo", "zapas": "SBŠ Ostrava – L P2", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "M5", "cas": "10:45", "hala": "A",
-      "faze": "O 5. místo", "zapas": "W P1 – W P2", 
+      "faze": "O 5. místo", "zapas": "TJ Sokol Kladno – W P2", 
       "tvcom": "https://tvcom.cz", "livestats": "" },
 
     { "id": "M3", "cas": "13:00", "hala": "A",
