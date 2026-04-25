@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-23T23:15:00+02:00",
+  "updated": "2026-04-25T09:14:00+02:00",
   "patek": [
     { "id": "G01", "cas": "10:00", "hala": "A", 
       "zapas": "Válečnice Děčín – SBŠ Ostrava", "skupina": "Předkolo Play-off", 
@@ -13,7 +13,7 @@
       "zapas": "Tygři Praha – BSK TJ Jičín", "skupina": "Předkolo Play-off", 
       "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263630-MCR-zen-U15-Tygri-Praha-BSK-TJ-Jicin.htm", "livestats": "2839262" },
 
-    { "id": "CER", "cas": "16:45", "hala": "A", "zapas": "Zahájení Mistrovství republiky U15", "skupina": "Ceremoniál", "type": "ceremony" },
+    { "id": "CER", "cas": "17:15", "hala": "A", "zapas": "Zahájení Mistrovství republiky U15", "skupina": "Ceremoniál", "type": "ceremony" },
     
     { "id": "G04", "cas": "18:00", "hala": "A", 
       "zapas": "Sokol Hradec Králové – BK Lvice Litoměřice", "skupina": "Předkolo Play-off", 
@@ -23,19 +23,19 @@
   "sobota": [
     { "id": "P1", "cas": "10:00", "hala": "A",
       "faze": "Prohrávající", "zapas": "SBŠ Ostrava – TJ Sokol Kladno", "skupina": "Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263726-MCR-zen-U15-SBS-Ostrava-TJ-Sokol-Kladno.htm", "livestats": "2842867" },
 
     { "id": "P2", "cas": "12:30", "hala": "A",
       "faze": "Prohrávající", "zapas": "BSK TJ Jičín – BK Lvice Litoměřice", "skupina": "Play-off",
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263727-MCR-zen-U15-BSK-TJ-Jicin-BK-Lvice-Litomerice.htm", "livestats": "2842973" },
 
     { "id": "V1", "cas": "15:00", "hala": "A", 
       "faze": "Vítězové", "zapas": "Válečnice Děčín – Žabiny Brno", "skupina": "Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263728-MCR-zen-U15-Valecnice-Decin-Zabiny-Brno.htm", "livestats": "2842868" },
 
     { "id": "V2", "cas": "17:30", "hala": "A",
       "faze": "Vítězové", "zapas": "Tygři Praha – Sokol Hradec Králové", "skupina": "Play-off", 
-      "tvcom": "https://tvcom.cz", "livestats": "" }
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263729-MCR-zen-U15-Tygri-Praha-Sokol-Hradec-Kralove.htm", "livestats": "2842974" }
   ],
 
   "nedele": [

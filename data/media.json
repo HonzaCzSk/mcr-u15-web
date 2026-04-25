@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-09",
+  "updated": "2026-04-25",
 
   "featured": [
     {
@@ -13,7 +13,7 @@
     {
       "label": "Pátek 24. 4.",
       "links": [
-        { "title": "Galerie – pátek", "url": "https://zonerama.com/patek" }
+        { "title": "Galerie – pátek", "url": "https://eu.zonerama.com/vithanus99/Album/15157849" }
       ]
     },
     {
@@ -31,8 +31,6 @@
   ],
 
   "thumbs": [
-    { "src": "../../assets/img/photos/hala-01.jpg", "alt": "Hala Eliščino nábřeží" },
-    { "src": "../../assets/img/photos/hala-02.jpg", "alt": "Palubovka" }
   ],
 
   "clips": []
