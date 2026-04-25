@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-25T17:29:00+02:00",
+  "updated": "2026-04-25T22:30:00+02:00",
   "patek": [
     { "id": "G01", "cas": "10:00", "hala": "A", 
       "zapas": "Válečnice Děčín – SBŠ Ostrava", "skupina": "Předkolo Play-off", 
@@ -41,15 +41,15 @@
   "nedele": [
     { "id": "M7", "cas": "08:30", "hala": "A", 
       "faze": "O 7. místo", "zapas": "SBŠ Ostrava – BSK TJ Jičín", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263791-MCR-zen-U15-SBS-Ostrava-BSK-TJ-Jicin.htm", "livestats": "2843057" },
 
     { "id": "M5", "cas": "10:45", "hala": "A",
       "faze": "O 5. místo", "zapas": "TJ Sokol Kladno – BK Lvice Litoměřice", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263792-MCR-zen-U15-TJ-Sokol-Kladno-BL-Lvice-Litomerice.htm", "livestats": "2843058" },
 
     { "id": "M3", "cas": "13:00", "hala": "A",
       "faze": "O 3. místo", "zapas": "Žabiny Brno – Sokol Hradec Králové", 
-      "tvcom": "https://tvcom.cz", "livestats": "" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Basketbal/Pohlavi-Zeny/Sezona-2025-2026/263793-MCR-zen-U15-Zabiny-Brno-Sokol-Hradec-Kralove.htm", "livestats": "" },
       
     { "id": "FIN", "cas": "15:15", "hala": "A",
       "faze": "Finále", "zapas": "Válečnice Děčín – Tygři Praha",
