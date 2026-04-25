@@ -8,7 +8,7 @@
 
     "P1":  { "stav": "FIN", "skore": "43:68", "quarters": [[12, 20], [20, 40], [32, 54], [43, 68]], "note": "" },
     "P2":  { "stav": "FIN", "skore": "43:85", "quarters": [[16, 24], [31, 42], [38, 62], [43, 85]], "note": "" },
-    "V1":  { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
+    "V1":  { "stav": "LIVE", "skore": "—", "quarters": [], "note": "" },
     "V2":  { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
 
     "M7":  { "stav": "SCHEDULED", "skore": "—", "quarters": [], "note": "" },
