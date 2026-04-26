@@ -53,7 +53,7 @@
       
     { "id": "FIN", "cas": "15:15", "hala": "A",
       "faze": "Finále", "zapas": "Válečnice Děčín – Tygři Praha",
-      "tvcom": "https://tvcom.cz", "livestats": "2843233" },
+      "tvcom": "https://tvcom.cz/Zapas/Sport-Ostatni/263794-MCR-zen-U15-Valecnice-Decin-Tygri-Praha.htm", "livestats": "2843233" },
 
     { "id": "CER", "cas": "17:15", "hala": "A", "faze": "Ceremoniál", "zapas": "Vyhlášení výsledků a předání cen, pohárů a medailí", "type": "ceremony" }
   ]
