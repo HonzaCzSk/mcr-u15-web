@@ -230,7 +230,7 @@
     lbItems = Array.isArray(thumbs) ? thumbs : [];
 
     if (!lbItems.length) {
-      elGrid.innerHTML = `<div class="empty">Zatím nejsou nahrané žádné fotky. Přidáme během turnaje.</div>`;
+      elGrid.innerHTML = `<div class="empty">Zatím nejsou nahrané žádné fotky. Přidáme po ukončení turnaje.</div>`;
       return;
     }
 
