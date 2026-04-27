@@ -1,37 +1,35 @@
 {
-  "updated": "2026-04-25",
+  "updated": "2026-04-27",
 
   "featured": [
     {
-      "title": "Oficiální galerie – Zonerama",
-      "url": "https://www.zonerama.com/tvuj-odkaz",
+      "title": "Zonerama",
+      "url": "",
       "tag": "ZNRM"
     }
   ],
 
   "days": [
     {
-      "label": "Pátek 24. 4.",
+      "label": "",
       "links": [
-        { "title": "Galerie – pátek", "url": "https://eu.zonerama.com/vithanus99/Album/15157849" }
+        { "title": "Pátek 24. 4.", "url": "https://eu.zonerama.com/vithanus99/Album/15157849" }
       ]
     },
     {
-      "label": "Sobota 25. 4.",
+      "label": "",
       "links": [
-        { "title": "Galerie – sobota", "url": "https://zonerama.com/sobota" }
+        { "title": "Sobota 25. 4.", "url": "https://eu.zonerama.com/vithanus99/Album/15168559" }
       ]
     },
     {
-      "label": "Neděle 26. 4.",
+      "label": "",
       "links": [
-        { "title": "Galerie – neděle", "url": "https://zonerama.com/nedele" }
+        { "title": "Neděle 26. 4.", "url": "https://eu.zonerama.com/vithanus99/Album/15173011" }
       ]
     }
   ],
 
   "thumbs": [
-  ],
-
-  "clips": []
+  ]
 }

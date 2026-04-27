@@ -73,14 +73,14 @@
         const tag = escapeHtml(x.tag || "");
         return `
           <a class="gallery-banner" href="${url}" target="_blank" rel="noopener noreferrer">
-            <div class="gallery-banner__icon" aria-hidden="true">📷</div>
+            <div class="gallery-banner__icon" aria-hidden="true"></div>
             <div class="gallery-banner__body">
               <div class="gallery-banner__title">${title}</div>
-              <div class="gallery-banner__sub">Kompletní fotogalerie z turnaje</div>
+              <div class="gallery-banner__sub">Dle odkazů vpravo →</div>
             </div>
             <div class="gallery-banner__right">
               ${tag ? `<span class="gallery-banner__tag">${tag}</span>` : ""}
-              <span class="gallery-banner__arrow">→</span>
+              <span class="gallery-banner__arrow"></span>
             </div>
           </a>
         `;
