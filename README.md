@@ -6,6 +6,8 @@ The site provides match schedules, results, team rosters, and tournament informa
 
 Live website: <https://mcr-u15.cz>
 
+- <b>TOURNAMENT ENDED & PROJECT OFFICIALLY CLOSED (no more updates into the future)</b>
+
 ## Tech Stack
 
 - HTML
